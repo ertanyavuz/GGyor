@@ -5,6 +5,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GGLib", "GGLib\GGLib.csproj", "{C6C8C8DF-279B-49D2-952C-8F9D8E8EBA32}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExtDependencies", "ExtDependencies", "{E327437F-6874-4C16-86F7-02CFAFA27ECB}"
+	ProjectSection(SolutionItems) = preProject
+		ExtDependencies\ApiV2Client.dll = ExtDependencies\ApiV2Client.dll
+		ExtDependencies\ApiV2Client.XmlSerializers.dll = ExtDependencies\ApiV2Client.XmlSerializers.dll
+		ExtDependencies\auth-config.xml = ExtDependencies\auth-config.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
