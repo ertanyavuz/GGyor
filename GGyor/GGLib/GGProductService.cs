@@ -7,9 +7,13 @@ using GittiGidiyor.Product;
 
 namespace GGLib
 {
-    class GGProductService
-    {
 
+    public class GGProductService
+    {
+        public GGProductService()
+        {
+            setConfig();
+        }
         private void setConfig()
         {
             var config = new AuthConfig();
@@ -20,52 +24,43 @@ namespace GGLib
             ConfigurationManager.setAuthParameters(config);
         }
 
-
         public void GetProducts()
         {
-            
-        }
-        public void UpdateProduct()
-        {
-            
+            var prodService = ServiceProvider.getProductService();
+            var response = prodService.getProducts(0, 100, "L", true, "tr");
+            var products = response.products.Select(x => x.product.description);
+
+            products.GetType();
+
         }
 
+        public void UpdateProduct()
+        {
+
+        }
 
         private void ex_button1_Click(object sender, EventArgs e)
         {
-
             setConfig();
-
             var cityService = ServiceProvider.getCityService();
             var serviceNameResult = cityService.getServiceName();
-
             var devService = ServiceProvider.getDeveloperService();
             serviceNameResult = devService.getServiceName();
 
             var appService = ServiceProvider.getApplicationService();
             serviceNameResult = appService.getServiceName();
-
             //var result = devService.isDeveloper("elektrostil", "Virago97", "tr");
-
             //var response = devService.createDeveloper("ertanyavuz", "passpass", "tr");
-
             var response = appService.getApplicationList("QQPyTB2yVSRGRFJMQDcD", "tr");
-
             var app = response.applications[0];
-
 
             var catService = ServiceProvider.getCategoryService();
             serviceNameResult = catService.getServiceName();
-
             var response2 = catService.getCategories(1, 100, true, true, true, "tr");
-
 
             var prodService = ServiceProvider.getProductService();
             serviceNameResult = prodService.getServiceName();
-
             var response3 = prodService.getProducts(0, 1, "A", true, "tr");
-
-
             var prodList = new List<productDetailType>();
             var i = 0;
             while (i < response3.productCount)
@@ -78,22 +73,14 @@ namespace GGLib
             }
 
             var str = ex_aggregateProducts(prodList);
-
-
-
-
-
             this.GetType();
-
         }
 
         private string ex_aggregateProducts(IEnumerable<productDetailType> productList)
         {
             var str = productList.Select(x => x.product.title).Aggregate((x, y) => x + "\r\n" + y);
-
             return str;
         }
-
 
     }
 }
