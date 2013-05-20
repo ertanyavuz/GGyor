@@ -16,5 +16,15 @@ namespace UnitTestProject1
             Assert.IsTrue(true);
 
         }
+
+        [TestMethod]
+        public void CategoryServiceTest()
+        {
+            var cs = new GGCategoryService();
+            cs.getCategories();
+
+            Assert.IsTrue(true);
+
+        }
     }
 }
