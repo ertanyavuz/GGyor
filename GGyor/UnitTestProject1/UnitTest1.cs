@@ -26,5 +26,14 @@ namespace UnitTestProject1
             Assert.IsTrue(true);
 
         }
+
+        [TestMethod]
+        public void XmlParserTest()
+        {
+            var cs = new GGCategoryService();
+            cs.XmlParser();
+
+            Assert.IsTrue(true);
+        }
     }
 }
