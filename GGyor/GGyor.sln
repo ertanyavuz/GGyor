@@ -14,6 +14,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExtDependencies", "ExtDepen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{FB7C93C1-29D7-49E2-A110-A9341132A448}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorMan.Web", "StorMan.Web\StorMan.Web.csproj", "{4F0CFDFF-42DB-4197-B460-3496B1417503}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{BC0B8D6B-B76B-499F-9D47-49F22A55B276}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{F9DE3C0F-E6D4-45C9-BFCC-B42934E6A57C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{B6F412FD-BA76-426F-B686-DC4877B7406C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +40,16 @@ Global
 		{FB7C93C1-29D7-49E2-A110-A9341132A448}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB7C93C1-29D7-49E2-A110-A9341132A448}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB7C93C1-29D7-49E2-A110-A9341132A448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F0CFDFF-42DB-4197-B460-3496B1417503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F0CFDFF-42DB-4197-B460-3496B1417503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F0CFDFF-42DB-4197-B460-3496B1417503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F0CFDFF-42DB-4197-B460-3496B1417503}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4F0CFDFF-42DB-4197-B460-3496B1417503} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}
+		{C6C8C8DF-279B-49D2-952C-8F9D8E8EBA32} = {F9DE3C0F-E6D4-45C9-BFCC-B42934E6A57C}
 	EndGlobalSection
 EndGlobal
