@@ -13,5 +13,10 @@ namespace StorMan.Web.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+
+        public ActionResult Categories()
+        {
+            return View();
+        }
     }
 }
