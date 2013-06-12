@@ -27,7 +27,7 @@ namespace GGLib
             ConfigurationManager.setAuthParameters(config);
         }
 
-        public List<Category> getCategories()
+        public void getCategories()
         {
             var service = ServiceProvider.getCategoryService();
 
