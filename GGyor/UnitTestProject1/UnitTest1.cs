@@ -12,28 +12,13 @@ namespace UnitTestProject1
         {
             var ps = new GGProductService();
             ps.GetProducts();
-
             Assert.IsTrue(true);
-
         }
-
         [TestMethod]
         public void CategoryServiceTest()
-        {
-            var cs = new GGCategoryService();
-            cs.getCategories();
-
-            Assert.IsTrue(true);
-
-        }
+        {            var cs = new GGCategoryService();            cs.getCategories();            Assert.IsTrue(true);        }
 
         [TestMethod]
-        public void XmlParserTest()
-        {
-            var cs = new GGCategoryService();
-            cs.XmlParser();
-
-            Assert.IsTrue(true);
-        }
+        public void XmlParserTest()        {            var cs = new GGCategoryService();            cs.XmlParser();            Assert.IsTrue(true);        }
     }
 }

@@ -1,24 +1,14 @@
 ﻿using System;
-
 using System.Collections.Generic;
-
 using System.Linq;
-
 using System.Text;
-
 using System.Xml;
-
 using System.Xml.Linq;
-
 using GittiGidiyor;
-
 using GittiGidiyor.Category;
-
-
 
 namespace GGLib
 {
-
     public class GGCategoryService
     {
 
@@ -37,7 +27,7 @@ namespace GGLib
             ConfigurationManager.setAuthParameters(config);
         }
 
-        public void getCategories()
+        public List<Category> getCategories()
         {
             var service = ServiceProvider.getCategoryService();
 
