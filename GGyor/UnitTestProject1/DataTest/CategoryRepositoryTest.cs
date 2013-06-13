@@ -1,9 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StorMan.Data;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StorMan.Data.Repositories;
 
-namespace UnitTestProject1
+namespace UnitTestProject1.DataTest
 {
     [TestClass]
     public class CategoryRepositoryTest

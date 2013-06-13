@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StorMan.Data.DomainObjects;
 
 namespace StorMan.Business
 {
@@ -10,7 +11,7 @@ namespace StorMan.Business
     {
         public List<Category> FetchCategories()
         {
-            
+            return null;
         }
     }
 }

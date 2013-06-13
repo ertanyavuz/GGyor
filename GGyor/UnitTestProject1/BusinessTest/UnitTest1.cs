@@ -1,65 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml;
 using System.Xml.Linq;
-using GittiGidiyor;
-using GittiGidiyor.Category;
-using StorMan.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GGLib
+namespace UnitTestProject1.BusinessTest
 {
-    public class GGCategoryService
+    [TestClass]
+    public class UnitTest1
     {
-
-        public GGCategoryService()
+        [TestMethod]
+        public void GetCategoriesFromXml()
         {
-            setConfig();
-        }
+            var xmlPath = @"C:\Users\e.yavuz\Downloads\es.xml";
 
-        private static void setConfig()
-        {
-            var config = new AuthConfig();
-            config.ApiKey = "dTPUgGvVPktCT8TxY74Kkt5szgzMF5UH";
-            config.SecretKey = "QZYmEu2VwCxxj3qj";
-            config.RoleName = "elektrostil";
-            config.RolePass = "PYwQZqfFYJUaNJgdcaJQ7y6jbD8Emhrw";
-            ConfigurationManager.setAuthParameters(config);
-        }
+            var xdoc = XDocument.Load(xmlPath);
 
-        public List<CategoryModel> getCategories()
-        {
-            var service = ServiceProvider.getCategoryService();
-
-            var i = 0;
-            var rowCount = 0;
-            var catList = new List<categoryType>();
-            do
-            {
-                var response = service.getCategories(i, 100, true, true, true, "tr");
-                rowCount = response.categoryCount;
-                catList.AddRange(response.categories);
-                i += 100;
-                //break;
-
-            } while (i < rowCount);
-
-            Console.WriteLine(catList.Count);
-
-            var list = catList.Select(x => new CategoryModel
-                {
-                    Code = x.categoryCode,
-                    Name = x.categoryName
-                }).ToList();
-
-            return list;
-        }
-
-        public void XmlParser()
-        {
-
-            var xdoc = XDocument.Load(@"C:\elektrostil.xml");
             var q = from d in xdoc.Root.Descendants("item")
                     select d;
             var list = q.ToList();
@@ -105,6 +61,7 @@ namespace GGLib
             }
 
             System.Diagnostics.Debug.WriteLine("");
+
         }
     }
 }

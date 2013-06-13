@@ -41,6 +41,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,13 +50,78 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainObjects\StorManContext.cs" />
+    <Compile Include="Categories.cs">
+      <DependentUpon>StorManDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DomainObjects\ex_StorManContext.cs" />
+    <Compile Include="LocalCategories.cs">
+      <DependentUpon>StorManDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306131404243_InitialCreate.cs" />
+    <Compile Include="Migrations\201306131404243_InitialCreate.Designer.cs">
+      <DependentUpon>201306131404243_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306131507432_LocalCategoryLevels.cs" />
+    <Compile Include="Migrations\201306131507432_LocalCategoryLevels.Designer.cs">
+      <DependentUpon>201306131507432_LocalCategoryLevels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="StorManDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StorManDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StorManDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StorManDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StorManDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StorManDb.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="StorManDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StorManDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="StorManDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StorManDb.edmx</DependentUpon>
+      <LastGenOutput>StorManDb.Context.cs</LastGenOutput>
+    </None>
+    <None Include="StorManDb.edmx.diagram">
+      <DependentUpon>StorManDb.edmx</DependentUpon>
+    </None>
+    <None Include="StorManDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StorManDb.edmx</DependentUpon>
+      <LastGenOutput>StorManDb.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StorMan.Model\StorMan.Model.csproj">
+      <Project>{23C64DFB-C284-47AE-B839-025B089A522D}</Project>
+      <Name>StorMan.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201306131404243_InitialCreate.resx">
+      <DependentUpon>201306131404243_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306131507432_LocalCategoryLevels.resx">
+      <DependentUpon>201306131507432_LocalCategoryLevels.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

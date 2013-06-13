@@ -42,6 +42,20 @@
     <Compile Include="CategoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GGLib\GGLib.csproj">
+      <Project>{c6c8c8df-279b-49d2-952c-8f9d8e8eba32}</Project>
+      <Name>GGLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StorMan.Data\StorMan.Data.csproj">
+      <Project>{70db102e-9a73-4473-949d-c6d68871b850}</Project>
+      <Name>StorMan.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StorMan.Model\StorMan.Model.csproj">
+      <Project>{23c64dfb-c284-47ae-b839-025b089a522d}</Project>
+      <Name>StorMan.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
