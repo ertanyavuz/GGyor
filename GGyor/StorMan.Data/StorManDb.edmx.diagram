@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8be4bda9121245348c170fcee8cece0d" Name="Diagram1">
-        <EntityTypeShape EntityType="StorManModel.Categories" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="StorManModel.LocalCategories" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="StorManModel.FK_dbo_LocalCategories_dbo_LocalCategories_ParentCategory_Code" ManuallyRouted="false" />
-        <AssociationConnector Association="StorManModel.LocalCategoryCategories" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StorManModel.Category" Width="1.5" PointX="6" PointY="1.625" />
+        <EntityTypeShape EntityType="StorManModel.LocalCategory" Width="1.5" PointX="8.875" PointY="1.625" />
+        <AssociationConnector Association="StorManModel.FK_LocalCategory_LocalCategory" />
+        <AssociationConnector Association="StorManModel.CategoryMapping" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

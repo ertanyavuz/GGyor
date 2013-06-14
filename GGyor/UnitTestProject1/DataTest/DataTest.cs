@@ -5,7 +5,7 @@ using StorMan.Data.Repositories;
 namespace UnitTestProject1.DataTest
 {
     [TestClass]
-    public class UnitTest1
+    public class DataTest
     {
         [TestMethod]
         public void ProductServiceTest()
@@ -31,5 +31,6 @@ namespace UnitTestProject1.DataTest
             var result = repo.SyncCategories(list);
             Assert.IsTrue(result);
         }
+
     }
 }

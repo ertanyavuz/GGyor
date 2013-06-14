@@ -3,15 +3,18 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using StorMan.Data.Repositories;
+using StorMan.Model;
 
 namespace UnitTestProject1.BusinessTest
 {
     [TestClass]
-    public class UnitTest1
+    public class BusinessTest
     {
         [TestMethod]
         public void GetCategoriesFromXml()
         {
+            var repo = new CategoryRepository();
             var xmlPath = @"C:\Users\e.yavuz\Downloads\es.xml";
 
             var xdoc = XDocument.Load(xmlPath);
@@ -26,6 +29,15 @@ namespace UnitTestProject1.BusinessTest
                 if (children.Count > 0)
                 {
                     System.Diagnostics.Debug.Write(children[0].Value);
+                    var mainCategory = children.First(x => x.Name == "mainCategory");
+                    var category = children.First(x => x.Name == "category");
+                    var subCategory = children.First(x => x.Name == "subCategory");
+
+                    var localCat = new LocalCategoryModel
+                        {
+                            
+                        }
+                    
                 }
             }
 

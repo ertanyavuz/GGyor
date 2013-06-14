@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StorMan.Data.DomainObjects;
+using StorMan.Model;
 
 namespace StorMan.Business
 {
     public class CategoryService
     {
-        public List<Category> FetchCategories()
+        public List<CategoryModel> SyncCategoriesFromServer()
         {
             return null;
         }

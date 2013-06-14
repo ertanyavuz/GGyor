@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using StorMan.Data.DomainObjects;
 using StorMan.Model;
 
 
@@ -13,7 +12,7 @@ namespace StorMan.Data.Repositories
         
         public CategoryRepository()
         {
-            _context = new StorManContext();
+            _context = new StorManEntities();
         }
 
         public List<Category> GetCategoryList()
@@ -45,10 +44,22 @@ namespace StorMan.Data.Repositories
 
             this.Sync(serverList, currentList, (model, category) => model.Code.CompareTo(category.Code), (model, category) =>
                 {
+                    var updated = false;
                     if (category.Code != model.Code)
+                    {
                         category.Code = model.Code;
+                        updated = true;
+                    }
                     if (category.Name != model.Code)
+                    {
                         category.Name = model.Name;
+                        updated = true;
+                    }
+
+                    if (category.ID == 0)
+                        category.CrDate = DateTime.Now;
+                    if (category.ID != 0 && updated)
+                        category.UpdDate = DateTime.Now;
                     return true;
                 });
 

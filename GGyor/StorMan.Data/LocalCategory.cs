@@ -12,20 +12,23 @@ namespace StorMan.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class LocalCategories
+    public partial class LocalCategory
     {
-        public LocalCategories()
+        public LocalCategory()
         {
-            this.LocalCategories1 = new HashSet<LocalCategories>();
-            this.Categories = new HashSet<Categories>();
+            this.LocalCategory1 = new HashSet<LocalCategory>();
+            this.Categories = new HashSet<Category>();
         }
     
+        public int ID { get; set; }
+        public Nullable<int> ParentID { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
-        public string ParentCategory_Code { get; set; }
+        public System.DateTime CrDate { get; set; }
+        public Nullable<System.DateTime> UpdDate { get; set; }
     
-        public virtual ICollection<LocalCategories> LocalCategories1 { get; set; }
-        public virtual LocalCategories LocalCategories2 { get; set; }
-        public virtual ICollection<Categories> Categories { get; set; }
+        public virtual ICollection<LocalCategory> LocalCategory1 { get; set; }
+        public virtual LocalCategory LocalCategory2 { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }

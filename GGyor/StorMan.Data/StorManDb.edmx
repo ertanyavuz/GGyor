@@ -4,168 +4,181 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="StorManModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="StorManModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="StorManModelStoreContainer">
-          <EntitySet Name="Categories" EntityType="StorManModel.Store.Categories" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="LocalCategories" EntityType="StorManModel.Store.LocalCategories" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="LocalCategoryCategories" EntityType="StorManModel.Store.LocalCategoryCategories" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_dbo_LocalCategories_dbo_LocalCategories_ParentCategory_Code" Association="StorManModel.Store.FK_dbo_LocalCategories_dbo_LocalCategories_ParentCategory_Code">
-            <End Role="LocalCategories" EntitySet="LocalCategories" />
-            <End Role="LocalCategories1" EntitySet="LocalCategories" />
+          <EntitySet Name="Category" EntityType="StorManModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CategoryMapping" EntityType="StorManModel.Store.CategoryMapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LocalCategory" EntityType="StorManModel.Store.LocalCategory" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CategoryMapping_Category" Association="StorManModel.Store.FK_CategoryMapping_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryMapping" EntitySet="CategoryMapping" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_LocalCategoryCategories_dbo_Categories_Category_Code" Association="StorManModel.Store.FK_dbo_LocalCategoryCategories_dbo_Categories_Category_Code">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="LocalCategoryCategories" EntitySet="LocalCategoryCategories" />
+          <AssociationSet Name="FK_CategoryMapping_LocalCategory" Association="StorManModel.Store.FK_CategoryMapping_LocalCategory">
+            <End Role="LocalCategory" EntitySet="LocalCategory" />
+            <End Role="CategoryMapping" EntitySet="CategoryMapping" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_LocalCategoryCategories_dbo_LocalCategories_LocalCategory_Code" Association="StorManModel.Store.FK_dbo_LocalCategoryCategories_dbo_LocalCategories_LocalCategory_Code">
-            <End Role="LocalCategories" EntitySet="LocalCategories" />
-            <End Role="LocalCategoryCategories" EntitySet="LocalCategoryCategories" />
+          <AssociationSet Name="FK_LocalCategory_LocalCategory" Association="StorManModel.Store.FK_LocalCategory_LocalCategory">
+            <End Role="LocalCategory" EntitySet="LocalCategory" />
+            <End Role="LocalCategory1" EntitySet="LocalCategory" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Categories">
+        <EntityType Name="Category">
           <Key>
-            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="CrDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="LocalCategories">
+        <EntityType Name="CategoryMapping">
           <Key>
-            <PropertyRef Name="Code" />
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="LocalCategoryID" />
           </Key>
-          <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="ParentCategory_Code" Type="nvarchar" MaxLength="128" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="LocalCategoryID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="LocalCategoryCategories">
+        <EntityType Name="LocalCategory">
           <Key>
-            <PropertyRef Name="LocalCategory_Code" />
-            <PropertyRef Name="Category_Code" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="LocalCategory_Code" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="Category_Code" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="Code" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="CrDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdDate" Type="datetime" />
         </EntityType>
-        <Association Name="FK_dbo_LocalCategories_dbo_LocalCategories_ParentCategory_Code">
-          <End Role="LocalCategories" Type="StorManModel.Store.LocalCategories" Multiplicity="0..1" />
-          <End Role="LocalCategories1" Type="StorManModel.Store.LocalCategories" Multiplicity="*" />
+        <Association Name="FK_CategoryMapping_Category">
+          <End Role="Category" Type="StorManModel.Store.Category" Multiplicity="1" />
+          <End Role="CategoryMapping" Type="StorManModel.Store.CategoryMapping" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LocalCategories">
-              <PropertyRef Name="Code" />
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="LocalCategories1">
-              <PropertyRef Name="ParentCategory_Code" />
+            <Dependent Role="CategoryMapping">
+              <PropertyRef Name="CategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_LocalCategoryCategories_dbo_Categories_Category_Code">
-          <End Role="Categories" Type="StorManModel.Store.Categories" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LocalCategoryCategories" Type="StorManModel.Store.LocalCategoryCategories" Multiplicity="*" />
+        <Association Name="FK_CategoryMapping_LocalCategory">
+          <End Role="LocalCategory" Type="StorManModel.Store.LocalCategory" Multiplicity="1" />
+          <End Role="CategoryMapping" Type="StorManModel.Store.CategoryMapping" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Categories">
-              <PropertyRef Name="Code" />
+            <Principal Role="LocalCategory">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="LocalCategoryCategories">
-              <PropertyRef Name="Category_Code" />
+            <Dependent Role="CategoryMapping">
+              <PropertyRef Name="LocalCategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_LocalCategoryCategories_dbo_LocalCategories_LocalCategory_Code">
-          <End Role="LocalCategories" Type="StorManModel.Store.LocalCategories" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LocalCategoryCategories" Type="StorManModel.Store.LocalCategoryCategories" Multiplicity="*" />
+        <Association Name="FK_LocalCategory_LocalCategory">
+          <End Role="LocalCategory" Type="StorManModel.Store.LocalCategory" Multiplicity="0..1" />
+          <End Role="LocalCategory1" Type="StorManModel.Store.LocalCategory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LocalCategories">
-              <PropertyRef Name="Code" />
+            <Principal Role="LocalCategory">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="LocalCategoryCategories">
-              <PropertyRef Name="LocalCategory_Code" />
+            <Dependent Role="LocalCategory1">
+              <PropertyRef Name="ParentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StorManModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="StorManEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Categories" EntityType="StorManModel.Categories" />
-          <EntitySet Name="LocalCategories" EntityType="StorManModel.LocalCategories" />
-          <AssociationSet Name="FK_dbo_LocalCategories_dbo_LocalCategories_ParentCategory_Code" Association="StorManModel.FK_dbo_LocalCategories_dbo_LocalCategories_ParentCategory_Code">
-            <End Role="LocalCategories" EntitySet="LocalCategories" />
-            <End Role="LocalCategories1" EntitySet="LocalCategories" />
+          <EntitySet Name="Categories" EntityType="StorManModel.Category" />
+          <EntitySet Name="LocalCategories" EntityType="StorManModel.LocalCategory" />
+          <AssociationSet Name="FK_LocalCategory_LocalCategory" Association="StorManModel.FK_LocalCategory_LocalCategory">
+            <End Role="LocalCategory" EntitySet="LocalCategories" />
+            <End Role="LocalCategory1" EntitySet="LocalCategories" />
           </AssociationSet>
-          <AssociationSet Name="LocalCategoryCategories" Association="StorManModel.LocalCategoryCategories">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="LocalCategories" EntitySet="LocalCategories" />
+          <AssociationSet Name="CategoryMapping" Association="StorManModel.CategoryMapping">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="LocalCategory" EntitySet="LocalCategories" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Categories">
+        <EntityType Name="Category">
           <Key>
-            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="LocalCategories" Relationship="StorManModel.LocalCategoryCategories" FromRole="Categories" ToRole="LocalCategories" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CrDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="UpdDate" Precision="3" />
+          <NavigationProperty Name="LocalCategories" Relationship="StorManModel.CategoryMapping" FromRole="Category" ToRole="LocalCategory" />
         </EntityType>
-        <EntityType Name="LocalCategories">
+        <EntityType Name="LocalCategory">
           <Key>
-            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="ParentCategory_Code" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="LocalCategories1" Relationship="StorManModel.FK_dbo_LocalCategories_dbo_LocalCategories_ParentCategory_Code" FromRole="LocalCategories" ToRole="LocalCategories1" />
-          <NavigationProperty Name="LocalCategories2" Relationship="StorManModel.FK_dbo_LocalCategories_dbo_LocalCategories_ParentCategory_Code" FromRole="LocalCategories1" ToRole="LocalCategories" />
-          <NavigationProperty Name="Categories" Relationship="StorManModel.LocalCategoryCategories" FromRole="LocalCategories" ToRole="Categories" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ParentID" />
+          <Property Type="String" Name="Code" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CrDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="UpdDate" Precision="3" />
+          <NavigationProperty Name="LocalCategory1" Relationship="StorManModel.FK_LocalCategory_LocalCategory" FromRole="LocalCategory" ToRole="LocalCategory1" />
+          <NavigationProperty Name="LocalCategory2" Relationship="StorManModel.FK_LocalCategory_LocalCategory" FromRole="LocalCategory1" ToRole="LocalCategory" />
+          <NavigationProperty Name="Categories" Relationship="StorManModel.CategoryMapping" FromRole="LocalCategory" ToRole="Category" />
         </EntityType>
-        <Association Name="FK_dbo_LocalCategories_dbo_LocalCategories_ParentCategory_Code">
-          <End Role="LocalCategories" Type="StorManModel.LocalCategories" Multiplicity="0..1" />
-          <End Role="LocalCategories1" Type="StorManModel.LocalCategories" Multiplicity="*" />
+        <Association Name="FK_LocalCategory_LocalCategory">
+          <End Type="StorManModel.LocalCategory" Role="LocalCategory" Multiplicity="0..1" />
+          <End Type="StorManModel.LocalCategory" Role="LocalCategory1" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LocalCategories">
-              <PropertyRef Name="Code" />
+            <Principal Role="LocalCategory">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="LocalCategories1">
-              <PropertyRef Name="ParentCategory_Code" />
+            <Dependent Role="LocalCategory1">
+              <PropertyRef Name="ParentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="LocalCategoryCategories">
-          <End Role="Categories" Type="StorManModel.Categories" Multiplicity="*" />
-          <End Role="LocalCategories" Type="StorManModel.LocalCategories" Multiplicity="*" />
+        <Association Name="CategoryMapping">
+          <End Type="StorManModel.Category" Role="Category" Multiplicity="*" />
+          <End Type="StorManModel.LocalCategory" Role="LocalCategory" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="StorManModelStoreContainer" CdmEntityContainer="StorManEntities">
           <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="StorManModel.Categories">
-              <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="Code" ColumnName="Code" />
+            <EntityTypeMapping TypeName="StorManModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
+                <ScalarProperty Name="CrDate" ColumnName="CrDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LocalCategories">
-            <EntityTypeMapping TypeName="StorManModel.LocalCategories">
-              <MappingFragment StoreEntitySet="LocalCategories">
-                <ScalarProperty Name="Code" ColumnName="Code" />
+            <EntityTypeMapping TypeName="StorManModel.LocalCategory">
+              <MappingFragment StoreEntitySet="LocalCategory">
+                <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
+                <ScalarProperty Name="CrDate" ColumnName="CrDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ParentCategory_Code" ColumnName="ParentCategory_Code" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="LocalCategoryCategories" TypeName="StorManModel.LocalCategoryCategories" StoreEntitySet="LocalCategoryCategories">
-            <EndProperty Name="Categories">
-              <ScalarProperty Name="Code" ColumnName="Category_Code" />
+          <AssociationSetMapping Name="CategoryMapping" TypeName="StorManModel.CategoryMapping" StoreEntitySet="CategoryMapping">
+            <EndProperty Name="LocalCategory">
+              <ScalarProperty Name="ID" ColumnName="LocalCategoryID" />
             </EndProperty>
-            <EndProperty Name="LocalCategories">
-              <ScalarProperty Name="Code" ColumnName="LocalCategory_Code" />
+            <EndProperty Name="Category">
+              <ScalarProperty Name="ID" ColumnName="CategoryID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
@@ -182,7 +195,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Objects.DataClasses;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using StorMan.Data.DomainObjects;
 
 namespace StorMan.Data.Repositories
 {
     public class RepositoryBase
     {
-        protected StorManContext _context;
+        protected StorManEntities _context;
 
         public RepositoryBase()
         {
-            _context = new StorManContext();
+            _context = new StorManEntities();
         }
 
         protected void Sync<T1, T2>(List<T1> memSet, List<T2> dbSet, Func<T1, T2, int> comparer, Func<T1, T2, bool> updater)

@@ -1,24 +1,52 @@
-﻿@model dynamic
-
+﻿
 @{
     ViewBag.Title = "Kategori Eşleştirme";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section scripts
+{
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/todo")
 
+    @Scripts.Render("http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js")
+    @Styles.Render("http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css")
+
+}
 
 <div>
+    
+    <table>
+        <th>
+            <tr>
+                <td>#</td>
+                <td>Kategori Kodu</td>
+                <td>Kategori Adı</td>
+                <td>Ana Kategori</td>
+                <td>Alt Kategori</td>
+
+            </tr>
+        </th>
+    </table>
     
 </div>
 
 
 @if (@User.Identity.IsAuthenticated)
 {
-    @section scripts {
-        @Scripts.Render("~/bundles/knockout")
-        @Scripts.Render("~/bundles/jqueryval")
-        @Scripts.Render("~/bundles/todo")
-    }
 }
 
+
+
+<script type="text/javascript">
+    
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("")
+    })
+</script>
 

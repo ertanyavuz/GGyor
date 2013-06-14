@@ -25,7 +25,7 @@ namespace StorMan.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Categories> Categories { get; set; }
-        public DbSet<LocalCategories> LocalCategories { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<LocalCategory> LocalCategories { get; set; }
     }
 }

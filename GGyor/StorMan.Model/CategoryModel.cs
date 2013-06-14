@@ -16,6 +16,7 @@ namespace StorMan.Model
     public class LocalCategoryModel
     {
         public int ID { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
         public CategoryModel RemoteCategory { get; set; }        
     }
