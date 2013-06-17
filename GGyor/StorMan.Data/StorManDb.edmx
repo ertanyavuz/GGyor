@@ -50,6 +50,7 @@
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="CrDate" Type="datetime" Nullable="false" />
           <Property Name="UpdDate" Type="datetime" />
+          <Property Name="Level" Type="int" />
         </EntityType>
         <Association Name="FK_CategoryMapping_Category">
           <End Role="Category" Type="StorManModel.Store.Category" Multiplicity="1" />
@@ -124,6 +125,7 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="CrDate" Nullable="false" Precision="3" />
           <Property Type="DateTime" Name="UpdDate" Precision="3" />
+          <Property Type="Int32" Name="Level" />
           <NavigationProperty Name="LocalCategory1" Relationship="StorManModel.FK_LocalCategory_LocalCategory" FromRole="LocalCategory" ToRole="LocalCategory1" />
           <NavigationProperty Name="LocalCategory2" Relationship="StorManModel.FK_LocalCategory_LocalCategory" FromRole="LocalCategory1" ToRole="LocalCategory" />
           <NavigationProperty Name="Categories" Relationship="StorManModel.CategoryMapping" FromRole="LocalCategory" ToRole="Category" />
@@ -164,6 +166,7 @@
           <EntitySetMapping Name="LocalCategories">
             <EntityTypeMapping TypeName="StorManModel.LocalCategory">
               <MappingFragment StoreEntitySet="LocalCategory">
+                <ScalarProperty Name="Level" ColumnName="Level" />
                 <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
                 <ScalarProperty Name="CrDate" ColumnName="CrDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

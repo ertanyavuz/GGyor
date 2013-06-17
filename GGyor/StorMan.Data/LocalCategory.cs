@@ -26,6 +26,7 @@ namespace StorMan.Data
         public string Name { get; set; }
         public System.DateTime CrDate { get; set; }
         public Nullable<System.DateTime> UpdDate { get; set; }
+        public Nullable<int> Level { get; set; }
     
         public virtual ICollection<LocalCategory> LocalCategory1 { get; set; }
         public virtual LocalCategory LocalCategory2 { get; set; }

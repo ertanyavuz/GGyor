@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -42,6 +43,23 @@ namespace StorMan.Data.Repositories
             }
 
         }
+
+        //protected bool DoAssign(IList leftSideList, IList rightSideList)
+        //{
+        //    var updated = false;
+        //    for (var i = 0; i < leftSideList.Count; i++)
+        //    {
+        //        var leftHS = leftSideList[i];
+        //        var rightHS = rightSideList[i];
+        //        if (leftHS != rightHS)
+        //        {
+        //            leftHS = rightHS;
+        //            updated = true;
+        //        }
+        //    }
+
+        //    return updated;
+        //}
 
     }
 }

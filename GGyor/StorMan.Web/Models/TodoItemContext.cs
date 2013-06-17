@@ -16,7 +16,7 @@ namespace StorMan.Web.Models
     public class TodoItemContext : DbContext
     {
         public TodoItemContext()
-            : base("name=DefaultConnection")
+            : base("name=StorManContext")
         {
         }
 
