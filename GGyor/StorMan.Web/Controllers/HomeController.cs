@@ -4,7 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StorMan.Business;
+
 using StorMan.Model;
+
+
 
 namespace StorMan.Web.Controllers
 {
@@ -23,7 +26,6 @@ namespace StorMan.Web.Controllers
 
             var list = _service.GetLocalCategoryList();
             var catTable = _service.GetCategoryTable();
-
             list.ForEach(x =>
             {
                 if (!String.IsNullOrWhiteSpace(x.Code))
@@ -32,7 +34,6 @@ namespace StorMan.Web.Controllers
                     catTable[x.Code].LocalCategoryModel = x;
                 }
             });
-
             foreach (var code in catTable.Keys)
             {
                 var category = catTable[code];

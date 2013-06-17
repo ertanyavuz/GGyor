@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GittiGidiyor;
 using GittiGidiyor.Product;
+using GittiGidiyor.Search;
 
 namespace GGLib
 {
@@ -27,7 +28,7 @@ namespace GGLib
         public void GetProducts()
         {
             var prodService = ServiceProvider.getProductService();
-            var response = prodService.getProducts(0, 100, "L", true, "tr");
+            var response = prodService.getProducts(0, 100, "A", true, "tr");
             var products = response.products.Select(x => x.product.title).ToList();
 
             products.GetType();
@@ -162,5 +163,45 @@ namespace GGLib
             return str;
         }
 
+
+        public void SiemensUpdate()
+        {
+            var prodService = ServiceProvider.getProductService();
+            //var response = prodService.getProducts(0, 100, "A", true, "tr");
+            //var products = response.products.Select(x => x.product.title).ToList();
+
+            var searchService = ServiceProvider.getSearchService();
+            var criteria = new searchCriteriaType
+                {
+                    format = "S",
+                    seller = "elektrostil"
+                };
+            var searchResponse = searchService.search("Siemens", criteria, 0, 100, true, true, "IA", "tr");
+
+
+            for (int i = 5; i < searchResponse.count; i++)
+            {
+                var product = searchResponse.products[i];
+
+                var id = product.productId;
+
+                var p = prodService.getProduct(id.ToString(), "", "tr");
+
+                p.productDetail.product.cargoDetail.shippingPayment = "B";
+
+                var prodResponse = prodService.updateProduct(p.productDetail.productId.ToString(), p.productDetail.itemId, p.productDetail.product, true, false, false, "tr");
+                if (prodResponse.ackCode != "success")
+                {
+                    prodResponse.GetType();
+                }
+            }
+
+            
+
+            searchResponse.GetType();
+
+        }
+
     }
 }
+

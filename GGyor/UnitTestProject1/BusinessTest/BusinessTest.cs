@@ -168,5 +168,26 @@ namespace UnitTestProject1.BusinessTest
             Assert.IsTrue(true);
 
         }
+
+        [TestMethod]
+        public void GetProducts()
+        {
+            var service = new GGLib.GGProductService();
+
+            service.GetProducts();
+
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
+        public void SiemensUpdateTest()
+        {
+            var service = new GGLib.GGProductService();
+
+            service.SiemensUpdate();
+
+            Assert.IsTrue(true);
+        }
+        
     }
 }
