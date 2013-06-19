@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DCC5B325-EB8C-44E9-B989-C40751C82067}</ProjectGuid>
+    <ProjectGuid>{AB4CB60E-46B1-4C8F-ACAE-B5680F2D8A2A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StorMan.Business</RootNamespace>
-    <AssemblyName>StorMan.Business</AssemblyName>
+    <RootNamespace>AbvLib</RootNamespace>
+    <AssemblyName>AbvLib</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,30 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryService.cs" />
-    <Compile Include="ProductService.cs" />
+    <Compile Include="AbvProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GGLib\GGLib.csproj">
-      <Project>{c6c8c8df-279b-49d2-952c-8f9d8e8eba32}</Project>
-      <Name>GGLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StorMan.Data\StorMan.Data.csproj">
-      <Project>{70db102e-9a73-4473-949d-c6d68871b850}</Project>
-      <Name>StorMan.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StorMan.Model\StorMan.Model.csproj">
-      <Project>{23c64dfb-c284-47ae-b839-025b089a522d}</Project>
-      <Name>StorMan.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
   -->
 </Project>

@@ -13,7 +13,8 @@ namespace StorMan.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private CategoryService _service = new CategoryService();
+        private CategoryService _categoryService = new CategoryService();
+        private ProductService _productService = new ProductService();
 
         public ActionResult Index(string returnUrl)
         {
@@ -24,8 +25,8 @@ namespace StorMan.Web.Controllers
         public ActionResult Categories()
         {
 
-            var list = _service.GetLocalCategoryList();
-            var catTable = _service.GetCategoryTable();
+            var list = _categoryService.GetLocalCategoryList();
+            var catTable = _categoryService.GetCategoryTable();
             list.ForEach(x =>
             {
                 if (!String.IsNullOrWhiteSpace(x.Code))
@@ -53,5 +54,24 @@ namespace StorMan.Web.Controllers
 
             return View();
         }
+
+        public ActionResult ProductsFromXml()
+        {
+            return View();
+        }
+
+        public ActionResult ProductsGG()
+        {
+            
+            return View();
+        }
+
+        public JsonResult GetProductsFromServer()
+        {
+            
+
+            return new JsonResult();
+        }
+
     }
 }
