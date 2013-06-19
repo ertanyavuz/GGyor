@@ -87,6 +87,12 @@ namespace ElektrostilXmlEditor
         public string StrValue { get; set; }
         public double DecValue { get; set; }
 
+        public bool Apply(DataTable dt)
+        {
+
+            return true;
+        }
+
     }
     
     
