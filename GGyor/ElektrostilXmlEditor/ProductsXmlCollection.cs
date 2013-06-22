@@ -171,6 +171,12 @@ namespace ElektrostilXmlEditor
             }
         }
 
+        public bool Apply(DataTable dt)
+        {
+
+            return true;
+        }
+
     }
     
     

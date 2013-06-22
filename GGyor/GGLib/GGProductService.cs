@@ -5,6 +5,7 @@ using System.Text;
 using GittiGidiyor;
 using GittiGidiyor.Product;
 using GittiGidiyor.Search;
+using StorMan.Model;
 
 namespace GGLib
 {
@@ -202,6 +203,12 @@ namespace GGLib
 
         }
 
+        public List<ProductModel> GetProductsOnSale()
+        {
+            var prodService = ServiceProvider.getProductService();
+            
+            return new List<ProductModel>();
+        }
     }
 }
 

@@ -36,6 +36,58 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorMan.Web", "StorMan.Web\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElektrostilXmlEditor", "ElektrostilXmlEditor\ElektrostilXmlEditor.csproj", "{DD649428-D02F-4F0A-B82C-8AB458406B6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbvLib", "AbvLib\AbvLib.csproj", "{AB4CB60E-46B1-4C8F-ACAE-B5680F2D8A2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevExpress", "DevExpress", "{B2F05D94-7A16-4516-B824-8A565BA6D344}"
+	ProjectSection(SolutionItems) = preProject
+		ExtDependencies\DevExpress\DevExpress.BonusSkins.v10.1.dll = ExtDependencies\DevExpress\DevExpress.BonusSkins.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.Charts.v10.1.Core.dll = ExtDependencies\DevExpress\DevExpress.Charts.v10.1.Core.dll
+		ExtDependencies\DevExpress\DevExpress.Data.v10.1.Compact.dll = ExtDependencies\DevExpress\DevExpress.Data.v10.1.Compact.dll
+		ExtDependencies\DevExpress\DevExpress.Data.v10.1.dll = ExtDependencies\DevExpress\DevExpress.Data.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.Design.v10.1.dll = ExtDependencies\DevExpress\DevExpress.Design.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.OfficeSkins.v10.1.dll = ExtDependencies\DevExpress\DevExpress.OfficeSkins.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.RichEdit.v10.1.Core.dll = ExtDependencies\DevExpress\DevExpress.RichEdit.v10.1.Core.dll
+		ExtDependencies\DevExpress\DevExpress.Utils.v10.1.dll = ExtDependencies\DevExpress\DevExpress.Utils.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraBars.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraBars.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraBars.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraBars.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraCharts.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraCharts.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraCharts.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraCharts.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraCharts.v10.1.Extensions.dll = ExtDependencies\DevExpress\DevExpress.XtraCharts.v10.1.Extensions.dll
+		ExtDependencies\DevExpress\DevExpress.XtraCharts.v10.1.UI.dll = ExtDependencies\DevExpress\DevExpress.XtraCharts.v10.1.UI.dll
+		ExtDependencies\DevExpress\DevExpress.XtraEditors.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraEditors.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraEditors.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraEditors.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraGauges.v10.1.Core.dll = ExtDependencies\DevExpress\DevExpress.XtraGauges.v10.1.Core.dll
+		ExtDependencies\DevExpress\DevExpress.XtraGauges.v10.1.Design.Win.dll = ExtDependencies\DevExpress\DevExpress.XtraGauges.v10.1.Design.Win.dll
+		ExtDependencies\DevExpress\DevExpress.XtraGauges.v10.1.Presets.dll = ExtDependencies\DevExpress\DevExpress.XtraGauges.v10.1.Presets.dll
+		ExtDependencies\DevExpress\DevExpress.XtraGauges.v10.1.Win.dll = ExtDependencies\DevExpress\DevExpress.XtraGauges.v10.1.Win.dll
+		ExtDependencies\DevExpress\DevExpress.XtraGrid.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraGrid.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraGrid.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraGrid.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraLayout.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraLayout.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraLayout.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraLayout.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraNavBar.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraNavBar.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraNavBar.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraNavBar.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraPivotGrid.v10.1.Core.dll = ExtDependencies\DevExpress\DevExpress.XtraPivotGrid.v10.1.Core.dll
+		ExtDependencies\DevExpress\DevExpress.XtraPivotGrid.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraPivotGrid.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraPivotGrid.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraPivotGrid.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraPrinting.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraPrinting.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraPrinting.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraPrinting.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraReports.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraReports.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraReports.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraReports.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraReports.v10.1.Extensions.dll = ExtDependencies\DevExpress\DevExpress.XtraReports.v10.1.Extensions.dll
+		ExtDependencies\DevExpress\DevExpress.XtraReports.v10.1.Service.dll = ExtDependencies\DevExpress\DevExpress.XtraReports.v10.1.Service.dll
+		ExtDependencies\DevExpress\DevExpress.XtraReports.v10.1.Web.dll = ExtDependencies\DevExpress\DevExpress.XtraReports.v10.1.Web.dll
+		ExtDependencies\DevExpress\DevExpress.XtraRichEdit.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraRichEdit.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraRichEdit.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraRichEdit.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraRichEdit.v10.1.Extensions.dll = ExtDependencies\DevExpress\DevExpress.XtraRichEdit.v10.1.Extensions.dll
+		ExtDependencies\DevExpress\DevExpress.XtraRichEdit.v10.1.Printing.dll = ExtDependencies\DevExpress\DevExpress.XtraRichEdit.v10.1.Printing.dll
+		ExtDependencies\DevExpress\DevExpress.XtraTreeList.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraTreeList.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraTreeList.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraTreeList.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraVerticalGrid.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraVerticalGrid.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraVerticalGrid.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraVerticalGrid.v10.1.dll
+		ExtDependencies\DevExpress\DevExpress.XtraWizard.v10.1.Design.dll = ExtDependencies\DevExpress\DevExpress.XtraWizard.v10.1.Design.dll
+		ExtDependencies\DevExpress\DevExpress.XtraWizard.v10.1.dll = ExtDependencies\DevExpress\DevExpress.XtraWizard.v10.1.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +126,10 @@ Global
 		{DD649428-D02F-4F0A-B82C-8AB458406B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD649428-D02F-4F0A-B82C-8AB458406B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD649428-D02F-4F0A-B82C-8AB458406B6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB4CB60E-46B1-4C8F-ACAE-B5680F2D8A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB4CB60E-46B1-4C8F-ACAE-B5680F2D8A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB4CB60E-46B1-4C8F-ACAE-B5680F2D8A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB4CB60E-46B1-4C8F-ACAE-B5680F2D8A2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +138,8 @@ Global
 		{FB7C93C1-29D7-49E2-A110-A9341132A448} = {52C3412E-AD3B-4C8F-8987-4EFCF3D3F76A}
 		{9E6BD7E1-D23C-484E-A8D6-FE7F2382412F} = {52C3412E-AD3B-4C8F-8987-4EFCF3D3F76A}
 		{C6C8C8DF-279B-49D2-952C-8F9D8E8EBA32} = {F9DE3C0F-E6D4-45C9-BFCC-B42934E6A57C}
+		{AB4CB60E-46B1-4C8F-ACAE-B5680F2D8A2A} = {F9DE3C0F-E6D4-45C9-BFCC-B42934E6A57C}
+		{B2F05D94-7A16-4516-B824-8A565BA6D344} = {E327437F-6874-4C16-86F7-02CFAFA27ECB}
 		{62BF1749-0A6E-4C60-BC2E-007C31029121} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}
 		{DD649428-D02F-4F0A-B82C-8AB458406B6B} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}
 		{70DB102E-9A73-4473-949D-C6D68871B850} = {B6F412FD-BA76-426F-B686-DC4877B7406C}
