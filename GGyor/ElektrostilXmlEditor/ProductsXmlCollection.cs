@@ -15,6 +15,9 @@ namespace ElektrostilXmlEditor
             get { return _dataTable; }
         }
 
+        private List<XmlFilter> FilterList { get; set; }
+        private List<XmlTransform> TransformList { get; set; }
+
         public ProductsXmlCollection(string xmlPath)
         {
             _dataTable = new DataTable("ProductsXml");
@@ -65,6 +68,33 @@ namespace ElektrostilXmlEditor
             xdoc.Save(path);
         }
 
+        public void ApplyFilters()
+        {
+            foreach (var filter in FilterList)
+            {
+                var rowsToDelete = new List<DataRow>();
+                foreach (DataRow row in DataTable.Rows)
+                {
+                    if (!filter.Check(row))
+                        rowsToDelete.Add(row); 
+                }
+                foreach (var dataRow in rowsToDelete)
+                {
+                    DataTable.Rows.Remove(dataRow);
+                }
+            }
+        }
+        public void ApplyTransforms()
+        {
+            foreach (var transform in TransformList)
+            {
+                foreach (DataRow row in DataTable.Rows)
+                {
+                    transform.ApplyToDataRow(row);
+                }
+            }
+        }
+
     }
 
 
@@ -72,24 +102,81 @@ namespace ElektrostilXmlEditor
     {
         public string FieldName { get; set; }
         public XmlFilterType FilterType { get; set; }
-        public int IntValue { get; set; }
-        public string StrValue { get; set; }
-        public double DecValue { get; set; }
+        //public int IntValue { get; set; }
+        //public string StrValue { get; set; }
+        //public double DecValue { get; set; }
+        public object Value { get; set; }
 
+        public bool Check(DataRow row)
+        {
+            if (row.Table.Columns.Contains(this.FieldName))
+            {
+                var rowValue = row[this.FieldName];
+                if (rowValue == null || rowValue == System.DBNull.Value)
+                    return false;
+
+                return rowValue.ToString() == this.Value.ToString();
+            }
+            return false;
+        }
     }
+
+    public enum XmlFilterType
+    {
+        Equals
+    }
+
 
     public class XmlTransform
     {
         public XmlTransformType Type { get; set; }
         public XmlTransformOperation Operation { get; set; }
 
-        public int IntValue { get; set; }
-        public string StrValue { get; set; }
-        public double DecValue { get; set; }
+        public string FieldName { get; set; }
+        public Type DataType { get; set; }
+        public object Value { get; set; }
+
+        // FieldName, Operation, Value
+        public void ApplyToDataRow(DataRow row)
+        {
+            if (row.Table.Columns.Contains(this.FieldName))
+            {
+                var rowValue = row[this.FieldName];
+                if (rowValue == null)
+                    return;
+                if (this.Operation == XmlTransformOperation.Toplama)
+                {
+                    var floatValue = float.Parse(rowValue.ToString());
+                    floatValue += (float )Value;
+                    row[this.FieldName] = floatValue.ToString();
+                }
+                else if (this.Operation == XmlTransformOperation.Carpma)
+                {
+                    var floatValue = float.Parse(rowValue.ToString());
+                    floatValue *= (float)Value;
+                    row[this.FieldName] = floatValue.ToString();
+                }
+                else if (this.Operation == XmlTransformOperation.Eşitleme)
+                {
+                    row[this.FieldName] = this.Value.ToString();
+                }
+                else if (this.Operation == XmlTransformOperation.Ekleme)
+                {
+                    if (rowValue == System.DBNull.Value)
+                        rowValue = "";
+                    var stringValue = rowValue.ToString();
+                    stringValue += this.Value.ToString();
+                    row[this.FieldName] = stringValue;
+                }
+            }
+        }
 
     }
     
     
+    // Alan (operand) Değer
+    // (Alan, Değer) => (...)
+    // Action<Alan, Değer>
     public enum XmlTransformType
     {
         FiyatAyarlama,  // Fiyat arttır-azalt. yüzde ile veya ekleyerek
@@ -102,13 +189,12 @@ namespace ElektrostilXmlEditor
     public enum XmlTransformOperation
     {
         Carpma,
-        Toplama
+        Toplama,
+        Eşitleme,
+        Ekleme
     }
 
-    public enum XmlFilterType
-    {
-        
-    }
+    
 }
 
 
