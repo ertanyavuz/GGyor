@@ -15,9 +15,13 @@ namespace ElektrostilXmlEditor
         public frmMain()
         {
             InitializeComponent();
+            TransformList = new List<XmlTransform>();
+            Filters = new List<XmlFilter>();
         }
 
         private ProductsXmlCollection products;
+        private List<XmlTransform> TransformList;
+        private List<XmlFilter> Filters;
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -79,6 +83,59 @@ namespace ElektrostilXmlEditor
             MessageBox.Show("Kurlar dönüştürüldü.");
         }
 
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            if (products.DataTable == null || products.DataTable.Columns.Count == 0)
+                return;
+            var f = new frmTransform { FieldList = products.DataTable.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToList() };
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                this.TransformList.Add(f.Transform);
+                listBox1.Items.Add(f.Transform);
+            }
+        }
+        private void btnCikar_Click(object sender, EventArgs e)
+        {
+            var item = listBox1.SelectedItem;
+            var index = listBox1.SelectedIndex;
+            if (item == null || index < 0)
+                return;
+            listBox1.Items.Remove(item);
+            this.TransformList.RemoveAt(index);
+        }
 
+        private void btnApplyTransforms_Click(object sender, EventArgs e)
+        {
+            grid.RefreshDataSource();
+
+            // Apply Filters
+            var rowsToBeSaved = new List<DataRow>();
+            var rowsToBeDeleted = new List<DataRow>();
+            for (int i = 0; i < gView.DataRowCount; i++)
+            {
+                rowsToBeSaved.Add(gView.GetDataRow(i));
+            }
+            var dt = grid.DataSource as DataTable;
+            foreach (DataRow row in dt.Rows)
+            {
+                if (!rowsToBeSaved.Contains(row))
+                    rowsToBeDeleted.Add(row);
+            }
+            foreach (var dataRow in rowsToBeDeleted)
+            {
+                dt.Rows.Remove(dataRow);
+            }
+            dt.AcceptChanges();
+            grid.RefreshDataSource();
+
+            products.TransformList = this.TransformList.ToArray().ToList();
+
+            //var filterList = XmlFilter.Parse(gView.ActiveFilterString);
+            //products.FilterList = filterList;
+
+            //products.ApplyFilters();
+            products.ApplyTransforms();
+        }
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -15,11 +16,14 @@ namespace ElektrostilXmlEditor
             get { return _dataTable; }
         }
 
-        private List<XmlFilter> FilterList { get; set; }
-        private List<XmlTransform> TransformList { get; set; }
+        public List<XmlFilter> FilterList { get; set; }
+        public List<XmlTransform> TransformList { get; set; }
 
         public ProductsXmlCollection(string xmlPath)
         {
+            TransformList = new List<XmlTransform>();
+            FilterList = new List<XmlFilter>();
+
             _dataTable = new DataTable("ProductsXml");
 
             var xdoc = XDocument.Load(xmlPath);
@@ -119,6 +123,20 @@ namespace ElektrostilXmlEditor
             }
             return false;
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public static List<XmlFilter> Parse(string filterString)
+        {
+            var s = filterString.Split("And".ToArray());
+            return s.Select(x => new XmlFilter
+                {
+                    
+                }).ToList();
+        }
     }
 
     public enum XmlFilterType
@@ -126,10 +144,9 @@ namespace ElektrostilXmlEditor
         Equals
     }
 
-
     public class XmlTransform
     {
-        public XmlTransformType Type { get; set; }
+        //public XmlTransformType Type { get; set; }
         public XmlTransformOperation Operation { get; set; }
 
         public string FieldName { get; set; }
@@ -146,15 +163,15 @@ namespace ElektrostilXmlEditor
                     return;
                 if (this.Operation == XmlTransformOperation.Toplama)
                 {
-                    var floatValue = float.Parse(rowValue.ToString());
-                    floatValue += (float )Value;
-                    row[this.FieldName] = floatValue.ToString();
+                    var floatValue = stringToFloat(rowValue.ToString());
+                    floatValue += stringToFloat(Value.ToString());
+                    row[this.FieldName] = floatToStr(floatValue);
                 }
                 else if (this.Operation == XmlTransformOperation.Carpma)
                 {
-                    var floatValue = float.Parse(rowValue.ToString());
-                    floatValue *= (float)Value;
-                    row[this.FieldName] = floatValue.ToString();
+                    var floatValue = stringToFloat(rowValue.ToString());
+                    floatValue *= stringToFloat(Value.ToString());
+                    row[this.FieldName] = floatToStr(floatValue);
                 }
                 else if (this.Operation == XmlTransformOperation.Eşitleme)
                 {
@@ -165,33 +182,46 @@ namespace ElektrostilXmlEditor
                     if (rowValue == System.DBNull.Value)
                         rowValue = "";
                     var stringValue = rowValue.ToString();
-                    stringValue += this.Value.ToString();
+                    stringValue += this.Value.ToString().Replace("\\n", "\n").Replace("\\t", "\t");
                     row[this.FieldName] = stringValue;
                 }
             }
         }
 
-        public bool Apply(DataTable dt)
+        public override string ToString()
         {
+            return String.Format("{0} - {1} - {2}", this.FieldName, this.Operation, this.Value);
+        }
 
-            return true;
+        public static float stringToFloat(string floatStr)
+        {
+            floatStr = floatStr.Replace(",", "");
+            var floatValue = float.Parse(floatStr, CultureInfo.InvariantCulture);
+            return floatValue;
+        }
+        public static string floatToStr(float floatValue)
+        {
+            var floatStr = floatValue.ToString();
+            floatStr = floatStr.Replace(",", ".");
+            return floatStr;
         }
 
     }
     
     
-    // Alan (operand) Değer
-    // (Alan, Değer) => (...)
-    // Action<Alan, Değer>
-    public enum XmlTransformType
-    {
-        FiyatAyarlama,  // Fiyat arttır-azalt. yüzde ile veya ekleyerek
-        KurDonusturme,  // Kurları TL'ye çevirme
-        AciklamaEkle,   // Açıklama alanlarının başına ve sonuna yazı ekleme
-        AlanKaldirma,   // XML'deki bir alanı tümüyle kaldırma
-        StokAyarlama,   // Stok sayısını arttırıp azaltma, yüzde ile veya adet ile.
-        KargoAyarlama   // Alıcı-satıcı öder durumu.
-    }
+    //// Alan (operand) Değer
+    //// (Alan, Değer) => (...)
+    //// Action<Alan, Değer>
+    //public enum XmlTransformType
+    //{
+    //    FiyatAyarlama,  // Fiyat arttır-azalt. yüzde ile veya ekleyerek
+    //    KurDonusturme,  // Kurları TL'ye çevirme
+    //    AciklamaEkle,   // Açıklama alanlarının başına ve sonuna yazı ekleme
+    //    AlanKaldirma,   // XML'deki bir alanı tümüyle kaldırma
+    //    StokAyarlama,   // Stok sayısını arttırıp azaltma, yüzde ile veya adet ile.
+    //    KargoAyarlama   // Alıcı-satıcı öder durumu.
+    //}
+
     public enum XmlTransformOperation
     {
         Carpma,
@@ -200,7 +230,6 @@ namespace ElektrostilXmlEditor
         Ekleme
     }
 
-    
 }
 
 
