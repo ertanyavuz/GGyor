@@ -10,20 +10,26 @@ namespace UnitTestProject1.DataTest
         [TestMethod]
         public void ProductServiceTest()
         {
+            TestClassBase.checkDoTest();
+
             var ps = new GGProductService();
             ps.GetProducts();
             Assert.IsTrue(true);
         }
         [TestMethod]
         public void CategoryServiceTest()
-        {            var cs = new GGCategoryService();            var list = cs.getCategories();            Assert.IsTrue(list.Count > 0);        }
+        {
+            TestClassBase.checkDoTest();            var cs = new GGCategoryService();            var list = cs.getCategories();            Assert.IsTrue(list.Count > 0);        }
 
         [TestMethod]
-        public void XmlParserTest()        {            var cs = new GGCategoryService();            cs.XmlParser();            Assert.IsTrue(true);        }
+        public void XmlParserTest()        {
+            TestClassBase.checkDoTest();            var cs = new GGCategoryService();            cs.XmlParser();            Assert.IsTrue(true);        }
 
         [TestMethod]
         public void FillCategories()
         {
+            TestClassBase.checkDoTest();
+
             var cs = new GGCategoryService();
             var list = cs.getCategories();
 

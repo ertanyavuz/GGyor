@@ -15,6 +15,8 @@ namespace UnitTestProject1.BusinessTest
         [TestMethod]
         public void GetCategoriesFromXml()
         {
+            TestClassBase.checkDoTest();
+
             var repo = new CategoryRepository();
             var xmlPath = @"http://www.elektrostil.com/index.php?do=catalog/output&pCode=968613169";
 
@@ -172,6 +174,8 @@ namespace UnitTestProject1.BusinessTest
         [TestMethod]
         public void GetProducts()
         {
+            TestClassBase.checkDoTest();
+
             var service = new GGLib.GGProductService();
 
             service.GetProducts();
@@ -182,6 +186,8 @@ namespace UnitTestProject1.BusinessTest
         [TestMethod]
         public void SiemensUpdateTest()
         {
+            TestClassBase.checkDoTest();
+
             var service = new GGLib.GGProductService();
 
             service.SiemensUpdate();
