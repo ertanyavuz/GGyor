@@ -12,7 +12,7 @@ namespace UnitTestProject1.BusinessTest
     [TestClass]
     public class BusinessTest
     {
-        [TestMethod]
+        //[TestMethod]
         public void GetCategoriesFromXml()
         {
             TestClassBase.checkDoTest();
@@ -171,7 +171,7 @@ namespace UnitTestProject1.BusinessTest
 
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void GetProducts()
         {
             TestClassBase.checkDoTest();
@@ -183,7 +183,7 @@ namespace UnitTestProject1.BusinessTest
             Assert.IsTrue(true);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void SiemensUpdateTest()
         {
             TestClassBase.checkDoTest();

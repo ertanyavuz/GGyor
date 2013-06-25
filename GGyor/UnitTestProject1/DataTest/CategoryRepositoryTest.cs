@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;using StorMan.Data.Repositories;
-namespace UnitTestProject1.DataTest{    [TestClass]    public class CategoryRepositoryTest    {        [TestMethod]        public void GetCategoryListTest()
+namespace UnitTestProject1.DataTest{    [TestClass]    public class CategoryRepositoryTest    {        //[TestMethod]        public void GetCategoryListTest()
         {
             TestClassBase.checkDoTest();
 

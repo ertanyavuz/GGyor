@@ -7,7 +7,7 @@ namespace UnitTestProject1.DataTest
     [TestClass]
     public class DataTest
     {
-        [TestMethod]
+        //[TestMethod]
         public void ProductServiceTest()
         {
             TestClassBase.checkDoTest();
@@ -16,16 +16,16 @@ namespace UnitTestProject1.DataTest
             ps.GetProducts();
             Assert.IsTrue(true);
         }
-        [TestMethod]
+        //[TestMethod]
         public void CategoryServiceTest()
         {
             TestClassBase.checkDoTest();            var cs = new GGCategoryService();            var list = cs.getCategories();            Assert.IsTrue(list.Count > 0);        }
 
-        [TestMethod]
+        //[TestMethod]
         public void XmlParserTest()        {
             TestClassBase.checkDoTest();            var cs = new GGCategoryService();            cs.XmlParser();            Assert.IsTrue(true);        }
 
-        [TestMethod]
+        //[TestMethod]
         public void FillCategories()
         {
             TestClassBase.checkDoTest();
