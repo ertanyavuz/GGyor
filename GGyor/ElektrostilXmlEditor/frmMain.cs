@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using StorMan.Business;
 
 namespace ElektrostilXmlEditor
 {
@@ -15,12 +16,12 @@ namespace ElektrostilXmlEditor
         public frmMain()
         {
             InitializeComponent();
-            TransformList = new List<XmlTransform>();
+            OperationList = new List<XmlOperation>();
             Filters = new List<XmlFilter>();
         }
 
         private ProductsXmlCollection products;
-        private List<XmlTransform> TransformList;
+        private List<XmlOperation> OperationList;
         private List<XmlFilter> Filters;
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -87,11 +88,11 @@ namespace ElektrostilXmlEditor
         {
             if (products.DataTable == null || products.DataTable.Columns.Count == 0)
                 return;
-            var f = new frmTransform { FieldList = products.DataTable.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToList() };
+            var f = new frmOperation { FieldList = products.DataTable.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToList() };
             if (f.ShowDialog() == DialogResult.OK)
             {
-                this.TransformList.Add(f.Transform);
-                listBox1.Items.Add(f.Transform);
+                this.OperationList.Add(f.Operation);
+                listBox1.Items.Add(f.Operation);
             }
         }
         private void btnCikar_Click(object sender, EventArgs e)
@@ -101,7 +102,7 @@ namespace ElektrostilXmlEditor
             if (item == null || index < 0)
                 return;
             listBox1.Items.Remove(item);
-            this.TransformList.RemoveAt(index);
+            this.OperationList.RemoveAt(index);
         }
 
         private void btnApplyTransforms_Click(object sender, EventArgs e)
@@ -128,7 +129,7 @@ namespace ElektrostilXmlEditor
             dt.AcceptChanges();
             grid.RefreshDataSource();
 
-            products.TransformList = this.TransformList.ToArray().ToList();
+            products.TransformList = this.OperationList.ToArray().ToList();
 
             //var filterList = XmlFilter.Parse(gView.ActiveFilterString);
             //products.FilterList = filterList;

@@ -1,6 +1,6 @@
 ﻿namespace ElektrostilXmlEditor
 {
-    partial class frmTransform
+    partial class frmOperation
     {
         /// <summary>
         /// Required designer variable.
