@@ -15,40 +15,30 @@ namespace StorMan.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class LocalCategory
+    public partial class ConvertedDataSet
     {
     
-        public LocalCategory()
+        public ConvertedDataSet()
         {
     
-            this.LocalCategory1 = new HashSet<LocalCategory>();
+            this.ConvertedDataSetHistories = new HashSet<ConvertedDataSetHistory>();
     
-            this.Categories = new HashSet<Category>();
+            this.Transforms = new HashSet<Transform>();
     
         }
     
     
         public int ID { get; set; }
     
-        public Nullable<int> ParentID { get; set; }
-    
-        public string Code { get; set; }
-    
         public string Name { get; set; }
     
-        public System.DateTime CrDate { get; set; }
-    
-        public Nullable<System.DateTime> UpdDate { get; set; }
-    
-        public Nullable<int> Level { get; set; }
+        public string SourceXmlPath { get; set; }
     
     
     
-        public virtual ICollection<LocalCategory> LocalCategory1 { get; set; }
+        public virtual ICollection<ConvertedDataSetHistory> ConvertedDataSetHistories { get; set; }
     
-        public virtual LocalCategory LocalCategory2 { get; set; }
-    
-        public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<Transform> Transforms { get; set; }
     
     }
 

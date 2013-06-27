@@ -9,6 +9,15 @@
         <EntityTypeShape EntityType="StorManModel.LocalCategory" Width="1.5" PointX="8.875" PointY="2.75" />
         <AssociationConnector Association="StorManModel.FK_LocalCategory_LocalCategory" />
         <AssociationConnector Association="StorManModel.CategoryMapping" />
+        <EntityTypeShape EntityType="StorManModel.ConvertedDataSet" Width="1.5" PointX="1.875" PointY="5.375" />
+        <EntityTypeShape EntityType="StorManModel.ConvertedDataSetHistory" Width="1.5" PointX="4.75" PointY="5.375" />
+        <EntityTypeShape EntityType="StorManModel.Filter" Width="1.5" PointX="4.75" PointY="8" />
+        <EntityTypeShape EntityType="StorManModel.Operation" Width="1.5" PointX="4.75" PointY="10.375" />
+        <EntityTypeShape EntityType="StorManModel.Transform" Width="1.5" PointX="1.875" PointY="8" />
+        <AssociationConnector Association="StorManModel.FK_ConvertedDataSetHistory_ConvertedDataSet" />
+        <AssociationConnector Association="StorManModel.FK_Transform_ConvertedDataSet" />
+        <AssociationConnector Association="StorManModel.FK_Filter_Transform" />
+        <AssociationConnector Association="StorManModel.FK_Operation_Transform" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

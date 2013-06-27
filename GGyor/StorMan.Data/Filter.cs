@@ -15,30 +15,22 @@ namespace StorMan.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class Filter
     {
-    
-        public Category()
-        {
-    
-            this.LocalCategories = new HashSet<LocalCategory>();
-    
-        }
-    
     
         public int ID { get; set; }
     
-        public string Code { get; set; }
+        public int TransformID { get; set; }
     
-        public string Name { get; set; }
+        public string FieldName { get; set; }
     
-        public System.DateTime CrDate { get; set; }
+        public Nullable<int> FilterType { get; set; }
     
-        public Nullable<System.DateTime> UpdDate { get; set; }
+        public string Value { get; set; }
     
     
     
-        public virtual ICollection<LocalCategory> LocalCategories { get; set; }
+        public virtual Transform Transform { get; set; }
     
     }
 

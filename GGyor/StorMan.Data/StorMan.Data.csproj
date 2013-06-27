@@ -55,8 +55,20 @@
     <Compile Include="Category.cs">
       <DependentUpon>StorManDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="ConvertedDataSet.cs">
+      <DependentUpon>StorManDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConvertedDataSetHistory.cs">
+      <DependentUpon>StorManDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="DomainObjects\ex_StorManContext.cs" />
+    <Compile Include="Filter.cs">
+      <DependentUpon>StorManDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="LocalCategory.cs">
+      <DependentUpon>StorManDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Operation.cs">
       <DependentUpon>StorManDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +88,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StorManDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Transform.cs">
+      <DependentUpon>StorManDb.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +122,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQLQuery1.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
