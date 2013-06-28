@@ -3,44 +3,41 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace StorMan.Business
+namespace StorMan.Model
 {
-
-    public class ConvertedDataSet
+    public class ConvertedDataSetModel
     {
-        public ConvertedDataSet()
+        public ConvertedDataSetModel()
         {
-            this.Transforms = new List<XmlTransform>();
+            this.Transforms = new List<TransformModel>();
         }
 
         public int ID { get; set; }
         public string Name { get; set; }
         public string SourceXmlPath { get; set; }
 
-        public List<XmlTransform> Transforms { get; set; }
+        public List<TransformModel> Transforms { get; set; }
     }
 
-    public class XmlTransform
+    public class TransformModel
     {
-        public XmlTransform()
+        public TransformModel()
         {
-            this.Operations = new List<XmlOperation>();
-            this.Filters = new List<XmlFilter>();
+            this.Operations = new List<OperationModel>();
+            this.Filters = new List<FilterModel>();
         }
 
         public int ID { get; set; }
 
-        public List<XmlOperation> Operations { get; set; }
-        public List<XmlFilter> Filters { get; set; }
+        public List<OperationModel> Operations { get; set; }
+        public List<FilterModel> Filters { get; set; }
     }
 
-    public class XmlFilter
+    public class FilterModel
     {
         public string FieldName { get; set; }
-        public XmlFilterType FilterType { get; set; }
+        public FilterTypeEnum FilterType { get; set; }
         public object Value { get; set; }
 
         public bool Check(DataRow row)
@@ -61,26 +58,26 @@ namespace StorMan.Business
             return base.ToString();
         }
 
-        public static List<XmlFilter> Parse(string filterString)
+        public static List<FilterModel> Parse(string filterString)
         {
             throw new NotImplementedException();
 
             var s = filterString.Split("And".ToArray());
-            return s.Select(x => new XmlFilter
+            return s.Select(x => new FilterModel
             {
 
             }).ToList();
         }
     }
 
-    public enum XmlFilterType
+    public enum FilterTypeEnum
     {
         Equals
     }
 
-    public class XmlOperation
+    public class OperationModel
     {
-        public XmlOperationType OperationType { get; set; }
+        public OperationTypeEnum OperationType { get; set; }
 
         public string FieldName { get; set; }
         public Type DataType { get; set; }
@@ -93,23 +90,23 @@ namespace StorMan.Business
                 var rowValue = row[this.FieldName];
                 if (rowValue == null)
                     return;
-                if (this.OperationType == XmlOperationType.Toplama)
+                if (this.OperationType == OperationTypeEnum.Toplama)
                 {
                     var floatValue = stringToFloat(rowValue.ToString());
                     floatValue += stringToFloat(Value.ToString());
                     row[this.FieldName] = floatToStr(floatValue);
                 }
-                else if (this.OperationType == XmlOperationType.Carpma)
+                else if (this.OperationType == OperationTypeEnum.Carpma)
                 {
                     var floatValue = stringToFloat(rowValue.ToString());
                     floatValue *= stringToFloat(Value.ToString());
                     row[this.FieldName] = floatToStr(floatValue);
                 }
-                else if (this.OperationType == XmlOperationType.Eşitleme)
+                else if (this.OperationType == OperationTypeEnum.Eşitleme)
                 {
                     row[this.FieldName] = this.Value.ToString();
                 }
-                else if (this.OperationType == XmlOperationType.Ekleme)
+                else if (this.OperationType == OperationTypeEnum.Ekleme)
                 {
                     if (rowValue == System.DBNull.Value)
                         rowValue = "";
@@ -154,7 +151,7 @@ namespace StorMan.Business
     //    KargoAyarlama   // Alıcı-satıcı öder durumu.
     //}
 
-    public enum XmlOperationType
+    public enum OperationTypeEnum
     {
         Carpma,
         Toplama,

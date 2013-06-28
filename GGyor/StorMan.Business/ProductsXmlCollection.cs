@@ -4,6 +4,7 @@ using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Xml.Linq;
+using StorMan.Model;
 
 namespace StorMan.Business
 {
@@ -15,13 +16,13 @@ namespace StorMan.Business
             get { return _dataTable; }
         }
 
-        public List<XmlFilter> FilterList { get; set; }
-        public List<XmlOperation> TransformList { get; set; }
+        public List<FilterModel> FilterList { get; set; }
+        public List<OperationModel> TransformList { get; set; }
 
         public ProductsXmlCollection(string xmlPath)
         {
-            TransformList = new List<XmlOperation>();
-            FilterList = new List<XmlFilter>();
+            TransformList = new List<OperationModel>();
+            FilterList = new List<FilterModel>();
 
             _dataTable = new DataTable("ProductsXml");
 

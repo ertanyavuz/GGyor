@@ -82,11 +82,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmMain.cs">
+    <Compile Include="frmConvertedDataSets.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="frmConvertedDataSets.Designer.cs">
+      <DependentUpon>frmConvertedDataSets.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTransform.cs">
       <SubType>Form</SubType>
@@ -94,13 +94,22 @@
     <Compile Include="frmTransform.Designer.cs">
       <DependentUpon>frmTransform.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOperation.Designer.cs">
+      <DependentUpon>frmOperation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="frmConvertedDataSets.resx">
+      <DependentUpon>frmConvertedDataSets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTransform.resx">
       <DependentUpon>frmTransform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOperation.resx">
+      <DependentUpon>frmOperation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -150,6 +159,10 @@
     <ProjectReference Include="..\StorMan.Business\StorMan.Business.csproj">
       <Project>{dcc5b325-eb8c-44e9-b989-c40751c82067}</Project>
       <Name>StorMan.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StorMan.Model\StorMan.Model.csproj">
+      <Project>{23c64dfb-c284-47ae-b839-025b089a522d}</Project>
+      <Name>StorMan.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

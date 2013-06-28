@@ -116,9 +116,7 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ConvertedDataSetID" Type="int" Nullable="false" />
-          <Property Name="FieldName" Type="varchar" MaxLength="50" />
-          <Property Name="Expression" Type="varchar" MaxLength="200" />
-          <Property Name="Value" Type="varchar" MaxLength="200" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_CategoryMapping_Category">
           <End Role="Category" Type="StorManModel.Store.Category" Multiplicity="1" />
@@ -331,12 +329,10 @@
           </Key>
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="ConvertedDataSetID" Nullable="false" />
-          <Property Type="String" Name="FieldName" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Expression" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Value" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ConvertedDataSet" Relationship="StorManModel.FK_Transform_ConvertedDataSet" FromRole="Transform" ToRole="ConvertedDataSet" />
           <NavigationProperty Name="Filters" Relationship="StorManModel.FK_Filter_Transform" FromRole="Transform" ToRole="Filter" />
           <NavigationProperty Name="Operations" Relationship="StorManModel.FK_Operation_Transform" FromRole="Transform" ToRole="Operation" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_ConvertedDataSetHistory_ConvertedDataSet">
           <End Type="StorManModel.ConvertedDataSet" Role="ConvertedDataSet" Multiplicity="1" />
@@ -468,9 +464,7 @@
           <EntitySetMapping Name="Transforms">
             <EntityTypeMapping TypeName="StorManModel.Transform">
               <MappingFragment StoreEntitySet="Transform">
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="Expression" ColumnName="Expression" />
-                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ConvertedDataSetID" ColumnName="ConvertedDataSetID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

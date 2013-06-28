@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\ConvertedDataSetRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="StorManDb.Context.cs">
       <AutoGen>True</AutoGen>

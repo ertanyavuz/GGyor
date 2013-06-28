@@ -186,3 +186,5 @@ GO
 alter table Transform drop column FieldName;
 alter table Transform drop column Expression;
 alter table Transform drop column Value;
+
+alter table Transform add Name varchar(50);

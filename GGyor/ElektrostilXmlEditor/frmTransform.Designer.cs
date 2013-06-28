@@ -1,6 +1,6 @@
 ﻿namespace ElektrostilXmlEditor
 {
-    partial class frmOperation
+    partial class frmTransform
     {
         /// <summary>
         /// Required designer variable.
@@ -29,123 +29,298 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbField = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDolarKuru = new System.Windows.Forms.TextBox();
+            this.btnCikar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtValue = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmbOperation = new System.Windows.Forms.ComboBox();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnEkle = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grid = new DevExpress.XtraGrid.GridControl();
+            this.gView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnConvertCurrencies = new System.Windows.Forms.Button();
+            this.btnSaveAs = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.btnApplyTransforms = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 15);
+            this.label1.Location = new System.Drawing.Point(2, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Alan";
+            this.label1.Text = "XML Adresi";
             // 
-            // cmbField
+            // textBox1
             // 
-            this.cmbField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbField.FormattingEnabled = true;
-            this.cmbField.Location = new System.Drawing.Point(58, 12);
-            this.cmbField.Name = "cmbField";
-            this.cmbField.Size = new System.Drawing.Size(171, 21);
-            this.cmbField.TabIndex = 1;
+            this.textBox1.Location = new System.Drawing.Point(69, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(397, 20);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "http://www.elektrostil.com/index.php?do=catalog/output&pCode=968613169";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer1.Size = new System.Drawing.Size(1078, 488);
+            this.splitContainer1.SplitterDistance = 172;
+            this.splitContainer1.TabIndex = 2;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtDolarKuru);
+            this.groupBox1.Controls.Add(this.btnCikar);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnEkle);
+            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(172, 488);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Transformlar";
+            // 
+            // txtDolarKuru
+            // 
+            this.txtDolarKuru.Location = new System.Drawing.Point(69, 19);
+            this.txtDolarKuru.Name = "txtDolarKuru";
+            this.txtDolarKuru.Size = new System.Drawing.Size(91, 20);
+            this.txtDolarKuru.TabIndex = 6;
+            this.txtDolarKuru.Text = "1.8758";
+            // 
+            // btnCikar
+            // 
+            this.btnCikar.Location = new System.Drawing.Point(88, 75);
+            this.btnCikar.Name = "btnCikar";
+            this.btnCikar.Size = new System.Drawing.Size(75, 23);
+            this.btnCikar.TabIndex = 9;
+            this.btnCikar.Text = "Çıkar";
+            this.btnCikar.UseVisualStyleBackColor = true;
+            this.btnCikar.Click += new System.EventHandler(this.btnCikar_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 42);
+            this.label2.Location = new System.Drawing.Point(7, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "İşlem";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Dolar";
             // 
-            // txtValue
+            // textBox2
             // 
-            this.txtValue.Location = new System.Drawing.Point(58, 65);
-            this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(171, 20);
-            this.txtValue.TabIndex = 5;
+            this.textBox2.Location = new System.Drawing.Point(69, 45);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(91, 20);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.Text = "2.5083";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 68);
+            this.label3.Location = new System.Drawing.Point(7, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Değer";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Euro";
             // 
-            // cmbOperation
+            // btnEkle
             // 
-            this.cmbOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOperation.FormattingEnabled = true;
-            this.cmbOperation.Location = new System.Drawing.Point(58, 39);
-            this.cmbOperation.Name = "cmbOperation";
-            this.cmbOperation.Size = new System.Drawing.Size(171, 21);
-            this.cmbOperation.TabIndex = 6;
+            this.btnEkle.Location = new System.Drawing.Point(7, 75);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(75, 23);
+            this.btnEkle.TabIndex = 1;
+            this.btnEkle.Text = "Ekle";
+            this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
-            // btnOK
+            // listBox1
             // 
-            this.btnOK.Location = new System.Drawing.Point(58, 104);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 7;
-            this.btnOK.Text = "Tamam";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(7, 104);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(156, 381);
+            this.listBox1.TabIndex = 0;
             // 
-            // btnCancel
+            // groupBox2
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(154, 104);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 8;
-            this.btnCancel.Text = "İptal";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.groupBox2.Controls.Add(this.grid);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(902, 488);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Data";
             // 
-            // frmTransform
+            // grid
+            // 
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.Location = new System.Drawing.Point(3, 16);
+            this.grid.MainView = this.gView;
+            this.grid.Name = "grid";
+            this.grid.Size = new System.Drawing.Size(896, 469);
+            this.grid.TabIndex = 0;
+            this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gView});
+            // 
+            // gView
+            // 
+            this.gView.GridControl = this.grid;
+            this.gView.Name = "gView";
+            // 
+            // btnConvertCurrencies
+            // 
+            this.btnConvertCurrencies.Location = new System.Drawing.Point(795, 7);
+            this.btnConvertCurrencies.Name = "btnConvertCurrencies";
+            this.btnConvertCurrencies.Size = new System.Drawing.Size(117, 23);
+            this.btnConvertCurrencies.TabIndex = 4;
+            this.btnConvertCurrencies.Text = "Fiyatları TL\'ye Çevir";
+            this.btnConvertCurrencies.UseVisualStyleBackColor = true;
+            this.btnConvertCurrencies.Visible = false;
+            this.btnConvertCurrencies.Click += new System.EventHandler(this.btnConvertCurrencies_Click);
+            // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.Location = new System.Drawing.Point(570, 7);
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(92, 23);
+            this.btnSaveAs.TabIndex = 3;
+            this.btnSaveAs.Text = "Farklı Kaydet";
+            this.btnSaveAs.UseVisualStyleBackColor = true;
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(472, 7);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(92, 23);
+            this.btnLoad.TabIndex = 2;
+            this.btnLoad.Text = "Yükle";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "XML|*.xml";
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.btnApplyTransforms);
+            this.splitContainer2.Panel1.Controls.Add(this.label1);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer2.Panel1.Controls.Add(this.btnLoad);
+            this.splitContainer2.Panel1.Controls.Add(this.btnSaveAs);
+            this.splitContainer2.Panel1.Controls.Add(this.btnConvertCurrencies);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer1);
+            this.splitContainer2.Size = new System.Drawing.Size(1078, 541);
+            this.splitContainer2.SplitterDistance = 49;
+            this.splitContainer2.TabIndex = 3;
+            // 
+            // btnApplyTransforms
+            // 
+            this.btnApplyTransforms.Location = new System.Drawing.Point(668, 7);
+            this.btnApplyTransforms.Name = "btnApplyTransforms";
+            this.btnApplyTransforms.Size = new System.Drawing.Size(121, 23);
+            this.btnApplyTransforms.TabIndex = 5;
+            this.btnApplyTransforms.Text = "Transformları Uygula";
+            this.btnApplyTransforms.UseVisualStyleBackColor = true;
+            this.btnApplyTransforms.Click += new System.EventHandler(this.btnApplyTransforms_Click);
+            // 
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(253, 159);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.cmbOperation);
-            this.Controls.Add(this.txtValue);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cmbField);
-            this.Controls.Add(this.label1);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "frmTransform";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.Text = "Transform";
+            this.ClientSize = new System.Drawing.Size(1078, 541);
+            this.Controls.Add(this.splitContainer2);
+            this.Name = "frmMain";
+            this.Text = "Elektrostil XML Editor";
             this.Load += new System.EventHandler(this.frmTransform_Load);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gView)).EndInit();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbField;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtValue;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button btnSaveAs;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbOperation;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox txtDolarKuru;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnConvertCurrencies;
+        private DevExpress.XtraGrid.GridControl grid;
+        private DevExpress.XtraGrid.Views.Grid.GridView gView;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Button btnEkle;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btnCikar;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnApplyTransforms;
     }
 }
+

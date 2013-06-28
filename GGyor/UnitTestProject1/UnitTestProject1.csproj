@@ -87,7 +87,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="App.Release.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LibTest\" />
