@@ -29,6 +29,7 @@ namespace StorMan.Model
         }
 
         public int ID { get; set; }
+        public string Name { get; set; }
 
         public List<OperationModel> Operations { get; set; }
         public List<FilterModel> Filters { get; set; }
@@ -36,6 +37,7 @@ namespace StorMan.Model
 
     public class FilterModel
     {
+        public int ID { get; set; }
         public string FieldName { get; set; }
         public FilterTypeEnum FilterType { get; set; }
         public object Value { get; set; }
@@ -77,6 +79,7 @@ namespace StorMan.Model
 
     public class OperationModel
     {
+        public int ID { get; set; }
         public OperationTypeEnum OperationType { get; set; }
 
         public string FieldName { get; set; }

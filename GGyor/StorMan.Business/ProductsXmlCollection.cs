@@ -17,11 +17,11 @@ namespace StorMan.Business
         }
 
         public List<FilterModel> FilterList { get; set; }
-        public List<OperationModel> TransformList { get; set; }
+        public List<OperationModel> OperationList { get; set; }
 
         public ProductsXmlCollection(string xmlPath)
         {
-            TransformList = new List<OperationModel>();
+            OperationList = new List<OperationModel>();
             FilterList = new List<FilterModel>();
 
             _dataTable = new DataTable("ProductsXml");
@@ -90,7 +90,7 @@ namespace StorMan.Business
         }
         public void ApplyTransforms()
         {
-            foreach (var transform in TransformList)
+            foreach (var transform in OperationList)
             {
                 foreach (DataRow row in DataTable.Rows)
                 {

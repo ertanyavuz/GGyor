@@ -25,14 +25,27 @@ namespace ElektrostilXmlEditor
 
         private void frmConvertedDataSets_Load(object sender, EventArgs e)
         {
-            loading = true;
-            cDataSets = _service.getConvertedDataSets();
+            try
+            {
+                loading = true;
+                cDataSets = _service.getConvertedDataSets();
 
-            lvDataSetList.Items.AddRange(cDataSets.Select(x => new ListViewItem(new string[] { x.ID.ToString(), x.Name, x.SourceXmlPath })).ToArray());
-            loading = false;
+                lvDataSetList.Items.AddRange(cDataSets.Select(x => new ListViewItem(new string[] { x.ID.ToString(), x.Name, x.SourceXmlPath })).ToArray());
+                loading = false;
+                if (lvDataSetList.Items.Count > 0 && lvDataSetList.SelectedIndices.Count == 0)
+                    lvDataSetList.SelectedIndices.Add(0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
         }
 
         private void lvDataSetList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadTransforms();
+        }
+        private void LoadTransforms()
         {
             if (loading)
                 return;
@@ -46,12 +59,16 @@ namespace ElektrostilXmlEditor
             if (cDataSet.Transforms == null || cDataSet.Transforms.Count == 0)
             {
                 cDataSet.Transforms = _service.getTransforms(cDataSet.ID);
+
+                lvTransforms.Items.AddRange(cDataSet.Transforms.Select(x => new ListViewItem(new string[] {x.ID.ToString(), x.Name})).ToArray());
+
+                if (lvTransforms.Items.Count > 0 && lvTransforms.SelectedIndices.Count == 0)
+                    lvTransforms.SelectedIndices.Add(0);
             }
             else
             {
                 //
             }
-
 
         }
 
@@ -86,15 +103,46 @@ namespace ElektrostilXmlEditor
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
+            var cds = SelectedDataSet;
+            if (cds == null)
+                return;
             var f = new frmTransform();
+            f.SourceXML = cds.SourceXmlPath;
+            f.Transform = new TransformModel();
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                _service.createTransform(SelectedDataSet.ID, f.Transform);
+                LoadTransforms();
+            }
+        }
+
+        private void btnDuzenle_Click(object sender, EventArgs e)
+        {
+            var cds = SelectedDataSet;
+            if (cds == null)
+                return;
+            var f = new frmTransform();
+            f.SourceXML = cds.SourceXmlPath;
             f.Transform = SelectedTransform;
             if (f.Transform == null)
                 return;
 
             if (f.ShowDialog() == DialogResult.OK)
             {
-                
+                _service.updateTransform(f.Transform);
+                LoadTransforms();
             }
+        }
+
+        private void btnKaldir_Click(object sender, EventArgs e)
+        {
+            var t = SelectedTransform;
+            if (t == null)
+                return;
+            _service.deleteTransform(t.ID);
+
+            LoadTransforms();
         }
 
     }

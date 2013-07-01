@@ -49,7 +49,12 @@
             this.columnHeader1,
             this.columnHeader2});
             this.lvDataSetList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvDataSetList.FullRowSelect = true;
+            this.lvDataSetList.GridLines = true;
+            this.lvDataSetList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvDataSetList.HideSelection = false;
             this.lvDataSetList.Location = new System.Drawing.Point(3, 16);
+            this.lvDataSetList.MultiSelect = false;
             this.lvDataSetList.Name = "lvDataSetList";
             this.lvDataSetList.Size = new System.Drawing.Size(278, 235);
             this.lvDataSetList.TabIndex = 0;
@@ -92,7 +97,12 @@
             this.columnHeader3,
             this.columnHeader4});
             this.lvTransforms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvTransforms.FullRowSelect = true;
+            this.lvTransforms.GridLines = true;
+            this.lvTransforms.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvTransforms.HideSelection = false;
             this.lvTransforms.Location = new System.Drawing.Point(3, 16);
+            this.lvTransforms.MultiSelect = false;
             this.lvTransforms.Name = "lvTransforms";
             this.lvTransforms.Size = new System.Drawing.Size(278, 235);
             this.lvTransforms.TabIndex = 0;
@@ -126,6 +136,7 @@
             this.btnDuzenle.TabIndex = 4;
             this.btnDuzenle.Text = "Düzenle";
             this.btnDuzenle.UseVisualStyleBackColor = true;
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
             // btnKaldir
             // 
@@ -135,6 +146,7 @@
             this.btnKaldir.TabIndex = 5;
             this.btnKaldir.Text = "Kaldır";
             this.btnKaldir.UseVisualStyleBackColor = true;
+            this.btnKaldir.Click += new System.EventHandler(this.btnKaldir_Click);
             // 
             // frmConvertedDataSets
             // 

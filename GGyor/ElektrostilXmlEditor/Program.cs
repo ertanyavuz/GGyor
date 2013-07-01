@@ -15,7 +15,7 @@ namespace ElektrostilXmlEditor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTransform());
+            Application.Run(new frmConvertedDataSets());
         }
     }
 }

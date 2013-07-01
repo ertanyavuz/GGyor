@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Base;
 using StorMan.Business;
 using StorMan.Model;
 
@@ -24,19 +26,46 @@ namespace ElektrostilXmlEditor
         private ProductsXmlCollection products;
         private List<OperationModel> OperationList;
         private List<FilterModel> Filters;
+        public string SourceXML { get; set; }
 
         public TransformModel Transform { get; set; }
         
         private void frmTransform_Load(object sender, EventArgs e)
         {
+            if (!String.IsNullOrWhiteSpace(this.SourceXML))
+                txtSourceXml.Text = this.SourceXML;
 
+            if (!String.IsNullOrWhiteSpace(txtSourceXml.Text))
+            {
+                btnLoad_Click(null, null);
+            }
+
+            if (this.Transform == null)
+            {
+                this.Transform = new TransformModel();
+            }
+            else
+            {
+                foreach (var filterModel in this.Transform.Filters)
+                {
+                    var col = gView.Columns[filterModel.FieldName];
+                    if (col == null) continue;
+
+                    gView.ActiveFilter.Add(col, new ColumnFilterInfo(ColumnFilterType.Value, filterModel.Value.ToString()));
+                }
+                foreach (var operationModel in this.Transform.Operations)
+                {
+                    this.OperationList.Add(operationModel);
+                    listBox1.Items.Add(operationModel);
+                }
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
             try
             {
-                products = new ProductsXmlCollection(textBox1.Text);
+                products = new ProductsXmlCollection(txtSourceXml.Text);
 
                 grid.DataSource = products.DataTable;
             }
@@ -132,13 +161,34 @@ namespace ElektrostilXmlEditor
             dt.AcceptChanges();
             grid.RefreshDataSource();
 
-            products.TransformList = this.OperationList.ToArray().ToList();
-
+            products.OperationList = this.OperationList.ToArray().ToList();
+            
             //var filterList = XmlFilter.Parse(gView.ActiveFilterString);
             //products.FilterList = filterList;
 
             //products.ApplyFilters();
             products.ApplyTransforms();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            this.Transform.Operations = this.OperationList.ToArray().ToList();
+            foreach (ViewColumnFilterInfo filterInfo in gView.ActiveFilter)
+            {
+                filterInfo.GetType();
+                var filter = new FilterModel
+                    {
+                        FieldName = filterInfo.Column.FieldName,
+                        FilterType = FilterTypeEnum.Equals,
+                        Value = filterInfo.Filter.FilterString
+                    };
+                this.Transform.Filters.Add(filter);
+            }
+            //this.Filters = FilterModel.Parse(gView.ActiveFilter);
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+            
         }
         
     }

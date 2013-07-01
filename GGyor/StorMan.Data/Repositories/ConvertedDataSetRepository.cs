@@ -35,6 +35,7 @@ namespace StorMan.Data.Repositories
             var list = transformList.Select(x => new TransformModel
                 {
                     ID = x.ID,
+                    Name = x.Name,
                     Filters = x.Filters.Select(y => new FilterModel
                         {
                             FieldName = y.FieldName,
@@ -67,6 +68,90 @@ namespace StorMan.Data.Repositories
 
         }
 
-        
+
+        public bool deleteTransform(int transformID)
+        {
+            var transform = _context.Transforms.FirstOrDefault(x => x.ID == transformID);
+            if (transform == null)
+                return false;
+
+            var filterList = transform.Filters.ToList();
+            var opList = transform.Operations.ToList();
+            foreach (var filter in filterList)
+            {
+                _context.Filters.Remove(filter);
+            }
+            foreach (var operation in opList)
+            {
+                _context.Operations.Remove(operation);
+            }
+            _context.Transforms.Remove(transform);
+
+            _context.SaveChanges();
+
+            return true;
+        }
+
+        public int createTransform(int cdsID, TransformModel transformModel)
+        {
+            var dbTransform = new Transform
+                {
+                    ConvertedDataSetID = cdsID,
+                    Name = transformModel.Name
+                };
+            _context.Transforms.Add(dbTransform);
+
+            foreach (var filterModel in transformModel.Filters)
+            {
+                var dbFilter = new Filter
+                    {
+                        FieldName = filterModel.FieldName,
+                        Transform = dbTransform,
+                        FilterType = (int?) filterModel.FilterType,
+                        Value = filterModel.Value.ToString()
+                    };
+                _context.Filters.Add(dbFilter);
+            }
+            foreach (var operationModel in transformModel.Operations)
+            {
+                var dbOperation = new Operation
+                    {
+                        Transform = dbTransform,
+                        FieldName = operationModel.FieldName,
+                        OperationType = (int?) operationModel.OperationType,
+                        Value = operationModel.Value.ToString()
+                    };
+                _context.Operations.Add(dbOperation);
+            }
+            _context.SaveChanges();
+
+            return dbTransform.ID;
+        }
+
+        public bool updateTransform(TransformModel transformModel)
+        {
+            var transform = _context.Transforms.FirstOrDefault(x => x.ID == transformModel.ID);
+            if (transform == null)
+                return false;
+
+            transform.Name = transformModel.Name;
+
+            var filterList = transform.Filters.ToList();
+
+            this.Sync(transformModel.Filters, filterList, (filterModel, dbFilter) => filterModel.ID.CompareTo(dbFilter.ID),
+                        (filterModel, dbFilter) =>
+                            {
+                                if (dbFilter.FieldName != filterModel.FieldName)
+                                    dbFilter.FieldName = filterModel.FieldName;
+                                if (dbFilter.FilterType != (int?) filterModel.FilterType)
+                                    dbFilter.FilterType = (int?) filterModel.FilterType;
+                                if (dbFilter.Value != filterModel.Value.ToString())
+                                    dbFilter.Value = filterModel.Value.ToString();
+                                return true;
+                            }
+            );
+
+            return true;
+        }
     }
 }

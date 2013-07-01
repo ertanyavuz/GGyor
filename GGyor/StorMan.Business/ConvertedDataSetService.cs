@@ -32,5 +32,20 @@ namespace StorMan.Business
         {
             return _repository.getTransforms(convertedDataSetID);
         }
+
+        public bool deleteTransform(int transformID)
+        {
+            return _repository.deleteTransform(transformID);
+        }
+
+        public int createTransform(int cdsID, TransformModel transform)
+        {
+            return _repository.createTransform(cdsID, transform);
+        }
+
+        public bool updateTransform(TransformModel transform)
+        {
+            return _repository.updateTransform(transform);
+        }
     }
 }
