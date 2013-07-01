@@ -152,5 +152,17 @@ namespace ElektrostilXmlEditor
             
         }
 
+        private void btnGoruntule_Click(object sender, EventArgs e)
+        {
+            var cds = this.SelectedDataSet;
+            if (cds == null)
+                return;
+
+            var f = new frmViewXml();
+            f.ConvertedDataSet = cds;
+            f.ShowDialog();
+
+        }
+
     }
 }

@@ -45,11 +45,15 @@ namespace ElektrostilXmlEditor
                     DataType = typeof(string),
                     FieldName = cmbField.Text,
                     //Operation = XmlTransformOperation.TryParse(cmbOperation.Text)
-                    Value = txtValue.Text
+                    Value =  txtValue.Text
                 };
             OperationTypeEnum op;
             Enum.TryParse(cmbOperation.Text, true, out op);
             this.Operation.OperationType = op;
+            if (op == OperationTypeEnum.Toplama || op == OperationTypeEnum.Carpma)
+            {
+                this.Operation.Value = OperationModel.floatToStr(OperationModel.stringToFloat(txtValue.Text));
+            }
             this.Close();
         }
 

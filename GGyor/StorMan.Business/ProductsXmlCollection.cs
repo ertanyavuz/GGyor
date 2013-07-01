@@ -101,6 +101,66 @@ namespace StorMan.Business
 
     }
 
+    //public class ProductsDataTable
+    //{
+    //    public ProductsDataTable()
+    //    {
+    //        this.TransformList = new List<TransformModel>();
+    //    }
+
+    //    public DataTable DataTable { get; set; }
+    //    public DataTable ResultTable { get; set; }
+
+    //    //public List<FilterModel> FilterList { get; set; }
+    //    //public List<OperationModel> OperationList { get; set; }
+    //    public List<TransformModel> TransformList { get; set; }
+
+    //    public void ApplyTransforms()
+    //    {
+    //        this.ResultTable = this.DataTable.Copy();
+    //        this.ResultTable.Rows.Clear();
+
+    //        foreach (var transform in this.TransformList)
+    //        {
+    //            // Get a copy of the data
+    //            var dt = this.DataTable.Copy();
+
+    //            // Apply Filters
+    //            foreach (var filterModel in transform.Filters)
+    //            {
+    //                var rowsToDelete = new List<DataRow>();
+    //                foreach (DataRow row in dt.Rows)
+    //                {
+    //                    if (!filterModel.Check(row))
+    //                        rowsToDelete.Add(row);
+    //                }
+    //                foreach (var dataRow in rowsToDelete)
+    //                {
+    //                    dt.Rows.Remove(dataRow);
+    //                }
+    //            }
+
+    //            // Apply transforms
+    //            foreach (DataRow row in dt.Rows)
+    //            {
+    //                foreach (var operationModel in transform.Operations)
+    //                {
+    //                    operationModel.ApplyToDataRow(row);
+    //                }
+    //            }
+
+    //            // Append data to ResultTable
+    //            while (dt.Rows.Count > 0)
+    //            {
+    //                var dr = dt.Rows[0];
+    //                dt.Rows.RemoveAt(0);
+    //                this.ResultTable.Rows.Add(dr);
+    //            }
+    //        }
+    //    }
+
+    //}
+
 
 }
 

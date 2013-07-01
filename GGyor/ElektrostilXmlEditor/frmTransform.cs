@@ -171,6 +171,7 @@ namespace ElektrostilXmlEditor
                 dt.Rows.Remove(dataRow);
             }
             dt.AcceptChanges();
+            gView.ActiveFilterString = "";
             grid.RefreshDataSource();
 
             products.OperationList = this.OperationList.ToArray().ToList();

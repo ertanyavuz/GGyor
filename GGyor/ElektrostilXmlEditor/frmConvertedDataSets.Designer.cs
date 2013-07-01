@@ -152,7 +152,7 @@
             // 
             // btnKategoriDegisimleri
             // 
-            this.btnKategoriDegisimleri.Location = new System.Drawing.Point(305, 313);
+            this.btnKategoriDegisimleri.Location = new System.Drawing.Point(305, 272);
             this.btnKategoriDegisimleri.Name = "btnKategoriDegisimleri";
             this.btnKategoriDegisimleri.Size = new System.Drawing.Size(118, 23);
             this.btnKategoriDegisimleri.TabIndex = 6;
@@ -168,6 +168,7 @@
             this.btnGoruntule.TabIndex = 7;
             this.btnGoruntule.Text = "Görüntüle";
             this.btnGoruntule.UseVisualStyleBackColor = true;
+            this.btnGoruntule.Click += new System.EventHandler(this.btnGoruntule_Click);
             // 
             // frmConvertedDataSets
             // 
