@@ -100,6 +100,12 @@
     <Compile Include="frmOperation.Designer.cs">
       <DependentUpon>frmOperation.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmViewXml.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewXml.Designer.cs">
+      <DependentUpon>frmViewXml.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmConvertedDataSets.resx">
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmOperation.resx">
       <DependentUpon>frmOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewXml.resx">
+      <DependentUpon>frmViewXml.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

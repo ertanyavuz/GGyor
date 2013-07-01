@@ -56,19 +56,16 @@ namespace ElektrostilXmlEditor
 
             var cDataSet = this.SelectedDataSet;
 
-            if (cDataSet.Transforms == null || cDataSet.Transforms.Count == 0)
-            {
+            //if (cDataSet.Transforms == null || cDataSet.Transforms.Count == 0)
+            //{
                 cDataSet.Transforms = _service.getTransforms(cDataSet.ID);
+            //}
+            
+            lvTransforms.Items.AddRange(cDataSet.Transforms.Select(x => new ListViewItem(new string[] { x.ID.ToString(), x.Name })).ToArray());
 
-                lvTransforms.Items.AddRange(cDataSet.Transforms.Select(x => new ListViewItem(new string[] {x.ID.ToString(), x.Name})).ToArray());
+            if (lvTransforms.Items.Count > 0 && lvTransforms.SelectedIndices.Count == 0)
+                lvTransforms.SelectedIndices.Add(0);
 
-                if (lvTransforms.Items.Count > 0 && lvTransforms.SelectedIndices.Count == 0)
-                    lvTransforms.SelectedIndices.Add(0);
-            }
-            else
-            {
-                //
-            }
 
         }
 
@@ -143,6 +140,16 @@ namespace ElektrostilXmlEditor
             _service.deleteTransform(t.ID);
 
             LoadTransforms();
+        }
+
+        private void btnKategoriDegisimleri_Click(object sender, EventArgs e)
+        {
+            var cds = this.SelectedDataSet;
+            if (cds == null)
+                return;
+
+
+            
         }
 
     }

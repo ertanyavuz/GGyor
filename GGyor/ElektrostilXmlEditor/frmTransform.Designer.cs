@@ -47,8 +47,10 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btnApplyTransforms = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.btnApplyTransforms = new System.Windows.Forms.Button();
+            this.txtTransformName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -74,9 +76,9 @@
             // 
             // txtSourceXml
             // 
-            this.txtSourceXml.Location = new System.Drawing.Point(69, 9);
+            this.txtSourceXml.Location = new System.Drawing.Point(88, 9);
             this.txtSourceXml.Name = "txtSourceXml";
-            this.txtSourceXml.Size = new System.Drawing.Size(397, 20);
+            this.txtSourceXml.Size = new System.Drawing.Size(378, 20);
             this.txtSourceXml.TabIndex = 1;
             this.txtSourceXml.Text = "http://www.elektrostil.com/index.php?do=catalog/output&pCode=968613169";
             // 
@@ -94,7 +96,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(1078, 488);
+            this.splitContainer1.Size = new System.Drawing.Size(1078, 467);
             this.splitContainer1.SplitterDistance = 172;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -110,7 +112,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(172, 488);
+            this.groupBox1.Size = new System.Drawing.Size(172, 467);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transformlar";
@@ -183,7 +185,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(902, 488);
+            this.groupBox2.Size = new System.Drawing.Size(902, 467);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data";
@@ -194,7 +196,7 @@
             this.grid.Location = new System.Drawing.Point(3, 16);
             this.grid.MainView = this.gView;
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(896, 469);
+            this.grid.Size = new System.Drawing.Size(896, 448);
             this.grid.TabIndex = 0;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gView});
@@ -249,6 +251,8 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.txtTransformName);
+            this.splitContainer2.Panel1.Controls.Add(this.label4);
             this.splitContainer2.Panel1.Controls.Add(this.btnOK);
             this.splitContainer2.Panel1.Controls.Add(this.btnApplyTransforms);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
@@ -261,8 +265,18 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer1);
             this.splitContainer2.Size = new System.Drawing.Size(1078, 541);
-            this.splitContainer2.SplitterDistance = 49;
+            this.splitContainer2.SplitterDistance = 70;
             this.splitContainer2.TabIndex = 3;
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(918, 7);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(117, 23);
+            this.btnOK.TabIndex = 6;
+            this.btnOK.Text = "Kaydet";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnApplyTransforms
             // 
@@ -274,15 +288,21 @@
             this.btnApplyTransforms.UseVisualStyleBackColor = true;
             this.btnApplyTransforms.Click += new System.EventHandler(this.btnApplyTransforms_Click);
             // 
-            // btnOK
+            // txtTransformName
             // 
-            this.btnOK.Location = new System.Drawing.Point(918, 7);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(117, 23);
-            this.btnOK.TabIndex = 6;
-            this.btnOK.Text = "Kaydet";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.txtTransformName.Location = new System.Drawing.Point(88, 35);
+            this.txtTransformName.Name = "txtTransformName";
+            this.txtTransformName.Size = new System.Drawing.Size(378, 20);
+            this.txtTransformName.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Transform Adı";
             // 
             // frmTransform
             // 
@@ -334,6 +354,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnApplyTransforms;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.TextBox txtTransformName;
+        private System.Windows.Forms.Label label4;
     }
 }
 

@@ -135,6 +135,7 @@ namespace StorMan.Data.Repositories
                 return false;
 
             transform.Name = transformModel.Name;
+            _context.SaveChanges();
 
             var filterList = transform.Filters.ToList();
 
@@ -147,9 +148,26 @@ namespace StorMan.Data.Repositories
                                     dbFilter.FilterType = (int?) filterModel.FilterType;
                                 if (dbFilter.Value != filterModel.Value.ToString())
                                     dbFilter.Value = filterModel.Value.ToString();
+                                if (dbFilter.Transform == null)
+                                    dbFilter.Transform = transform;
                                 return true;
-                            }
-            );
+                            });
+
+            var opList = transform.Operations.ToList();
+            this.Sync(transformModel.Operations, opList, (opModel, dbOp) => opModel.ID.CompareTo(dbOp.ID),
+                        (opModel, dbOp) =>
+                            {
+                                if (dbOp.FieldName != opModel.FieldName)
+                                    dbOp.FieldName = opModel.FieldName;
+                                if (dbOp.OperationType != (int) opModel.OperationType)
+                                    dbOp.OperationType = (int) opModel.OperationType;
+                                if (dbOp.Value != opModel.Value.ToString())
+                                    dbOp.Value = opModel.Value.ToString();
+                                if (dbOp.Transform == null)
+                                    dbOp.Transform = transform;
+                                return true;
+                            });
+            _context.SaveChanges();
 
             return true;
         }

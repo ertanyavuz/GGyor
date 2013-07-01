@@ -46,18 +46,30 @@ namespace ElektrostilXmlEditor
             }
             else
             {
+                var filterStr = "";
                 foreach (var filterModel in this.Transform.Filters)
                 {
                     var col = gView.Columns[filterModel.FieldName];
                     if (col == null) continue;
 
-                    gView.ActiveFilter.Add(col, new ColumnFilterInfo(ColumnFilterType.Value, filterModel.Value.ToString()));
+                    var filter = new ColumnFilterInfo(ColumnFilterType.Value, filterModel.Value.ToString(), "");
+                    //filter.Type = ColumnFilterType.Value;
+                    //filter.Value = String.Format("[{0}] = '{1}'", filterModel.FieldName, filterModel.Value);
+
+                    gView.ActiveFilter.Add(col, filter);
+
+                    //filterStr += String.Format(" AND [{0}] = '{1}'", filterModel.FieldName, filterModel.Value);
                 }
+                //if (filterStr.Length >= 5)
+                //{
+                //    gView.ActiveFilterString = filterStr.Substring(5);
+                //}
                 foreach (var operationModel in this.Transform.Operations)
                 {
                     this.OperationList.Add(operationModel);
                     listBox1.Items.Add(operationModel);
                 }
+                txtTransformName.Text = this.Transform.Name;
             }
         }
 
@@ -173,6 +185,8 @@ namespace ElektrostilXmlEditor
         private void btnOK_Click(object sender, EventArgs e)
         {
             this.Transform.Operations = this.OperationList.ToArray().ToList();
+
+            this.Transform.Filters.Clear();
             foreach (ViewColumnFilterInfo filterInfo in gView.ActiveFilter)
             {
                 filterInfo.GetType();
@@ -180,11 +194,13 @@ namespace ElektrostilXmlEditor
                     {
                         FieldName = filterInfo.Column.FieldName,
                         FilterType = FilterTypeEnum.Equals,
-                        Value = filterInfo.Filter.FilterString
+                        Value = filterInfo.Filter.Value
                     };
                 this.Transform.Filters.Add(filter);
             }
             //this.Filters = FilterModel.Parse(gView.ActiveFilter);
+
+            this.Transform.Name = txtTransformName.Text;
 
             this.DialogResult = DialogResult.OK;
             this.Close();

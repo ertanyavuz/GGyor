@@ -39,6 +39,8 @@
             this.btnEkle = new System.Windows.Forms.Button();
             this.btnDuzenle = new System.Windows.Forms.Button();
             this.btnKaldir = new System.Windows.Forms.Button();
+            this.btnKategoriDegisimleri = new System.Windows.Forms.Button();
+            this.btnGoruntule = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -148,11 +150,32 @@
             this.btnKaldir.UseVisualStyleBackColor = true;
             this.btnKaldir.Click += new System.EventHandler(this.btnKaldir_Click);
             // 
+            // btnKategoriDegisimleri
+            // 
+            this.btnKategoriDegisimleri.Location = new System.Drawing.Point(305, 313);
+            this.btnKategoriDegisimleri.Name = "btnKategoriDegisimleri";
+            this.btnKategoriDegisimleri.Size = new System.Drawing.Size(118, 23);
+            this.btnKategoriDegisimleri.TabIndex = 6;
+            this.btnKategoriDegisimleri.Text = "Kategori Değişimleri";
+            this.btnKategoriDegisimleri.UseVisualStyleBackColor = true;
+            this.btnKategoriDegisimleri.Click += new System.EventHandler(this.btnKategoriDegisimleri_Click);
+            // 
+            // btnGoruntule
+            // 
+            this.btnGoruntule.Location = new System.Drawing.Point(592, 138);
+            this.btnGoruntule.Name = "btnGoruntule";
+            this.btnGoruntule.Size = new System.Drawing.Size(75, 23);
+            this.btnGoruntule.TabIndex = 7;
+            this.btnGoruntule.Text = "Görüntüle";
+            this.btnGoruntule.UseVisualStyleBackColor = true;
+            // 
             // frmConvertedDataSets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(679, 295);
+            this.ClientSize = new System.Drawing.Size(679, 470);
+            this.Controls.Add(this.btnGoruntule);
+            this.Controls.Add(this.btnKategoriDegisimleri);
             this.Controls.Add(this.btnKaldir);
             this.Controls.Add(this.btnDuzenle);
             this.Controls.Add(this.btnEkle);
@@ -180,6 +203,8 @@
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.Button btnDuzenle;
         private System.Windows.Forms.Button btnKaldir;
+        private System.Windows.Forms.Button btnKategoriDegisimleri;
+        private System.Windows.Forms.Button btnGoruntule;
 
     }
 }
