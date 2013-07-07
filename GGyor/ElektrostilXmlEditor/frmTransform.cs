@@ -185,6 +185,12 @@ namespace ElektrostilXmlEditor
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrWhiteSpace(txtTransformName.Text))
+            {
+                MessageBox.Show("Transform ismi giriniz", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             this.Transform.Operations = this.OperationList.ToArray().ToList();
 
             this.Transform.Filters.Clear();
