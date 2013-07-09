@@ -55,7 +55,7 @@
             this.cmbField.FormattingEnabled = true;
             this.cmbField.Location = new System.Drawing.Point(58, 12);
             this.cmbField.Name = "cmbField";
-            this.cmbField.Size = new System.Drawing.Size(171, 21);
+            this.cmbField.Size = new System.Drawing.Size(376, 21);
             this.cmbField.TabIndex = 1;
             // 
             // label2
@@ -72,7 +72,7 @@
             this.txtValue.Location = new System.Drawing.Point(58, 65);
             this.txtValue.Multiline = true;
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(171, 77);
+            this.txtValue.Size = new System.Drawing.Size(376, 77);
             this.txtValue.TabIndex = 5;
             // 
             // label3
@@ -90,12 +90,12 @@
             this.cmbOperation.FormattingEnabled = true;
             this.cmbOperation.Location = new System.Drawing.Point(58, 39);
             this.cmbOperation.Name = "cmbOperation";
-            this.cmbOperation.Size = new System.Drawing.Size(171, 21);
+            this.cmbOperation.Size = new System.Drawing.Size(376, 21);
             this.cmbOperation.TabIndex = 6;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(58, 175);
+            this.btnOK.Location = new System.Drawing.Point(161, 148);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 7;
@@ -106,7 +106,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(154, 175);
+            this.btnCancel.Location = new System.Drawing.Point(242, 148);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 8;
@@ -118,27 +118,29 @@
             // 
             this.cmbSecondField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondField.FormattingEnabled = true;
-            this.cmbSecondField.Location = new System.Drawing.Point(58, 148);
+            this.cmbSecondField.Location = new System.Drawing.Point(374, 148);
             this.cmbSecondField.Name = "cmbSecondField";
             this.cmbSecondField.Size = new System.Drawing.Size(171, 21);
             this.cmbSecondField.TabIndex = 10;
+            this.cmbSecondField.Visible = false;
             this.cmbSecondField.SelectedIndexChanged += new System.EventHandler(this.cmbSecondField_SelectedIndexChanged);
             // 
             // lbl2ndAlan
             // 
             this.lbl2ndAlan.AutoSize = true;
-            this.lbl2ndAlan.Location = new System.Drawing.Point(11, 151);
+            this.lbl2ndAlan.Location = new System.Drawing.Point(327, 151);
             this.lbl2ndAlan.Name = "lbl2ndAlan";
             this.lbl2ndAlan.Size = new System.Drawing.Size(40, 13);
             this.lbl2ndAlan.TabIndex = 9;
             this.lbl2ndAlan.Text = "2. Alan";
+            this.lbl2ndAlan.Visible = false;
             // 
             // frmOperation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(241, 209);
+            this.ClientSize = new System.Drawing.Size(451, 181);
             this.Controls.Add(this.cmbSecondField);
             this.Controls.Add(this.lbl2ndAlan);
             this.Controls.Add(this.btnCancel);

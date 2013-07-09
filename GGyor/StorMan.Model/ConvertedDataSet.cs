@@ -275,36 +275,113 @@ namespace StorMan.Model
             //    }
             //}
 
-            var m = System.Text.RegularExpressions.Regex.Match(line, "\\[([\\w\\d]+)\\]\\s*=\\s*([\\w\\W]+)\\s*");
+            var m = System.Text.RegularExpressions.Regex.Match(line, "\\[([\\w\\d]+)\\]\\s*(=>*)\\s*([\\w\\W]+)\\s*");
             if (m.Success)
             {
                 var leftSide = m.Groups[1].Value;
-                var expression = m.Groups[2].Value;
-                var matches = System.Text.RegularExpressions.Regex.Matches(expression, "\\[[\\w\\d]+\\]");
-                foreach (Match match in matches)
+                var opSign = m.Groups[2].Value;
+                var expression = m.Groups[3].Value;
+                if (expression.Contains("?"))
                 {
-                    expression = expression.Replace(match.Value, row[match.Value.Replace("[", "").Replace("]", "")] as string);
-                }
+                    // conditional expression
+                    var decisionExpArr = expression.Split('?');
+                    var decisionValueStr = getOperandValue(row, decisionExpArr[0].Trim());
 
-                var floatResult = evaluateExpression(expression);
-                row[leftSide] = floatToStr(floatResult);
+                    var branchesArr = decisionExpArr[1].Split(',');
+                    foreach (var branch in branchesArr)
+                    {
+                        var branchOperands = branch.Trim().Split(':');
+                        if (branchOperands[0].StartsWith("<"))
+                        {
+                            // Checking for range
+                            var decisionValue = stringToFloat(decisionValueStr);
+                            var branchValueStr = branchOperands[0].Substring(1);
+                            var branchValue = evaluateExpression(branchValueStr);
+
+                            if (decisionValue < branchValue)
+                            {
+                                // Take branch
+                                var valueToSet = branchOperands[1].Trim();
+                                try
+                                {   // Try to evaluate in case this is an arithmetic expression
+                                    valueToSet = floatToStr(evaluateExpression(branchOperands[1], row));
+                                }
+                                catch { }
+
+                                row[leftSide] = valueToSet;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            // Checking for exach match
+                            if (decisionValueStr.Trim() == branchOperands[0])
+                            {
+                                // Take branch
+                                var valueToSet = branchOperands[1].Trim();
+                                try
+                                {   // Try to evaluate in case this is an arithmetic expression
+                                    valueToSet = replaceVariables(valueToSet, row);
+                                    valueToSet = floatToStr(evaluateExpression("(" + branchOperands[1] + ") * 1", row));
+                                }
+                                catch { }
+
+                                row[leftSide] = valueToSet;
+                                break;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+                    var floatResult = evaluateExpression(expression, row);
+                    row[leftSide] = floatToStr(floatResult);
+                }
+                
             }
         }
-        private float getOperandValue(DataRow row, string expression)
+        private string getOperandValue(DataRow row, string expression)
         {
             expression = expression.Trim();
             if (expression.StartsWith("["))
             {
-                return stringToFloat(row[expression.Replace("[", "").Replace("]", "")] as string);
+                return row[expression.Replace("[", "").Replace("]", "")] as string;
             }
             else
             {
-                return stringToFloat(expression);
+                return expression;
             }
+        }
+
+        private string replaceVariables(string expression, DataRow row)
+        {
+            var matches = System.Text.RegularExpressions.Regex.Matches(expression, "\\[[\\w\\d]+\\]");
+            foreach (Match match in matches)
+            {
+                var value = getOperandValue(row, match.Value);
+                expression = expression.Replace(match.Value, value);
+            }
+            return expression;
+        }
+        private float evaluateExpression(string expression, DataRow row)
+        {
+            //var matches = System.Text.RegularExpressions.Regex.Matches(expression, "\\[[\\w\\d]+\\]");
+            //foreach (Match match in matches)
+            //{
+            //    var value = getOperandValue(row, match.Value);
+            //    expression = expression.Replace(match.Value, value);
+            //}
+            expression = replaceVariables(expression, row);
+            var floatResult = evaluateExpression(expression);
+
+            return floatResult;
         }
         private float evaluateExpression(string expression)
         {
             var e = new Expression(expression);
+            if (e.HasErrors())
+                return float.MinValue;
             var result = (float) Convert.ToDouble(e.Evaluate());
             return result;
         }
