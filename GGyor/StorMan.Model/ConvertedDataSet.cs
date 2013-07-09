@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using NCalc;
 
 namespace StorMan.Model
 {
@@ -244,33 +246,48 @@ namespace StorMan.Model
 
         private void applyExpression(DataRow row, string line)
         {
-            //var sides = line.Split('=');
-            var m = System.Text.RegularExpressions.Regex.Match(line, "\\[([\\w\\d]+)\\]\\s*=\\s*([\\w\\d\\.\\[\\]]+)\\s*([\\+\\-\\*\\/])\\s*([\\w\\d\\.\\[\\]]+)");
+            ////var sides = line.Split('=');
+            //var m = System.Text.RegularExpressions.Regex.Match(line, "\\[([\\w\\d]+)\\]\\s*=\\s*([\\w\\d\\.\\[\\]]+)\\s*([\\+\\-\\*\\/])\\s*([\\w\\d\\.\\[\\]]+)");
+            //if (m.Success)
+            //{
+            //    var leftSide = m.Groups[1].Value;
+            //    var operand1 = m.Groups[2].Value;
+            //    var op = m.Groups[3].Value;
+            //    var operand2 = m.Groups[4].Value;
+            //    var operand1Value = getOperandValue(row, operand1);
+            //    var operand2Value = getOperandValue(row, operand2);
+
+            //    if (op == "+")
+            //    {
+            //        row[leftSide] = operand1Value + operand2Value;
+            //    }
+            //    else if (op == "-")
+            //    {
+            //        row[leftSide] = operand1Value - operand2Value;
+            //    }
+            //    else if (op == "*")
+            //    {
+            //        row[leftSide] = operand1Value * operand2Value;
+            //    }
+            //    else if (op == "/")
+            //    {
+            //        row[leftSide] = Math.Round(operand1Value / operand2Value, 4);
+            //    }
+            //}
+
+            var m = System.Text.RegularExpressions.Regex.Match(line, "\\[([\\w\\d]+)\\]\\s*=\\s*([\\w\\W]+)\\s*");
             if (m.Success)
             {
                 var leftSide = m.Groups[1].Value;
-                var operand1 = m.Groups[2].Value;
-                var op = m.Groups[3].Value;
-                var operand2 = m.Groups[4].Value;
-                var operand1Value = getOperandValue(row, operand1);
-                var operand2Value = getOperandValue(row, operand2);
+                var expression = m.Groups[2].Value;
+                var matches = System.Text.RegularExpressions.Regex.Matches(expression, "\\[[\\w\\d]+\\]");
+                foreach (Match match in matches)
+                {
+                    expression = expression.Replace(match.Value, row[match.Value.Replace("[", "").Replace("]", "")] as string);
+                }
 
-                if (op == "+")
-                {
-                    row[leftSide] = operand1Value + operand2Value;
-                }
-                else if (op == "-")
-                {
-                    row[leftSide] = operand1Value - operand2Value;
-                }
-                else if (op == "*")
-                {
-                    row[leftSide] = operand1Value * operand2Value;
-                }
-                else if (op == "/")
-                {
-                    row[leftSide] = Math.Round(operand1Value / operand2Value, 4);
-                }
+                var floatResult = evaluateExpression(expression);
+                row[leftSide] = floatToStr(floatResult);
             }
         }
         private float getOperandValue(DataRow row, string expression)
@@ -284,6 +301,12 @@ namespace StorMan.Model
             {
                 return stringToFloat(expression);
             }
+        }
+        private float evaluateExpression(string expression)
+        {
+            var e = new Expression(expression);
+            var result = (float) Convert.ToDouble(e.Evaluate());
+            return result;
         }
 
         public override string ToString()
