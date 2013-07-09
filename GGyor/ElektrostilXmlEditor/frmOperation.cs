@@ -35,6 +35,29 @@ namespace ElektrostilXmlEditor
                 cmbOperation.Items.Add(enumStr);
             }
 
+            lbl2ndAlan.Visible = false;
+            cmbSecondField.Visible = false;
+
+            if (this.Operation != null)
+            {
+                cmbField.SelectedItem = this.Operation.FieldName;
+                cmbOperation.SelectedItem = this.Operation.OperationType.ToString();
+                txtValue.Text = this.Operation.Value.ToString();
+            }
+        }
+
+        private void cmbSecondField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSecondField.SelectedItem != null && cmbSecondField.SelectedItem.ToString() == OperationTypeEnum.KurDönüşümü.ToString())
+            {
+                lbl2ndAlan.Visible = true;
+                cmbSecondField.Visible = true;
+            }
+            else
+            {
+                lbl2ndAlan.Visible = false;
+                cmbSecondField.Visible = false;
+            }
         }
 
         private void btnOK_Click(object sender, EventArgs e)

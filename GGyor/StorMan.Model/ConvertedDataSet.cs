@@ -192,6 +192,7 @@ namespace StorMan.Model
         public string FieldName { get; set; }
         public Type DataType { get; set; }
         public object Value { get; set; }
+        public string Expression { get; set; }
 
         public void ApplyToDataRow(DataRow row)
         {
@@ -224,6 +225,64 @@ namespace StorMan.Model
                     stringValue += this.Value.ToString().Replace("\\n", "\n").Replace("\\t", "\t");
                     row[this.FieldName] = stringValue;
                 }
+                else if (this.OperationType == OperationTypeEnum.KurDönüşümü)
+                {
+                    
+                }
+                else if (this.OperationType == OperationTypeEnum.Karmaşıkİfade)
+                {
+                    var lines = this.Value.ToString().Split('\n');
+                    foreach (var line in lines)
+                    {
+                        if (String.IsNullOrWhiteSpace(line))
+                            continue;
+                        applyExpression(row, line);
+                    }
+                }
+            }
+        }
+
+        private void applyExpression(DataRow row, string line)
+        {
+            //var sides = line.Split('=');
+            var m = System.Text.RegularExpressions.Regex.Match(line, "\\[([\\w\\d]+)\\]\\s*=\\s*([\\w\\d\\.\\[\\]]+)\\s*([\\+\\-\\*\\/])\\s*([\\w\\d\\.\\[\\]]+)");
+            if (m.Success)
+            {
+                var leftSide = m.Groups[1].Value;
+                var operand1 = m.Groups[2].Value;
+                var op = m.Groups[3].Value;
+                var operand2 = m.Groups[4].Value;
+                var operand1Value = getOperandValue(row, operand1);
+                var operand2Value = getOperandValue(row, operand2);
+
+                if (op == "+")
+                {
+                    row[leftSide] = operand1Value + operand2Value;
+                }
+                else if (op == "-")
+                {
+                    row[leftSide] = operand1Value - operand2Value;
+                }
+                else if (op == "*")
+                {
+                    row[leftSide] = operand1Value * operand2Value;
+                }
+                else if (op == "/")
+                {
+                    row[leftSide] = Math.Round(operand1Value / operand2Value, 4);
+                }
+            }
+        }
+        private float getOperandValue(DataRow row, string expression)
+        {
+            expression = expression.Trim();
+            if (expression.StartsWith("["))
+            {
+                return stringToFloat(row[expression.Replace("[", "").Replace("]", "")] as string);
+            }
+            else
+            {
+                return stringToFloat(expression);
             }
         }
 
@@ -245,6 +304,18 @@ namespace StorMan.Model
             return floatStr;
         }
 
+        public OperationModel Copy()
+        {
+            return new OperationModel
+                {
+                    DataType = this.DataType,
+                    Expression = this.Expression,
+                    FieldName = this.FieldName,
+                    ID = this.ID,
+                    OperationType = this.OperationType,
+                    Value = this.Value
+                };
+        }
     }
 
 
@@ -266,6 +337,9 @@ namespace StorMan.Model
         Carpma,
         Toplama,
         Eşitleme,
-        Ekleme
+        Ekleme,
+        KurDönüşümü,
+        Karmaşıkİfade
     }
+
 }

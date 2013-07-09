@@ -148,6 +148,27 @@ namespace ElektrostilXmlEditor
             listBox1.Items.Remove(item);
             this.OperationList.RemoveAt(index);
         }
+        private void btnDuzenle_Click(object sender, EventArgs e)
+        {
+            if (products.DataTable == null || products.DataTable.Columns.Count == 0)
+                return;
+            var item = listBox1.SelectedItem;
+            var index = listBox1.SelectedIndex;
+            if (item == null || index < 0)
+                return;
+
+            var f = new frmOperation
+                {
+                    FieldList = products.DataTable.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToList(),
+                    Operation = this.OperationList[index].Copy()
+                };
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                //this.OperationList.Add(f.Operation);
+                this.OperationList[index] = f.Operation;
+                listBox1.Items[index] = f.Operation;
+            }
+        }
 
         private void btnApplyTransforms_Click(object sender, EventArgs e)
         {
@@ -213,6 +234,8 @@ namespace ElektrostilXmlEditor
             this.Close();
             
         }
+
+
         
     }
 }

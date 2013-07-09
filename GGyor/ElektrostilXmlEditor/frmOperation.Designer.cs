@@ -36,6 +36,8 @@
             this.cmbOperation = new System.Windows.Forms.ComboBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.cmbSecondField = new System.Windows.Forms.ComboBox();
+            this.lbl2ndAlan = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -68,8 +70,9 @@
             // txtValue
             // 
             this.txtValue.Location = new System.Drawing.Point(58, 65);
+            this.txtValue.Multiline = true;
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(171, 20);
+            this.txtValue.Size = new System.Drawing.Size(171, 77);
             this.txtValue.TabIndex = 5;
             // 
             // label3
@@ -92,7 +95,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(58, 104);
+            this.btnOK.Location = new System.Drawing.Point(58, 175);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 7;
@@ -103,7 +106,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(154, 104);
+            this.btnCancel.Location = new System.Drawing.Point(154, 175);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 8;
@@ -111,12 +114,33 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // frmTransform
+            // cmbSecondField
+            // 
+            this.cmbSecondField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSecondField.FormattingEnabled = true;
+            this.cmbSecondField.Location = new System.Drawing.Point(58, 148);
+            this.cmbSecondField.Name = "cmbSecondField";
+            this.cmbSecondField.Size = new System.Drawing.Size(171, 21);
+            this.cmbSecondField.TabIndex = 10;
+            this.cmbSecondField.SelectedIndexChanged += new System.EventHandler(this.cmbSecondField_SelectedIndexChanged);
+            // 
+            // lbl2ndAlan
+            // 
+            this.lbl2ndAlan.AutoSize = true;
+            this.lbl2ndAlan.Location = new System.Drawing.Point(11, 151);
+            this.lbl2ndAlan.Name = "lbl2ndAlan";
+            this.lbl2ndAlan.Size = new System.Drawing.Size(40, 13);
+            this.lbl2ndAlan.TabIndex = 9;
+            this.lbl2ndAlan.Text = "2. Alan";
+            // 
+            // frmOperation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(253, 159);
+            this.ClientSize = new System.Drawing.Size(241, 209);
+            this.Controls.Add(this.cmbSecondField);
+            this.Controls.Add(this.lbl2ndAlan);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.cmbOperation);
@@ -127,7 +151,7 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmTransform";
+            this.Name = "frmOperation";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Transform";
@@ -147,5 +171,7 @@
         private System.Windows.Forms.ComboBox cmbOperation;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ComboBox cmbSecondField;
+        private System.Windows.Forms.Label lbl2ndAlan;
     }
 }

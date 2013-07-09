@@ -47,10 +47,11 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnApplyTransforms = new System.Windows.Forms.Button();
             this.txtTransformName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnApplyTransforms = new System.Windows.Forms.Button();
+            this.btnDuzenle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -97,11 +98,12 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer1.Size = new System.Drawing.Size(1078, 467);
-            this.splitContainer1.SplitterDistance = 172;
+            this.splitContainer1.SplitterDistance = 252;
             this.splitContainer1.TabIndex = 2;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnDuzenle);
             this.groupBox1.Controls.Add(this.txtDolarKuru);
             this.groupBox1.Controls.Add(this.btnCikar);
             this.groupBox1.Controls.Add(this.label2);
@@ -112,7 +114,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(172, 467);
+            this.groupBox1.Size = new System.Drawing.Size(252, 467);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transformlar";
@@ -173,10 +175,11 @@
             // 
             // listBox1
             // 
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(7, 104);
+            this.listBox1.Location = new System.Drawing.Point(3, 109);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(156, 381);
+            this.listBox1.Size = new System.Drawing.Size(246, 355);
             this.listBox1.TabIndex = 0;
             // 
             // groupBox2
@@ -185,7 +188,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(902, 467);
+            this.groupBox2.Size = new System.Drawing.Size(822, 467);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data";
@@ -196,7 +199,7 @@
             this.grid.Location = new System.Drawing.Point(3, 16);
             this.grid.MainView = this.gView;
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(896, 448);
+            this.grid.Size = new System.Drawing.Size(816, 448);
             this.grid.TabIndex = 0;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gView});
@@ -268,6 +271,22 @@
             this.splitContainer2.SplitterDistance = 70;
             this.splitContainer2.TabIndex = 3;
             // 
+            // txtTransformName
+            // 
+            this.txtTransformName.Location = new System.Drawing.Point(88, 35);
+            this.txtTransformName.Name = "txtTransformName";
+            this.txtTransformName.Size = new System.Drawing.Size(378, 20);
+            this.txtTransformName.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Transform Adı";
+            // 
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(918, 7);
@@ -288,21 +307,15 @@
             this.btnApplyTransforms.UseVisualStyleBackColor = true;
             this.btnApplyTransforms.Click += new System.EventHandler(this.btnApplyTransforms_Click);
             // 
-            // txtTransformName
+            // btnDuzenle
             // 
-            this.txtTransformName.Location = new System.Drawing.Point(88, 35);
-            this.txtTransformName.Name = "txtTransformName";
-            this.txtTransformName.Size = new System.Drawing.Size(378, 20);
-            this.txtTransformName.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Transform Adı";
+            this.btnDuzenle.Location = new System.Drawing.Point(169, 75);
+            this.btnDuzenle.Name = "btnDuzenle";
+            this.btnDuzenle.Size = new System.Drawing.Size(75, 23);
+            this.btnDuzenle.TabIndex = 10;
+            this.btnDuzenle.Text = "Düzenle";
+            this.btnDuzenle.UseVisualStyleBackColor = true;
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
             // frmTransform
             // 
@@ -356,6 +369,7 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.TextBox txtTransformName;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnDuzenle;
     }
 }
 
