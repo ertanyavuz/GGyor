@@ -63,7 +63,11 @@ namespace StorMan.Business
                 foreach (DataColumn column in DataTable.Columns)
                 {
                     var xElement = new XElement(column.ColumnName);
-                    xElement.Value = row[column].ToString();
+                    //xElement.Value = row[column].ToString();
+                    if (column.ColumnName == "details")
+                        xElement.ReplaceNodes(new XCData(row[column].ToString()));
+                    else
+                        xElement.Value = row[column].ToString();
                     xItem.Add(xElement);
                 }
                 xdoc.Root.Add(xItem);

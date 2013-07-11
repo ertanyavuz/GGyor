@@ -21,8 +21,9 @@ bölü 0.93
 [buyingPrice] => [dm3] ? <5 : [buyingPrice]+6,  <10: [buyingPrice]+8, <15:[buyingPrice]+12, <20: [buyingPrice]+15, <30: [buyingPrice]+20, <40:[buyingPrice]+24, <50: [buyingPrice]+28, <1000: [buyingPrice]+28+([dm3]-50)*0.5
 
 
-119.53$		312,752
-7.89TL		23,989
+119.53$		312,752		307.5683
+7.89TL		23,989		21.83892
+
 
 
 
