@@ -1,0 +1,28 @@
+﻿%18 kdv ekle
+TL'ye çevir
+kargo bedeli ekle
+
+5	6
+10	8
+15	12
+20	15
+30	20
+40	24
+50	28
+<50 desi üzeri her desi için 0.5 TL
+
+
+kar ekle, 5 TL
+
+bölü 0.93
+
+[buyingPrice]=[currencyAbbr] ? TL: [buyingPrice], USD: [buyingPrice]*1.97, EUR: [buyingPrice]*2.65
+
+[buyingPrice] => [dm3] ? <5 : [buyingPrice]+6,  <10: [buyingPrice]+8, <15:[buyingPrice]+12, <20: [buyingPrice]+15, <30: [buyingPrice]+20, <40:[buyingPrice]+24, <50: [buyingPrice]+28, <1000: [buyingPrice]+28+([dm3]-50)*0.5
+
+
+119.53$		312,752
+7.89TL		23,989
+
+
+

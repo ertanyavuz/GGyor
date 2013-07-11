@@ -80,10 +80,14 @@ namespace StorMan.Model
                 }
 
                 // Apply transforms
+                int i = 0, j = 0;
                 foreach (DataRow row in dt.Rows)
                 {
+                    i++;
+                    j = 0;
                     foreach (var operationModel in transform.Operations)
                     {
+                        j++;
                         operationModel.ApplyToDataRow(row);
                     }
                 }

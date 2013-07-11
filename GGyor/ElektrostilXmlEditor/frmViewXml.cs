@@ -38,6 +38,10 @@ namespace ElektrostilXmlEditor
                 this.ConvertedDataSet.ApplyTransforms();
 
                 this.dataTable = this.ConvertedDataSet.DataTable.Copy();
+                if (this.dataTable.PrimaryKey.Length == 0)
+                {
+                    this.dataTable.PrimaryKey = new DataColumn[] {this.dataTable.Columns[0]};
+                }
 
                 //grid.DataSource = products.DataTable;
             }
@@ -48,10 +52,11 @@ namespace ElektrostilXmlEditor
 
             lbMenu.Items.Add("Ham Veri");
             lbMenu.SelectedIndex = 0;
-            foreach (var transformModel in this.ConvertedDataSet.Transforms)
-            {
-                lbMenu.Items.Add(transformModel.Name);
-            }
+            //foreach (var transformModel in this.ConvertedDataSet.Transforms)
+            //{
+            //    lbMenu.Items.Add(transformModel.Name);
+            //}
+            lbMenu.Items.Add("Karşılaştırma");
             lbMenu.Items.Add("Son Hali");
 
         }
@@ -67,6 +72,28 @@ namespace ElektrostilXmlEditor
             {
                 // Sonuç
                 grid.DataSource = this.ConvertedDataSet.ResultTable.Copy();
+            }
+            else if (lbMenu.SelectedIndex == lbMenu.Items.Count - 2)
+            {
+                // Karşılaştırmalı Sonuç
+                var dt = this.ConvertedDataSet.ResultTable.Copy();
+                
+                var priceColumn = dt.Columns["buyingPrice"];
+                var oldPriceColumn = dt.Columns.Add("oldBuyingPrice");
+                oldPriceColumn.SetOrdinal(priceColumn.Ordinal);
+
+                var currColumn = dt.Columns["currencyAbbr"];
+                var oldCurrColumn = dt.Columns.Add("oldCurrencyAbbr");
+                oldCurrColumn.SetOrdinal(currColumn.Ordinal);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["oldBuyingPrice"] = dt.Rows.Find(row[0])["buyingPrice"];
+                    row["oldCurrencyAbbr"] = dt.Rows.Find(row[0])["currencyAbbr"];
+                }
+
+                grid.DataSource = dt;
+
             }
             else
             {
