@@ -210,12 +210,14 @@ namespace StorMan.Model
                 if (this.OperationType == OperationTypeEnum.Toplama)
                 {
                     var floatValue = stringToFloat(rowValue.ToString());
+                    floatValue = roundFloat(floatValue);
                     floatValue += stringToFloat(Value.ToString());
                     row[this.FieldName] = floatToStr(floatValue);
                 }
                 else if (this.OperationType == OperationTypeEnum.Carpma)
                 {
                     var floatValue = stringToFloat(rowValue.ToString());
+                    floatValue = roundFloat(floatValue);
                     floatValue *= stringToFloat(Value.ToString());
                     row[this.FieldName] = floatToStr(floatValue);
                 }
@@ -384,9 +386,10 @@ namespace StorMan.Model
         private float evaluateExpression(string expression)
         {
             var e = new Expression(expression);
-            if (e.HasErrors())
-                return float.MinValue;
+            //if (e.HasErrors())
+            //    return float.MinValue;
             var result = (float) Convert.ToDouble(e.Evaluate());
+            result = roundFloat(result);
             return result;
         }
 
@@ -403,9 +406,18 @@ namespace StorMan.Model
         }
         public static string floatToStr(float floatValue)
         {
+            floatValue = roundFloat(floatValue);
+            
             var floatStr = floatValue.ToString();
             floatStr = floatStr.Replace(",", ".");
             return floatStr;
+        }
+        public static float roundFloat(float floatValue)
+        {
+            floatValue *= 100;
+            floatValue = (float) Math.Ceiling(floatValue);
+            floatValue = floatValue/100;
+            return floatValue;
         }
 
         public OperationModel Copy()
