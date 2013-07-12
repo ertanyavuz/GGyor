@@ -1,0 +1,57 @@
+﻿@using StorMan.Model
+@model StorMan.Model.TransformModel
+
+@{
+    ViewBag.Title = "Transform";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+    
+    <div>@Model.Name</div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Filtre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var filter in Model.Filters)
+            {
+                <tr>
+                    <td>
+                        @filter.FieldName
+                        @(filter.FilterType==FilterTypeEnum.Equals ? " = " : " ? ")
+                        @filter.Value
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Operasyonlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var operation in Model.Operations)
+            {
+                <tr>
+                    <td>
+                        @operation.FieldName
+                        @operation.OperationType.ToString()
+                        @operation.Value
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <br/>
+    <a href="/Home/ApplyTransforms?cdsID=1">Uygula</a>
+    
+}

@@ -1,0 +1,44 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model != null)
+{
+    var i = 0;
+    
+    <a href="/elektrostil/arabulvar/@ViewBag.XmlOutputFileName">Download</a>
+    <br/>
+    <br/>
+    
+    <table>
+        <thead>
+            <tr>
+                <td>#</td>
+                @foreach (DataColumn column in Model.Columns)
+                {
+                    <td>@column.ColumnName</td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in Model.Rows)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    @foreach (DataColumn column in Model.Columns)
+                    {
+                        <td>@row[column].ToString()</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+}
+

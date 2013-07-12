@@ -1,0 +1,13 @@
+﻿body {
+}
+
+input.button
+{
+    color: #224059;
+    background-color: #b5c9e2;
+    border-top: 2px #cce3ff solid;
+    border-left: 2px #cce3ff solid;
+    border-bottom: 2px #31557f solid;
+    border-right: 2px #31557f solid;
+    font:bold 12px Arial, Helvetica, sans-serif;
+}

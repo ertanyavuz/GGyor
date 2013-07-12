@@ -1,0 +1,45 @@
+﻿@using StorMan.Model
+@model List<StorMan.Model.ConvertedDataSetModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    
+</head>
+<body>
+    <div>
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Data Set</th>
+                <th>XML Adresi</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var convertedDataSetModel in Model)
+        {
+            <tr>
+                <td>
+                    <a href="/Home/ConvertedDataSet?cdsID=@convertedDataSetModel.ID">@convertedDataSetModel.Name</a>
+                </td>
+                <td>@convertedDataSetModel.SourceXmlPath</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+    </div>
+</body>
+</html>

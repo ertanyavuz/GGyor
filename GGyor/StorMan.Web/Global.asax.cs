@@ -19,6 +19,14 @@ namespace StorMan.Web
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            
+        }
+
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.RouteExistingFiles = false;
+
         }
     }
 }

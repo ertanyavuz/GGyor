@@ -1,0 +1,31 @@
+﻿@model StorMan.Model.ConvertedDataSetModel
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Transform Adı</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transform in Model.Transforms)
+            {
+                <tr>
+                    <td>
+                        <a href="/Home/Transform?tID=@transform.ID">@transform.Name</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    
+}
+    

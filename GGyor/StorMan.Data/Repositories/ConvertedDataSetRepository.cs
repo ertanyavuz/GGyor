@@ -54,6 +54,35 @@ namespace StorMan.Data.Repositories
             return list;
         }
 
+        public TransformModel getTransform(int transformId)
+        {
+            var transform = _context.Transforms.FirstOrDefault(x => x.ID == transformId);
+
+            if (transform == null)
+                return null;
+
+            var model = new TransformModel
+                {
+                    ID = transform.ID,
+                    Name = transform.Name,
+                    Filters = transform.Filters.Select(y => new FilterModel
+                        {
+                            FieldName = y.FieldName,
+                            FilterType = (FilterTypeEnum) (y.FilterType ?? 1),
+                            Value = y.Value
+                        }).ToList(),
+                    Operations = transform.Operations.Select(y => new OperationModel
+                        {
+                            FieldName = y.FieldName,
+                            OperationType = (OperationTypeEnum) (y.OperationType ?? 0),
+                            //DataType = y.
+                            Value = y.Value
+                        }).ToList()
+                };
+
+            return model;
+        }
+
         public int createConvertedDataSet(string name, string sourceXmlPath)
         {
             var cds = new ConvertedDataSet
@@ -171,5 +200,6 @@ namespace StorMan.Data.Repositories
 
             return true;
         }
+
     }
 }
