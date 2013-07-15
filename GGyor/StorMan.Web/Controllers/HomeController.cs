@@ -67,7 +67,7 @@ namespace StorMan.Web.Controllers
 
                 cds.SaveAsXml(xmlFilePath);
 
-                var outputFileName = Path.Combine(Path.GetDirectoryName(xmlFilePath), "urun.xml");
+                var outputFileName = Path.Combine(Path.GetDirectoryName(xmlFilePath), "urunler.xml");
                 System.IO.File.Copy(xmlFilePath, outputFileName, true);
 
                 ViewBag.XmlOutputFileName = outputFileName;
