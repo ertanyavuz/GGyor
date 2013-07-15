@@ -60,13 +60,17 @@ namespace StorMan.Web.Controllers
                 xmlFileName = now.Day.ToString() + xmlFileName;
                 if (xmlFileName.Length < 8)
                     xmlFileName = "0" + xmlFileName;
-                xmlFileName += ".xml";
+                xmlFileName = "urun_" + xmlFileName + ".xml";
 
                 var xmlFilePath = Server.MapPath("/elektrostil/arabulvar");
                 xmlFilePath = Path.Combine(xmlFilePath, xmlFileName);
 
                 cds.SaveAsXml(xmlFilePath);
-                ViewBag.XmlOutputFileName = xmlFileName;
+
+                var outputFileName = Path.Combine(Path.GetDirectoryName(xmlFilePath), "urun.xml");
+                System.IO.File.Copy(xmlFilePath, outputFileName, true);
+
+                ViewBag.XmlOutputFileName = outputFileName;
 
                 return View(cds.ResultTable);
             }
