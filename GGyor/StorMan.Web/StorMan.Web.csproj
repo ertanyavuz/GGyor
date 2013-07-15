@@ -120,6 +120,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="css\Site.css" />
     <Content Include="elektrostil\arabulvar\12072013_1.xml" />
+    <Content Include="elektrostil\arabulvar\urun.xml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
