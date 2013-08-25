@@ -200,6 +200,8 @@ namespace StorMan.Model
         public object Value { get; set; }
         public string Expression { get; set; }
 
+        private Dictionary<string, float> evaluationTable = new Dictionary<string, float>();
+
         public void ApplyToDataRow(DataRow row)
         {
             if (row.Table.Columns.Contains(this.FieldName))
@@ -383,12 +385,27 @@ namespace StorMan.Model
 
             return floatResult;
         }
+        private static int hitCount = 0;
+        private static int missCount = 0;
         private float evaluateExpression(string expression)
         {
-            var e = new Expression(expression);
+            float result;
+            if (!evaluationTable.ContainsKey(expression))
+            {
+                var e = new Expression(expression);
+                result = (float)Convert.ToDouble(e.Evaluate());
+                evaluationTable.Add(expression, result);
+                missCount++;
+            }
+            else
+            {
+                result = evaluationTable[expression];
+                hitCount++;
+            }
+
             //if (e.HasErrors())
             //    return float.MinValue;
-            var result = (float) Convert.ToDouble(e.Evaluate());
+
             result = roundFloat(result);
             return result;
         }

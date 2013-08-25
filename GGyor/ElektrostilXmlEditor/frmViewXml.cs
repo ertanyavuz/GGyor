@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -33,9 +34,17 @@ namespace ElektrostilXmlEditor
             
             try
             {
+                var sw = new Stopwatch();
+                sw.Start();
                 //products = new ProductsXmlCollection(this.ConvertedDataSet.SourceXmlPath);
                 this.ConvertedDataSet.LoadXml();
+                sw.Stop();
+                MessageBox.Show("LoadXml in " + sw.Elapsed.ToString());
+
+                sw.Start();
                 this.ConvertedDataSet.ApplyTransforms();
+                sw.Stop();
+                MessageBox.Show("ApplyTransforms in " + sw.Elapsed.ToString());
 
                 this.dataTable = this.ConvertedDataSet.DataTable.Copy();
                 if (this.dataTable.PrimaryKey.Length == 0)
