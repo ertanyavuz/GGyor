@@ -147,9 +147,6 @@ namespace ElektrostilXmlEditor
             var cds = this.SelectedDataSet;
             if (cds == null)
                 return;
-
-
-            
         }
 
         private void btnGoruntule_Click(object sender, EventArgs e)
@@ -162,6 +159,11 @@ namespace ElektrostilXmlEditor
             f.ConvertedDataSet = cds;
             f.ShowDialog();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
 
     }

@@ -389,6 +389,9 @@ namespace StorMan.Model
         private static int missCount = 0;
         private float evaluateExpression(string expression)
         {
+            var dt = new DataTable();
+            dt.Columns.Add("", typeof (int), "");
+
             float result;
             if (!evaluationTable.ContainsKey(expression))
             {
