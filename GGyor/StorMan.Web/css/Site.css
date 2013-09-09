@@ -1,4 +1,6 @@
 ﻿body {
+    font-family: Calibri;
+    font-size: 9pt;
 }
 
 input.button
@@ -10,4 +12,10 @@ input.button
     border-bottom: 2px #31557f solid;
     border-right: 2px #31557f solid;
     font:bold 12px Arial, Helvetica, sans-serif;
+}
+table
+{
+
+    border: thin groove gray;
+    border-style: solid;
 }

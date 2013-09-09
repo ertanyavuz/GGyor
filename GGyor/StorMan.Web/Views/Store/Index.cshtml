@@ -1,0 +1,141 @@
+﻿@using StorMan.Model
+
+@model ConvertedDataSetModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .treeNode {
+            display: block;
+            height: 22px;
+            padding-left: 24px;
+            padding-top: 4px;
+            width: 150px;
+            text-wrap: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .icon-filter {
+            background: transparent url(/Content/filter.png) 0 0px no-repeat;
+        }
+
+        .icon-operation {
+            background: transparent url(/Content/calculator.png) 0 0px no-repeat;
+        }
+
+        .htmlnodelabel {
+            margin-left: 20px;
+        }
+
+        #treeWrapper {
+            /*width: 200px;*/
+            float: left;
+        }
+        #gridWrapper {
+            padding-left: 12px;
+            float: left;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/css/Site.css" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js" type="text/javascript"></script>
+    <script src="https://raw.github.com/quirkey/sammy/master/lib/min/sammy-latest.min.js" type="text/javascript"></script>
+
+    <!-- Combo-handled YUI CSS files: -->
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.9.0/build/treeview/assets/skins/sam/treeview.css">
+    <!-- Combo-handled YUI JS files: -->
+    <script type="text/javascript" src="http://yui.yahooapis.com/combo?2.9.0/build/yahoo-dom-event/yahoo-dom-event.js&2.9.0/build/treeview/treeview-min.js"></script>
+
+    <script src="/Script/koModels.js" type="text/javascript"></script>
+
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            //create the TreeView instance: 
+            var tree = new YAHOO.widget.TreeView("treediv");
+
+            //get a reusable reference to the root node: 
+            var root = tree.getRoot();
+
+            root = new YAHOO.widget.TextNode('@Model.Name', root, true);
+            root.labelStyle = "treeNode";
+
+            var nodeIdList = [];
+            nodeIdList.push(root.labelElId);
+
+            @foreach (var transform in Model.Transforms)
+            {
+                    <text>
+            var node = new YAHOO.widget.TextNode('@transform.Name', root, true);
+            node.labelStyle = "treeNode";
+            node.title = '@transform.Name';
+            nodeIdList.push(node.labelElId);
+
+                    </text>
+                foreach (var filterModel in transform.Filters)
+                {
+                        <text>
+            var subNode = new YAHOO.widget.TextNode('@(Html.Raw(filterModel.ToString()))', node, false);
+            subNode.labelStyle = "treeNode icon-filter";
+            subNode.title = '@(Html.Raw(filterModel.ToString()))';
+            nodeIdList.push(subNode.labelElId);
+                        </text>
+                }
+                foreach (var operationModel in transform.Operations)
+                {
+                        <text>
+            var subNode = new YAHOO.widget.TextNode('@(Html.Raw(operationModel.ToString()))', node, false);
+            subNode.labelStyle = "treeNode icon-operation";
+            subNode.title = '@(Html.Raw(operationModel.ToString()))';
+            nodeIdList.push(subNode.labelElId);
+                        </text>
+                }
+            }
+
+            tree.subscribe("labelClick", function (node) {
+                //YAHOO.log(node.index + " label was clicked", "info", "example");
+                //drawGrid
+            });
+
+            //tree.draw();
+            tree.render();
+
+            var tt = new YAHOO.widget.Tooltip("tt", {
+                context: nodeIdList
+            });
+            
+        });
+
+    </script>
+    
+    
+    <script type="text/javascript">
+        
+
+
+    </script>
+
+</head>
+<body>
+
+    <div>
+        <div id="treeWrapper">
+            <div id="treediv"></div>
+        </div>
+        <div id="gridWrapper">
+            
+        </div>
+    </div>
+</body>
+</html>
+
+

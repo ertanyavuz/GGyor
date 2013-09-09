@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExtDependencies", "ExtDepen
 		ExtDependencies\ApiV2Client.dll = ExtDependencies\ApiV2Client.dll
 		ExtDependencies\ApiV2Client.XmlSerializers.dll = ExtDependencies\ApiV2Client.XmlSerializers.dll
 		ExtDependencies\auth-config.xml = ExtDependencies\auth-config.xml
+		ExtDependencies\RouteDebug.dll = ExtDependencies\RouteDebug.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{FB7C93C1-29D7-49E2-A110-A9341132A448}"

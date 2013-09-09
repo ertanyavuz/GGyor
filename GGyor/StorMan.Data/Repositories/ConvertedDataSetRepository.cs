@@ -46,7 +46,6 @@ namespace StorMan.Data.Repositories
                         {
                             FieldName = y.FieldName,
                             OperationType = (OperationTypeEnum) (y.OperationType ?? 0),
-                            //DataType = y.
                             Value = y.Value
                         }).ToList()
                 }).ToList();

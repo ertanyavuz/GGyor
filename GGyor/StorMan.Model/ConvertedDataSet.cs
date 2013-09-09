@@ -166,7 +166,7 @@ namespace StorMan.Model
 
         public override string ToString()
         {
-            return base.ToString();
+            return String.Format("{0} {1} {2}", FieldName, FilterType, Value);
         }
 
         public static List<FilterModel> Parse(string filterString)
@@ -180,7 +180,6 @@ namespace StorMan.Model
             }).ToList();
         }
     }
-
     public enum FilterTypeEnum
     {
         Equals
@@ -191,17 +190,99 @@ namespace StorMan.Model
         public OperationModel()
         {
             this.Value = "";
+            //this.Parameters = new Dictionary<string, object>();
+            if (String.IsNullOrEmpty(OperationModel.CurrencyColumn))
+                OperationModel.CurrencyColumn = "currencyAbbr";
+            
         }
+
+        #region " Properties "
+
         public int ID { get; set; }
         public OperationTypeEnum OperationType { get; set; }
 
         public string FieldName { get; set; }
         public Type DataType { get; set; }
         public object Value { get; set; }
-        public string Expression { get; set; }
+        //public string ExpressionString { get; set; }
 
+        //private Expression _expression;
+        //public Expression Expression
+        //{
+        //    get
+        //    {
+        //        if (_expression == null)
+        //        {
+        //            if (String.IsNullOrWhiteSpace(this.ExpressionString) && this.OperationType == OperationTypeEnum.Karmaşıkİfade)
+        //                this.ExpressionString = this.Value.ToString();
+        //            if (!String.IsNullOrWhiteSpace(this.ExpressionString))
+        //                _expression = new Expression(this.ExpressionString);
+        //            else
+        //            {
+        //                switch (this.OperationType)
+        //                {
+        //                    case OperationTypeEnum.Toplama:
+        //                        this.ExpressionString = String.Format("[{0}] + {1}", this.FieldName, this.Value);
+        //                        break;
+        //                    case OperationTypeEnum.Carpma:
+        //                        this.ExpressionString = String.Format("[{0}] * {1}", this.FieldName, this.Value);
+        //                        break;
+        //                    //case OperationTypeEnum.Eşitleme:
+        //                    //    this.ExpressionString = String.Format("[{0}]", this.FieldName);
+        //                    //    break;
+        //                    //case OperationTypeEnum.Ekleme:
+        //                    //    break;
+        //                    //case OperationTypeEnum.KurDönüşümü:
+        //                    //    this.ExpressionString = String.Format("[{0}] * {1}", this.FieldName, this.Value);
+        //                    //    break;
+        //                    //case OperationTypeEnum.Karmaşıkİfade:
+        //                    //    this.ExpressionString = String.Format("[{0}] + {1}", this.FieldName, this.Value);
+        //                    //    break;
+        //                }
+        //            }
+
+        //            if (!String.IsNullOrWhiteSpace(this.ExpressionString))
+        //            {
+        //                this.Parameters = new Dictionary<string, object>();
+        //                var matches = System.Text.RegularExpressions.Regex.Matches(this.ExpressionString, "\\[[\\w\\d]+\\]");
+        //                foreach (Match m in matches)
+        //                {
+        //                    var varNameWithoutBrackets = m.Value.Replace("[", "").Replace("]", "");
+        //                    this.Parameters.Add(varNameWithoutBrackets, null);
+        //                    this.ExpressionString = this.ExpressionString.Replace(m.Value, varNameWithoutBrackets);
+        //                }
+        //                _expression = new Expression(this.ExpressionString);
+        //            }
+        //        }
+        //        return _expression;
+        //    }
+        //}
+
+        //public Dictionary<string, object> Parameters { get; set; }
         private Dictionary<string, float> evaluationTable = new Dictionary<string, float>();
 
+        // Kur Dönüşümü için
+        public static string CurrencyColumn { get; set; }
+        private static List<Tuple<string, string, float>> _currencyTable;
+        public static List<Tuple<string, string, float>> CurrencyExchangeTable
+        {
+            get
+            {
+                if (_currencyTable == null)
+                {
+                    _currencyTable = new List<Tuple<string, string, float>>();
+                    _currencyTable.Add(new Tuple<string, string, float>("USD", "TL", 2.06F));
+                    _currencyTable.Add(new Tuple<string, string, float>("EURO", "TL", 2.70F));
+                    _currencyTable.Add(new Tuple<string, string, float>("TL", "TL", 1.0F));
+                }
+                return _currencyTable;
+            }
+        }
+
+        public string TLText = "TL";
+
+    #endregion
+        
         public void ApplyToDataRow(DataRow row)
         {
             if (row.Table.Columns.Contains(this.FieldName))
@@ -209,6 +290,7 @@ namespace StorMan.Model
                 var rowValue = row[this.FieldName];
                 if (rowValue == null)
                     return;
+
                 if (this.OperationType == OperationTypeEnum.Toplama)
                 {
                     var floatValue = stringToFloat(rowValue.ToString());
@@ -237,10 +319,23 @@ namespace StorMan.Model
                 }
                 else if (this.OperationType == OperationTypeEnum.KurDönüşümü)
                 {
-                    
+                    if (CurrencyExchangeTable.Count == 0)
+                        return;
+                    // [buyingPrice]=[currencyAbbr] ? TL: [buyingPrice], USD: [buyingPrice]*1.95, EUR: [buyingPrice]*2.54
+                    var exp = String.Format("[{0}]=[{1}] ? {2}: [{0}], ", this.FieldName, CurrencyColumn, TLText);
+
+                    exp += CurrencyExchangeTable.Select(x => String.Format("{0}: [{1}]*{2}", x.Item1, this.FieldName, x.Item3))
+                                                .Aggregate((x,y) => x + ", " + y);
+
+                    applyExpression(row, exp);
                 }
                 else if (this.OperationType == OperationTypeEnum.Karmaşıkİfade)
                 {
+                    //foreach (var parameter in this.Expression.Parameters.Keys)
+                    //{
+                    //    this.Expression.Parameters[parameter] = row[parameter];
+                    //}
+
                     var lines = this.Value.ToString().Split('\n');
                     foreach (var line in lines)
                     {
@@ -249,8 +344,11 @@ namespace StorMan.Model
                         applyExpression(row, line);
                     }
                 }
+
             }
         }
+
+    #region " Privates "
 
         private void applyExpression(DataRow row, string line)
         {
@@ -395,9 +493,9 @@ namespace StorMan.Model
             float result;
             if (!evaluationTable.ContainsKey(expression))
             {
-                var e = new Expression(expression);
+                var e = new Expression(expression, EvaluateOptions.NoCache);
                 result = (float)Convert.ToDouble(e.Evaluate());
-                evaluationTable.Add(expression, result);
+                //evaluationTable.Add(expression, result);
                 missCount++;
             }
             else
@@ -413,11 +511,27 @@ namespace StorMan.Model
             return result;
         }
 
+    #endregion
+
         public override string ToString()
         {
-            return String.Format("{0} - {1} - {2}", this.FieldName, this.OperationType, this.Value);
+            var substr = new Func<string, int, string>((str, len) => str.Substring(0, Math.Min(str.Length, len)));
+
+            switch (OperationType)
+            {
+                case OperationTypeEnum.Karmaşıkİfade:
+                    return String.Format("{0} - {1} - {2}", this.FieldName, this.OperationType, substr(this.Value.ToString()));
+                case OperationTypeEnum.KurDönüşümü:
+                    return String.Format("{0} - Kur Dönüşümü", this.FieldName);
+
+                default:
+                    return String.Format("{0} - {1} - {2}", this.FieldName, this.OperationType, this.Value);
+            }
+
         }
 
+    #region " Statics "
+    
         public static float stringToFloat(string floatStr)
         {
             floatStr = floatStr.Replace(",", "");
@@ -439,13 +553,17 @@ namespace StorMan.Model
             floatValue = floatValue/100;
             return floatValue;
         }
-
+    
+    #endregion
+    
         public OperationModel Copy()
         {
             return new OperationModel
                 {
                     DataType = this.DataType,
-                    Expression = this.Expression,
+                    //ExpressionString = this.ExpressionString,
+                    //Expression = !String.IsNullOrWhiteSpace(this.ExpressionString) ? new Expression(this.ExpressionString) : null,
+                    //Parameters = new List<string>(),
                     FieldName = this.FieldName,
                     ID = this.ID,
                     OperationType = this.OperationType,

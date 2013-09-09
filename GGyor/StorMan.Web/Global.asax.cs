@@ -20,7 +20,8 @@ namespace StorMan.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            
+            //RouteDebug.RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
+
         }
 
         public static void RegisterRoutes(RouteCollection routes)

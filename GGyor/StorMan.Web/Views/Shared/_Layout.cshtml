@@ -7,9 +7,34 @@
     
     <link type="text/css" rel="stylesheet" href="/css/Site.css"/>
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.2/jquery.dataTables.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
+    <link type="text/css" rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables_themeroller.css"/>
+
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        //$("table").css("width", "400px");
+        $("table").dataTable({
+            "oLanguage": {
+                "sLengthMenu": "Sayfa başına _MENU_ kayıt göster",
+                "sZeroRecords": "Kayıt bulunamadı.",
+                "sInfo": "_TOTAL_ kayıttan _START_ / _END_ arası gösteriliyor.",
+                "sInfoEmpty": "0 kayıt",
+                "sInfoFiltered": "(Toplam _MAX_ kayıt var)",
+                "sSearch": "Ara"
+            }
+        });
+    });
+    
+    </script>
 </head>
 <body>
-    <div>
+    <br />
+    <div style="width: 800px;">
         @RenderBody()
     </div>
 </body>
