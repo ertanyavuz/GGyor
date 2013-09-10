@@ -42,11 +42,12 @@ namespace StorMan.Data.Repositories
                             FilterType = (FilterTypeEnum) (y.FilterType ?? 1),
                             Value = y.Value
                         }).ToList(),
-                    Operations = x.Operations.Select(y => new OperationModel
+                    Operations = x.Operations.OrderBy(y => y.Order).Select(y => new OperationModel
                         {
                             FieldName = y.FieldName,
                             OperationType = (OperationTypeEnum) (y.OperationType ?? 0),
-                            Value = y.Value
+                            Value = y.Value,
+                            Order = y.Order
                         }).ToList()
                 }).ToList();
 
@@ -70,12 +71,13 @@ namespace StorMan.Data.Repositories
                             FilterType = (FilterTypeEnum) (y.FilterType ?? 1),
                             Value = y.Value
                         }).ToList(),
-                    Operations = transform.Operations.Select(y => new OperationModel
+                    Operations = transform.Operations.OrderBy(y => y.Order).Select(y => new OperationModel
                         {
                             FieldName = y.FieldName,
                             OperationType = (OperationTypeEnum) (y.OperationType ?? 0),
                             //DataType = y.
-                            Value = y.Value
+                            Value = y.Value,
+                            Order = y.Order
                         }).ToList()
                 };
 
@@ -140,6 +142,7 @@ namespace StorMan.Data.Repositories
                     };
                 _context.Filters.Add(dbFilter);
             }
+            var order = 10;
             foreach (var operationModel in transformModel.Operations)
             {
                 var dbOperation = new Operation
@@ -147,9 +150,11 @@ namespace StorMan.Data.Repositories
                         Transform = dbTransform,
                         FieldName = operationModel.FieldName,
                         OperationType = (int?) operationModel.OperationType,
-                        Value = operationModel.Value.ToString()
+                        Value = operationModel.Value.ToString(),
+                        Order = order
                     };
                 _context.Operations.Add(dbOperation);
+                order += 10;
             }
             _context.SaveChanges();
 
@@ -191,6 +196,8 @@ namespace StorMan.Data.Repositories
                                     dbOp.OperationType = (int) opModel.OperationType;
                                 if (dbOp.Value != opModel.Value.ToString())
                                     dbOp.Value = opModel.Value.ToString();
+                                if (dbOp.Order != opModel.Order)
+                                    dbOp.Order = opModel.Order;
                                 if (dbOp.Transform == null)
                                     dbOp.Transform = transform;
                                 return true;

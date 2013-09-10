@@ -520,7 +520,7 @@ namespace StorMan.Model
             switch (OperationType)
             {
                 case OperationTypeEnum.Karmaşıkİfade:
-                    return String.Format("{0} - {1} - {2}", this.FieldName, this.OperationType, substr(this.Value.ToString()));
+                    return String.Format("{0} - {1} - {2}", this.FieldName, this.OperationType, this.Value.ToString());
                 case OperationTypeEnum.KurDönüşümü:
                     return String.Format("{0} - Kur Dönüşümü", this.FieldName);
 
@@ -570,6 +570,8 @@ namespace StorMan.Model
                     Value = this.Value
                 };
         }
+
+        public int? Order { get; set; }
     }
 
 

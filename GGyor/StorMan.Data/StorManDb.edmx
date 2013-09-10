@@ -109,6 +109,7 @@
           <Property Name="FieldName" Type="varchar" MaxLength="50" />
           <Property Name="OperationType" Type="int" />
           <Property Name="Value" Type="varchar" MaxLength="500" />
+          <Property Name="Order" Type="int" />
         </EntityType>
         <EntityType Name="Transform">
           <Key>
@@ -207,16 +208,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="StorManModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="StorManEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Categories" EntityType="StorManModel.Category" />
-          <EntitySet Name="LocalCategories" EntityType="StorManModel.LocalCategory" />
-          <AssociationSet Name="FK_LocalCategory_LocalCategory" Association="StorManModel.FK_LocalCategory_LocalCategory">
-            <End Role="LocalCategory" EntitySet="LocalCategories" />
-            <End Role="LocalCategory1" EntitySet="LocalCategories" />
-          </AssociationSet>
-          <AssociationSet Name="CategoryMapping" Association="StorManModel.CategoryMapping">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="LocalCategory" EntitySet="LocalCategories" />
-          </AssociationSet>
           <EntitySet Name="ConvertedDataSets" EntityType="StorManModel.ConvertedDataSet" />
           <EntitySet Name="ConvertedDataSetHistories" EntityType="StorManModel.ConvertedDataSetHistory" />
           <EntitySet Name="Filters" EntityType="StorManModel.Filter" />
@@ -238,49 +229,17 @@
             <End Role="Transform" EntitySet="Transforms" />
             <End Role="Operation" EntitySet="Operations" />
           </AssociationSet>
+          <EntitySet Name="Categories" EntityType="StorManModel.Category" />
+          <EntitySet Name="LocalCategories" EntityType="StorManModel.LocalCategory" />
+          <AssociationSet Name="FK_LocalCategory_LocalCategory" Association="StorManModel.FK_LocalCategory_LocalCategory">
+            <End Role="LocalCategory" EntitySet="LocalCategories" />
+            <End Role="LocalCategory1" EntitySet="LocalCategories" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryMapping" Association="StorManModel.CategoryMapping">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="LocalCategory" EntitySet="LocalCategories" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="CrDate" Nullable="false" Precision="3" />
-          <Property Type="DateTime" Name="UpdDate" Precision="3" />
-          <NavigationProperty Name="LocalCategories" Relationship="StorManModel.CategoryMapping" FromRole="Category" ToRole="LocalCategory" />
-        </EntityType>
-        <EntityType Name="LocalCategory">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="ParentID" />
-          <Property Type="String" Name="Code" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="CrDate" Nullable="false" Precision="3" />
-          <Property Type="DateTime" Name="UpdDate" Precision="3" />
-          <Property Type="Int32" Name="Level" />
-          <NavigationProperty Name="LocalCategory1" Relationship="StorManModel.FK_LocalCategory_LocalCategory" FromRole="LocalCategory" ToRole="LocalCategory1" />
-          <NavigationProperty Name="LocalCategory2" Relationship="StorManModel.FK_LocalCategory_LocalCategory" FromRole="LocalCategory1" ToRole="LocalCategory" />
-          <NavigationProperty Name="Categories" Relationship="StorManModel.CategoryMapping" FromRole="LocalCategory" ToRole="Category" />
-        </EntityType>
-        <Association Name="FK_LocalCategory_LocalCategory">
-          <End Type="StorManModel.LocalCategory" Role="LocalCategory" Multiplicity="0..1" />
-          <End Type="StorManModel.LocalCategory" Role="LocalCategory1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LocalCategory">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="LocalCategory1">
-              <PropertyRef Name="ParentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CategoryMapping">
-          <End Type="StorManModel.Category" Role="Category" Multiplicity="*" />
-          <End Type="StorManModel.LocalCategory" Role="LocalCategory" Multiplicity="*" />
-        </Association>
         <EntityType Name="ConvertedDataSet">
           <Key>
             <PropertyRef Name="ID" />
@@ -322,6 +281,7 @@
           <Property Type="Int32" Name="OperationType" />
           <Property Type="String" Name="Value" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Transform" Relationship="StorManModel.FK_Operation_Transform" FromRole="Operation" ToRole="Transform" />
+          <Property Type="Int32" Name="Order" />
         </EntityType>
         <EntityType Name="Transform">
           <Key>
@@ -382,44 +342,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CrDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="UpdDate" Precision="3" />
+          <NavigationProperty Name="LocalCategories" Relationship="StorManModel.CategoryMapping" FromRole="Category" ToRole="LocalCategory" />
+        </EntityType>
+        <EntityType Name="LocalCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ParentID" />
+          <Property Type="String" Name="Code" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CrDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="UpdDate" Precision="3" />
+          <Property Type="Int32" Name="Level" />
+          <NavigationProperty Name="LocalCategory1" Relationship="StorManModel.FK_LocalCategory_LocalCategory" FromRole="LocalCategory" ToRole="LocalCategory1" />
+          <NavigationProperty Name="LocalCategory2" Relationship="StorManModel.FK_LocalCategory_LocalCategory" FromRole="LocalCategory1" ToRole="LocalCategory" />
+          <NavigationProperty Name="Categories" Relationship="StorManModel.CategoryMapping" FromRole="LocalCategory" ToRole="Category" />
+        </EntityType>
+        <Association Name="FK_LocalCategory_LocalCategory">
+          <End Type="StorManModel.LocalCategory" Role="LocalCategory" Multiplicity="0..1" />
+          <End Type="StorManModel.LocalCategory" Role="LocalCategory1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocalCategory1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryMapping">
+          <End Type="StorManModel.Category" Role="Category" Multiplicity="*" />
+          <End Type="StorManModel.LocalCategory" Role="LocalCategory" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="StorManModelStoreContainer" CdmEntityContainer="StorManEntities">
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="StorManModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
-                <ScalarProperty Name="CrDate" ColumnName="CrDate" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LocalCategories">
-            <EntityTypeMapping TypeName="StorManModel.LocalCategory">
-              <MappingFragment StoreEntitySet="LocalCategory">
-                <ScalarProperty Name="Level" ColumnName="Level" />
-                <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
-                <ScalarProperty Name="CrDate" ColumnName="CrDate" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="CategoryMapping" TypeName="StorManModel.CategoryMapping" StoreEntitySet="CategoryMapping">
-            <EndProperty Name="LocalCategory">
-              <ScalarProperty Name="ID" ColumnName="LocalCategoryID" />
-            </EndProperty>
-            <EndProperty Name="Category">
-              <ScalarProperty Name="ID" ColumnName="CategoryID" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="ConvertedDataSets">
             <EntityTypeMapping TypeName="StorManModel.ConvertedDataSet">
               <MappingFragment StoreEntitySet="ConvertedDataSet">
@@ -453,6 +423,7 @@
           <EntitySetMapping Name="Operations">
             <EntityTypeMapping TypeName="StorManModel.Operation">
               <MappingFragment StoreEntitySet="Operation">
+                <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="OperationType" ColumnName="OperationType" />
                 <ScalarProperty Name="FieldName" ColumnName="FieldName" />
@@ -470,6 +441,38 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="StorManModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
+                <ScalarProperty Name="CrDate" ColumnName="CrDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocalCategories">
+            <EntityTypeMapping TypeName="StorManModel.LocalCategory">
+              <MappingFragment StoreEntitySet="LocalCategory">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
+                <ScalarProperty Name="CrDate" ColumnName="CrDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CategoryMapping" TypeName="StorManModel.CategoryMapping" StoreEntitySet="CategoryMapping">
+            <EndProperty Name="LocalCategory">
+              <ScalarProperty Name="ID" ColumnName="LocalCategoryID" />
+            </EndProperty>
+            <EndProperty Name="Category">
+              <ScalarProperty Name="ID" ColumnName="CategoryID" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
