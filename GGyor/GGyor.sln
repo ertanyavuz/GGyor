@@ -89,6 +89,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevExpress", "DevExpress", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorMan.Web", "StorMan.Web\StorMan.Web.csproj", "{D1FE1D7E-03B5-4BB6-BD0C-37F9C8A99B3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorMan.UI", "StorMan.UI\StorMan.UI.csproj", "{639B5934-42A3-44C5-A2AC-CB7170C2F5DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevExpress.12.2", "DevExpress.12.2", "{BFC34D3D-F9D2-41FC-A214-31EA8F43C786}"
+	ProjectSection(SolutionItems) = preProject
+		ExtDependencies\DevExpress.12.2\DevExpress.BonusSkins.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.BonusSkins.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.Charts.v12.2.Core.dll = ExtDependencies\DevExpress.12.2\DevExpress.Charts.v12.2.Core.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.Data.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.Data.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.Printing.v12.2.Core.dll = ExtDependencies\DevExpress.12.2\DevExpress.Printing.v12.2.Core.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.Utils.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.Utils.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraBars.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraBars.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraCharts.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraCharts.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraCharts.v12.2.Extensions.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraCharts.v12.2.Extensions.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraEditors.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraEditors.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraGrid.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraGrid.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraPivotGrid.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraPivotGrid.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraPrinting.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraPrinting.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraReports.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraReports.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraReports.v12.2.Extensions.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraReports.v12.2.Extensions.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraRichEdit.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraRichEdit.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraTreeList.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraTreeList.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraVerticalGrid.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraVerticalGrid.v12.2.dll
+		ExtDependencies\DevExpress.12.2\DevExpress.XtraWizard.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraWizard.v12.2.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +155,10 @@ Global
 		{D1FE1D7E-03B5-4BB6-BD0C-37F9C8A99B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1FE1D7E-03B5-4BB6-BD0C-37F9C8A99B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1FE1D7E-03B5-4BB6-BD0C-37F9C8A99B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{639B5934-42A3-44C5-A2AC-CB7170C2F5DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{639B5934-42A3-44C5-A2AC-CB7170C2F5DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{639B5934-42A3-44C5-A2AC-CB7170C2F5DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{639B5934-42A3-44C5-A2AC-CB7170C2F5DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,8 +169,10 @@ Global
 		{C6C8C8DF-279B-49D2-952C-8F9D8E8EBA32} = {F9DE3C0F-E6D4-45C9-BFCC-B42934E6A57C}
 		{AB4CB60E-46B1-4C8F-ACAE-B5680F2D8A2A} = {F9DE3C0F-E6D4-45C9-BFCC-B42934E6A57C}
 		{B2F05D94-7A16-4516-B824-8A565BA6D344} = {E327437F-6874-4C16-86F7-02CFAFA27ECB}
+		{BFC34D3D-F9D2-41FC-A214-31EA8F43C786} = {E327437F-6874-4C16-86F7-02CFAFA27ECB}
 		{DD649428-D02F-4F0A-B82C-8AB458406B6B} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}
 		{D1FE1D7E-03B5-4BB6-BD0C-37F9C8A99B3A} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}
+		{639B5934-42A3-44C5-A2AC-CB7170C2F5DC} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}
 		{70DB102E-9A73-4473-949D-C6D68871B850} = {B6F412FD-BA76-426F-B686-DC4877B7406C}
 		{DCC5B325-EB8C-44E9-B989-C40751C82067} = {11BAF651-610B-4BA4-B31E-C14224975C01}
 		{23C64DFB-C284-47AE-B839-025B089A522D} = {5D7065C5-5E14-4489-94DC-25454F1ED414}

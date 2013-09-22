@@ -23,9 +23,9 @@ namespace StorMan.Business
             
         }
 
-        public List<ConvertedDataSetModel> getConvertedDataSets()
+        public List<ConvertedDataSetModel> getConvertedDataSets(bool getAll = false)
         {
-            return _repository.getConvertedDataSets();
+            return _repository.getConvertedDataSets(getAll);
         }
 
         public List<TransformModel> getTransforms(int convertedDataSetID)

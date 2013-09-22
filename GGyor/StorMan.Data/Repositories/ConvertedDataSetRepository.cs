@@ -14,17 +14,52 @@ namespace StorMan.Data.Repositories
             _context = new StorManEntities();
         }
 
-        public List<ConvertedDataSetModel> getConvertedDataSets()
+        public List<ConvertedDataSetModel> getConvertedDataSets(bool getAll = false)
         {
-            var list = _context.ConvertedDataSets.OrderBy(x => x.ID).ToList();
+            var cdsList = _context.ConvertedDataSets.OrderBy(x => x.ID);
+            var list = cdsList.ToList().Select(x => new ConvertedDataSetModel
+                                {
+                                    ID = x.ID,
+                                    Name = x.Name,
+                                    SourceXmlPath = x.SourceXmlPath,
+                                    Transforms = new List<TransformModel>()
+                                }).ToList();
 
-            return list.Select(x => new ConvertedDataSetModel
+            if (getAll)
+            {
+                var transformList = _context.Transforms.OrderBy(x => x.ConvertedDataSetID).ThenBy(x => x.ID).ToList();
+                var filterList = _context.Filters.OrderBy(x => x.TransformID).ThenBy(x => x.ID).ToList();
+                var opList = _context.Operations.OrderBy(x => x.TransformID).ThenBy(x => x.ID).ToList();
+
+                foreach (var cds in list)
                 {
-                    ID = x.ID,
-                    Name = x.Name,
-                    SourceXmlPath = x.SourceXmlPath,
-                    Transforms = new List<TransformModel>()
-                }).ToList();
+                    cds.Transforms = transformList.Where(x => x.ConvertedDataSetID == cds.ID).ToList()
+                                            .Select(x => new TransformModel
+                                                {
+                                                    ID = x.ID,
+                                                    Name = x.Name,
+                                                    Filters = filterList.Where(y => y.TransformID == x.ID)
+                                                                        .Select(y => new FilterModel
+                                                                        {
+                                                                            ID = y.ID,
+                                                                            FieldName = y.FieldName,
+                                                                            FilterType = (FilterTypeEnum)(y.FilterType ?? 1),
+                                                                            Value = y.Value
+                                                                        }).ToList(),
+                                                    Operations = opList.Where(y => y.TransformID == x.ID)
+                                                                        .Select(y => new OperationModel
+                                                                            {
+                                                                                ID = y.ID,
+                                                                                FieldName = y.FieldName,
+                                                                                OperationType = (OperationTypeEnum)(y.OperationType ?? 0),
+                                                                                Value = y.Value,
+                                                                                Order = y.Order
+                                                                            }).ToList()
+                                                }).ToList();
+                }
+            }
+
+            return list;
         }
 
         public List<TransformModel> getTransforms(int convertedDataSetID)
