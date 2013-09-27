@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtFilter = new System.Windows.Forms.TextBox();
-            this.btnEkle = new System.Windows.Forms.Button();
-            this.btnSil = new System.Windows.Forms.Button();
             this.lbFilters = new System.Windows.Forms.ListBox();
-            this.grid = new System.Windows.Forms.DataGridView();
+            this.btnSil = new System.Windows.Forms.Button();
+            this.btnEkle = new System.Windows.Forms.Button();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comparerGrid = new StorMan.UI.ComparerDataGrid();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -60,35 +59,18 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.grid);
+            this.splitContainer1.Panel2.Controls.Add(this.comparerGrid);
             this.splitContainer1.Size = new System.Drawing.Size(861, 659);
             this.splitContainer1.SplitterDistance = 127;
             this.splitContainer1.TabIndex = 0;
             // 
-            // label1
+            // lbFilters
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Filtre";
-            // 
-            // txtFilter
-            // 
-            this.txtFilter.Location = new System.Drawing.Point(67, 14);
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(407, 20);
-            this.txtFilter.TabIndex = 1;
-            // 
-            // btnEkle
-            // 
-            this.btnEkle.Location = new System.Drawing.Point(491, 12);
-            this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(75, 23);
-            this.btnEkle.TabIndex = 4;
-            this.btnEkle.Text = "Ekle";
-            this.btnEkle.UseVisualStyleBackColor = true;
+            this.lbFilters.FormattingEnabled = true;
+            this.lbFilters.Location = new System.Drawing.Point(67, 40);
+            this.lbFilters.Name = "lbFilters";
+            this.lbFilters.Size = new System.Drawing.Size(407, 69);
+            this.lbFilters.TabIndex = 6;
             // 
             // btnSil
             // 
@@ -99,25 +81,44 @@
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
             // 
-            // lbFilters
+            // btnEkle
             // 
-            this.lbFilters.FormattingEnabled = true;
-            this.lbFilters.Location = new System.Drawing.Point(67, 40);
-            this.lbFilters.Name = "lbFilters";
-            this.lbFilters.Size = new System.Drawing.Size(407, 69);
-            this.lbFilters.TabIndex = 6;
+            this.btnEkle.Location = new System.Drawing.Point(491, 12);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(75, 23);
+            this.btnEkle.TabIndex = 4;
+            this.btnEkle.Text = "Ekle";
+            this.btnEkle.UseVisualStyleBackColor = true;
             // 
-            // grid
+            // txtFilter
             // 
-            this.grid.AllowUserToAddRows = false;
-            this.grid.AllowUserToDeleteRows = false;
-            this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 0);
-            this.grid.Name = "grid";
-            this.grid.ReadOnly = true;
-            this.grid.Size = new System.Drawing.Size(861, 528);
-            this.grid.TabIndex = 0;
+            this.txtFilter.Location = new System.Drawing.Point(67, 14);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(407, 20);
+            this.txtFilter.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Filtre";
+            // 
+            // comparerDataGrid1
+            // 
+            this.comparerGrid.ColumnsToCompare = null;
+            this.comparerGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comparerGrid.KeyColumn = null;
+            this.comparerGrid.Location = new System.Drawing.Point(0, 0);
+            this.comparerGrid.ModifiedColumnSuffix = "_1";
+            this.comparerGrid.ModifiedDataTable = null;
+            this.comparerGrid.Name = "comparerDataGrid1";
+            this.comparerGrid.OriginalDataTable = null;
+            this.comparerGrid.Size = new System.Drawing.Size(861, 528);
+            this.comparerGrid.TabIndex = 0;
+            this.comparerGrid.ViewType = StorMan.UI.ComparerDataGrid.ViewTypeEnum.Original;
             // 
             // FilterViewPanel
             // 
@@ -126,12 +127,12 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "FilterViewPanel";
             this.Size = new System.Drawing.Size(861, 659);
+            this.Load += new System.EventHandler(this.FilterViewPanel_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -144,6 +145,6 @@
         private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lbFilters;
-        private System.Windows.Forms.DataGridView grid;
+        private ComparerDataGrid comparerGrid;
     }
 }

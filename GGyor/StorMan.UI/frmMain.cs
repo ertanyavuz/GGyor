@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using StorMan.Business;
+using StorMan.Model;
 
 namespace StorMan.UI
 {
@@ -33,8 +35,6 @@ namespace StorMan.UI
             }
         }
 
-
-
         private void ReloadTree()
         {
             running = true;
@@ -52,19 +52,69 @@ namespace StorMan.UI
                 {
                     var tranNode = root.Nodes.Add(tran.Name);
                     tranNode.Tag = tran;
-                    foreach (var filter in tran.Filters)
-                    {
-                        var node = tranNode.Nodes.Add(filter.ToString());
-                        node.Tag = filter;
-                    }
+                    //foreach (var filter in tran.Filters)
+                    //{
+                    //    var node = tranNode.Nodes.Add(filter.ToString());
+                    //    node.Tag = filter;
+                    //}
+                    var node = tranNode.Nodes.Add("Filtre");
+                    node.Tag = tran.Filters.Select(x => x).ToList();
+
                     foreach (var op in tran.Operations)
                     {
-                        var node = tranNode.Nodes.Add(op.ToString());
+                        node = tranNode.Nodes.Add(op.ToString());
                         node.Tag = op;
                     }
                 }
             }
             running = false;
+        }
+
+        private void tree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node != null && e.Node.Tag != null)
+            {
+                if (e.Node.Tag is ConvertedDataSetModel)
+                {
+
+                }
+                else if (e.Node.Tag is TransformModel)
+                {
+                    
+                }
+                else if (e.Node.Tag is List<FilterModel>)
+                {
+                    var filterList = e.Node.Tag as List<FilterModel>;
+                    var panel = new FilterViewPanel();
+                    panel.FilterList = filterList;
+                    panel.DataTable = loadedDataTable.Copy();
+                    panel.Dock = DockStyle.Fill;
+
+                    this.bodyPanel.Controls.Clear();
+                    this.bodyPanel.Controls.Add(panel);
+
+                }
+                else if (e.Node.Tag is OperationModel)
+                {
+
+                }
+            }
+        }
+
+        private DataTable loadedDataTable;
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (tree.Nodes.Count > 0)
+            {
+                var cds = tree.Nodes[0].Tag as ConvertedDataSetModel;
+                if (cds == null)
+                    return;
+
+                var products = new ProductsXmlCollection(cds.SourceXmlPath);
+                loadedDataTable = products.DataTable.Copy();
+
+                MessageBox.Show("XML Yüklendi.");
+            }
         }
     }
 }
