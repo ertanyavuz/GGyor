@@ -32,17 +32,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // grid
             // 
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 0);
-            this.grid.Name = "dataGridView1";
+            this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.Size = new System.Drawing.Size(878, 501);
             this.grid.TabIndex = 0;
+            this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
             // 
             // ComparerDataGrid
             // 

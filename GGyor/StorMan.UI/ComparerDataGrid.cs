@@ -76,6 +76,13 @@ namespace StorMan.UI
                 }
 
                 grid.DataSource = dt;
+                grid.AlternatingRowsDefaultCellStyle.BackColor = Color.Cornsilk;
+
+                foreach (DataGridViewColumn col in grid.Columns)
+                {
+                    if (col.Name.EndsWith(this.ModifiedColumnSuffix))
+                        col.DefaultCellStyle.Font = new Font(grid.Font, FontStyle.Bold);
+                }
             }
             catch (Exception ex)
             {
@@ -106,8 +113,13 @@ namespace StorMan.UI
         public enum ViewTypeEnum
         {
             Original,
-            Midified,
+            Modified,
             Both
+        }
+
+        private void grid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            
         }
     }
 

@@ -67,6 +67,7 @@ namespace StorMan.UI
                     }
                 }
             }
+            tree.ExpandAll();
             running = false;
         }
 
@@ -74,13 +75,17 @@ namespace StorMan.UI
         {
             if (e.Node != null && e.Node.Tag != null)
             {
+                this.bodyPanel.Controls.Clear();
+                Control control = null;
                 if (e.Node.Tag is ConvertedDataSetModel)
                 {
-
+                    
                 }
                 else if (e.Node.Tag is TransformModel)
                 {
+                    var panel = new TransformViewPanel();
                     
+                    control = panel;
                 }
                 else if (e.Node.Tag is List<FilterModel>)
                 {
@@ -88,15 +93,23 @@ namespace StorMan.UI
                     var panel = new FilterViewPanel();
                     panel.FilterList = filterList;
                     panel.DataTable = loadedDataTable.Copy();
-                    panel.Dock = DockStyle.Fill;
 
-                    this.bodyPanel.Controls.Clear();
-                    this.bodyPanel.Controls.Add(panel);
+                    control = panel;
 
                 }
                 else if (e.Node.Tag is OperationModel)
                 {
+                    var op = e.Node.Tag as OperationModel;
+                    var panel = new OperationViewPanel();
+                    panel.Operation = op;
 
+                    control = panel;
+                }
+
+                if (control != null)
+                {
+                    control.Dock = DockStyle.Fill;
+                    this.bodyPanel.Controls.Add(control);
                 }
             }
         }
