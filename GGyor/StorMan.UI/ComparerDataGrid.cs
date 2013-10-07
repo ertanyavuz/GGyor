@@ -12,10 +12,14 @@ using StorMan.Model;
 
 namespace StorMan.UI
 {
+    /// <summary>
+    /// Displays two given DataTables in DataGrid, showing its columns.
+    /// </summary>
     public partial class ComparerDataGrid : UserControl
     {
         public ComparerDataGrid()
         {
+            this.DoubleBuffered = true;
             this.ModifiedColumnSuffix = "_1";
             InitializeComponent();
         }
@@ -28,31 +32,25 @@ namespace StorMan.UI
 
         public string ModifiedColumnSuffix { get; set; }
 
-        public ProductsXmlCollection ProductsXmlCollection { get; set; }
+        //public ProductsXmlCollection ProductsXmlCollection { get; set; }
 
         private void ComparerDataGrid_Load(object sender, EventArgs e)
         {
             if (this.DesignMode)
                 return;
 
-
             Reload();
         }
 
+        /// <summary>
+        /// Combine Original and Modified dataTables in a new dataTable, add style to display differences.
+        /// </summary>
         public void Reload()
         {
             this.grid.DataSource = null;
 
             if (this.OriginalDataTable == null)
                 return;
-
-            if (this.ProductsXmlCollection != null)
-            {
-                this.OriginalDataTable = this.ProductsXmlCollection.DataTable.Copy();
-                this.ProductsXmlCollection.ApplyFilters();
-                this.ProductsXmlCollection.ApplyTransforms();
-                this.ModifiedDataTable = this.ProductsXmlCollection.DataTable.Copy();
-            }
 
             if (this.OriginalDataTable != null && this.ModifiedDataTable == null)
             {
@@ -66,7 +64,7 @@ namespace StorMan.UI
                 foreach (DataColumn col in this.OriginalDataTable.Columns)
                 {
                     dt.Columns.Add(col.ColumnName, col.DataType);
-                    if (this.ModifiedDataTable.Columns.Contains(col.ColumnName))
+                    if (this.ModifiedDataTable != null && this.ModifiedDataTable.Columns.Contains(col.ColumnName))
                         dt.Columns.Add(col.ColumnName + this.ModifiedColumnSuffix, this.ModifiedDataTable.Columns[col.ColumnName].DataType);
                 }
 
@@ -76,7 +74,7 @@ namespace StorMan.UI
                     foreach (DataColumn col in this.OriginalDataTable.Columns)
                     {
                         newRow[col.ColumnName] = dr[col.ColumnName];
-                        if (this.ModifiedDataTable.Columns.Contains(col.ColumnName))
+                        if (this.ModifiedDataTable != null && this.ModifiedDataTable.Columns.Contains(col.ColumnName))
                         {
                             var modifiedRow = getModifiedRow(dr);
                             if (modifiedRow != null)
@@ -134,5 +132,13 @@ namespace StorMan.UI
         }
     }
 
+
+    public class DoubleBufferedDataGrid : DataGridView
+    {
+        public DoubleBufferedDataGrid()
+        {
+            DoubleBuffered = true;
+        }
+    }
     
 }

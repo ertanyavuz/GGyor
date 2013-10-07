@@ -74,6 +74,12 @@
     <Compile Include="TransformViewPanel.Designer.cs">
       <DependentUpon>TransformViewPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FilterControl.Designer.cs">
+      <DependentUpon>FilterControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewPanelBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </Compile>
     <EmbeddedResource Include="TransformViewPanel.resx">
       <DependentUpon>TransformViewPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FilterControl.resx">
+      <DependentUpon>FilterControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

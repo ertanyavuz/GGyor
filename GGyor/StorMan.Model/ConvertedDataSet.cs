@@ -182,7 +182,8 @@ namespace StorMan.Model
     }
     public enum FilterTypeEnum
     {
-        Equals
+        Equals,
+        Aralık
     }
 
     public class OperationModel

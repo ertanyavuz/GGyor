@@ -5,16 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using StorMan.Model;
 
 namespace StorMan.Business
 {
     public class XmlDataTableService
     {
-
-        public string LoadXml(string xmlUrl)
-        {
-            
-        }
 
         public DataTable XmlToDataTable(string xmlPath)
         {
@@ -46,15 +42,15 @@ namespace StorMan.Business
             return dt;
         }
 
-        public void SaveAsXml(string path)
+        public void SaveAsXml(DataTable dt, string path)
         {
             var xdoc = new XDocument();
             xdoc.Add(new XElement("root"));
             //xdoc.Root = new XElement("root");
-            foreach (DataRow row in this.DataTable.Rows)
+            foreach (DataRow row in dt.Rows)
             {
                 var xItem = new XElement("item");
-                foreach (DataColumn column in DataTable.Columns)
+                foreach (DataColumn column in dt.Columns)
                 {
                     var xElement = new XElement(column.ColumnName);
                     //xElement.Value = row[column].ToString();
@@ -68,6 +64,38 @@ namespace StorMan.Business
             }
 
             xdoc.Save(path);
+
+        }
+
+        public DataTable ApplyFilters(DataTable dt, List<FilterModel> filterList)
+        {
+            foreach (var filter in filterList)
+            {
+                var rowsToDelete = new List<DataRow>();
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (!filter.Check(row))
+                        rowsToDelete.Add(row);
+                }
+                foreach (var dataRow in rowsToDelete)
+                {
+                    dt.Rows.Remove(dataRow);
+                }
+            }
+
+            return dt;
+        }
+
+        public DataTable ApplyTransforms(DataTable dt, List<OperationModel> operationList)
+        {
+            foreach (var transform in operationList)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    transform.ApplyToDataRow(row);
+                }
+            }
+            return dt;
         }
 
     }

@@ -77,39 +77,56 @@ namespace StorMan.UI
             {
                 this.bodyPanel.Controls.Clear();
                 Control control = null;
-                if (e.Node.Tag is ConvertedDataSetModel)
-                {
-                    
-                }
-                else if (e.Node.Tag is TransformModel)
-                {
-                    var panel = new TransformViewPanel();
-                    
-                    control = panel;
-                }
-                else if (e.Node.Tag is List<FilterModel>)
-                {
-                    var filterList = e.Node.Tag as List<FilterModel>;
-                    var panel = new FilterViewPanel();
-                    panel.FilterList = filterList;
-                    panel.DataTable = loadedDataTable.Copy();
 
-                    control = panel;
-
-                }
-                else if (e.Node.Tag is OperationModel)
+                try
                 {
-                    //var op = e.Node.Tag as OperationModel;
-                    //var panel = new OperationViewPanel();
-                    //panel.Operation = op;
+                    if (e.Node.Tag is ConvertedDataSetModel)
+                    {
 
-                    //control = panel;
+                    }
+                    else if (e.Node.Tag is TransformModel)
+                    {
+                        var panel = new TransformViewPanel();
+
+                        control = panel;
+                    }
+                    else if (e.Node.Tag is List<FilterModel>)
+                    {
+                        var filterList = e.Node.Tag as List<FilterModel>;
+                        var panel = new FilterViewPanel();
+                        panel.FilterList = filterList;
+                        if (loadedDataTable == null)
+                        {
+                            toolStripButton1_Click(null, null);
+                            if (loadedDataTable == null)
+                            {
+                                MessageBox.Show("XML Tabloya yüklenemedi.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return;
+                            }
+                        }
+                        panel.DataTable = loadedDataTable.Copy();
+
+                        control = panel;
+
+                    }
+                    else if (e.Node.Tag is OperationModel)
+                    {
+                        //var op = e.Node.Tag as OperationModel;
+                        //var panel = new OperationViewPanel();
+                        //panel.Operation = op;
+
+                        //control = panel;
+                    }
+
+                    if (control != null)
+                    {
+                        control.Dock = DockStyle.Fill;
+                        this.bodyPanel.Controls.Add(control);
+                    }
                 }
-
-                if (control != null)
+                catch (Exception ex)
                 {
-                    control.Dock = DockStyle.Fill;
-                    this.bodyPanel.Controls.Add(control);
+                    MessageBox.Show("Hata: " + ex.ToString());
                 }
             }
         }
@@ -123,8 +140,9 @@ namespace StorMan.UI
                 if (cds == null)
                     return;
 
-                var products = new ProductsXmlCollection(cds.SourceXmlPath);
-                loadedDataTable = products.DataTable.Copy();
+                //var products = new ProductsXmlCollection(cds.SourceXmlPath);
+                var service = new XmlDataTableService();
+                loadedDataTable = service.XmlToDataTable(cds.SourceXmlPath);
 
                 MessageBox.Show("XML Yüklendi.");
             }

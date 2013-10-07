@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grid = new System.Windows.Forms.DataGridView();
+            this.grid = new DoubleBufferedDataGrid();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +60,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView grid;
+        private DoubleBufferedDataGrid grid;
     }
 }

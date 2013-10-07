@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StorMan.Business;
+using StorMan.Model;
 
 namespace StorMan.UI
 {
@@ -17,7 +19,7 @@ namespace StorMan.UI
             InitializeComponent();
         }
 
-        public List<Model.FilterModel> FilterList { get; set; }
+        public List<FilterModel> FilterList { get; set; }
         public DataTable DataTable { get; set; }
 
         private void FilterViewPanel_Load(object sender, EventArgs e)
@@ -29,13 +31,96 @@ namespace StorMan.UI
                     this.DataTable.PrimaryKey = new DataColumn[] {this.DataTable.Columns[0]};
                 }
 
+                // Set original and modified tables for ComparerDataGrid
                 this.comparerGrid.OriginalDataTable = this.DataTable;
-                this.comparerGrid.ModifiedDataTable = this.DataTable.Copy();
+                //this.comparerGrid.ModifiedDataTable = this.DataTable.Copy();
 
-                this.comparerGrid.Reload();
+                var fieldList = new List<string>();
+                foreach (DataColumn dc in this.DataTable.Columns)
+                {
+                    fieldList.Add(dc.ColumnName);
+                }
+                filterControl.FieldList = fieldList;
 
+                UpdateFilterList();
+                UpdateGrid();
+                
             }
         }
+
+        public void UpdateGrid()
+        {
+            var service = new XmlDataTableService();
+
+            var dt = this.DataTable.Copy();
+            /*dt = */service.ApplyFilters(dt, this.FilterList);
+            //this.comparerGrid.ModifiedDataTable = dt;
+            this.comparerGrid.OriginalDataTable = dt;
+            this.comparerGrid.Reload();
+        }
+        public void UpdateFilterList()
+        {
+            lbFilters.Items.Clear();
+            lbFilters.Items.AddRange(this.FilterList.Select(x => x.ToString()).ToArray<object>());
+            if (lbFilters.Items.Count > 0)
+                lbFilters.SelectedIndex = lbFilters.Items.Count - 1;
+        }
+
+        private FilterModel SelectedFilter
+        {
+            get
+            {
+                if (lbFilters.SelectedIndex < 0)
+                    return null;
+                return FilterList[lbFilters.SelectedIndex];
+            }
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            var filter = filterControl.Filter;
+            if (filter != null)
+            {
+                this.FilterList.Add(filter);
+                lbFilters.Items.Add(filter.ToString());
+                UpdateGrid();
+            }
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            var index = lbFilters.SelectedIndex;
+            if (index < 0)
+                return;
+            var filter = filterControl.Filter;
+            this.FilterList[index] = filter;
+            lbFilters.Items[index] = filter.ToString();
+
+            UpdateGrid();
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            var index = lbFilters.SelectedIndex;
+            if (index < 0)
+                return;
+            this.FilterList.RemoveAt(index);
+            lbFilters.Items.RemoveAt(index);
+            if (lbFilters.Items.Count > 0)
+                lbFilters.SelectedIndex = Math.Min(index, lbFilters.Items.Count - 1);
+
+            UpdateGrid();
+        }
+
+        private void lbFilters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var filter = this.SelectedFilter;
+            if (filter != null)
+            {
+                filterControl.Filter = filter;
+            }
+        }
+
 
 
     }
