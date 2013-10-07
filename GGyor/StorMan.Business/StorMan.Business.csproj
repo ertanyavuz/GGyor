@@ -44,6 +44,7 @@
     <Compile Include="ProductService.cs" />
     <Compile Include="ProductsXmlCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlDataTableService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GGLib\GGLib.csproj">

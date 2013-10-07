@@ -99,11 +99,11 @@ namespace StorMan.UI
                 }
                 else if (e.Node.Tag is OperationModel)
                 {
-                    var op = e.Node.Tag as OperationModel;
-                    var panel = new OperationViewPanel();
-                    panel.Operation = op;
+                    //var op = e.Node.Tag as OperationModel;
+                    //var panel = new OperationViewPanel();
+                    //panel.Operation = op;
 
-                    control = panel;
+                    //control = panel;
                 }
 
                 if (control != null)

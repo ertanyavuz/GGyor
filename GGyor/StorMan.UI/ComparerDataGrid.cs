@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StorMan.Business;
+using StorMan.Model;
 
 namespace StorMan.UI
 {
@@ -21,11 +23,12 @@ namespace StorMan.UI
         public DataTable OriginalDataTable { get; set; }
         public DataTable ModifiedDataTable { get; set; }
         public List<string> ColumnsToCompare { get; set; }
-        public string KeyColumn { get; set; }
-
+        
         public ViewTypeEnum ViewType { get; set; }
 
         public string ModifiedColumnSuffix { get; set; }
+
+        public ProductsXmlCollection ProductsXmlCollection { get; set; }
 
         private void ComparerDataGrid_Load(object sender, EventArgs e)
         {
@@ -42,6 +45,14 @@ namespace StorMan.UI
 
             if (this.OriginalDataTable == null)
                 return;
+
+            if (this.ProductsXmlCollection != null)
+            {
+                this.OriginalDataTable = this.ProductsXmlCollection.DataTable.Copy();
+                this.ProductsXmlCollection.ApplyFilters();
+                this.ProductsXmlCollection.ApplyTransforms();
+                this.ModifiedDataTable = this.ProductsXmlCollection.DataTable.Copy();
+            }
 
             if (this.OriginalDataTable != null && this.ModifiedDataTable == null)
             {
