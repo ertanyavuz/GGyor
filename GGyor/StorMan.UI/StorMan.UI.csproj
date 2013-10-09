@@ -80,6 +80,12 @@
     <Compile Include="UserControls\FilterControl.Designer.cs">
       <DependentUpon>FilterControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\OperationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OperationControl.Designer.cs">
+      <DependentUpon>OperationControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewPanelBase.cs">
       <SubType>UserControl</SubType>
     </Compile>

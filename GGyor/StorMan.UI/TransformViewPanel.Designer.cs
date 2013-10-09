@@ -37,15 +37,23 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnEditFilter = new System.Windows.Forms.Button();
             this.btnEditOperation = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.comparerDataGrid1 = new StorMan.UI.ComparerDataGrid();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -99,7 +107,7 @@
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Location = new System.Drawing.Point(103, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(785, 680);
+            this.listView1.Size = new System.Drawing.Size(785, 123);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -119,18 +127,9 @@
             this.columnHeader3.Text = "Değer";
             this.columnHeader3.Width = 455;
             // 
-            // btnEditFilter
-            // 
-            this.btnEditFilter.Location = new System.Drawing.Point(439, 48);
-            this.btnEditFilter.Name = "btnEditFilter";
-            this.btnEditFilter.Size = new System.Drawing.Size(74, 23);
-            this.btnEditFilter.TabIndex = 6;
-            this.btnEditFilter.Text = "Düzenle";
-            this.btnEditFilter.UseVisualStyleBackColor = true;
-            // 
             // btnEditOperation
             // 
-            this.btnEditOperation.Location = new System.Drawing.Point(894, 3);
+            this.btnEditOperation.Location = new System.Drawing.Point(3, 5);
             this.btnEditOperation.Name = "btnEditOperation";
             this.btnEditOperation.Size = new System.Drawing.Size(75, 23);
             this.btnEditOperation.TabIndex = 7;
@@ -151,12 +150,11 @@
             this.splitContainer1.Panel1.Controls.Add(this.txtTransformName);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.textBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.btnEditFilter);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(991, 773);
+            this.splitContainer1.Size = new System.Drawing.Size(991, 216);
             this.splitContainer1.SplitterDistance = 83;
             this.splitContainer1.TabIndex = 8;
             // 
@@ -168,21 +166,72 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.Controls.Add(this.listView1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnEditOperation, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(991, 686);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 217F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(991, 129);
             this.tableLayoutPanel1.TabIndex = 9;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.comparerDataGrid1);
+            this.splitContainer2.Size = new System.Drawing.Size(991, 773);
+            this.splitContainer2.SplitterDistance = 216;
+            this.splitContainer2.TabIndex = 9;
+            // 
+            // comparerDataGrid1
+            // 
+            this.comparerDataGrid1.ColumnsToCompare = null;
+            this.comparerDataGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comparerDataGrid1.Location = new System.Drawing.Point(0, 0);
+            this.comparerDataGrid1.ModifiedColumnSuffix = "_1";
+            this.comparerDataGrid1.ModifiedDataTable = null;
+            this.comparerDataGrid1.Name = "comparerDataGrid1";
+            this.comparerDataGrid1.OriginalDataTable = null;
+            this.comparerDataGrid1.Size = new System.Drawing.Size(991, 553);
+            this.comparerDataGrid1.TabIndex = 0;
+            this.comparerDataGrid1.ViewType = StorMan.UI.ComparerDataGrid.ViewTypeEnum.Original;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 34);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnEditOperation);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(894, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(94, 123);
+            this.panel1.TabIndex = 6;
             // 
             // TransformViewPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.splitContainer2);
             this.Name = "TransformViewPanel";
             this.Size = new System.Drawing.Size(991, 773);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -192,6 +241,11 @@
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -207,9 +261,12 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.Button btnEditFilter;
         private System.Windows.Forms.Button btnEditOperation;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private ComparerDataGrid comparerDataGrid1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
     }
 }
