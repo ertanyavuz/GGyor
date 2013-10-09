@@ -30,6 +30,8 @@ namespace StorMan.Data
     
         public Nullable<int> Order { get; set; }
     
+        public string Name { get; set; }
+    
     
     
         public virtual Transform Transform { get; set; }

@@ -106,6 +106,7 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TransformID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="FieldName" Type="varchar" MaxLength="50" />
           <Property Name="OperationType" Type="int" />
           <Property Name="Value" Type="varchar" MaxLength="500" />
@@ -282,6 +283,7 @@
           <Property Type="String" Name="Value" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Transform" Relationship="StorManModel.FK_Operation_Transform" FromRole="Operation" ToRole="Transform" />
           <Property Type="Int32" Name="Order" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Transform">
           <Key>
@@ -423,6 +425,7 @@
           <EntitySetMapping Name="Operations">
             <EntityTypeMapping TypeName="StorManModel.Operation">
               <MappingFragment StoreEntitySet="Operation">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="OperationType" ColumnName="OperationType" />

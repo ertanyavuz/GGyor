@@ -202,6 +202,7 @@ namespace StorMan.Model
         public int ID { get; set; }
         public OperationTypeEnum OperationType { get; set; }
 
+        public string Name { get; set; }
         public string FieldName { get; set; }
         public Type DataType { get; set; }
         public object Value { get; set; }

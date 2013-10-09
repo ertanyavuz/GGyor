@@ -70,13 +70,15 @@ namespace StorMan.UI
 
                 foreach (DataRow dr in this.OriginalDataTable.Rows)
                 {
+                    var modifiedRow = getModifiedRow(dr);
+                    if (this.ModifiedDataTable != null && modifiedRow == null)
+                        continue;   // This row is filtered out.
                     var newRow = dt.NewRow();
                     foreach (DataColumn col in this.OriginalDataTable.Columns)
                     {
                         newRow[col.ColumnName] = dr[col.ColumnName];
                         if (this.ModifiedDataTable != null && this.ModifiedDataTable.Columns.Contains(col.ColumnName))
                         {
-                            var modifiedRow = getModifiedRow(dr);
                             if (modifiedRow != null)
                                 newRow[col.ColumnName + this.ModifiedColumnSuffix] = modifiedRow[col.ColumnName];
                         }
@@ -87,10 +89,34 @@ namespace StorMan.UI
                 grid.DataSource = dt;
                 grid.AlternatingRowsDefaultCellStyle.BackColor = Color.Cornsilk;
 
-                foreach (DataGridViewColumn col in grid.Columns)
+                // Modified cell styles...
+                if (this.ModifiedDataTable != null)
                 {
-                    if (col.Name.EndsWith(this.ModifiedColumnSuffix))
-                        col.DefaultCellStyle.Font = new Font(grid.Font, FontStyle.Bold);
+                    // Boldness for Modified columns...
+                    foreach (DataGridViewColumn col in grid.Columns)
+                    {
+                        if (col.Name.EndsWith(this.ModifiedColumnSuffix))
+                            col.DefaultCellStyle.Font = new Font(grid.Font, FontStyle.Bold);
+                    }
+                    //// Backcolor for differing cells
+                    //foreach (DataGridViewRow row in grid.Rows)
+                    //{
+                    //    foreach (DataGridViewColumn col in grid.Columns)
+                    //    {
+                    //        if (col.Name.EndsWith(this.ModifiedColumnSuffix))
+                    //        {
+                    //            var orgCol = col.Name.Substring(0, col.Name.Length - this.ModifiedColumnSuffix.Length);
+                    //            var modCol = col.Name;
+                    //            if (row.Cells[orgCol].Value != row.Cells[modCol].Value)
+                    //            {
+                    //                row.Cells[modCol].Style.ForeColor = Color.Red;
+                    //                row.Cells[modCol].Style.BackColor = Color.Chartreuse;
+
+                    //            }
+                    //        }
+
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
@@ -128,7 +154,20 @@ namespace StorMan.UI
 
         private void grid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            
+            var col = grid.Columns[e.ColumnIndex];
+            if (col.Name.EndsWith(this.ModifiedColumnSuffix))
+            {
+                var row = grid.Rows[e.RowIndex];
+                var orgCol = col.Name.Substring(0, col.Name.Length - this.ModifiedColumnSuffix.Length);
+                //var modCol = col.Name;
+                if (row.Cells[orgCol].Value != e.Value)
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    //row.Cells[modCol].Style.ForeColor = Color.Red;
+                    //row.Cells[modCol].Style.BackColor = Color.Chartreuse;
+
+                }
+            }
         }
     }
 

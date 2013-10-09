@@ -114,6 +114,9 @@
     <EmbeddedResource Include="UserControls\FilterControl.resx">
       <DependentUpon>FilterControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\OperationControl.resx">
+      <DependentUpon>OperationControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

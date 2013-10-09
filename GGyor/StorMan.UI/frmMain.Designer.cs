@@ -37,6 +37,7 @@
             this.bodyPanel = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnDbKaydet = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -118,10 +119,11 @@
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.btnDbKaydet});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(79, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(115, 39);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButton1
@@ -133,6 +135,16 @@
             this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // btnDbKaydet
+            // 
+            this.btnDbKaydet.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDbKaydet.Image = ((System.Drawing.Image)(resources.GetObject("btnDbKaydet.Image")));
+            this.btnDbKaydet.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDbKaydet.Name = "btnDbKaydet";
+            this.btnDbKaydet.Size = new System.Drawing.Size(36, 36);
+            this.btnDbKaydet.Text = "Veritabanına Kaydet";
+            this.btnDbKaydet.Click += new System.EventHandler(this.btnDbKaydet_Click);
             // 
             // frmMain
             // 
@@ -167,6 +179,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView tree;
         private System.Windows.Forms.Panel bodyPanel;
+        private System.Windows.Forms.ToolStripButton btnDbKaydet;
 
     }
 }

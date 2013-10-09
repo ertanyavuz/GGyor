@@ -19,9 +19,48 @@ namespace StorMan.UI
         }
 
         private bool running = false;
+        private List<ConvertedDataSetModel> cdsList;
+        //private int cdsIndex = -1;
+        private ConvertedDataSetModel CurrentConvertedDataSet
+        {
+            get
+            {
+                var node = tree.SelectedNode;
+                if (node == null)
+                    return null;
+                while (node.Parent != null && !(node.Tag is ConvertedDataSetModel))
+                    node = node.Parent;
+                if (node == null)
+                    return null;
+                
+                var cdsIndex = node.Index;
+                if (cdsIndex < 0 || cdsList == null || cdsList.Count == 0 || cdsIndex >= cdsList.Count)
+                    return null;
+                return cdsList[cdsIndex];
+            }
+        }
+        private TransformModel CurrentTransform
+        {
+            get
+            {
+                var node = tree.SelectedNode;
+                if (node == null)
+                    return null;
+                while (node.Parent != null && !(node.Tag is TransformModel))
+                    node = node.Parent;
+                if (node == null)
+                    return null;
+
+                return node.Tag as TransformModel;
+                
+            }
+        }
+
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            loadedTables = new Dictionary<int, DataTable>();
+
             try
             {
                 toolStrip1.ImageList = imageList1;
@@ -40,7 +79,7 @@ namespace StorMan.UI
             running = true;
 
             var service = new StorMan.Business.ConvertedDataSetService();
-            var cdsList = service.getConvertedDataSets(true);
+            this.cdsList = service.getConvertedDataSets(true);
 
             tree.Nodes.Clear();
 
@@ -57,14 +96,16 @@ namespace StorMan.UI
                     //    var node = tranNode.Nodes.Add(filter.ToString());
                     //    node.Tag = filter;
                     //}
-                    var node = tranNode.Nodes.Add("Filtre");
+                    var node = tranNode.Nodes.Add("Filtreler");
                     node.Tag = tran.Filters.Select(x => x).ToList();
 
-                    foreach (var op in tran.Operations)
-                    {
-                        node = tranNode.Nodes.Add(op.ToString());
-                        node.Tag = op;
-                    }
+                    //foreach (var op in tran.Operations)
+                    //{
+                    //    node = tranNode.Nodes.Add(op.ToString());
+                    //    node.Tag = op;
+                    //}
+                    node = tranNode.Nodes.Add("Operasyonlar");
+                    node.Tag = tran;
                 }
             }
             tree.ExpandAll();
@@ -87,7 +128,10 @@ namespace StorMan.UI
                     else if (e.Node.Tag is TransformModel)
                     {
                         var panel = new TransformViewPanel();
-
+                        panel.Transform = e.Node.Tag as TransformModel;
+                        if (!loadXml(this.CurrentConvertedDataSet.ID))
+                            return;
+                        panel.DataTable = loadedTables[this.CurrentConvertedDataSet.ID].Copy();
                         control = panel;
                     }
                     else if (e.Node.Tag is List<FilterModel>)
@@ -95,16 +139,9 @@ namespace StorMan.UI
                         var filterList = e.Node.Tag as List<FilterModel>;
                         var panel = new FilterViewPanel();
                         panel.FilterList = filterList;
-                        if (loadedDataTable == null)
-                        {
-                            toolStripButton1_Click(null, null);
-                            if (loadedDataTable == null)
-                            {
-                                MessageBox.Show("XML Tabloya yüklenemedi.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                return;
-                            }
-                        }
-                        panel.DataTable = loadedDataTable.Copy();
+                        if (!loadXml(this.CurrentConvertedDataSet.ID))
+                            return;
+                        panel.DataTable = loadedTables[this.CurrentConvertedDataSet.ID].Copy();
 
                         control = panel;
 
@@ -131,7 +168,7 @@ namespace StorMan.UI
             }
         }
 
-        private DataTable loadedDataTable;
+        private Dictionary<int, DataTable> loadedTables;
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             if (tree.Nodes.Count > 0)
@@ -142,9 +179,74 @@ namespace StorMan.UI
 
                 //var products = new ProductsXmlCollection(cds.SourceXmlPath);
                 var service = new XmlDataTableService();
-                loadedDataTable = service.XmlToDataTable(cds.SourceXmlPath);
+                var loadedDataTable = service.XmlToDataTable(cds.SourceXmlPath);
+
+                if (loadedTables.ContainsKey(cds.ID))
+                    loadedTables[cds.ID] = loadedDataTable;
+                else
+                    loadedTables.Add(cds.ID, loadedDataTable);
 
                 MessageBox.Show("XML Yüklendi.");
+            }
+        }
+
+        private bool loadXml(int cdsID)
+        {
+            DataTable loadedDataTable = null;
+            if (!loadedTables.ContainsKey(cdsID))
+            {
+                toolStripButton1_Click(null, null);
+                if (!loadedTables.ContainsKey(cdsID))
+                {
+                    MessageBox.Show("XML Tabloya yüklenemedi.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void btnDbKaydet_Click(object sender, EventArgs e)
+        {
+            if (bodyPanel.Controls.Count == 0)
+                return;
+
+            var service = new ConvertedDataSetService();
+            if (bodyPanel.Controls[0] is FilterViewPanel)
+            {
+                try
+                {
+                    var panel = bodyPanel.Controls[0] as FilterViewPanel;
+                    var transform = this.CurrentTransform;
+                    if (transform == null)
+                        return;
+
+                    transform.Filters = panel.FilterList;
+                    service.updateTransform(transform);
+
+                    ReloadTree();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hata: " + ex.ToString());
+                }
+            }
+            else if (bodyPanel.Controls[0] is TransformViewPanel)
+            {
+                try
+                {
+                    var panel = bodyPanel.Controls[0] as TransformViewPanel;
+                    var transform = this.CurrentTransform;
+                    if (transform == null)
+                        return;
+
+                    service.updateTransform(transform);
+
+                    ReloadTree();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hata: " + ex.ToString());
+                }
             }
         }
     }

@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilterViewPanel));
             StorMan.Model.FilterModel filterModel1 = new StorMan.Model.FilterModel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnKaydet = new System.Windows.Forms.Button();
+            this.filterControl = new StorMan.UI.UserControls.FilterControl();
             this.lbFilters = new System.Windows.Forms.ListBox();
             this.btnSil = new System.Windows.Forms.Button();
             this.btnEkle = new System.Windows.Forms.Button();
-            this.btnKaydet = new System.Windows.Forms.Button();
-            this.filterControl = new StorMan.UI.UserControls.FilterControl();
             this.comparerGrid = new StorMan.UI.ComparerDataGrid();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -66,6 +66,29 @@
             this.splitContainer1.SplitterDistance = 106;
             this.splitContainer1.TabIndex = 0;
             // 
+            // btnKaydet
+            // 
+            this.btnKaydet.Location = new System.Drawing.Point(576, 46);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(75, 23);
+            this.btnKaydet.TabIndex = 8;
+            this.btnKaydet.Text = "Kaydet";
+            this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
+            // 
+            // filterControl
+            // 
+            this.filterControl.FieldList = ((System.Collections.Generic.List<string>)(resources.GetObject("filterControl.FieldList")));
+            filterModel1.FieldName = null;
+            filterModel1.FilterType = StorMan.Model.FilterTypeEnum.Equals;
+            filterModel1.ID = 0;
+            filterModel1.Value = null;
+            this.filterControl.Filter = filterModel1;
+            this.filterControl.Location = new System.Drawing.Point(8, 17);
+            this.filterControl.Name = "filterControl";
+            this.filterControl.Size = new System.Drawing.Size(261, 84);
+            this.filterControl.TabIndex = 7;
+            // 
             // lbFilters
             // 
             this.lbFilters.FormattingEnabled = true;
@@ -94,29 +117,6 @@
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
             this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
-            // 
-            // btnKaydet
-            // 
-            this.btnKaydet.Location = new System.Drawing.Point(576, 46);
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(75, 23);
-            this.btnKaydet.TabIndex = 8;
-            this.btnKaydet.Text = "Kaydet";
-            this.btnKaydet.UseVisualStyleBackColor = true;
-            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
-            // 
-            // filterControl
-            // 
-            this.filterControl.FieldList = ((System.Collections.Generic.List<string>)(resources.GetObject("filterControl.FieldList")));
-            filterModel1.FieldName = null;
-            filterModel1.FilterType = StorMan.Model.FilterTypeEnum.Equals;
-            filterModel1.ID = 0;
-            filterModel1.Value = null;
-            this.filterControl.Filter = filterModel1;
-            this.filterControl.Location = new System.Drawing.Point(8, 17);
-            this.filterControl.Name = "filterControl";
-            this.filterControl.Size = new System.Drawing.Size(261, 84);
-            this.filterControl.TabIndex = 7;
             // 
             // comparerGrid
             // 

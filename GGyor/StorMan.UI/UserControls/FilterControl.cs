@@ -32,12 +32,15 @@ namespace StorMan.UI.UserControls
             set
             {
                 _filter = value;
+                if (this.DesignMode)
+                    return;
                 if (_filter != null && !String.IsNullOrWhiteSpace(_filter.FieldName) && _loaded)
                 {
                     filterLoading = true;
                     cmbFieldName.SelectedItem = _filter.FieldName;
                     cmbFilterType.SelectedItem = _filter.FilterType == FilterTypeEnum.Equals ? "Eşitlik" : "Aralık";
                     txtValue.Text = _filter.Value.ToString();
+                    filterLoading = false;
                 }
             }
         }
@@ -87,6 +90,8 @@ namespace StorMan.UI.UserControls
 
         private void setFilter()
         {
+            if (this.DesignMode)
+                return;
             _filter = new FilterModel
                 {
                     FieldName = cmbFieldName.SelectedItem.ToString(),

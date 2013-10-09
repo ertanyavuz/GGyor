@@ -50,6 +50,7 @@ namespace StorMan.Data.Repositories
                                                                         .Select(y => new OperationModel
                                                                             {
                                                                                 ID = y.ID,
+                                                                                Name = y.Name,
                                                                                 FieldName = y.FieldName,
                                                                                 OperationType = (OperationTypeEnum)(y.OperationType ?? 0),
                                                                                 Value = y.Value,
@@ -79,6 +80,7 @@ namespace StorMan.Data.Repositories
                         }).ToList(),
                     Operations = x.Operations.OrderBy(y => y.Order).Select(y => new OperationModel
                         {
+                            Name = y.Name,
                             FieldName = y.FieldName,
                             OperationType = (OperationTypeEnum) (y.OperationType ?? 0),
                             Value = y.Value,
@@ -108,6 +110,7 @@ namespace StorMan.Data.Repositories
                         }).ToList(),
                     Operations = transform.Operations.OrderBy(y => y.Order).Select(y => new OperationModel
                         {
+                            Name = y.Name,
                             FieldName = y.FieldName,
                             OperationType = (OperationTypeEnum) (y.OperationType ?? 0),
                             //DataType = y.
@@ -182,6 +185,7 @@ namespace StorMan.Data.Repositories
             {
                 var dbOperation = new Operation
                     {
+                        Name = operationModel.Name,
                         Transform = dbTransform,
                         FieldName = operationModel.FieldName,
                         OperationType = (int?) operationModel.OperationType,
@@ -225,6 +229,8 @@ namespace StorMan.Data.Repositories
             this.Sync(transformModel.Operations, opList, (opModel, dbOp) => opModel.ID.CompareTo(dbOp.ID),
                         (opModel, dbOp) =>
                             {
+                                if (dbOp.Name != opModel.Name)
+                                    dbOp.Name = opModel.Name;
                                 if (dbOp.FieldName != opModel.FieldName)
                                     dbOp.FieldName = opModel.FieldName;
                                 if (dbOp.OperationType != (int) opModel.OperationType)
