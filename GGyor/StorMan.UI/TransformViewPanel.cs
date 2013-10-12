@@ -38,6 +38,13 @@ namespace StorMan.UI
 
             if (this.DataTable != null)
             {
+                var fieldList = new List<string>();
+                foreach (DataColumn dc in this.DataTable.Columns)
+                {
+                    fieldList.Add(dc.ColumnName);
+                }
+                operationControl.FieldList = fieldList;
+
                 if (this.DataTable.PrimaryKey.Length == 0)
                 {
                     this.DataTable.PrimaryKey = new DataColumn[] { this.DataTable.Columns[0] };
@@ -56,6 +63,52 @@ namespace StorMan.UI
 
             comparerDataGrid1.ModifiedDataTable = dt;
             comparerDataGrid1.Reload();
+        }
+
+        private void lbOperations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbOperations.SelectedIndex >= 0 && this.Transform.Operations.Count > lbOperations.SelectedIndex)
+            {
+                var operation = this.Transform.Operations[lbOperations.SelectedIndex];
+                operationControl.Operation = operation;
+
+            }
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            var operation = operationControl.Operation;
+            if (operation != null)
+            {
+                this.Transform.Operations.Add(operation);
+                lbOperations.Items.Add(operation.Name);
+                reloadGrid();
+            }
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            var index = lbOperations.SelectedIndex;
+            if (index < 0)
+                return;
+            var operation = operationControl.Operation;
+            this.Transform.Operations[index] = operation;
+            lbOperations.Items[index] = operation.Name;
+
+            reloadGrid();
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            var index = lbOperations.SelectedIndex;
+            if (index < 0)
+                return;
+            this.Transform.Operations.RemoveAt(index);
+            lbOperations.Items.RemoveAt(index);
+            if (lbOperations.Items.Count > 0)
+                lbOperations.SelectedIndex = Math.Min(index, lbOperations.Items.Count - 1);
+
+            reloadGrid();
         }
         
     }

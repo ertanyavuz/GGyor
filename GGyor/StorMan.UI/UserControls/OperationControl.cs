@@ -29,12 +29,35 @@ namespace StorMan.UI.UserControls
                 setFields();
             }
         }
+        private List<string> _fieldList;
+        public List<string> FieldList
+        {
+            get
+            {
+                return _fieldList;
+            }
+            set
+            {
+                _fieldList = value;
+                if (_fieldList != null && _loaded)
+                {
+                    cmbFieldName.Items.Clear();
+                    cmbFieldName.Items.AddRange(_fieldList.ToArray<object>());
+                }
+            }
+        }
 
         private bool running = false;
+        private bool _loaded = false;
         private void OperationControl_Load(object sender, EventArgs e)
         {
             cmbOperationType.Items.AddRange(Enum.GetNames(typeof (OperationTypeEnum)).ToArray<object>());
             
+            if (_fieldList == null)
+                _fieldList = new List<string>();
+
+            cmbFieldName.Items.AddRange(_fieldList.ToArray<object>());
+
             if (this._operation != null)
             {
                 setFields();
@@ -43,6 +66,7 @@ namespace StorMan.UI.UserControls
             {
                 _operation = new OperationModel();
             }
+            _loaded = true;
         }
 
         private void cmbFieldName_SelectedIndexChanged(object sender, EventArgs e)
