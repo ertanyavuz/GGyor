@@ -566,6 +566,7 @@ namespace StorMan.Model
                     //ExpressionString = this.ExpressionString,
                     //Expression = !String.IsNullOrWhiteSpace(this.ExpressionString) ? new Expression(this.ExpressionString) : null,
                     //Parameters = new List<string>(),
+                    Name = this.Name,
                     FieldName = this.FieldName,
                     ID = this.ID,
                     OperationType = this.OperationType,

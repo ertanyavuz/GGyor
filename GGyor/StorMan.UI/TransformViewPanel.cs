@@ -77,7 +77,7 @@ namespace StorMan.UI
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            var operation = operationControl.Operation;
+            var operation = operationControl.Operation.Copy();
             if (operation != null)
             {
                 this.Transform.Operations.Add(operation);
@@ -91,7 +91,7 @@ namespace StorMan.UI
             var index = lbOperations.SelectedIndex;
             if (index < 0)
                 return;
-            var operation = operationControl.Operation;
+            var operation = operationControl.Operation.Copy();
             this.Transform.Operations[index] = operation;
             lbOperations.Items[index] = operation.Name;
 

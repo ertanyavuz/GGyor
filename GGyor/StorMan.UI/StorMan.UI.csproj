@@ -54,6 +54,12 @@
     <Compile Include="ComparerDataGrid.Designer.cs">
       <DependentUpon>ComparerDataGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConvertedDataSetViewPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConvertedDataSetViewPanel.Designer.cs">
+      <DependentUpon>ConvertedDataSetViewPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FilterViewPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,6 +80,12 @@
     <Compile Include="TransformViewPanel.Designer.cs">
       <DependentUpon>TransformViewPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ConvertedDataSetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ConvertedDataSetControl.Designer.cs">
+      <DependentUpon>ConvertedDataSetControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FilterControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,6 +103,9 @@
     </Compile>
     <EmbeddedResource Include="ComparerDataGrid.resx">
       <DependentUpon>ComparerDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConvertedDataSetViewPanel.resx">
+      <DependentUpon>ConvertedDataSetViewPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FilterViewPanel.resx">
       <DependentUpon>FilterViewPanel.cs</DependentUpon>
@@ -110,6 +125,9 @@
     </Compile>
     <EmbeddedResource Include="TransformViewPanel.resx">
       <DependentUpon>TransformViewPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ConvertedDataSetControl.resx">
+      <DependentUpon>ConvertedDataSetControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FilterControl.resx">
       <DependentUpon>FilterControl.cs</DependentUpon>

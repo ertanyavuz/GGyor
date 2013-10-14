@@ -26,6 +26,7 @@ namespace StorMan.UI.UserControls
             set
             {
                 _operation = value ?? new OperationModel();
+                _operation = _operation.Copy();
                 setFields();
             }
         }
