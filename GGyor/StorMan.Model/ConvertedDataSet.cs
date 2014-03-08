@@ -25,6 +25,8 @@ namespace StorMan.Model
         public DataTable DataTable { get; set; }
         public DataTable ResultTable { get; set; }
 
+        public static List<Tuple<string, string, float>> ExchangeRates { get; set; }
+
         public void LoadXml()
         {
             this.DataTable = new DataTable("ProductsXml");
@@ -194,7 +196,6 @@ namespace StorMan.Model
             //this.Parameters = new Dictionary<string, object>();
             if (String.IsNullOrEmpty(OperationModel.CurrencyColumn))
                 OperationModel.CurrencyColumn = "currencyAbbr";
-            
         }
 
         #region " Properties "
@@ -265,23 +266,6 @@ namespace StorMan.Model
 
         // Kur Dönüşümü için
         public static string CurrencyColumn { get; set; }
-        private static List<Tuple<string, string, float>> _currencyTable;
-        public static List<Tuple<string, string, float>> CurrencyExchangeTable
-        {
-            get
-            {
-                if (_currencyTable == null)
-                {
-                    _currencyTable = new List<Tuple<string, string, float>>();
-                    _currencyTable.Add(new Tuple<string, string, float>("USD", "TL", 2.06F));
-                    _currencyTable.Add(new Tuple<string, string, float>("EURO", "TL", 2.70F));
-                    _currencyTable.Add(new Tuple<string, string, float>("TL", "TL", 1.0F));
-                }
-                return _currencyTable;
-            }
-        }
-
-        public string TLText = "TL";
 
     #endregion
         
@@ -321,15 +305,35 @@ namespace StorMan.Model
                 }
                 else if (this.OperationType == OperationTypeEnum.KurDönüşümü)
                 {
-                    if (CurrencyExchangeTable.Count == 0)
+                    var currentCurrency = row[CurrencyColumn].ToString();
+                    var newCurrency = this.Value.ToString();
+                    if (newCurrency == currentCurrency)
                         return;
-                    // [buyingPrice]=[currencyAbbr] ? TL: [buyingPrice], USD: [buyingPrice]*1.95, EUR: [buyingPrice]*2.54
-                    var exp = String.Format("[{0}]=[{1}] ? {2}: [{0}], ", this.FieldName, CurrencyColumn, TLText);
+                    var rateTuple = ConvertedDataSetModel.ExchangeRates.FirstOrDefault(x => x.Item1 == currentCurrency && x.Item2 == newCurrency);
+                    float rate;
+                    if (rateTuple == null)
+                    {
+                        // try the inverse of it
+                        rateTuple = ConvertedDataSetModel.ExchangeRates.FirstOrDefault(x => x.Item2 == currentCurrency && x.Item1 == newCurrency);
+                        if (rateTuple == null)
+                            throw new Exception(String.Format("{0} - {1} kuru bulunamadı.", currentCurrency, newCurrency));
+                        rate = (float) Math.Round(1 / rateTuple.Item3, 4);
+                    }
+                    else
+                        rate = rateTuple.Item3;
 
-                    exp += CurrencyExchangeTable.Select(x => String.Format("{0}: [{1}]*{2}", x.Item1, this.FieldName, x.Item3))
-                                                .Aggregate((x,y) => x + ", " + y);
+                    row[CurrencyColumn] = newCurrency;
+                    var currentValue = stringToFloat(row[this.FieldName].ToString());
+                    var newValue = currentValue*rate;
+                    row[this.FieldName] = newValue;
+                    
+                    //// [buyingPrice]=[currencyAbbr] ? TL: [buyingPrice], USD: [buyingPrice]*1.95, EUR: [buyingPrice]*2.54
+                    //var exp = String.Format("[{0}]=[{1}] ? {2}: [{0}], ", this.FieldName, CurrencyColumn, TLText);
 
-                    applyExpression(row, exp);
+                    //exp += CurrencyExchangeTable.Select(x => String.Format("{0}: [{1}]*{2}", x.Item1, this.FieldName, x.Item3))
+                    //                            .Aggregate((x,y) => x + ", " + y);
+
+                    //applyExpression(row, exp);
                 }
                 else if (this.OperationType == OperationTypeEnum.Karmaşıkİfade)
                 {
@@ -536,7 +540,7 @@ namespace StorMan.Model
     
         public static float stringToFloat(string floatStr)
         {
-            floatStr = floatStr.Replace(",", "");
+            floatStr = floatStr.Replace(",", ".");
             var floatValue = float.Parse(floatStr, CultureInfo.InvariantCulture);
             return floatValue;
         }
@@ -550,15 +554,18 @@ namespace StorMan.Model
         }
         public static float roundFloat(float floatValue)
         {
-            floatValue *= 100;
-            floatValue = (float) Math.Ceiling(floatValue);
-            floatValue = floatValue/100;
-            return floatValue;
+            //floatValue *= 100;
+            //floatValue = (float) Math.Ceiling(floatValue);
+            //floatValue = floatValue/100;
+
+            var roundedValue = (float) Math.Round(floatValue, 2);
+
+            return roundedValue;
         }
     
     #endregion
     
-        public OperationModel Copy()
+        public OperationModel Copy(bool doNotCopyId = false)
         {
             return new OperationModel
                 {
@@ -568,7 +575,7 @@ namespace StorMan.Model
                     //Parameters = new List<string>(),
                     Name = this.Name,
                     FieldName = this.FieldName,
-                    ID = this.ID,
+                    ID = doNotCopyId ? 0 : this.ID,
                     OperationType = this.OperationType,
                     Value = this.Value
                 };

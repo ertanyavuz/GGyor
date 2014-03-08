@@ -82,7 +82,7 @@ namespace StorMan.UI.UserControls
             if (running)
                 return;
             var opType = OperationTypeEnum.Toplama;
-            Enum.TryParse((cmbFieldName.SelectedItem ?? OperationTypeEnum.Toplama).ToString(), true, out opType);
+            Enum.TryParse((cmbOperationType.SelectedItem ?? OperationTypeEnum.Toplama).ToString(), true, out opType);
 
             this._operation.OperationType = opType;
         }

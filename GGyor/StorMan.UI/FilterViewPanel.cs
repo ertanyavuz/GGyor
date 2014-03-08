@@ -55,8 +55,9 @@ namespace StorMan.UI
             var dt = this.DataTable.Copy();
             /*dt = */service.ApplyFilters(dt, this.FilterList);
             //this.comparerGrid.ModifiedDataTable = dt;
-            this.comparerGrid.OriginalDataTable = dt;
-            this.comparerGrid.Reload();
+            comparerGrid.OriginalDataTable = this.DataTable;
+            comparerGrid.ModifiedDataTable = dt;
+            comparerGrid.Reload();
         }
         public void UpdateFilterList()
         {
@@ -119,6 +120,25 @@ namespace StorMan.UI
             {
                 filterControl.Filter = filter;
             }
+        }
+
+        private void rb_CheckedChanged(object sender, EventArgs e)
+        {
+            var currentValue = comparerGrid.ViewType;
+            if (rbOriginal.Checked && currentValue != ComparerDataGrid.ViewTypeEnum.Original)
+            {
+                comparerGrid.ViewType = ComparerDataGrid.ViewTypeEnum.Original;
+            }
+            else if (rbModified.Checked && currentValue != ComparerDataGrid.ViewTypeEnum.Modified)
+            {
+                comparerGrid.ViewType = ComparerDataGrid.ViewTypeEnum.Modified;
+            }
+            else
+            {
+                return;
+            }
+
+            UpdateGrid();
         }
 
 

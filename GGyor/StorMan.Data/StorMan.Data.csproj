@@ -62,6 +62,9 @@
       <DependentUpon>StorManDb.tt</DependentUpon>
     </Compile>
     <Compile Include="DomainObjects\ex_StorManContext.cs" />
+    <Compile Include="ExchangeRate.cs">
+      <DependentUpon>StorManDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Filter.cs">
       <DependentUpon>StorManDb.tt</DependentUpon>
     </Compile>

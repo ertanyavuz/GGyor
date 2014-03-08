@@ -16,6 +16,8 @@ namespace StorMan.Data.Repositories
 
         public List<ConvertedDataSetModel> getConvertedDataSets(bool getAll = false)
         {
+            ConvertedDataSetModel.ExchangeRates = getExchangeRates();
+
             var cdsList = _context.ConvertedDataSets.OrderBy(x => x.ID);
             var list = cdsList.ToList().Select(x => new ConvertedDataSetModel
                                 {
@@ -136,6 +138,19 @@ namespace StorMan.Data.Repositories
 
         }
 
+        public bool updateConvertedDataSet(int cdsId, string name, string sourceXmlPath)
+        {
+            var cds = _context.ConvertedDataSets.FirstOrDefault(x => x.ID == cdsId);
+            if (cds == null)
+                return false;
+
+            cds.Name = name;
+            cds.SourceXmlPath = sourceXmlPath;
+            _context.SaveChanges();
+
+            return true;
+        }
+
 
         public bool deleteTransform(int transformID)
         {
@@ -246,6 +261,45 @@ namespace StorMan.Data.Repositories
             _context.SaveChanges();
 
             return true;
+        }
+
+
+        public bool deleteConvertedDataSet(int cdsId)
+        {
+            var opList = _context.Operations.Where(x => x.Transform.ConvertedDataSetID == cdsId).ToList();
+            foreach (var operation in opList)
+            {
+                _context.Operations.Remove(operation);
+            }
+
+            var filterList = _context.Filters.Where(x => x.Transform.ConvertedDataSetID == cdsId).ToList();
+            foreach (var filter in filterList)
+            {
+                _context.Filters.Remove(filter);
+            }
+
+            var tranList = _context.Transforms.Where(x => x.ConvertedDataSetID == cdsId).ToList();
+            foreach (var transform in tranList)
+            {
+                _context.Transforms.Remove(transform);
+            }
+
+            var cds = _context.ConvertedDataSets.FirstOrDefault(x => x.ID == cdsId);
+            if (cds != null)
+                _context.ConvertedDataSets.Remove(cds);
+
+            var count = _context.SaveChanges();
+
+            return count > 0;
+
+        }
+
+        public List<Tuple<string, string, float>> getExchangeRates()
+        {
+            var list = _context.ExchangeRates.ToList()
+                                    .Select(x => new Tuple<string, string, float>(x.FromCurrency, x.ToCurrency, (float) x.Rate))
+                                    .ToList();
+            return list;
         }
 
     }

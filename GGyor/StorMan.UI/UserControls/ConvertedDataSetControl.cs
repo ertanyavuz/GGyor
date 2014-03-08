@@ -25,6 +25,7 @@ namespace StorMan.UI.UserControls
             set
             {
                 _convertedDataSet = value;
+                setFields();
             }
         }
 

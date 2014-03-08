@@ -46,16 +46,15 @@ namespace StorMan.UI
                 var node = tree.SelectedNode;
                 if (node == null)
                     return null;
-                while (node.Parent != null && !(node.Tag is TransformModel))
+                while (node.Parent != null && !(node.Tag is Tuple<TransformModel>))
                     node = node.Parent;
                 if (node == null)
                     return null;
 
-                return node.Tag as TransformModel;
+                return ((Tuple<TransformModel>) node.Tag).Item1;
                 
             }
         }
-
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -74,10 +73,22 @@ namespace StorMan.UI
             }
         }
 
-        private void ReloadTree()
+        public void ReloadTree()
         {
             running = true;
 
+            List<int> nodeIndexList = null;
+            if (tree.SelectedNode != null)
+            {
+                nodeIndexList = new List<int>();
+                var node = tree.SelectedNode;
+                while (node != null)
+                {
+                    nodeIndexList.Add(node.Index);
+                    node = node.Parent;
+                }
+            }
+            
             var service = new StorMan.Business.ConvertedDataSetService();
             this.cdsList = service.getConvertedDataSets(true);
 
@@ -90,7 +101,7 @@ namespace StorMan.UI
                 foreach (var tran in cds.Transforms)
                 {
                     var tranNode = root.Nodes.Add(tran.Name);
-                    tranNode.Tag = tran;
+                    tranNode.Tag = new Tuple<TransformModel>(tran);
                     //foreach (var filter in tran.Filters)
                     //{
                     //    var node = tranNode.Nodes.Add(filter.ToString());
@@ -110,10 +121,30 @@ namespace StorMan.UI
             }
             tree.ExpandAll();
             running = false;
+
+            if (nodeIndexList != null && nodeIndexList.Count > 0)
+            {
+                TreeNode node = null;
+                var index = -1;
+                for (var i = nodeIndexList.Count - 1; i >= 0; i--)
+                {
+                    index = nodeIndexList[i];
+                    if (index < 0)
+                        break;
+                    if (node != null && node.Nodes.Count <= index)
+                        break;
+                    node = (node == null ? tree.Nodes : node.Nodes)[index];
+                }
+
+                if (node != null)
+                    tree.SelectedNode = node;
+            }
         }
 
         private void tree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            if (e.Node == tree.SelectedNode)
+                return;
             if (e.Node != null && e.Node.Tag != null)
             {
                 this.bodyPanel.Controls.Clear();
@@ -123,7 +154,10 @@ namespace StorMan.UI
                 {
                     if (e.Node.Tag is ConvertedDataSetModel)
                     {
-
+                        var panel = new ConvertedDataSetViewPanel();
+                        var cds = e.Node.Tag as ConvertedDataSetModel;
+                        panel.ConvertedDataSet = cds;
+                        control = panel;
                     }
                     else if (e.Node.Tag is TransformModel)
                     {
@@ -235,7 +269,7 @@ namespace StorMan.UI
                 try
                 {
                     var panel = bodyPanel.Controls[0] as TransformViewPanel;
-                    var transform = this.CurrentTransform;
+                    var transform = panel.Transform;
                     if (transform == null)
                         return;
 
@@ -248,6 +282,83 @@ namespace StorMan.UI
                     MessageBox.Show("Hata: " + ex.ToString());
                 }
             }
+            else if (bodyPanel.Controls[0] is ConvertedDataSetViewPanel)
+            {
+                try
+                {
+                    var panel = bodyPanel.Controls[0] as ConvertedDataSetViewPanel;
+
+                    service.updateConvertedDataSet(panel.ConvertedDataSet.ID, panel.ConvertedDataSet.Name, panel.ConvertedDataSet.SourceXmlPath);
+
+                    ReloadTree();
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+            }
+        }
+
+        private void btnVeriKaynaginiSil_Click(object sender, EventArgs e)
+        {
+            if (bodyPanel.Controls.Count == 0)
+                return;
+
+            var service = new ConvertedDataSetService();
+            if (bodyPanel.Controls[0] is ConvertedDataSetViewPanel)
+            {
+                var panel = bodyPanel.Controls[0] as ConvertedDataSetViewPanel;
+                var cds = panel.ConvertedDataSet;
+                if (cds == null)
+                    return;
+
+                if (MessageBox.Show(String.Format("Bu veri kaynağı ({0})ve tüm bağlı dönüşümler silinecek, devam etmek istiyor musunuz?", cds.Name), "", MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        service.deleteConvertedDataSet(cds.ID);
+
+                        ReloadTree();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Hata: " + ex.ToString());
+                    }
+                }
+            }
+            else if (bodyPanel.Controls[0] is TransformViewPanel)
+            {
+                var panel = bodyPanel.Controls[0] as TransformViewPanel;
+                var tran = panel.Transform;
+                if (tran == null)
+                    return;
+
+                if (MessageBox.Show(String.Format("Bu dönüşüm ({0}) tüm bağlı filtre ve operasyonlar silinecek, devam etmek istiyor musunuz?", tran.Name), "", MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        service.deleteTransform(tran.ID);
+                        ReloadTree();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Hata: " + ex.ToString());
+                    }
+                }
+            }
+            
+        }
+
+        private void btnYeniVeriKaynagi_Click(object sender, EventArgs e)
+        {
+            var service = new ConvertedDataSetService();
+            service.createConvertedDataSet("Yeni Veri Kaynağı", "http://");
+
+            ReloadTree();
+
         }
     }
 }

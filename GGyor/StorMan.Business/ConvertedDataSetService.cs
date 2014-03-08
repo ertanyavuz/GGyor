@@ -20,7 +20,10 @@ namespace StorMan.Business
         public int createConvertedDataSet(string name, string sourceXmlPath)
         {
             return _repository.createConvertedDataSet(name, sourceXmlPath);
-            
+        }
+        public bool updateConvertedDataSet(int cdsId, string name, string sourceXmlPath)
+        {
+            return _repository.updateConvertedDataSet(cdsId, name, sourceXmlPath);
         }
 
         public List<ConvertedDataSetModel> getConvertedDataSets(bool getAll = false)
@@ -52,5 +55,9 @@ namespace StorMan.Business
             return _repository.updateTransform(transform);
         }
 
+        public bool deleteConvertedDataSet(int cdsId)
+        {
+            return _repository.deleteConvertedDataSet(cdsId);
+        }
     }
 }

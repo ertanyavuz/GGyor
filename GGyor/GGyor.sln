@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{9E6BD7E1-D23C-484E-A8D6-FE7F2382412F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GGLib", "GGLib\GGLib.csproj", "{C6C8C8DF-279B-49D2-952C-8F9D8E8EBA32}"
@@ -113,6 +115,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevExpress.12.2", "DevExpre
 		ExtDependencies\DevExpress.12.2\DevExpress.XtraWizard.v12.2.dll = ExtDependencies\DevExpress.12.2\DevExpress.XtraWizard.v12.2.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N11Lib", "N11Lib\N11Lib.csproj", "{2F3F72D6-43B0-452B-BB51-768A8DA9104E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +163,10 @@ Global
 		{639B5934-42A3-44C5-A2AC-CB7170C2F5DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{639B5934-42A3-44C5-A2AC-CB7170C2F5DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{639B5934-42A3-44C5-A2AC-CB7170C2F5DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3F72D6-43B0-452B-BB51-768A8DA9104E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3F72D6-43B0-452B-BB51-768A8DA9104E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3F72D6-43B0-452B-BB51-768A8DA9104E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3F72D6-43B0-452B-BB51-768A8DA9104E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -168,6 +176,7 @@ Global
 		{9E6BD7E1-D23C-484E-A8D6-FE7F2382412F} = {52C3412E-AD3B-4C8F-8987-4EFCF3D3F76A}
 		{C6C8C8DF-279B-49D2-952C-8F9D8E8EBA32} = {F9DE3C0F-E6D4-45C9-BFCC-B42934E6A57C}
 		{AB4CB60E-46B1-4C8F-ACAE-B5680F2D8A2A} = {F9DE3C0F-E6D4-45C9-BFCC-B42934E6A57C}
+		{2F3F72D6-43B0-452B-BB51-768A8DA9104E} = {F9DE3C0F-E6D4-45C9-BFCC-B42934E6A57C}
 		{B2F05D94-7A16-4516-B824-8A565BA6D344} = {E327437F-6874-4C16-86F7-02CFAFA27ECB}
 		{BFC34D3D-F9D2-41FC-A214-31EA8F43C786} = {E327437F-6874-4C16-86F7-02CFAFA27ECB}
 		{DD649428-D02F-4F0A-B82C-8AB458406B6B} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}

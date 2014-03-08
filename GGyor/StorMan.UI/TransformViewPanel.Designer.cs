@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransformViewPanel));
-            StorMan.Model.OperationModel operationModel3 = new StorMan.Model.OperationModel();
+            StorMan.Model.OperationModel operationModel2 = new StorMan.Model.OperationModel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTransformName = new System.Windows.Forms.TextBox();
             this.txtFilter = new System.Windows.Forms.TextBox();
@@ -39,14 +39,19 @@
             this.btnEditFilter = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.lbOperations = new System.Windows.Forms.ListBox();
-            this.operationControl = new StorMan.UI.UserControls.OperationControl();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.comparerDataGrid1 = new StorMan.UI.ComparerDataGrid();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
             this.btnEkle = new System.Windows.Forms.Button();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.lbOperations = new System.Windows.Forms.ListBox();
+            this.operationControl = new StorMan.UI.UserControls.OperationControl();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.rbModified = new System.Windows.Forms.RadioButton();
+            this.rbOriginal = new System.Windows.Forms.RadioButton();
+            this.rbComparison = new System.Windows.Forms.RadioButton();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.grid = new StorMan.UI.ComparerDataGrid();
+            this.chkHideUnmodifiedColumns = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,6 +62,7 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -125,7 +131,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(991, 216);
+            this.splitContainer1.Size = new System.Drawing.Size(1106, 216);
             this.splitContainer1.SplitterDistance = 71;
             this.splitContainer1.TabIndex = 8;
             // 
@@ -140,20 +146,21 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 700F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.splitContainer3, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 141F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(991, 141);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1106, 141);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // panel1
@@ -162,86 +169,10 @@
             this.panel1.Controls.Add(this.btnSil);
             this.panel1.Controls.Add(this.btnEkle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(894, 3);
+            this.panel1.Location = new System.Drawing.Point(803, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(94, 135);
+            this.panel1.Size = new System.Drawing.Size(114, 135);
             this.panel1.TabIndex = 6;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer3.Location = new System.Drawing.Point(103, 3);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.lbOperations);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.operationControl);
-            this.splitContainer3.Size = new System.Drawing.Size(785, 135);
-            this.splitContainer3.SplitterDistance = 392;
-            this.splitContainer3.TabIndex = 7;
-            // 
-            // lbOperations
-            // 
-            this.lbOperations.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbOperations.FormattingEnabled = true;
-            this.lbOperations.Location = new System.Drawing.Point(0, 0);
-            this.lbOperations.Name = "lbOperations";
-            this.lbOperations.Size = new System.Drawing.Size(392, 135);
-            this.lbOperations.TabIndex = 0;
-            this.lbOperations.SelectedIndexChanged += new System.EventHandler(this.lbOperations_SelectedIndexChanged);
-            // 
-            // operationControl
-            // 
-            this.operationControl.FieldList = ((System.Collections.Generic.List<string>)(resources.GetObject("operationControl.FieldList")));
-            this.operationControl.Location = new System.Drawing.Point(3, 5);
-            this.operationControl.Name = "operationControl";
-            operationModel3.DataType = null;
-            operationModel3.FieldName = null;
-            operationModel3.ID = 0;
-            operationModel3.Name = null;
-            operationModel3.OperationType = StorMan.Model.OperationTypeEnum.Carpma;
-            operationModel3.Order = null;
-            operationModel3.Value = "";
-            this.operationControl.Operation = operationModel3;
-            this.operationControl.Size = new System.Drawing.Size(283, 111);
-            this.operationControl.TabIndex = 0;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.splitContainer1);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.comparerDataGrid1);
-            this.splitContainer2.Size = new System.Drawing.Size(991, 773);
-            this.splitContainer2.SplitterDistance = 216;
-            this.splitContainer2.TabIndex = 9;
-            // 
-            // comparerDataGrid1
-            // 
-            this.comparerDataGrid1.ColumnsToCompare = null;
-            this.comparerDataGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comparerDataGrid1.Location = new System.Drawing.Point(0, 0);
-            this.comparerDataGrid1.ModifiedColumnSuffix = "_1";
-            this.comparerDataGrid1.ModifiedDataTable = null;
-            this.comparerDataGrid1.Name = "comparerDataGrid1";
-            this.comparerDataGrid1.OriginalDataTable = null;
-            this.comparerDataGrid1.Size = new System.Drawing.Size(991, 553);
-            this.comparerDataGrid1.TabIndex = 0;
-            this.comparerDataGrid1.ViewType = StorMan.UI.ComparerDataGrid.ViewTypeEnum.Original;
             // 
             // btnKaydet
             // 
@@ -273,13 +204,152 @@
             this.btnEkle.UseVisualStyleBackColor = true;
             this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.Location = new System.Drawing.Point(103, 3);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.lbOperations);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.operationControl);
+            this.splitContainer3.Size = new System.Drawing.Size(694, 135);
+            this.splitContainer3.SplitterDistance = 392;
+            this.splitContainer3.TabIndex = 7;
+            // 
+            // lbOperations
+            // 
+            this.lbOperations.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbOperations.FormattingEnabled = true;
+            this.lbOperations.Location = new System.Drawing.Point(0, 0);
+            this.lbOperations.Name = "lbOperations";
+            this.lbOperations.Size = new System.Drawing.Size(392, 135);
+            this.lbOperations.TabIndex = 0;
+            this.lbOperations.SelectedIndexChanged += new System.EventHandler(this.lbOperations_SelectedIndexChanged);
+            // 
+            // operationControl
+            // 
+            this.operationControl.FieldList = ((System.Collections.Generic.List<string>)(resources.GetObject("operationControl.FieldList")));
+            this.operationControl.Location = new System.Drawing.Point(3, 5);
+            this.operationControl.Name = "operationControl";
+            operationModel2.DataType = null;
+            operationModel2.FieldName = null;
+            operationModel2.ID = 0;
+            operationModel2.Name = null;
+            operationModel2.OperationType = StorMan.Model.OperationTypeEnum.Carpma;
+            operationModel2.Order = null;
+            operationModel2.Value = "";
+            this.operationControl.Operation = operationModel2;
+            this.operationControl.Size = new System.Drawing.Size(283, 111);
+            this.operationControl.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.chkHideUnmodifiedColumns);
+            this.panel2.Controls.Add(this.rbModified);
+            this.panel2.Controls.Add(this.rbOriginal);
+            this.panel2.Controls.Add(this.rbComparison);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(923, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(180, 135);
+            this.panel2.TabIndex = 8;
+            // 
+            // rbModified
+            // 
+            this.rbModified.AutoSize = true;
+            this.rbModified.Location = new System.Drawing.Point(12, 35);
+            this.rbModified.Name = "rbModified";
+            this.rbModified.Size = new System.Drawing.Size(85, 17);
+            this.rbModified.TabIndex = 2;
+            this.rbModified.TabStop = true;
+            this.rbModified.Text = "Değişen Veri";
+            this.rbModified.UseVisualStyleBackColor = true;
+            this.rbModified.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
+            // 
+            // rbOriginal
+            // 
+            this.rbOriginal.AutoSize = true;
+            this.rbOriginal.Location = new System.Drawing.Point(12, 6);
+            this.rbOriginal.Name = "rbOriginal";
+            this.rbOriginal.Size = new System.Drawing.Size(75, 17);
+            this.rbOriginal.TabIndex = 1;
+            this.rbOriginal.TabStop = true;
+            this.rbOriginal.Text = "Orjinal Veri";
+            this.rbOriginal.UseVisualStyleBackColor = true;
+            this.rbOriginal.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
+            // 
+            // rbComparison
+            // 
+            this.rbComparison.AutoSize = true;
+            this.rbComparison.Checked = true;
+            this.rbComparison.Location = new System.Drawing.Point(12, 62);
+            this.rbComparison.Name = "rbComparison";
+            this.rbComparison.Size = new System.Drawing.Size(117, 17);
+            this.rbComparison.TabIndex = 0;
+            this.rbComparison.TabStop = true;
+            this.rbComparison.Text = "Karşılaştırmalı Tablo";
+            this.rbComparison.UseVisualStyleBackColor = true;
+            this.rbComparison.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.grid);
+            this.splitContainer2.Size = new System.Drawing.Size(1106, 773);
+            this.splitContainer2.SplitterDistance = 216;
+            this.splitContainer2.TabIndex = 9;
+            // 
+            // grid
+            // 
+            this.grid.ColumnsToCompare = null;
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.Location = new System.Drawing.Point(0, 0);
+            this.grid.ModifiedColumnSuffix = "_1";
+            this.grid.ModifiedDataTable = null;
+            this.grid.Name = "grid";
+            this.grid.OriginalDataTable = null;
+            this.grid.ShowTransformedColumnsOnly = true;
+            this.grid.Size = new System.Drawing.Size(1106, 553);
+            this.grid.TabIndex = 0;
+            this.grid.ViewType = StorMan.UI.ComparerDataGrid.ViewTypeEnum.Both;
+            // 
+            // chkHideUnmodifiedColumns
+            // 
+            this.chkHideUnmodifiedColumns.AutoSize = true;
+            this.chkHideUnmodifiedColumns.Checked = true;
+            this.chkHideUnmodifiedColumns.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkHideUnmodifiedColumns.Location = new System.Drawing.Point(12, 93);
+            this.chkHideUnmodifiedColumns.Name = "chkHideUnmodifiedColumns";
+            this.chkHideUnmodifiedColumns.Size = new System.Drawing.Size(150, 17);
+            this.chkHideUnmodifiedColumns.TabIndex = 3;
+            this.chkHideUnmodifiedColumns.Text = "Değişmeyen sütunları gizle";
+            this.chkHideUnmodifiedColumns.UseVisualStyleBackColor = true;
+            this.chkHideUnmodifiedColumns.CheckedChanged += new System.EventHandler(this.chkHideUnmodifiedColumns_CheckedChanged);
+            // 
             // TransformViewPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer2);
             this.Name = "TransformViewPanel";
-            this.Size = new System.Drawing.Size(991, 773);
+            this.Size = new System.Drawing.Size(1106, 773);
             this.Load += new System.EventHandler(this.TransformViewPanel_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -293,6 +363,8 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -311,7 +383,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private ComparerDataGrid comparerDataGrid1;
+        private ComparerDataGrid grid;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnEditFilter;
         private System.Windows.Forms.SplitContainer splitContainer3;
@@ -320,5 +392,10 @@
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnEkle;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton rbModified;
+        private System.Windows.Forms.RadioButton rbOriginal;
+        private System.Windows.Forms.RadioButton rbComparison;
+        private System.Windows.Forms.CheckBox chkHideUnmodifiedColumns;
     }
 }

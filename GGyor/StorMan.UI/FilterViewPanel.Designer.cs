@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilterViewPanel));
             StorMan.Model.FilterModel filterModel1 = new StorMan.Model.FilterModel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.rbModified = new System.Windows.Forms.RadioButton();
+            this.rbOriginal = new System.Windows.Forms.RadioButton();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.filterControl = new StorMan.UI.UserControls.FilterControl();
             this.lbFilters = new System.Windows.Forms.ListBox();
@@ -53,6 +55,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.rbModified);
+            this.splitContainer1.Panel1.Controls.Add(this.rbOriginal);
             this.splitContainer1.Panel1.Controls.Add(this.btnKaydet);
             this.splitContainer1.Panel1.Controls.Add(this.filterControl);
             this.splitContainer1.Panel1.Controls.Add(this.lbFilters);
@@ -65,6 +69,30 @@
             this.splitContainer1.Size = new System.Drawing.Size(861, 659);
             this.splitContainer1.SplitterDistance = 106;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // rbModified
+            // 
+            this.rbModified.AutoSize = true;
+            this.rbModified.Checked = true;
+            this.rbModified.Location = new System.Drawing.Point(679, 49);
+            this.rbModified.Name = "rbModified";
+            this.rbModified.Size = new System.Drawing.Size(85, 17);
+            this.rbModified.TabIndex = 10;
+            this.rbModified.TabStop = true;
+            this.rbModified.Text = "Değişen Veri";
+            this.rbModified.UseVisualStyleBackColor = true;
+            this.rbModified.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
+            // 
+            // rbOriginal
+            // 
+            this.rbOriginal.AutoSize = true;
+            this.rbOriginal.Location = new System.Drawing.Point(679, 20);
+            this.rbOriginal.Name = "rbOriginal";
+            this.rbOriginal.Size = new System.Drawing.Size(75, 17);
+            this.rbOriginal.TabIndex = 9;
+            this.rbOriginal.Text = "Orjinal Veri";
+            this.rbOriginal.UseVisualStyleBackColor = true;
+            this.rbOriginal.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
             // 
             // btnKaydet
             // 
@@ -127,9 +155,10 @@
             this.comparerGrid.ModifiedDataTable = null;
             this.comparerGrid.Name = "comparerGrid";
             this.comparerGrid.OriginalDataTable = null;
+            this.comparerGrid.ShowTransformedColumnsOnly = false;
             this.comparerGrid.Size = new System.Drawing.Size(861, 549);
             this.comparerGrid.TabIndex = 0;
-            this.comparerGrid.ViewType = StorMan.UI.ComparerDataGrid.ViewTypeEnum.Original;
+            this.comparerGrid.ViewType = StorMan.UI.ComparerDataGrid.ViewTypeEnum.Modified;
             // 
             // FilterViewPanel
             // 
@@ -140,6 +169,7 @@
             this.Size = new System.Drawing.Size(861, 659);
             this.Load += new System.EventHandler(this.FilterViewPanel_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -153,8 +183,10 @@
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.ListBox lbFilters;
-        private ComparerDataGrid comparerGrid;
         private UserControls.FilterControl filterControl;
         private System.Windows.Forms.Button btnKaydet;
+        private ComparerDataGrid comparerGrid;
+        private System.Windows.Forms.RadioButton rbModified;
+        private System.Windows.Forms.RadioButton rbOriginal;
     }
 }

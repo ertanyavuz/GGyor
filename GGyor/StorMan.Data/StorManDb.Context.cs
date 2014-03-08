@@ -32,19 +32,21 @@ namespace StorMan.Data
         }
     
     
+        public DbSet<Category> Categories { get; set; }
+    
         public DbSet<ConvertedDataSet> ConvertedDataSets { get; set; }
     
         public DbSet<ConvertedDataSetHistory> ConvertedDataSetHistories { get; set; }
     
+        public DbSet<ExchangeRate> ExchangeRates { get; set; }
+    
         public DbSet<Filter> Filters { get; set; }
+    
+        public DbSet<LocalCategory> LocalCategories { get; set; }
     
         public DbSet<Operation> Operations { get; set; }
     
         public DbSet<Transform> Transforms { get; set; }
-    
-        public DbSet<Category> Categories { get; set; }
-    
-        public DbSet<LocalCategory> LocalCategories { get; set; }
     
     }
 
