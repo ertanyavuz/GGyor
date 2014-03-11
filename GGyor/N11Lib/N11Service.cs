@@ -228,46 +228,49 @@ namespace N11Lib
             var sourceList = GetSourceProductsXml();
             var n11List = GetProductsJson();
 
+            sourceList = sourceList.Where(x => x.productSellerCode.Contains("NX.MFVEY.004")).ToList();
+            n11List = n11List.Where(x => x.productSellerCode.Contains("NX.MFVEY.004")).ToList();
+
             var i = 0;
-            //foreach (var sourceProd in sourceList)
-            //{
-            //    i++;
-            //    //if (i < 900)
-            //    //    continue;
-            //    var destProd = n11List.FirstOrDefault(x => x.productSellerCode.Contains(sourceProd.productSellerCode));
-            //    if (destProd == null)
-            //    {
-            //        Debug.WriteLine(String.Format("{1}\t{0} hedefte bulunamadı.", sourceProd.productSellerCode, i));
-            //    }
-            //    else
-            //    {
-            //        var sourceAmount = sourceProd.stockAmount;
-            //        var destAmount = GetProductStockJson(destProd.id);
+            foreach (var sourceProd in sourceList)
+            {
+                i++;
+                //if (i < 900)
+                //    continue;
+                var destProd = n11List.FirstOrDefault(x => x.productSellerCode.Contains(sourceProd.productSellerCode));
+                if (destProd == null)
+                {
+                    Debug.WriteLine(String.Format("{1}\t{0} hedefte bulunamadı.", sourceProd.productSellerCode, i));
+                }
+                else
+                {
+                    var sourceAmount = sourceProd.stockAmount;
+                    var destAmount = GetProductStockJson(destProd.id);
 
-            //        if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
-            //        {
-            //            Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.productSellerCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
+                    if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
+                    {
+                        Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.productSellerCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
 
-            //            // Update
-            //            if (destProd.displayPrice != sourceProd.displayPrice)
-            //            {
-            //                // update price
-            //                Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
-            //                UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
-            //            }
-            //            if (sourceAmount != destAmount)
-            //            {
-            //                // update stock
-            //                Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
-            //                UpdateProductStock(destProd.productSellerCode, sourceAmount);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.productSellerCode, i));
-            //        }
-            //    }
-            //}
+                        // Update
+                        if (destProd.displayPrice != sourceProd.displayPrice)
+                        {
+                            // update price
+                            Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
+                            UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
+                        }
+                        if (sourceAmount != destAmount)
+                        {
+                            // update stock
+                            Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
+                            UpdateProductStock(destProd.productSellerCode, sourceAmount);
+                        }
+                    }
+                    else
+                    {
+                        Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.productSellerCode, i));
+                    }
+                }
+            }
 
             i = 0;
             var diffList = n11List.Where(x => !sourceList.Any(y => x.productSellerCode.Contains(y.productSellerCode))).ToList();
