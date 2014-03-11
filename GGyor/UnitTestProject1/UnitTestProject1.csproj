@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="BusinessTest\BusinessTest.cs" />
     <Compile Include="LibTest\UnitTest1.cs" />
+    <Compile Include="LibTest\N11LibTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataTest\DataTest.cs" />
     <Compile Include="DataTest\CategoryRepositoryTest.cs" />
@@ -76,6 +77,10 @@
     <ProjectReference Include="..\GGLib\GGLib.csproj">
       <Project>{c6c8c8df-279b-49d2-952c-8f9d8e8eba32}</Project>
       <Name>GGLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\N11Lib\N11Lib.csproj">
+      <Project>{2F3F72D6-43B0-452B-BB51-768A8DA9104E}</Project>
+      <Name>N11Lib</Name>
     </ProjectReference>
     <ProjectReference Include="..\StorMan.Business\StorMan.Business.csproj">
       <Project>{dcc5b325-eb8c-44e9-b989-c40751c82067}</Project>
