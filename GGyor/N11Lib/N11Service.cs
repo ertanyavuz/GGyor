@@ -179,9 +179,9 @@ namespace N11Lib
                                                         {
                                                             var price = decimal.Parse(x.Replace(".", ","));
                                                             if (curr == "USD")
-                                                                price = price*(decimal) 2.2158;
+                                                                price = price * (decimal)2.2499;
                                                             else if (curr == "EUR")
-                                                                price = price*(decimal) 3.0755;
+                                                                price = price * (decimal)3.1209;
                                                             else if (curr != "TL")
                                                                 throw new NotImplementedException();
 
@@ -228,8 +228,8 @@ namespace N11Lib
             var sourceList = GetSourceProductsXml();
             var n11List = GetProductsJson();
 
-            sourceList = sourceList.Where(x => x.productSellerCode.Contains("NX.MFVEY.004")).ToList();
-            n11List = n11List.Where(x => x.productSellerCode.Contains("NX.MFVEY.004")).ToList();
+            //sourceList = sourceList.Where(x => x.productSellerCode.Contains("NX.MFVEY.004")).ToList();
+            //n11List = n11List.Where(x => x.productSellerCode.Contains("NX.MFVEY.004")).ToList();
 
             var i = 0;
             foreach (var sourceProd in sourceList)
@@ -272,19 +272,20 @@ namespace N11Lib
                 }
             }
 
-            i = 0;
-            var diffList = n11List.Where(x => !sourceList.Any(y => x.productSellerCode.Contains(y.productSellerCode))).ToList();
-            foreach (var destProd in diffList)
-            {
-                i++;
-                Debug.WriteLine("{0}", i);
-                var sourceProd = sourceList.FirstOrDefault(x => destProd.productSellerCode.Contains(x.productSellerCode));
-                if (sourceProd == null)
-                {
-                    // Remove
-                    RemoveProduct(destProd.productSellerCode);
-                }
-            }
+            //i = 0;
+            //var diffList = n11List.Where(x => !sourceList.Any(y => x.productSellerCode.Contains(y.productSellerCode))).ToList();
+            //foreach (var destProd in diffList)
+            //{
+            //    i++;
+            //    //Debug.WriteLine("{0}", i);
+            //    var sourceProd = sourceList.FirstOrDefault(x => destProd.productSellerCode.Contains(x.productSellerCode));
+            //    if (sourceProd == null)
+            //    {
+            //        // Remove
+            //        RemoveProduct(destProd.productSellerCode);
+            //        Debug.WriteLine("{0} sıfırlandı\t{1}\t{2}", i, destProd.productSellerCode, destProd.title);
+            //    }
+            //}
 
             return null;
         }
