@@ -179,9 +179,9 @@ namespace N11Lib
                                                         {
                                                             var price = decimal.Parse(x.Replace(".", ","));
                                                             if (curr == "USD")
-                                                                price = price * (decimal)2.2499;
+                                                                price = price * (decimal)2.2284;
                                                             else if (curr == "EUR")
-                                                                price = price * (decimal)3.1209;
+                                                                price = price * (decimal)3.1093;
                                                             else if (curr != "TL")
                                                                 throw new NotImplementedException();
 
