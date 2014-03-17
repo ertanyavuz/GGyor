@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Xml.Linq;
+using EntegrasyonServiceBase;
 using N11Lib.CategoryService;
 using N11Lib.ProductService;
 using N11Lib.ProductStockService;
@@ -17,7 +18,7 @@ using Authentication = N11Lib.ProductService.Authentication;
 
 namespace N11Lib
 {
-    public class N11Service
+    public class N11Service : EntegrasyonServiceBase.EntegrasyonServiceBase
     {
         private string serviceUrlBase = "";
         private string appKey = "67a73f10-3704-426e-ac9e-038a9a8cfcd0";
@@ -46,12 +47,63 @@ namespace N11Lib
             }
         }
 
-        public object GetCategories()
+        public List<CategoryModel> GetCategories()
         {
             var service = new CategoryService.CategoryServicePortClient();
+            var sw = new Stopwatch();
+            sw.Start();
+
             var result = service.GetTopLevelCategories(new GetTopLevelCategoriesRequest());
 
-            return result.categoryList;
+            categoryCount = 1;
+            var catList = result.categoryList.Select(x => new CategoryModel
+            {
+                id = x.id,
+                name = x.name
+            }).ToList();
+
+            var i = 0;
+            catList.ForEach(x =>
+            {
+                x.subCategories = getSubCategories(service, x);
+                //Debug.WriteLine("{0} - {1} ({2})", i, x.name, x.subCategories.Count);
+            });
+            sw.Stop();
+            Debug.WriteLine("Elapsed=" + sw.ElapsedMilliseconds.ToString());
+            return catList;
+
+        }
+
+        private int categoryCount = 1;
+        private List<CategoryModel> getSubCategories(CategoryServicePortClient service, CategoryModel cat)
+        {
+            Debug.WriteLine("{0}\t{1}\t{2}\t{3}", categoryCount, cat.id, cat.parent == null ? 0 : cat.parent.id, cat.name);
+            categoryCount++;
+
+            var response = service.GetSubCategories(new GetSubCategoriesRequest { categoryId = cat.id });
+            if (response.result.status != "success")
+            {
+                Debug.WriteLine("Kategori bulunamadı: {0} - {1}", cat.id, cat.ToString());
+                return new List<CategoryModel>();
+            }
+            if (response.category == null || response.category.Length == 0)
+                return new List<CategoryModel>();
+            var list = response.category[0].subCategoryList;
+            if (list == null)
+            {
+                //Debug.Write("<-");
+                return new List<CategoryModel>();
+            }
+            var subCatList = list.Select(y => new CategoryModel
+            {
+                id = y.id,
+                name = y.name,
+                parent = cat,
+            }).ToList();
+
+            subCatList.ForEach(y => y.subCategories = getSubCategories(service, y));
+
+            return subCatList;
         }
 
         public object GetProducts()
@@ -174,49 +226,64 @@ namespace N11Lib
                 dt.Rows.Add(dr);
             }
 
+            var kurTable = GetDovizKurlari();
+            var usdKur = kurTable["USD"];
+            var eurKur = kurTable["EUR"];
+            var karAmount = 10;
+
+            if (usdKur < 1 || eurKur < 1)
+            {
+                throw new Exception("Kurlarda bir hata var.");
+            }
+
             var productList = new List<ProductModel>();
             Func<string, string, string, decimal> calculatePrice = (x, curr, kdv) =>
                                                         {
                                                             var price = decimal.Parse(x.Replace(".", ","));
                                                             if (curr == "USD")
-                                                                price = price * (decimal)2.2284;
+                                                                price = price * usdKur;
                                                             else if (curr == "EUR")
-                                                                price = price * (decimal)3.1093;
+                                                                price = price * eurKur;
                                                             else if (curr != "TL")
                                                                 throw new NotImplementedException();
 
                                                             price = price*(int.Parse(kdv) + 100)/100;
                                                             price = Math.Round(price*100) / 100;
-                                                            price += 10;
+                                                            price += karAmount;
                                                             return price;
                                                         };
 
             foreach (DataRow dr in dt.Rows)
             {
-                //var prod = new ProductBasic
-                //           {
-                //               //id = dr["id"],
-                //               title = (string) dr["label"],
-                //               //subtitle = (string)x["subtitle"],
-                //               //price = (decimal)x["price"],
-                //               productSellerCode = (string) dr["stockCode"],
-                //               //saleStatus = (string)x["saleStatus"],
-                //               displayPrice = calculatePrice((string)dr["price4"], (string)dr["currencyAbbr"], (string) dr["tax"]),
-
-                //               //// x["productStatus"]
-                //           };
                 var prod = new ProductModel
-                           {
-                               //id = dr["id"],
-                               title = (string)dr["label"],
-                               //subtitle = (string)x["subtitle"],
-                               //price = (decimal)x["price"],
-                               productSellerCode = (string)dr["stockCode"],
-                               //saleStatus = (string)x["saleStatus"],
-                               displayPrice = calculatePrice((string)dr["price4"], (string)dr["currencyAbbr"], (string)dr["tax"]),
-                               stockAmount = int.Parse(dr["stockAmount"].ToString())
-                           };
+                {
+                    //id = dr["id"],
+                    title = (string) dr["label"],
+                    stockCode = (string) dr["stockCode"],
+                    displayPrice = calculatePrice((string) dr["price4"], (string) dr["currencyAbbr"], (string) dr["tax"]),
+                    stockAmount = int.Parse(dr["stockAmount"].ToString()),
+
+                    label = (string) dr["label"],
+                    brand = (string) dr["brand"],
+                    mainCategory = (string) dr["mainCategory"],
+                    category = (string) dr["category"],
+                    subCategory = (string) dr["subCategory"],
+
+                    picture1Path = (string)dr["picture1Path"],
+                    picture2Path = (string)dr["picture2Path"],
+                    picture3Path = (string)dr["picture3Path"],
+                    picture4Path = (string)dr["picture4Path"],
+
+                    details = (string)dr["details"],
+                    //rebatedPriceWithoutTax = (string)dr["rebatedPriceWithoutTax"],
+                };
                 productList.Add(prod);
+
+
+                //<root>
+                //  <item>
+                //    <rebatedPriceWithoutTax>10.67</rebatedPriceWithoutTax>
+                //  </item>
             }
 
             return productList;
@@ -237,10 +304,10 @@ namespace N11Lib
                 i++;
                 //if (i < 900)
                 //    continue;
-                var destProd = n11List.FirstOrDefault(x => x.productSellerCode.Contains(sourceProd.productSellerCode));
+                var destProd = n11List.FirstOrDefault(x => x.productSellerCode == StockCodeToSellerCode(sourceProd.stockCode));
                 if (destProd == null)
                 {
-                    Debug.WriteLine(String.Format("{1}\t{0} hedefte bulunamadı.", sourceProd.productSellerCode, i));
+                    Debug.WriteLine(String.Format("{1}\t{0} hedefte bulunamadı.", sourceProd.stockCode, i));
                 }
                 else
                 {
@@ -249,7 +316,7 @@ namespace N11Lib
 
                     if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
                     {
-                        Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.productSellerCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
+                        Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
 
                         // Update
                         if (destProd.displayPrice != sourceProd.displayPrice)
@@ -267,7 +334,7 @@ namespace N11Lib
                     }
                     else
                     {
-                        Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.productSellerCode, i));
+                        Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
                     }
                 }
             }
@@ -288,6 +355,36 @@ namespace N11Lib
             //}
 
             return null;
+        }
+
+        public void CreateProduct(ProductModel product)
+        {
+            var service = new ProductServicePortClient();
+            service.SaveProduct(new SaveProductRequest
+                                {
+                                    auth = this.ProductAuthentication,
+                                    product = new ProductRequest
+                                    {
+                                        title = product.title,
+                                        productSellerCode = StockCodeToSellerCode(product.stockCode),
+                                        price = product.displayPrice,
+                                        approvalStatus = "",
+                                        attributes = new ProductAttributeRequest[0],
+                                        category = new CategoryRequest(),
+                                        description = "",
+                                        discount = new ProductDiscountRequest(),
+                                        expirationDate = "",
+                                        images = new ProductImage[0],
+                                        preparingDay = "",
+                                        productCondition = "",
+                                        productionDate = "",
+                                        saleEndDate = "",
+                                        saleStartDate = "",
+                                        shipmentTemplate = "",
+                                        stockItems = new ProductSkuRequest[0],
+                                        subtitle = ""
+                                    }
+                                });
         }
 
         public bool UpdateProduct(string sellerCode, decimal newPrice)
@@ -377,8 +474,6 @@ namespace N11Lib
             return ((string)obj["response"]["header"]["error"]) == "";
             
         }
-
-
 
         protected JObject callServiceWithGet(string url, string[] keys, string[] values)
         {
@@ -508,6 +603,20 @@ namespace N11Lib
                 var str = stream.ReadToEnd();
                 return JObject.Parse(str);
             }
+        }
+
+
+        public static string StockCodeToSellerCode(string stockCode)
+        {
+            return String.Format("gni_{0}_elektrostilxml", stockCode);
+        }
+
+        public static string SellerCodeToStockCode(string sellerCode)
+        {
+            if (sellerCode.StartsWith("gni_") && sellerCode.EndsWith("_elektrostilxml"))
+                return sellerCode.Substring(4, sellerCode.Length - 19);
+
+            return "";
         }
 
     }

@@ -1,0 +1,3980 @@
+﻿1	232	0	Bebek, Çocuk ve Anne Bakımı
+2	276	232	Emzik ve Aksesuarları
+3	1140	276	Emzik Aksesuarları
+4	1263	276	Kauçuk Emzikler
+5	751	276	Silikon Emzikler
+6	284	232	Park Yatak, Oyun Parkı, Mama Sandalyesi, Salıncak, Hamak
+7	1337	284	Bebek Salıncakları
+8	1506	284	Mama Sandalyeleri
+9	611	284	Park Yatakları ve Oyun Parkları
+10	3039	611	Park Yatak ve Oyun Parkı Oyuncakları
+11	3450	611	Park Yatakları, Oyun Parkları
+12	351	232	Sağlık
+13	955	351	Ateş Ölçerler ve Termometreler
+14	447	351	Nem Cihazları
+15	1339	351	Radyasyon Koruyucular
+16	508	351	Sıcak ve Soğuk Su Torbaları ve Büyotlar
+17	315	232	Tuvalet Eğitimi
+18	448	315	Lazımlıklar ve Oturaklar
+19	1141	315	Klozet Adaptörleri
+20	1546	315	Alıştırma Külotları
+21	314	232	Bebek Bezi ve Islak Mendiller
+22	578	314	Bebek Bezi
+23	2477	578	Bebek Bezleri
+24	2603	578	Alt Açma Minder ve Pedleri
+25	1864	578	Bebek Bezi Çöp Sistemleri
+26	996	314	Islak Mendiller
+27	325	232	Bebek ve Çocuk Odası
+28	956	325	Bebek ve Çocuk Odası Dekorasyonu
+29	2730	956	Aksesuarlar
+30	1808	956	Sticker
+31	2788	956	Halı, Paspas ve Yer Minderi
+32	3157	956	Saat
+33	2847	956	Aydınlatma
+34	2481	956	Dönence
+35	1180	325	Bebek ve Çocuk Odası Mobilyası
+36	3338	1180	Aksesuarlar
+37	2238	1180	Oyuncak Dolapları ve Hazneleri
+38	2239	1180	Puflar
+39	3580	1180	Masa ve Sandalye
+40	2236	1180	Dolap ve Gardrop
+41	1756	1180	Raf ve Kitaplıklar
+42	3044	1180	Bebek ve Çocuk Odası Takımları
+43	3276	1180	Komodinler
+44	1691	1180	Şifonyer ve Süsleme Üniteleri
+45	2424	1180	Emzirme Koltukları
+46	3454	1180	Alt Açma Üniteleri
+47	1690	1180	Dolap ve Çekmece Kulpları
+48	752	325	Bebek ve Çocuk Odası Tekstili
+49	2356	752	Yastık ve Yastık Kılıfları
+50	2235	752	Nevresim Takımı ve Uyku Setleri
+51	2543	752	Perde ve Cibinlikler
+52	3335	752	Alez ve Çarşaflar
+53	3514	752	Pike, Yorgan ve Battaniyeler
+54	3336	752	Yatak ve Yatak Örtüleri
+55	362	232	Bebek Hediyelik ve Parti Malzemeleri
+56	1441	362	Parti Malzemeleri
+57	1089	362	Bebek Hediyelik
+58	1918	1089	Yenidoğan Kapı Süsü
+59	2538	1089	Bez Pasta
+60	2303	1089	Bebek Şekeri ve Sepetleri
+61	321	232	Ev Güvenliği
+62	1476	321	Stoperler ve Koruyucu Kilitler
+63	614	321	Priz ve Köşe Koruyucuları
+64	542	321	Bebek Telsizleri
+65	1178	321	Güvenlik Kameraları
+66	265	232	Beslenme ve Mama
+67	837	265	Mama ve Besin Takviyeleri
+68	2234	837	Biberon Mamaları
+69	2657	837	Kaşık Mamaları
+70	1473	265	Biberon ve Biberon Aksesuarları
+71	3577	1473	Biberon Aksesuarları
+72	2353	1473	Biberon Emzikleri
+73	2602	1473	Biberon Isıtıcıları
+74	2178	1473	Biberon Sterilizatörleri
+75	1863	1473	Biberon
+76	1309	265	Besin Hazırlıyıcılar ve Beslenme Gereçleri
+77	3219	1309	Alıştırma Bardakları
+78	1687	1309	Meyve Fileleri
+79	2729	1309	Tabak, Kaşık ve Çatal
+80	2904	1309	Termoslar ve Mataralar
+81	266	232	Banyo ve Bakım
+82	477	266	Bebek Bakım Çantaları
+83	1474	266	Temizlik ve Bakım Ürünleri
+84	1475	266	Küvetler ve Aksesuarları
+85	613	266	Banyo Termometreleri
+86	509	266	Kremler, Pudralar ve Yağlar
+87	915	266	Güneş Koruma ve Bakım Ürünleri
+88	1440	266	Bakım Setleri
+89	297	232	Tekstil, Aksesuar ve Kostüm
+90	1179	297	Tekstil ve Aksesuarlar
+91	2480	1179	Şapkalar
+92	2479	1179	Hamile ve Emzirme Yastıkları
+93	3222	1179	Mayolar
+94	2906	1179	Mama Önlükleri
+95	2541	1179	Ağız Bezleri
+96	2542	1179	Çocuk Çantaları
+97	1920	1179	Deniz ve Plaj Aksesuarları
+98	3400	1179	Patikler ve Çoraplar
+99	510	297	Kostümler
+100	418	232	Emzirme Ürünleri
+101	577	418	Süt Arttırıcılar
+102	446	418	Süt Saklama Kapları ve Poşetleri
+103	838	418	Göğüs Pompaları
+104	873	418	Göğüs Kremleri
+105	1587	418	Göğüs Pedleri ve Koruyucuları
+106	914	418	Emzirme Önlük ve Yastıkları
+107	357	232	Ana Kucağı, Oto Koltuğu, Bebek Arabası, Puset, Yürüteç
+108	1088	357	Ana Kucağı ve Oto Koltuğu
+109	2233	1088	Oto Aksesuar ve Oyuncakları
+110	1990	1088	Yükselticiler
+111	2782	1088	Kangurular
+112	3330	1088	Oto Koltukları
+113	2726	1088	Ev Tipi Ana Kucakları
+114	1262	357	Yürüteçler
+115	541	357	Bebek Arabası ve Puset
+116	3272	541	Bebek Arabaları ve Baston Pusetler
+117	3510	541	Seyahat Sistemleri ve Travel Sistemleri
+118	1683	541	3 Tekerlekli Bebek Arabaları
+119	1752	541	Bebek Arabası Aksesuarları
+120	3215	541	İkiz Bebek Arabaları
+121	2844	541	Portbebeler
+122	225	0	Beyaz Eşya
+123	381109	225	Isıtma ve Soğutma
+124	382050	381109	Kombi
+125	382052	381109	Sobalar ve Isıtıcılar
+126	381149	381109	Hava Perdeleri
+127	382051	381109	Radyatör
+128	382054	381109	Termosifon
+129	382053	381109	Şofben
+130	381148	381109	Klimalar
+131	382055	381109	Vantilatör
+132	382128	225	Endüstriyel Ürünler
+133	429105	382128	Fırsat Köşesi
+134	383116	382128	Endüstriyel Pişirme
+135	383115	382128	Endüstriyel Bulaşık
+136	383114	382128	Endüstriyel Soğutma
+137	383117	382128	Endüstriyel Fırınlar
+138	381	225	Beyaz Eşya ve Ankastre
+139	580	381	Bulaşık Makineleri
+140	759	381	Beyaz Eşya Yedek Parça
+141	479	381	Derin Dondurucular
+142	480	381	Fırınlar
+143	1341	381	Ankastre Ürünler
+144	515	381	Davlumbazlar
+145	1185	381	Aspiratörler
+146	581	381	Buzdolabı
+147	401050	381	Beyaz Eşya Setler
+148	382100	381	Mini,Midi ve Mikrodalga Fırınlar
+149	448100	381	Diğer
+150	1632	381	Ocak
+151	876	381	Su Sebili
+152	1183	381	Çamaşır Makinesi
+153	452	381	Kurutma Makinesi
+154	236	0	Bilgisayar
+155	409	236	Ofis Elektroniği
+156	1374	409	Akıllı Tahtalar
+157	684	409	Evrak İmha Makinesı
+158	1126	409	Priz
+159	470	409	Barkod  Ürünleri
+160	440	409	Projeksiyon Aksesuarları
+161	2717	440	Projeksiyon Lambası
+162	2529	440	Projeksiyon Kabloları
+163	3383	440	Sunum Kumandaları
+164	2043	440	Projeksiyon Askı Aparatı
+165	2467	440	Projeksiyon Perdesi
+166	1299	409	Projeksiyon
+167	1131	409	PVC Kaplama
+168	1032	409	Faks Aksesuarları
+169	502	409	Tepegözler
+170	1413	409	Hesap Makinesi
+171	749	409	Para Sayma Makinesi
+172	747	409	Fotokopi Makinesi
+173	748	409	Yazarkasa
+174	410	236	Oyun ve Yazılım
+175	1306	410	Ofis 
+176	1034	410	Antivirüs 
+177	1414	410	İşletim Sistemi
+178	476	410	Uygulama 
+179	993	410	Grafik , Tasarım
+180	947	410	Pc Oyun 
+181	870	410	Diğer 
+182	610	410	Hobi 
+183	793	410	Eğitim 
+184	412	236	Bilgisayar Bileşenleri
+185	1231	412	Optik Sürücü
+186	1544	412	Ekran Kartı
+187	1093	412	Diğer Bilgisayar Bileşenleri
+188	1230	412	Anakart
+189	997	412	Power Supply (PSU)
+190	1507	412	Soğutucu, Fan
+191	1090	412	Ses Kartı
+192	1380	412	Hard Disk
+193	911	412	Bellek (RAM)
+194	802	412	Capture Kart
+195	1264	412	Kasa 
+196	1588	412	İşlemci 
+197	1181	412	Televizyon Kartları
+198	376	236	Yedekleme Ürünleri
+199	1233	376	Usb Flash Bellek 
+200	839	376	Media Player 
+201	1420	376	Taşınabilir Disk
+202	615	376	Hafıza Kartları
+203	327	236	Çevre Birimleri
+204	1594	327	DVD, HDD Kasaları
+205	1373	327	Joystick, Gamepad
+206	792	327	Kulaklık, Mikrofon
+207	3210	792	Kulaklık
+208	3030	792	Mikrofon
+209	2168	792	Mikrofonlu Kulaklık
+210	1513	327	Grafik Tabletler
+211	905	327	Klavye, Mouse
+212	2650	905	Klavye
+213	1977	905	Klavye ve Mouse Setleri
+214	1742	905	Mouse
+215	1083	327	Ses Sistemleri
+216	1543	327	Kompresör
+217	1130	327	Webcam 
+218	809	327	Priz
+219	845	327	Mouse Pad
+220	1047	327	Monitör , Ekran
+221	539	327	Ups, Güç Kaynağı
+222	328	236	Modem ve Ağ Ürünleri
+223	1191	328	Modem
+224	3407	1191	3G Modem
+225	2736	1191	SHDSL
+226	1923	1191	ADSL
+227	1764	1191	Uydunet
+228	989	328	Ağ Ürünleri
+229	2411	989	Kabinetler
+230	2552	989	Switch ve Hub
+231	3165	989	Ethernet Kartları
+232	1927	989	Acces Point ve Router 
+233	2116	989	Network Kartları
+234	2977	989	Nas Sürücüler
+235	2225	989	Print Server
+236	3499	989	USB Ürünleri
+237	3319	989	Bluetooth Ürünleri
+238	2894	989	Anten
+239	3318	989	İnternet Telefonları
+240	2336	989	Network Görüntü Aktarıcıları
+241	1030	328	Diğer
+242	264	236	Yazıcı ve Tarayıcı
+243	1038	264	Yazıcı
+244	3098	1038	Taşınabilir Yazıcı
+245	3036	1038	Fotoğraf Yazıcıları
+246	3341	1038	Diğer Yazıcılar
+247	2475	1038	Barkod ve Etiket Yazıcı
+248	2846	1038	Lazer Yazıcı
+249	2180	1038	Mürekkep Püskürtmeli Yazıcı
+250	3278	1038	Nokta Vuruşlu Yazıcı
+251	2421	1038	Çok Fonksiyonlu Yazıcı
+252	1136	264	Tarayıcı
+253	386	236	Bilgisayarlar ve Sunucular
+254	1342	386	Masaüstü Bilgisayar
+255	585	386	Notebook, Netbook ve Tablet
+256	3049	585	iPad ve Tabletler
+257	1696	585	Netbook
+258	2913	585	Notebook
+259	1046	386	Sunucular
+260	429100	236	Fırsat Köşesi
+261	431104	429100	Bilgisayar Fırsat Köşesi
+262	267	236	Güvenlik ve Alarm Sistemleri
+263	804	267	Elektronik Kasalar
+264	1186	267	Kamera Kayıt Kartı
+265	1040	267	Alarm Sistemleri Aksesuarları
+266	805	267	Diğer Güvenlik Ekipmanları
+267	513	267	Güvenlik Kamerası
+268	1510	267	Duman, Gaz Dedektörü
+269	692	267	Sensörler
+270	998	267	Güvenlik Kamerası Aksesuarları
+271	916	267	Alarm Sistemleri
+272	302	236	Sarf Malzemeleri
+273	912	302	Diğer Sarf Malzemeleri
+274	1307	302	Toner
+275	1472	302	Kartuş
+276	797	302	Kağıtlar
+277	576	302	Kartuş Dolum Ürünleri
+278	1135	302	Şerit (Yazıcı)
+279	353	236	Bilgisayar Aksesuarları
+280	1480	353	Taşınabilir Disk Aksesuarları
+281	1192	353	iPad, Tablet Aksesuarları
+282	2550	1192	Kulaklık
+283	3285	1192	Etiketler
+284	3164	1192	Kalem (Stylus)
+285	3284	1192	Data Kablosu ve Adaptörler
+286	2737	1192	Çanta, Kılıf ve Askı
+287	2797	1192	Şarj Cihazı
+288	2916	1192	Ekran Koruyucu
+289	2975	1192	Araç Kitleri
+290	2429	1192	Klavye ve Aksesuarları
+291	2248	1192	Diğer Aksesuar
+292	3591	1192	Toplu Aksesuar Satışı
+293	3590	1192	Kamera Bağlantı Kitleri
+294	3108	1192	Dock Station & Stand
+295	921	353	Monitör Aksesuarları
+296	923	353	Adaptör , Çeviriciler
+297	619	353	Diğer Aksesuarlar
+298	1266	353	Dizüstü, Laptop, Netbook Aksesuarları
+299	2852	1266	Ekran Koruyucuları
+300	3584	1266	Adaptör, Şarj Cihazı
+301	1818	1266	Laptop Etiketleri
+302	3522	1266	Bağlantı Araçları
+303	1817	1266	Soğutucular
+304	3523	1266	Laptop Hoparlörü
+305	1814	1266	Batarya (Pil)
+306	1926	1266	Diğer Dizüstü Aksesuarları
+307	1871	1266	Dock Station ve Stand
+308	3587	1266	Güvenlik Ürünleri
+309	3588	1266	PCMCIA Kartlar
+310	2000	1266	Led Işıklar
+311	2242	1266	Çanta ve Kılıf
+312	999	353	Bilgisayar Kabloları 
+313	419	236	Bilgisayar Yedek Parça
+314	1477	419	Klavye
+315	840	419	Diğer Yedek Parçalar
+316	724	419	Ekran
+317	1265	419	Adaptör
+318	642	419	Chipsetler
+319	238	0	Giyim ve Aksesuarları
+320	293	238	Çocuk Giyim
+321	1206	293	Kız Çocuk İç ve Uyku Giyim 
+322	1885	1206	İç Giyim Üst 
+323	2993	1206	İç Giyim Alt 
+324	2675	1206	Pijamalar 
+325	2624	1206	Gecelik ve Sabahlık 
+326	383260	293	Çocuk Aksesuarları
+327	386114	293	Çocuk Kostümleri
+328	1277	293	Erkek Çocuk Aksesuar 
+329	2868	1277	Kemer, Pantolon Askısı
+330	3535	1277	Şapka ve Şemsiye
+331	2199	1277	Çorap
+332	2569	1277	Kravat
+333	1526	293	Erkek Çocuk Giyim 
+334	1835	1526	Triko
+335	2568	1526	Pantolon
+336	2321	1526	Takımlar
+337	1833	1526	Ceket ve Yelek 
+338	2266	1526	Eşofman ve Sweatshirt
+339	2195	1526	Gömlek 
+340	2384	1526	Şort ve Roller
+341	2999	1526	Dış Giyim
+342	2138	1526	Jean
+343	2809	1526	T-Shirt ve Atlet
+344	1486	293	Kız Çocuk Plaj Giyim 
+345	2074	1486	Mayo ve Bikini
+346	2998	1486	Plaj Havlusu
+347	887	293	Kız Çocuk Giyim 
+348	2271	887	Dış Giyim
+349	2076	887	Jean
+350	3059	887	Eşofman ve Sweatshirt
+351	1778	887	Şort ve Kapri 
+352	2077	887	Gömlek Bluz ve Tunik
+353	2198	887	T shirt , Body ve Atletler
+354	3473	887	Etek 
+355	3474	887	Triko
+356	1891	887	Elbise
+357	2385	887	Takımlar
+358	2931	887	Ceket ve Yelek 
+359	2932	887	Jile ve Tulum
+360	2570	887	Pantolon ve Tayt 
+361	1009	293	Erkek Çocuk İç ve Uyku Giyim 
+362	3423	1009	İç Giyim Üst 
+363	3533	1009	Pijama
+364	2680	1009	İç Giyim Alt 
+365	886	293	Erkek Çocuk Plaj Giyim 
+366	2270	886	Plaj Havlusu, Terlik
+367	3362	886	Mayo 
+368	1361	293	Kız Çocuk Aksesuar
+369	2017	1361	Saç Aksesuarları
+370	2441	1361	Şapka ve Şemsiye
+371	3175	1361	Atkı, Bere ve Eldivenler
+372	2752	1361	Kemer, Pantolon Askısı
+373	3000	1361	Çorap
+374	278	238	Kadın Aksesuarları
+375	1122	278	iPhone ve iPad Aksesuarları
+376	2887	1122	iPhone Aksesuarları 
+377	2039	1122	iPad Aksesuarları 
+378	939	278	Fular, Gavroş ve Şal
+379	1325	278	Çorap 
+380	2644	1325	Soket
+381	2882	1325	Tayt Çorap 
+382	3306	1325	Tozluk
+383	3201	1325	Pantolon Çorabı
+384	2884	1325	Patik
+385	1729	1325	Dizüstü Çorap
+386	3554	1325	Külotlu Çorap 
+387	2586	1325	Diz Altı Çorap
+388	3200	1325	Suba
+389	938	278	Eşarp ve Eşarp Aksesuarları
+390	1531	278	Şemsiye
+391	1492	278	Şapka ve Bere
+392	631	278	Atkı ve Kaşkol
+393	1287	278	Eldiven
+394	337	238	Kadın Giyim
+395	1609	337	Eşofman ve Sweatshirt
+396	3431	1609	Eşofman Üstü
+397	3483	1609	Eşofman Altı
+398	2399	1609	Sweatshirt
+399	2691	1609	Eşofman Takımı
+400	851	337	Triko 
+401	2763	851	İkili Takım
+402	1954	851	Bolero
+403	1786	851	Yelek
+404	2283	851	Pelerin
+405	2576	851	Panço
+406	2284	851	Süeter
+407	3128	851	Kazak
+408	3011	851	Hırka
+409	3485	851	Tunik
+410	2149	851	Pantolon
+411	2212	851	Etek 
+412	1660	851	Elbise
+413	1404	337	Deri Giyim
+414	3542	1404	Deri Yelek
+415	3543	1404	Deri Etek
+416	3069	1404	Deri Pantolon 
+417	2629	1404	Deri Ceket ve Mont
+418	1784	1404	Deri Elbise
+419	1571	337	Büyük Beden
+420	2207	1571	Gömlek ve Bluz
+421	2279	1571	Dış Giyim
+422	3190	1571	Triko
+423	2508	1571	Eşofman ve Sweatshirt
+424	3299	1571	Abiye
+425	2281	1571	Pantolon
+426	3365	1571	Şort, Kapri ve Tayt
+427	2324	1571	T-shirt, Atlet ve Tunik
+428	2762	1571	Ceket, Tayyör ve Döpiyes
+429	2941	1571	Deri Giyim
+430	3008	1571	Elbise ve Tulum
+431	3247	1571	Etek 
+432	2454	1571	Yelek 
+433	1572	337	İç Giyim ve Uyku Giyim
+434	2509	1572	Babydoll, Büstiyer ve Jartiyer
+435	3368	1572	Gelinlik İç Giyim
+436	383251	1572	İç Giyim ve Uyku Aksesuarları
+437	3366	1572	Jüpon ve Kombinezon
+438	2457	1572	Termal
+439	2764	1572	Sabahlık
+440	1721	1572	Kapri, Şort Takım ve Ev Elbisesi
+441	1662	1572	Atlet, Fanila ve Body
+442	2397	1572	Pijama
+443	2027	1572	Külot, String ve Tanga
+444	3546	1572	Sütyen ve Külot Takım
+445	1659	1572	Gecelik
+446	1897	1572	Korse
+447	2456	1572	Sütyen
+448	2151	1572	Hamile ve Lohusa İç Giyim
+449	705	337	Pantolon, Şort, Kapri ve Tayt
+450	2943	705	Kot Pantolon 
+451	2944	705	Pantolon Etek
+452	2632	705	Pantolon
+453	3192	705	Kapri
+454	2876	705	Tayt
+455	2282	705	Şort
+456	3545	705	Kot Şort
+457	490	337	Gömlek ve Bluz
+458	2081	490	Oduncu Gömlek
+459	1717	490	Gömlek 
+460	3072	490	Bluz
+461	1785	490	Kot Gömlek
+462	492	337	Tasarımcılar
+463	461	337	Hamile Giyim
+464	1956	461	Aksesuar
+465	1955	461	Pantolon
+466	2631	461	Abiye
+467	2326	461	Elbise
+468	2818	461	Dış Giyim
+469	2577	461	Triko
+470	3194	461	Gömlek ve Bluz
+471	3248	461	T-shirt, Atlet ve Tunik
+472	2693	461	Şort, Kapri ve Tayt
+473	2285	461	Etek 
+474	2211	461	Salopet, Tulum ve Jile
+475	431	337	Dış Giyim
+476	2942	431	Parka
+477	2817	431	Yelek
+478	2325	431	Trençkot
+479	2280	431	Yağmurluk
+480	3191	431	Suni Kürk
+481	2875	431	Kaban
+482	2148	431	Pardesü
+483	3298	431	Bolero
+484	1952	431	Mont
+485	2692	431	Panço ve Pelerin
+486	2690	431	Manto
+487	2395	431	Kot
+488	668	337	T-Shirt, Atlet ve Tunik
+489	1719	668	Atlet
+490	1720	668	T-shirt
+491	2398	668	Polo Yaka T-shirt
+492	2150	668	Tunik
+493	1529	337	Elbise ve Tulum
+494	3066	1529	Uzun Elbise 
+495	1783	1529	Penye Elbise
+496	1951	1529	Diz Boyu Elbise 
+497	3297	1529	Triko Elbise
+498	3127	1529	Şort Tulum
+499	2080	1529	Kokteyl Elbisesi
+500	1895	1529	Tulum
+501	2761	1529	Mini Elbise
+502	2940	1529	Streç Elbise
+503	2816	1529	Siyah Elbise
+504	2026	1529	Klasik Elbise 
+505	3484	1529	Straplez Elbise
+506	2689	1529	Günlük Elbise 
+507	629	337	Etek 
+508	3544	629	Evaze Etek
+509	1953	629	Kot Etek
+510	1716	629	Pilili Etek 
+511	3071	629	Şort Etek
+512	1661	629	Diz Boyu Etek 
+513	3009	629	Anvelop Etek
+514	3012	629	Mini Etek 
+515	2945	629	Uzun Etek 
+516	1110	337	Plaj Giyim ve Aksesuarları
+517	1718	1110	Bikini
+518	3430	1110	Kapalı ve Yarı Kapalı Mayo
+519	2630	1110	Kaftan
+520	3367	1110	Tankini
+521	3193	1110	Mayo 
+522	3300	1110	Plaj Havlusu 
+523	1722	1110	Yüzücü Mayosu
+524	3486	1110	Pareo
+525	2396	1110	Mayokini
+526	936	337	Ceket, Tayyör ve Döpiyes
+527	1896	936	Etek ve Ceket Takım
+528	3006	936	Klasik Ceket 
+529	2146	936	Spor Ceket 
+530	1842	936	Kot Ceket 
+531	1781	936	Elbise ve Ceket Takım
+532	2455	936	Pantolon ve Ceket Takım
+533	1243	337	Abiye
+534	2821	1243	Şort ve Kapri
+535	2458	1243	Etek 
+536	3561	1243	Dış Giyim
+537	3025	1243	Tulum
+538	3010	1243	Elbise
+539	2694	1243	Ceket 
+540	2210	1243	Gömlek, Bluz ve Tunik
+541	2209	1243	Pantolon
+542	401	238	Erkek Giyim
+543	1156	401	Plaj Giyim ve Aksesuarları
+544	3353	1156	Boxer Mayo
+545	2131	1156	Plaj Havlusu
+546	1706	1156	Yüzücü Mayosu
+547	1936	1156	Şort Mayo
+548	2440	1156	Slip Mayo
+549	1006	401	Blazer Ceket ve Yelek
+550	3527	1006	Yelek
+551	2559	1006	Blazer Ceket
+552	484	401	Tasarımcılar
+553	1008	401	Kravat, Papyon ve Mendil
+554	2019	1008	Kravat
+555	387055	1008	Mendil
+556	387054	1008	Papyon
+557	1157	401	Büyük Beden
+558	2746	1157	Blazer Ceket
+559	3528	1157	Pantolon ve Şort
+560	3426	1157	Eşofman ve Sweatshirt
+561	1773	1157	Yelek
+562	2130	1157	Dış Giyim
+563	2989	1157	Deri Giyim
+564	3468	1157	Triko, Kazak ve Hırka
+565	2673	1157	Takım Elbise
+566	2571	1157	T-shirt
+567	2260	1157	Gömlek 
+568	1205	401	T-shirt
+569	3418	1205	Atlet
+570	2069	1205	T-shirt
+571	2016	1205	Polo Yaka
+572	699	401	İç Giyim ve Uyku Giyim
+573	2807	699	Atlet ve Fanila
+574	1884	699	Robdöşambr
+575	1883	699	Termal 
+576	3174	699	Pijama
+577	383112	699	Korse ve Ortopedik Ürünler
+578	2564	699	Atlet Takım
+579	2129	699	Slip
+580	3416	699	Boxer
+581	2315	699	Kapri ve Şort Takım
+582	2318	699	Sabahlık
+583	2319	699	Külot
+584	458	401	Smokin ve Damatlık
+585	2927	458	Smokin
+586	3467	458	Damatlık
+587	1323	401	Gömlek
+588	3055	1323	Klasik Gömlek
+589	1826	1323	Spor Gömlek
+590	2498	1323	Kot Gömlek
+591	2623	1323	Oduncu Gömleği
+592	1322	401	Deri Giyim
+593	1646	1322	Deri Pantolon
+594	2864	1322	Deri Ceket ve Mont
+595	2015	1322	Deri Yelek
+596	932	401	Kot Pantolon
+597	1485	401	Takım Elbise
+598	3173	1485	Kruvaze
+599	2557	1485	Mono
+600	1451	401	Pantolon ve Şort
+601	2563	1451	Şort
+602	2562	1451	Pantolon
+603	1524	401	Dış Giyim
+604	3354	1524	Rüzgarlık
+605	1937	1524	Pardesü
+606	1938	1524	Yağmurluk
+607	3116	1524	Kaz Tüyü
+608	2263	1524	Yelek
+609	2382	1524	Parka
+610	1708	1524	Çoban
+611	2262	1524	Mont
+612	2863	1524	Kot
+613	1829	1524	Kaban
+614	1450	401	Eşofman ve Sweatshirt
+615	2928	1450	Eşofman Takımı
+616	3295	1450	Eşofman Altı
+617	2381	1450	Sweatshirt
+618	3470	1450	Eşofman Üstü
+619	1105	401	Triko
+620	2192	1105	Süveter
+621	2561	1105	Yelek
+622	1705	1105	Kazak
+623	2316	1105	Hırka
+624	402	238	Bebek Giyim
+625	383072	402	Bebek Kıyafetleri
+626	1275	402	Erkek Bebek Yüzme Giyim 
+627	2676	1275	Yüzme Giyim
+628	1830	1275	Plaj Havlusu
+629	387203	402	Body ve Tulum
+630	386115	402	Bebek Kostümleri
+631	1010	402	Bebek Aksesuar 
+632	2203	1010	Çorap
+633	3427	1010	Şapka ve Şemsiye 
+634	2323	1010	Atkı, Bere ve Eldivenler
+635	2024	1010	Kemer
+636	554	402	Bebek İç ve Uyku Giyim
+637	3420	554	İç Giyim Alt 
+638	2070	554	Pijamalar 
+639	3056	554	İç Giyim Üst 
+640	885	402	Kız Bebek Giyim 
+641	1941	885	İç Giyim Alt 
+642	1942	885	Plaj Havlusu
+643	2272	885	Pijamalar 
+644	2444	885	Atkı, Bere ve Eldivenler
+645	2749	885	Kemer
+646	2681	885	Mayo ve Bikini
+647	3534	885	Triko 
+648	2501	885	Gömlek Bluz ve Tunik
+649	2196	885	Etek 
+650	3536	885	Çorap
+651	2504	885	Şapka ve Şemsiye 
+652	3363	885	Takımlar
+653	3364	885	İç Giyim Üst 
+654	2200	885	Saç Aksesuarları
+655	3472	885	Jean
+656	1777	885	Pantolon ve Salopet
+657	1775	885	Dış Giyim
+658	2625	885	T shirt , Body ve Atletler
+659	2626	885	Elbise ve Jile 
+660	1889	885	Şort ve Kapri 
+661	2810	885	Ceket ve Yelek 
+662	524	402	Erkek Bebek Giyim 
+663	2322	524	Pantolon 
+664	3118	524	Triko
+665	2505	524	T-Shirt ve Atletler
+666	1890	524	Dış Giyim
+667	1837	524	Şort ve Kapri 
+668	3182	524	Gömlek
+669	3181	524	Ceket, Blazer ve Yelek
+670	2811	524	Jean
+671	3183	524	Takım Elbise
+672	253	238	Erkek Aksesuarları
+673	1565	253	Atkı, Kaşkol ve Fular
+674	1940	1565	Kaşkol
+675	2678	1565	Fular
+676	2320	1565	Atkı
+677	1564	253	Pantolon Askısı
+678	424	253	iPhone ve iPad Aksesuarları
+679	2748	424	iPhone Aksesuarları
+680	1651	424	iPad Aksesuarları
+681	1527	253	Şemsiye
+682	1487	253	Çorap
+683	2023	1487	Spor Çorap
+684	2679	1487	Çorap
+685	2139	1487	Patik
+686	1108	253	Şapka
+687	523	253	Eldiven
+688	226	0	Motosiklet
+689	310	226	Motosiklet Yedek Parça ve Aksesuarlar
+690	1393	310	Yedek Parça
+691	653	310	Bakım, Koruma
+692	1004	310	Çanta
+693	408102	310	Motosiklet Elektrik
+694	1448	310	Branda
+695	408101	310	Motosiklet Egzoz
+696	408104	310	Fren Ekipmanları
+697	408103	310	Motosiklet Filtre
+698	1201	310	Tuning
+699	1353	310	Aydınlatma Ürünleri
+700	408100	310	Debriyaj
+701	408109	310	Şanzıman
+702	408106	310	Lastik
+703	408105	310	Grenaj
+704	626	310	Kilit, Alarm
+705	1150	310	Buji
+706	408108	310	Süspansiyon
+707	408107	310	Motor
+708	349	226	Motosiklet Giyim ve Kask
+709	697	349	Diğer
+710	1235	349	Eldiven
+711	1558	349	Ceket, Mont, Yağmurluk
+712	1200	349	Koruma Ekipmanları
+713	1352	349	Kask, Gözlük
+714	1199	349	Pantolon
+715	1269	349	Bot, Çizme
+716	380175	226	Motosiklet Modelleri
+717	380177	380175	Cup
+718	380178	380175	Touring
+719	380180	380175	Scooter
+720	380181	380175	Moped
+721	403105	380175	Elektrikli Motosikletler
+722	380183	380175	Commuter
+723	380184	380175	Enduro
+724	380176	380175	Atv
+725	251	0	Oto Yedek Parça ve Aksesuar
+726	425100	251	Lastik ve Jant
+727	439151	425100	Lastik ve Jant Aksesuarları
+728	439156	439151	Stepne Aksesuarları
+729	439155	439151	Disk Fırfırı
+730	439154	439151	Yazı Kalemi
+731	439153	439151	Jant Kapağı
+732	439158	439151	Diğer
+733	439157	439151	Sibop Kapağı
+734	439152	425100	Lastik ve Jant Bakım Ürünleri
+735	439160	439152	Hava Ölçme Saati
+736	439159	439152	Parlatıcı, Temizleyici Spreyler
+737	439164	439152	Bijon Anahtarı
+738	439163	439152	Kriko
+739	439162	439152	Komprasör ve Pompa
+740	439161	439152	Tamir Spreyi
+741	439165	439152	Diğer
+742	425101	425100	Lastik
+743	425102	425100	Jant
+744	355	251	Oto Aksesuar
+745	419100	355	Paspaslar
+746	419102	419100	3D Oto Paspas
+747	419101	419100	Bagaj Havuzları
+748	419104	419100	Spor Paspas
+749	419103	419100	Halı Paspas
+750	419105	419100	Paspas
+751	1055	355	Oto Dışı Aksesuar
+752	2373	1055	Diğer
+753	2372	1055	Anten
+754	380185	1055	Plaka Altlığı
+755	2313	1055	Bisiklet Taşıyıcı
+756	380186	1055	Ruhsat Kabı
+757	2433	1055	Silecek ve Ekipmanları
+758	2011	1055	Park Sensörü
+759	2982	1055	Rötüş Boyası
+760	2495	1055	Jant Kapakları
+761	2256	1055	Fosforlu Bant
+762	3237	1055	Rüzgarlık
+763	2669	1055	Çamurluk
+764	2120	1055	Arma Sticker
+765	3052	1055	Kapı Aksesuarları
+766	3053	1055	Spoiler, Kanat
+767	3596	1055	Tampon
+768	2432	1055	Stepne Kılıfları
+769	2668	1055	Branda
+770	1933	1055	Çıta
+771	3348	1055	Jant Aksesuarları
+772	3111	1055	Dış Aynalar
+773	3112	1055	Anahtarlık
+774	2121	1055	Nikelaj Harf
+775	1054	355	Oto İçi Aksesuar
+776	3168	1054	Tablet Tutucu
+777	3525	1054	Kupa, Bardak
+778	1821	1054	Direksiyon ve Aksesuar
+779	3464	1054	Güneşlik
+780	2618	1054	Oto Koltuk Kılıfı
+781	2799	1054	İç Ayna
+782	3465	1054	Aydınlatma
+783	2010	1054	Torpido Aksesuar
+784	2918	1054	Çocuk Oto Koltukları
+785	2740	1054	Vantilatör
+786	2981	1054	Bagaj Aksesuarları
+787	382059	1054	Diğer
+788	3595	1054	Kornalar
+789	2667	1054	Oyuncak
+790	3110	1054	Küllük
+791	3410	1054	Koltuk Aksesuarları
+792	2064	1054	Telefon Aksesuarları
+793	1351	355	Güvenlik, Emniyet
+794	2188	1351	Merkezi Kilit
+795	2066	1351	Kamera
+796	3598	1351	Alarm
+797	2922	1351	Diğer
+798	2127	1351	Merkezi Kilit Uzaktan Kumandalı
+799	2619	1351	M.Kilit Yedek Pompa
+800	2858	1351	Direksiyon Kilidi
+801	2378	1351	Kumanda Kabı
+802	2556	1351	Emniyet Kemeri
+803	1317	355	Trafik Ürünleri
+804	2375	1317	Çekme Halatı
+805	2065	1317	İmdat Çekici
+806	2376	1317	Boyunluk
+807	2921	1317	Huni ve Ölçü Kapları
+808	2920	1317	Yangın Söndürücü
+809	2436	1317	Projektör
+810	2435	1317	Kompresör
+811	2984	1317	Trafik Setleri
+812	3291	1317	Bijon Anahtarı
+813	2377	1317	Sigorta
+814	2554	1317	Ecza Çantası
+815	2742	1317	İkaz Kukaları
+816	2257	1317	Üçgen Reflektör
+817	2555	1317	Lastik Tamir Spreyi
+818	2258	1317	İkaz Lambaları
+819	3238	1317	Emniyet Kemeri
+820	3597	1317	El Feneri
+821	1769	1317	Benzin Bidonu
+822	2801	1317	Seyyar Lamba
+823	1770	1317	Lastik Yazı Kalemi
+824	2125	1317	Takoz
+825	3349	1317	Tepe Lambaları
+826	2124	1317	Kriko
+827	455	355	Seyahat Ürünleri
+828	2126	455	Mobil Elektrik
+829	728	355	Cam ve Aksesuar
+830	2374	728	Camlar
+831	1704	728	Cam Açma Kolu
+832	2434	728	Uyarı Levhaları
+833	2800	728	Diğer
+834	2919	728	Cam Motorları
+835	2857	728	Bayraklar
+836	2741	728	Cam Filmi
+837	2983	728	Çıtalar
+838	3290	728	Rüzgarlık ve Güneşlik
+839	3169	728	Pusula
+840	3113	728	Cam Merceği
+841	1768	728	Cam Modülleri
+842	2123	728	Cam Vantuzu
+843	2122	728	Cam Anahtarı
+844	317	251	Mekanik Bakım Ürünleri
+845	879	317	Cabrio
+846	1056	317	Klima
+847	652	317	Radyatör
+848	384052	317	Lastik ve Jant Bakımı
+849	812	317	Tampon
+850	1149	317	Cam Bakımı
+851	1554	317	Bezler
+852	331	251	Otomobil Yedek Parça
+853	1103	331	Ön Takım
+854	1517	331	Amortisör ve Süspansiyon
+855	3051	1517	Motor Kapak Amortisörü
+856	2855	1517	Bagaj Amortisörü
+857	3236	1517	Cam Amotörsörü
+858	2007	1517	Amortisör
+859	3289	1517	Süspansiyon
+860	1518	331	Akü
+861	3594	1518	Güç
+862	1932	1518	Marka
+863	928	331	Filtreler ve Setler
+864	2187	928	Yakıt Filtreleri
+865	2494	928	Mazot Filtreleri
+866	2666	928	Yağ Filtreleri
+867	2370	928	Hava Filtreleri
+868	2371	928	Polen Filtreleri
+869	2980	928	Setler
+870	2979	928	Otogaz Filtreleri
+871	623	331	Akü Malzemeleri
+872	3167	623	Akü Takviye Kablosu
+873	1702	623	Akü Şarj Edici
+874	2665	623	Akü Maşaları
+875	2856	623	Saf Su
+876	426152	331	OEM Yedek Parça
+877	383152	331	Motor ve Şanzıman Aksamı
+878	878	331	Depo Kapağı
+879	453100	331	Egzoz
+880	453101	453100	Katalitik Konvertör
+881	453102	453100	Egzoz Ucu
+882	453103	453100	Egzoz Sistemleri
+883	1053	331	Ateşleme Sistemleri
+884	1701	1053	Manyetik Bobin
+885	3347	1053	Buji
+886	2063	1053	Kızdırma Bujisi
+887	1880	1053	Meksefe Platin
+888	962	331	Vites Topuzu
+889	811	331	Fren ve Fren Ekipmanları
+890	2008	811	Fren Balatası
+891	1703	811	Fren Ekipmanları
+892	2009	811	Fren Hidrolik Yağı
+893	2739	811	Fren Hortumu
+894	405150	811	Fren Diski
+895	1350	331	Silecek Motoru
+896	963	331	Lastik,Jant ve Ekipmanlar
+897	2255	963	Jant
+898	3463	963	Lastik
+899	1767	963	Lastik ve Jant Setleri
+900	382056	331	Far Grubu
+901	382058	382056	Sis Farları
+902	382057	382056	Far
+903	391	251	Oto Bakım ve Temizlik Ürünleri
+904	1002	391	Kış Ürünleri
+905	1822	1002	Kar Paletleri
+906	3239	1002	Diğer
+907	2923	1002	Buğu Ürünleri
+908	2802	1002	Ölçüm Aletleri
+909	2314	1002	Antifiriz
+910	3292	1002	Buz Ürünleri
+911	3412	1002	Zincir
+912	2743	1002	Buz Kazıyıcı
+913	3411	1002	Cam Suyu
+914	1003	391	Motor Bakım
+915	3599	1003	Bor Katkısı
+916	2670	1003	Benzin Katkısı
+917	3600	1003	Radyatör
+918	2803	1003	Motor Temizleyici
+919	382140	1003	Diğer
+920	2859	1003	Dizel Katkısı
+921	2620	1003	Motor Yağ Katkısı
+922	2259	1003	Şanzıman
+923	2437	1003	Yakıt Tasarruf Ürünleri
+924	624	391	Oto Kokuları
+925	382139	391	Temizlik Ekipmanları
+926	401101	391	Periyodik Bakım
+927	382133	391	Yağlar
+928	382137	382133	Gres Yağlar
+929	382138	382133	Diğer Bakım Yağları
+930	382134	382133	Motor Yağları
+931	382135	382133	Hidrolik Sistem Yağları
+932	382136	382133	Şanzıman Yağları
+933	964	391	Diğer Temizlik Ürünleri
+934	1602	391	Oto Süpürgeleri
+935	625	391	Oto Cila ve Parlatıcılar
+936	246	0	Seyahat, Otel, Bilet
+937	387103	246	Kıbrıs Otelleri
+938	387104	387103	Yaz Fırsatları
+939	387108	387103	Tüm Kıbrıs Otelleri
+940	387107	387103	Ekonomik Oteller
+941	387106	387103	Balayı Otelleri
+942	387105	387103	Casino Otelleri
+943	289	246	Kültür Turları
+944	681	289	Kapadokya Turları
+945	715	289	Haftasonu Turları
+946	391054	289	Diğer Kültür Turları
+947	414100	289	Kurban Bayramı Uçaklı Turlar
+948	387142	289	Günübirlik Turları
+949	387141	289	Beypazarı Göynük Turları
+950	387144	289	Edirne&İgneada&Kıyıköy Turları
+951	1334	289	GAP Turları
+952	387143	289	İzmir Hareketli Haftasonu Turları
+953	414102	289	30 Ağustos Turları
+954	387140	289	Eskişehir Odunpazarı Turları
+955	414101	289	Kurban Bayramı Turları
+956	387139	289	Batı Karadeniz Turları
+957	409100	289	Şeker Bayramı Ege & Akdeniz Turları
+958	1171	289	Erken Rezervasyon Turları
+959	744	289	23 Nisan Turları
+960	409102	289	Şeker Bayramı Yakın Bölge Turları
+961	500	289	Butik Turlar
+962	409101	289	Şeker Bayramı Karadeniz Turları
+963	404100	289	Ege & Akdeniz Kültür Turları
+964	423101	289	Konya Şeb-i Arus Turları
+965	417152	289	Likya Turları
+966	404101	289	Karadeniz Kültür Turları
+967	380168	246	Yurtdışı Turları
+968	400100	380168	Mykonos Turları
+969	391053	380168	İngiltere Turları
+970	387138	380168	Diğer Turlar
+971	387137	380168	Exclusive Turlar
+972	398050	380168	Şeker Bayramı Turları
+973	387135	380168	Paskalya Turları
+974	387136	380168	Beyrut Turları
+975	387133	380168	Balkan Turları
+976	387134	380168	Uzakdoğu Turları
+977	387131	380168	Dubai Turları
+978	387132	380168	Paris Turları
+979	387129	380168	İspanya Turları
+980	387130	380168	Rusya Turları
+981	387127	380168	Benelux Turları
+982	387128	380168	İtalya Turları
+983	387125	380168	Erken Rezervasyon Turları
+984	387126	380168	Orta Avrupa Turları
+985	417150	380168	Amsterdam Turları
+986	388069	246	Otobüs Bileti
+987	380167	246	Yurtdışı Otelleri
+988	381058	380167	Uzak Doğu Otelleri
+Kategori bulunamadı: 381058 - Seyahat, Otel, Bilet / Yurtdışı Otelleri / Uzak Doğu OtelleriSeyahat, Otel, Bilet / Yurtdışı Otelleri / Uzak Doğu Otelleri (0)
+989	381057	380167	Amerika Otelleri
+Kategori bulunamadı: 381057 - Seyahat, Otel, Bilet / Yurtdışı Otelleri / Amerika OtelleriSeyahat, Otel, Bilet / Yurtdışı Otelleri / Amerika Otelleri (0)
+990	381054	380167	Avrupa Otelleri
+Kategori bulunamadı: 381054 - Seyahat, Otel, Bilet / Yurtdışı Otelleri / Avrupa OtelleriSeyahat, Otel, Bilet / Yurtdışı Otelleri / Avrupa Otelleri (0)
+991	381055	380167	Rusya Otelleri
+Kategori bulunamadı: 381055 - Seyahat, Otel, Bilet / Yurtdışı Otelleri / Rusya OtelleriSeyahat, Otel, Bilet / Yurtdışı Otelleri / Rusya Otelleri (0)
+992	381056	380167	Afrika Otelleri
+Kategori bulunamadı: 381056 - Seyahat, Otel, Bilet / Yurtdışı Otelleri / Afrika OtelleriSeyahat, Otel, Bilet / Yurtdışı Otelleri / Afrika Otelleri (0)
+993	380170	246	Mavi Yolculuk
+994	388068	380170	Erken Rezervasyon Turları
+995	391057	380170	Diğer Mavi Turlar
+996	319	246	Yurtiçi Otelleri
+997	1611	319	Yetişkinlere Özel Oteller (+16)
+998	716	319	Çocuk Dostu Oteller
+999	1612	319	Butik Oteller
+1000	380182	319	Evcil Hayvan Kabul Eden Oteller
+1001	391051	319	Diğer Yurtiçi Otelleri
+1002	391150	319	GİZLİ
+1003	707	319	Ekonomik Oteller
+1004	380187	319	Erken Rezervasyon Otelleri
+1005	1162	319	Termal Oteller
+1006	1574	319	Engelli Dostu Oteller
+1007	830	319	Balayı/Çiftlere Özel Oteller
+1008	381053	830	Trabzon Otelleri
+Kategori bulunamadı: 381053 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Balayı/Çiftlere Özel Oteller / Trabzon OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Balayı/Çiftlere Özel Oteller / Trabzon Otelleri (0)
+1009	1259	319	Akdeniz Otelleri
+1010	381051	1259	Antalya Otelleri
+Kategori bulunamadı: 381051 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Akdeniz Otelleri / Antalya OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Akdeniz Otelleri / Antalya Otelleri (0)
+1011	381052	1259	Alanya Otelleri
+Kategori bulunamadı: 381052 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Akdeniz Otelleri / Alanya OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Akdeniz Otelleri / Alanya Otelleri (0)
+1012	1626	319	Ege Otelleri
+1013	380199	1626	Muğla Otelleri
+Kategori bulunamadı: 380199 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Muğla OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Muğla Otelleri (0)
+1014	380198	1626	Marmaris Otelleri
+Kategori bulunamadı: 380198 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Marmaris OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Marmaris Otelleri (0)
+1015	380197	1626	Pamukkale Otelleri
+Kategori bulunamadı: 380197 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Pamukkale OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Pamukkale Otelleri (0)
+1016	380196	1626	Bodrum Otelleri
+Kategori bulunamadı: 380196 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Bodrum OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Bodrum Otelleri (0)
+1017	380195	1626	Çeşme Otelleri
+Kategori bulunamadı: 380195 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Çeşme OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Çeşme Otelleri (0)
+1018	381050	1626	Kuşadası Otelleri
+Kategori bulunamadı: 381050 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Kuşadası OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Ege Otelleri / Kuşadası Otelleri (0)
+1019	387100	319	Yakın Bölge Otelleri
+1020	387101	319	Kayak Otelleri
+1021	387102	319	Avea Kampanyalı Oteller
+1022	380174	319	Deluxe Oteller
+1023	380194	380174	Sarıkamış Otelleri
+Kategori bulunamadı: 380194 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Sarıkamış OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Sarıkamış Otelleri (0)
+1024	380193	380174	Erciyes Otelleri
+Kategori bulunamadı: 380193 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Erciyes OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Erciyes Otelleri (0)
+1025	380188	380174	Uludağ Otelleri
+Kategori bulunamadı: 380188 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Uludağ OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Uludağ Otelleri (0)
+1026	380189	380174	Kartalkaya Otelleri
+Kategori bulunamadı: 380189 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Kartalkaya OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Kartalkaya Otelleri (0)
+1027	380190	380174	Kartepe Otelleri
+Kategori bulunamadı: 380190 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Kartepe OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Kartepe Otelleri (0)
+1028	380191	380174	Palandöken Otelleri
+Kategori bulunamadı: 380191 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Palandöken OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Palandöken Otelleri (0)
+1029	380192	380174	Ilgaz Otelleri
+Kategori bulunamadı: 380192 - Seyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Ilgaz OtelleriSeyahat, Otel, Bilet / Yurtiçi Otelleri / Deluxe Oteller / Ilgaz Otelleri (0)
+1030	380173	319	Spa Otelleri
+1031	380169	246	Gemi (Cruise) Turları
+1032	388052	380169	Volga Nehir
+1033	388051	380169	Kanarya Adaları
+1034	388050	380169	Baltık Başkentleri & Rusya
+1035	388066	380169	Dalmaçya Sahilleri
+1036	388065	380169	Vizesiz Karadeniz
+1037	388056	380169	İzlanda & İngiltere
+1038	388055	380169	Kuzey Burnu
+1039	388054	380169	Karadeniz
+1040	388053	380169	Alaska
+1041	388060	380169	Ren Nehri
+1042	388059	380169	Mekong Nehri
+1043	388058	380169	Yangtze Nehri
+1044	388057	380169	Transatlantik
+1045	388064	380169	Kanada & Amerika
+1046	388063	380169	Douro Nehri
+1047	388062	380169	Ren & Main & Tuna Nehirleri
+1048	388061	380169	Tuna Nehri
+1049	391056	380169	Diğer Gemi (Cruise) Turları 
+1050	387149	380169	Norveç Fiyordları
+1051	391055	380169	Ege & Akdeniz
+1052	417153	380169	Güney Amerika
+1053	387146	380169	Ege & Adriyatik
+1054	387145	380169	Karayipler
+1055	387148	380169	Batı Akdeniz
+1056	387147	380169	Yunan Adaları
+1057	380172	246	Araç Kiralama
+1058	387109	246	Şehir Otelleri
+1059	387120	387109	Konya Otelleri
+1060	387119	387109	Trabzon Otelleri
+1061	387118	387109	Malatya Otelleri
+1062	387117	387109	Gaziantep Otelleri
+1063	391052	387109	Diğer Şehir Otelleri
+1064	387116	387109	Kayseri Otelleri
+1065	387115	387109	Eskişehir Otelleri
+1066	387114	387109	Bursa Otelleri
+1067	387113	387109	Adana Otelleri
+1068	387112	387109	İzmir Otelleri
+1069	387111	387109	Ankara Otelleri
+1070	387110	387109	İstanbul Otelleri
+1071	387123	387109	Kars Otelleri
+1072	387124	387109	Sivas Otelleri
+1073	387121	387109	Manisa Otelleri
+1074	387122	387109	Denizli Otelleri
+1075	380171	246	Uçak Bileti
+1076	229	0	Spor
+1077	384	229	Kondisyon, Fitness
+1078	789	384	Minderler
+1079	714	384	Güç ve Denge Bileklikleri
+1080	987	384	Dambıl ve Ağırlıklar
+1081	377102	987	Ağırlık Barları
+1082	377101	987	Ağırlık Plakaları
+1083	3558	987	El ve Ayak Ağırlıkları
+1084	3378	987	Dambıl Setler
+1085	988	384	Termal Ürünler
+1086	1125	384	Masaj Ürünleri
+1087	2462	1125	Masaj Koltuk ve Masaları
+1088	1734	1125	Masaj ve Sauna Kemerleri
+1089	3261	1125	Masaj Cihazları
+1090	788	384	Terleme Eşofmanları
+1091	1333	384	Step
+1092	1465	384	Powerball
+1093	1258	384	Koşu Bantları
+1094	1625	384	Eldiven, Kemer ve Yelek
+1095	902	384	Koşu Bandı Aksesuarları
+1096	383064	384	Fitness Giyim
+1097	903	384	Kronometre ve Adımsayar
+1098	1582	384	Trampolinler
+1099	1298	384	Elektronik Kas Çalıştırıcılar
+1100	1501	384	Pilates
+1101	1297	384	Ağırlık Sehpaları
+1102	1028	384	Çalışma İstasyonları
+1103	945	384	Polar, Nabız Bilgisayarları
+1104	1499	384	Kapı Barları ve Şınav Barları
+1105	1500	384	Kürek
+1106	743	384	Mekik Sehpaları
+1107	1170	384	Kondisyon Bisikletleri
+1108	377105	384	Koruyucu Bandaj ve Malzemeler
+1109	377106	377105	Dizlik
+1110	377107	377105	Dirseklik
+1111	377108	377105	Bileklik
+1112	377109	377105	Diğer Koruyucu Ekipmanlar
+1113	572	384	TV Spor Ürünleri
+1114	377112	384	Diğer Fitness Aksesuarları
+1115	865	384	Aerobik, Egzersiz Aletleri
+1116	303	229	Spor Giyim, Aksesuar ve Ayakkabı
+1117	382141	303	Terlik, sandalet
+1118	1456	303	Giyim
+1119	2153	1456	Şort
+1120	3432	1456	Mayo, Deniz Şortu
+1121	3249	1456	Sweatshirt
+1122	2819	1456	Yağmurluk ve Mont
+1123	1957	1456	Tayt
+1124	2400	1456	T-Shirt
+1125	2152	1456	Eşofman
+1126	491	303	Ayakkabı
+1127	1672	491	Halı Saha, Krampon
+1128	2097	491	Tenis
+1129	2765	491	Yürüyüş, Koşu
+1130	386147	491	Güreş Ayakkabıları 
+1131	2890	491	Günlük Spor
+1132	2952	491	Basketbol
+1133	1675	491	Voleybol
+1134	2335	491	Indoor Ayakkabılar
+1135	829	303	Aksesuar
+1136	2332	829	Çorap
+1137	380050	829	Çanta ve Cüzdan
+1138	379101	829	Diğer
+1139	2587	829	Şapka
+1140	304	229	Taraftar Ürünleri
+1141	384071	304	Taraftar Topları 
+1142	977	304	Taraftar Aksesuar
+1143	781	304	Şortlar
+1144	858	304	Formalar
+1145	1288	304	Taraftar Tekstil
+1146	345	229	Besin Takviyeleri ve Diyet
+1147	1493	345	Proteinler
+1148	1494	345	Tatlandırıcılar
+1149	380179	345	Eklem Sağlığı
+1150	1326	345	Aminoasitler
+1151	410100	345	Sağlık Destek Ürünleri
+1152	1458	345	Kreatinler
+1153	1113	345	Yağ Yakıcı Ürünler
+1154	1247	345	Karbonhidratlar
+1155	1248	345	Komplex Ürünler
+1156	782	345	Shaker
+1157	673	345	Vitamin ve Mineraller
+1158	494	345	Enerji ve Güç Ürünleri
+1159	408	229	Bireysel ve Takım Sporları
+1160	1069	408	Tenis, Badminton, Squash
+1161	1959	1069	Tenis Çantaları
+1162	3436	1069	Tenis Ekipmanları
+1163	2214	1069	Tenis Topları
+1164	3435	1069	Tenis Kordajları
+1165	2695	1069	Badminton Ağları
+1166	3073	1069	Tenis Gripleri
+1167	1901	1069	Badminton Topları
+1168	3014	1069	Tenis Giyim ve Ayakkabı
+1169	3301	1069	Tenis Raketi
+1170	3548	1069	Squash Raketleri
+1171	2947	1069	Squash Topları
+1172	2032	1069	Badminton Raketleri
+1173	1578	408	Atletizm, Jimnastik
+1174	1070	408	Masa Tenisi
+1175	3133	1070	Masa Tenisi Raketleri
+1176	403100	1070	Masa Tenisi Raket Tahtası
+1177	403103	1070	Masa Tenisi Ayakkabıları
+1178	377110	1070	Masa Tenisi Masası
+1179	1726	1070	Masa Tenisi Topları
+1180	377111	1070	Masa Tenisi Aksesuarları
+1181	403101	1070	Masa Tenisi Raket Lastiği
+1182	403102	1070	Masa Tenisi Robotları
+1183	383053	408	Kupa ve Madalyalar
+1184	1610	408	Hentbol
+1185	1072	408	Yüzme
+1186	1791	1072	Yüzücü Mayoları
+1187	3489	1072	Yüzücü Gözlükleri
+1188	3076	1072	Paletler
+1189	2216	1072	Yüzme Tahtaları
+1190	3553	1072	Tıkaçlar
+1191	2827	1072	Boneler
+1192	2828	1072	Yüzücü Antrenman Malzemeleri
+1193	382111	408	Kaykay
+1194	382112	382111	Komple Kaykaylar
+1195	382126	382111	Korumalıklar
+1196	382125	382111	Kaykay Ayakkabıları
+1197	382122	382111	Diğerleri
+1198	382121	382111	Wax
+1199	382118	382111	Zımpara
+1200	382117	382111	Kaykay Rulmanları
+1201	382120	382111	Tool
+1202	382119	382111	Vida Setleri
+1203	382114	382111	Kaykay Tahtaları
+1204	382113	382111	Longboard ve Cruiser Kaykaylar
+1205	382116	382111	Truck 
+1206	382115	382111	Kaykay Tekerlekleri
+1207	891	408	Uzakdoğu Sporları
+1208	3134	891	Judo ve Aikido
+1209	3017	891	Darbe Yastıkları
+1210	2087	891	Taekwondo
+1211	3135	891	Koruyucular
+1212	2580	891	Karate Do ve Kempo
+1213	2636	891	Kick Box Ürünleri
+1214	2769	891	Minderler
+1215	1902	891	Ellikler ve Eldivenler
+1216	2880	891	Muay Thai
+1217	2515	891	Do Malzemeleri
+1218	2516	891	Wu shu ve Sanda
+1219	383110	408	Paintball
+1220	856	408	Voleybol
+1221	390050	856	Voleybol Giyim
+1222	377100	856	Voleybol Aksesuarları
+1223	3255	856	Voleybol Topları
+1224	3021	856	Voleybol Ayakkabısı
+1225	386146	856	Voleybol Dizlikleri 
+1226	1365	408	Boks
+1227	3253	1365	Bandaj ve Koruyucular
+1228	384054	1365	Boks Tekstil 
+1229	2824	1365	Başlık, Kask, Ayakkabı
+1230	3371	1365	MMA Eldivenleri
+1231	2157	1365	Boks Standları
+1232	3252	1365	Boks Topu Eldivenleri
+1233	3549	1365	Boks Eldivenleri
+1234	3550	1365	Boks Topu
+1235	2215	1365	Kum Torbası
+1236	706	408	Hobi Sporları
+1237	377113	706	Dış Mekan Spor Aletleri
+1238	3136	706	Diğer
+1239	2088	706	Bowling
+1240	2158	706	Langırt
+1241	1788	706	Bilardo
+1242	1845	706	Dart
+1243	382103	408	Buz Pateni
+1244	383069	408	Aksesuarlar
+1245	736	408	Kayak, Snowboard
+1246	2822	736	Kayak Botları
+1247	1843	736	Snowboard Setler
+1248	2287	736	Kayaklar
+1249	3013	736	Kayak Setleri
+1250	377181	736	İçlik ve Çoraplar
+1251	377182	736	Eldiven, Bere ve Kar Maskesi
+1252	377183	736	Kask ve Korumalık
+1253	377184	736	Diğer Kayak Aksesuarları
+1254	2155	736	Pantolon ve Montlar
+1255	1958	736	Bağlamalar
+1256	377180	736	Goggle ve Tipi Gözlükleri
+1257	2633	736	Snowboard Botları
+1258	2029	736	Batonlar
+1259	3547	736	Boardlar
+1260	530	408	Basketbol
+1261	2086	530	Basketbol Giyim
+1262	3370	530	Basketbol Topu
+1263	377050	530	Basketbol Aksesuarları
+1264	976	408	Su Sporları, Dalış
+1265	377162	976	Sualtı Kameraları
+Kategori bulunamadı: 377162 - Spor / Bireysel ve Takım Sporları / Su Sporları, Dalış / Sualtı KameralarıSpor / Bireysel ve Takım Sporları / Su Sporları, Dalış / Sualtı Kameraları (0)
+1266	377161	976	Su Geçirmez Kılıflar
+1267	377158	976	Paletler
+1268	2949	976	Bot ve Kano
+1269	377157	976	Maske ve Şnorkel
+1270	377160	976	Sualtı Bıçakları
+1271	377159	976	Dalış Çantaları
+1272	377154	976	Geyçler
+1273	377153	976	Regülatörler
+1274	377156	976	Dalış Tüpleri
+1275	377155	976	BCD
+1276	380163	976	Dalış Kıyafetleri
+1277	2217	976	Dalış Ekipmanları
+1278	383204	976	Dalış Bilgisayarları
+1279	2640	976	Sörf, Knee Board
+1280	1244	408	Paten, Scooter
+1281	3305	1244	Scooterlar
+1282	380166	1244	Aksesuarlar
+1283	3304	1244	Patenler
+1284	1016	408	Futbol
+1285	386113	1016	Tekmelik 
+1286	377104	1016	Futbol Forma ve Şortlar
+1287	391050	1016	Futbol Antrenman Malzemeleri
+1288	388070	1016	Futbol Aksesuarları 
+1289	377103	1016	Futbol Topları
+1290	386112	1016	Kaleci Eldivenleri 
+1291	3074	1016	Futbol Ayakkabıları
+1292	439150	408	Okçuluk
+1293	1212	408	Bisiklet
+1294	223	0	Telefon ve Telefon Aksesuarları
+1295	292	223	Sim Kart ve Hat
+1296	1599	292	Diğer Hat
+1297	1234	292	Avea
+1298	765	292	Turkcell
+1299	1316	292	Vodafone
+1300	423100	292	TL Yükleme
+1301	277	223	Cep Telefonları
+1302	456	277	Cep Telefonu ve Smartphone
+1303	400	223	Toplu Satış
+1304	449102	400	Aksesuar Fırsat Köşesi
+1305	428100	400	Diğer
+1306	282	223	Cep Telefonu Yedek Parça
+1307	1001	282	Joystick, Trackball 
+1308	1637	282	Arızalı Cep Telefonu
+1309	927	282	Flex Kablo 
+1310	1101	282	Dahili Mikrofon 
+1311	1102	282	SIM Kart Yuvası 
+1312	650	282	Tuş Takımı 
+1313	1516	282	Anakart 
+1314	649	282	Dahili Kamera 
+1315	766	282	Dahili Flaş 
+1316	589	282	Kasa
+1317	1196	282	Diğer 
+1318	1600	282	Dahili Hoparlör 
+1319	1349	282	Soket 
+1320	961	282	Ekran 
+1321	727	282	Titreşim Motoru 
+1322	1348	282	Batarya 
+1323	370	223	Cep Telefonu Aksesuarları
+1324	925	370	Kapak 
+1325	519	370	Hafıza Kartı 
+1326	1426	370	Telefon Askısı 
+1327	1104	370	Dock 
+1328	926	370	Maket Cep Telefonu (Dummy)
+1329	520	370	Şarj Cihazı 
+1330	1519	370	Çevirici 
+1331	548	370	Ekran Koruyucu 
+1332	1636	370	Diğer Ürünler 
+1333	1267	370	Kılıf 
+1334	588	370	GPS Alıcısı 
+1335	591	370	Araç Tutacağı 
+1336	764	370	Hoparlör (Harici) 
+1337	1193	370	Flaş 
+1338	763	370	Hafıza Kartı Adaptörü 
+1339	1052	370	Klavye 
+1340	1598	370	Kalem (Stylus) 
+1341	1202	370	Kulaklık 
+1342	1355	370	Bluetooth Kulaklık 
+1343	1320	370	Bluetooth Araç Kiti 
+1344	1147	370	Kablo 
+1345	1315	370	Sticker 
+1346	1346	370	Kamera (Harici) 
+1347	1347	370	Sim Lock
+1348	330	223	Telsiz ve Masaüstü Telefonlar
+1349	1268	330	El telsizi
+1350	810	330	Dect Telefon
+1351	1194	330	Faks
+1352	521	330	Masa ve Duvar Telefonu
+1353	429151	223	Akıllı Saatler ve Aksesuarları
+1354	431103	429151	Akıllı Saat Aksesuarları
+1355	431102	429151	Akıllı Saatler
+1356	250	0	Televizyonlar ve Ses Sistemleri
+1357	396	250	Televizyonlar
+1358	549	396	Tüplü Televizyonlar
+1359	1197	396	Plazma Televizyonlar
+1360	767	396	LED Televizyonlar
+1361	1601	396	LCD Televizyonlar
+1362	429153	396	Fırsat Köşesi
+1363	696	396	Monitör Televizyonlar
+1364	415	250	Ev Sinema Sistemleri
+1365	1425	415	2+1 Ev Sinema Sistemleri
+1366	1596	415	7+1 Ev Sinema Sistemleri
+1367	1446	415	5+1 Ev Sinema Sistemleri
+1368	1099	415	Soundbar
+1369	772	415	Tek Kanal Sistemler
+1370	1391	415	4+1 Ev Sinema Sistemleri
+1371	371	250	TV Aksesuarları
+1372	770	371	Televizyon Aksesuarları
+1373	550	371	TV Kabloları
+1374	1641	371	Askı aparatları
+1375	1058	371	Dağıtıcılar
+1376	354	250	MP3 ve MP4 Oynatıcılar, Aksesuarları
+1377	387052	354	Ses Kayıt Cihazları
+1378	1051	354	Kulaklık
+1379	587	354	MP3 ve Mp4 Oynatıcılar
+1380	846	354	Aksesuarlar
+1381	335	250	DVD, DivX, Bluray ve Medya Oynatıcılar 
+1382	1562	335	Bluray Oynatıcılar
+1383	1270	335	Medya Oynatıcılar
+1384	1059	335	DVD Player
+1385	522	335	Divx Player
+1386	420	250	Hoparlörler
+1387	762	420	Subwoofer
+1388	695	420	Uydu Hoparlörler
+1389	360	250	Uydu Sistemleri
+1390	771	360	Uydu Alıcılar
+1391	1151	360	Uydu Aksesuarları
+1392	359	250	Piller
+1393	1634	359	Alkalin Piller
+1394	1881	1634	Büyük Boy (D) Piller
+1395	3404	1634	AAA Piller
+1396	2057	1634	Orta Boy (C) Piller
+1397	3350	1634	9V Piller
+1398	1760	1634	AA Piller
+1399	929	359	Şarj Edilebilen Piller
+1400	1642	359	Özel Piller
+1401	1152	359	Şarj Kitleri
+1402	373	250	Müzik Sistemleri
+1403	1597	373	Mini Midi Sistemler
+1404	651	373	Dock Stationlar
+1405	960	373	Alarm Saatli Radyolar
+1406	924	373	Amfiler
+1407	647	373	Mikro Sistemler
+1408	1345	373	Portatif Sistemler
+1409	383253	373	Dj Sistemleri
+1410	237	0	Ayakkabı ve Çanta
+1411	342	237	Kadın Ayakkabıları 
+1412	1357	342	Terlik, Sandalet
+1413	656	342	Çizme
+1414	655	342	Babet
+1415	1520	342	Platform
+1416	1356	342	Topuklu
+1417	931	342	Bootie
+1418	930	342	Abiye ve Gelin
+1419	1521	342	Dolgu
+1420	1271	342	Günlük
+1421	592	342	Bot
+1422	1606	342	Ortopedik Ayakkabı
+1423	3170	1606	Ayakkabı
+1424	2012	1606	Terlik ve Sandalet
+1425	3351	1606	Bot
+1426	420100	237	Bavul/Valiz
+1427	420101	420100	Valiz Setleri
+1428	420102	420100	Kabin Boy
+1429	420103	420100	Orta Boy
+1430	420104	420100	Büyük Boy
+1431	420105	420100	Seyahat Çantaları
+1432	417100	237	Toptan Satış
+1433	417102	417100	Erkek Ayakkabıları
+1434	417117	417102	Ortopedik Ayakkabı
+1435	417118	417102	Terlik, Sandalet
+1436	417115	417102	Günlük
+1437	417116	417102	Klasik
+1438	417114	417102	Bot
+1439	417101	417100	Kadın Ayakkabıları
+1440	417104	417101	Babet
+1441	417103	417101	Abiye ve Gelin
+1442	417113	417101	Topuklu
+1443	417111	417101	Platform
+1444	417112	417101	Terlik, Sandalet
+1445	417109	417101	Günlük
+1446	417110	417101	Ortopedik Ayakkabı
+1447	417107	417101	Çizme
+1448	417108	417101	Dolgu
+1449	417105	417101	Bootie
+1450	417106	417101	Bot 
+1451	323	237	Ayakkabı Bakım Ürünleri
+1452	1394	323	Özel Ürünler
+1453	593	323	Ayakkabı Bakım Kitleri 
+1454	1204	323	Ayakkabı Boyaları 
+1455	552	323	Ayakkabı Kalıbı
+1456	422	323	Tabanlıklar
+1457	1483	323	Diğer Ürünler
+1458	252	237	Kadın Çanta
+1459	1395	252	Omuz Çantası
+1460	1396	252	Tekstil Çanta
+1461	774	252	Laptop Çantası
+1462	698	252	Gece Çantası
+1463	594	252	Postacı Çantası
+1464	1397	252	Makyaj Çantası
+1465	1398	252	Deri Çanta
+1466	1484	252	Siyah Çanta
+1467	813	252	El Çantası
+1468	657	252	Plaj Çantası
+1469	1523	252	Portföy Çanta
+1470	658	252	Sırt Çantası
+1471	443100	237	Aksesuar
+1472	443101	443100	Kadın Aksesuarları
+1473	444108	443101	Kemer
+1474	444107	443101	Cüzdan, Kartlık
+1475	444109	443101	Diğer Ürünler
+1476	443102	443100	Erkek Aksesuarları
+1477	444106	443102	Diğer Ürünler
+1478	444105	443102	Kemer
+1479	444104	443102	Cüzdan, Kartlık
+1480	336	237	Erkek Ayakkabıları
+1481	732	336	Bot
+1482	457	336	Günlük
+1483	1203	336	Ortopedik Ayakkabı
+1484	1771	1203	Terlik ve Sandalet
+1485	3114	1203	Ayakkabı
+1486	2189	1203	Bot
+1487	551	336	Terlik, Sandalet
+1488	1522	336	Klasik
+1489	443103	237	Çocuk Ayakkabıları
+1490	443105	443103	Erkek Çocuk Ayakkabıları
+1491	444102	443105	Çocuk
+1492	444103	443105	İlk Adım
+1493	443104	443103	Kız Çocuk Ayakkabıları
+1494	444100	443104	İlk Adım
+1495	444101	443104	Çocuk
+1496	332	237	Erkek Çanta
+1497	1155	332	Laptop Çantası
+1498	404150	332	Sırt Çantası
+1499	659	332	Postacı Çantası
+1500	814	332	Evrak Çantası
+1501	239	0	Kitap, Müzik, Film
+1502	379	239	Film
+1503	820	379	Yabancı Filmler
+1504	3254	820	Macera ve Aksiyon
+1505	2033	820	Oscar Ödüllü Filmler
+1506	2582	820	Savaş
+1507	2823	820	Drama ve Duygusal
+1508	2581	820	Ödüllü Avrupa Filmleri
+1509	2579	820	Bilim Kurgu ve Fantastik
+1510	3132	820	Aşk ve Romantik
+1511	2946	820	Klasikler
+1512	1846	820	Aile 
+1513	2085	820	Animasyon
+1514	2459	820	Western
+1515	2767	820	Gençlik
+1516	2697	820	Diziler
+1517	1725	820	Korku ve Gerilim
+1518	3137	820	Polisiye
+1519	2031	820	Erotik
+1520	2637	820	Özel Setler
+1521	3488	820	Komedi
+1522	432	379	Spor, Yoga ve Hobi
+1523	669	379	Eğitim ve Sağlık
+1524	633	379	Belgeseller
+1525	854	379	Müzik ve Sahne
+1526	1573	379	Yerli Filmler
+1527	2512	1573	Bilim Kurgu - Fantastik
+1528	1844	1573	Klasikler
+1529	2403	1573	Özel Setler
+1530	3434	1573	Western
+1531	3195	1573	Polisiye
+1532	2288	1573	Macera - Aksiyon
+1533	3016	1573	Erotik
+1534	2156	1573	Drama - Duygusal
+1535	2084	1573	Korku-Gerilim
+1536	2635	1573	Aile 
+1537	1663	1573	Animasyon
+1538	1900	1573	Savaş
+1539	2513	1573	Gençlik
+1540	2514	1573	Komedi
+1541	2879	1573	Diziler
+1542	3487	1573	Aşk - Romantik
+1543	1286	379	Çizgi Film ve Animasyon
+1544	338	239	Müzik
+1545	852	338	Plaklar
+1546	853	338	Müzik Aletleri
+1547	2510	853	Piyanolar
+1548	2511	853	Klavyeler
+1549	1787	853	Davul ve Perküsyon
+1550	3369	853	Gitarlar
+1551	3251	853	Yaylı Çalgılar
+1552	2578	853	Synthesizer
+1553	3131	853	Nefesli Çalgılar
+1554	2402	853	Stüdyo ve Sahne Ekipmanları
+1555	3302	853	Mixerler
+1556	3015	853	Pikap
+1557	379052	853	Profesyonel Sistemler
+1558	2286	853	Telli Çalgılar
+1559	381059	853	Müzikal Hediyelik
+1560	2083	853	Orglar
+1561	2213	853	Mikrofonlar
+1562	2634	853	Aksesuarlar
+1563	1724	853	Amfi, Efek ve Manyetik
+1564	1899	853	Vurmalı Çalgılar
+1565	2030	853	Kulaklıklar
+1566	2878	853	Işık Sistemleri
+1567	2877	853	Cd Playerler
+1568	831	338	Yerli Albümler
+1569	384072	831	Etnik Müzik
+1570	384069	831	Özgün Müzik
+1571	2648	831	Hip-Hop, Rap
+1572	1973	831	Fantazi Müzik
+1573	2713	831	Şiir 
+1574	1740	831	Rock
+1575	2711	831	Türk Sanat Müziği
+1576	2041	831	Pop
+1577	2712	831	Club, Dance
+1578	3263	831	Sufi ve Tasavvuf
+1579	2892	831	Tango ve Kanto
+1580	3264	831	Çocuk
+1581	2465	831	Alaturka
+1582	2224	831	Jazz ve New Age
+1583	3564	831	Klasik
+1584	3382	831	Enstrümantal
+1585	2095	831	Arabesk
+1586	3381	831	Film Müzikleri
+1587	2096	831	Türk Halk Müziği
+1588	1015	338	Yabancı Albümler
+1589	3130	1015	Soul
+1590	3250	1015	Club, Dance
+1591	3129	1015	Pop Music
+1592	2820	1015	Blues
+1593	2401	1015	Soundtracks
+1594	3433	1015	Electronica
+1595	2154	1015	Compilations
+1596	2082	1015	R&B
+1597	2766	1015	Jazz Music
+1598	2327	1015	Classic
+1599	1723	1015	World Music
+1600	2028	1015	New - Age - Music
+1601	1898	1015	Rock Music
+1602	407	239	Kitap
+1603	682	407	Aile 
+1604	1971	682	Aile Hayatı
+1605	2221	682	Anne ve Baba Kitaplığı
+1606	3315	682	Çocuk ve Ergen Psikolojisi
+1607	2710	682	Hamilelik ve Çocuk Sağlığı
+1608	2588	682	Çocuk Bakımı
+1609	1674	682	Evlilik
+1610	383259	407	Dergiler
+1611	683	407	Yabancı Dilde Kitaplar
+1612	1583	407	Eğitim
+1613	3202	1583	Ders ve Sınav Kitapları
+1614	2954	1583	Yabancı Dil Kitapları
+1615	2647	1583	Bilgisayar Kitapları
+1616	2646	1583	Açıköğretim Yayınları
+1617	2220	1583	YGS ve LYS
+1618	2160	1583	Kişisel Gelişim
+1619	3023	1583	KPSS
+1620	2161	1583	Kaynak Kitaplar
+1621	3262	1583	Sözlükler ve İmla Kılavuzları
+1622	380153	407	Çocuk ve Gençlik
+1623	380155	380153	Okul Öncesi Çocuk Kitapları 6 ay - 5 Yaş
+1624	380156	380153	Okul Çağı Çocuk Kitapları 6 - 10 Yaş
+1625	380154	380153	Boyama Kitapları
+1626	380157	380153	Gençlik
+1627	1540	407	Sahaflar Çarşısı
+1628	1029	407	Tatil Kitapları
+1629	1225	407	Akademik Kitaplar
+1630	1852	1225	Tarih
+1631	2777	1225	Edebiyat
+1632	1970	1225	Psikoloji
+1633	3311	1225	Ekonomi
+1634	1736	1225	İnceleme
+1635	3312	1225	İstatistik
+1636	1735	1225	Felsefe
+1637	3024	1225	Medya ve İletişim
+1638	2707	1225	Hukuk
+1639	2708	1225	Biyoloji
+1640	2776	1225	Tıp
+1641	3497	1225	Sosyoloji
+1642	1673	1225	Mühendislik
+1643	3203	1225	Kimya
+1644	3081	1225	İş Yönetimi
+1645	2834	1225	Muhasebe ve Finans
+1646	3562	1225	Fizik
+1647	2463	1225	Mimarlık
+1648	3559	1225	İşletme
+1649	3560	1225	Bilim ve Teknik
+1650	3313	1225	Reklam ve Halkla İlişkiler
+1651	3380	1225	Din 
+1652	2334	1225	Pazarlama
+1653	1466	407	Hobi
+1654	389051	1466	Kitap Aksesuarları
+1655	2409	1466	Oyunlar
+1656	1854	1466	Gezi ve Turizm
+1657	1853	1466	Sanat
+1658	1739	1466	Bahçe Bakımı ve Çiçek Sanatı
+1659	2590	1466	Müzik
+1660	1738	1466	Astroloji, Rüya Tabirleri ve Fal
+1661	2163	1466	Spor
+1662	2589	1466	Yemek Kitapları ve İçecekler - Gurme
+1663	2222	1466	Fotoğrafçılık ve Fotoğraf
+1664	2526	1466	Moda ve Giyim
+1665	2527	1466	Eğlence ve Mizah
+1666	2223	1466	Sinema
+1667	3563	1466	Resim
+1668	3143	1466	Kültür
+1669	2297	1466	Tiyatro
+1670	3317	1466	Evcil Hayvan Bakımı ve Eğitimi
+1671	396051	407	Online Eğitim Kategorisi
+1672	426100	407	Fırsat Köşesi
+1673	1024	407	Araştırma, İnceleme
+1674	3496	1024	Avrupa Birliği
+1675	3494	1024	Biyografi
+1676	1730	1024	Antropoloji
+1677	3022	1024	Demokrasi
+1678	1905	1024	Küreselleşme
+1679	2040	1024	Mafya ve Terörizm
+1680	1906	1024	Enerji ve Petrol
+1681	2831	1024	Atatürkçülük
+1682	3258	1024	Sosyoloji
+1683	3259	1024	Türk ve Dünya Siyaseti ve Uluslararası İlişkiler
+1684	2706	1024	Dünya Ülkeleri
+1685	2460	1024	Gizli Servisler ve Örgütler
+1686	2521	1024	İnsan Hakları
+1687	2295	1024	İdeolojiler
+1688	2094	1024	Türkiye Üzerine Araştırmalar
+1689	1798	1024	A.B.D
+1690	1903	1024	Tarih
+1691	2331	1024	Din ve Mitoloji
+1692	3080	1024	Orta Doğu
+1693	1728	1024	Politika, Siyaset
+1694	604	407	Dinler ve Mitolojiler
+1695	3204	604	Musevilik
+1696	1972	604	Hristiyanlık
+1697	2296	604	Budizm
+1698	2464	604	Tasavvuf
+1699	3316	604	Alevilik ve Bektaşilik
+1700	2891	604	Diğer İnançlar
+1701	1737	604	Mitolojiler ve Efsaneler
+1702	3498	604	İslamiyet
+1703	630	407	E-Kitap Okuyucu Cihazlar
+1704	904	407	Sağlık
+1705	2525	904	Ruh ve Beden Sağlığı
+1706	2162	904	Popüler Tıp, Şifalı Bitkiler
+1707	3314	904	Beslenme ve Diyet
+1708	2709	904	Cinsellik
+1709	3439	904	Yoga, Meditasyon
+1710	632	407	Edebiyat
+1711	1792	632	Türk ve Dünya Klasikleri
+1712	2883	632	Halk Edebiyatı
+1713	3256	632	Çağdaş Türk ve Dünya Edebiyatı
+1714	2830	632	Senaryo ve Oyun
+1715	2825	632	Anı, Mektup ve Günlük
+1716	2291	632	Söyleşi ve Röportaj
+1717	2699	632	Eleştiri ve Kuram
+1718	2517	632	Biyografi, Otobiyografi ve Monografi
+1719	2696	632	Roman
+1720	1961	632	Öykü
+1721	2089	632	Efsaneler ve Destanlar
+1722	1793	632	Çizgi Roman
+1723	1794	632	Deneme, Makale ve Derleme
+1724	3077	632	Şiir
+1725	1727	632	Antoloji
+1726	227	0	Mobilya, Aydınlatma, Dekorasyon
+1727	339	227	Mobilya
+1728	1552	339	Hobi Odası
+1729	2369	1552	Langırt Masaları
+1730	2311	1552	Oyun Koltukları
+1731	2113	1552	Bilardo Masaları
+1732	2615	1552	Masa Tenisi Masaları
+1733	2490	1552	Oyun Sehpaları
+1734	2112	1552	Poker Masaları
+1735	1635	339	Bar
+1736	383071	1635	Şaraplıklar
+1737	2976	1635	Bar Masa ve Sandalye Setleri
+1738	2491	1635	Mini Bar
+1739	2115	1635	Bar Üniteleri
+1740	2312	1635	Bar Masaları
+1741	2114	1635	Bar Sandalyeleri
+1742	918	339	Ofis
+1743	3405	918	Sehpalar
+1744	2974	918	Çalışma Masaları
+1745	2428	918	Kesonlar
+1746	2548	918	Çalışma Odası Setleri
+1747	3346	918	Koltuklar ve Kanepeler
+1748	2059	918	Bankolar
+1749	3520	918	Toplantı Masaları
+1750	3345	918	Bilgisayar Masaları
+1751	1873	918	Kütüphaneler ve Kitaplıklar
+1752	3586	918	Dosya Dolapları
+1753	1762	918	Ofis Koltukları ve Sandalyeleri
+1754	393051	339	Bebek ve Çocuk Odası
+1755	436106	393051	Şifonyerler
+1756	436105	393051	Komodinler
+1757	437100	393051	Çocuk Koltukları
+1758	436100	393051	Bebek Odası Takımları
+1759	436102	393051	Dolap ve Gardıroplar
+1760	437104	393051	Emzirme Koltukları
+1761	436101	393051	Çocuk Odası Takımları
+1762	437103	393051	Beşikler
+1763	436104	393051	Kitaplıklar
+1764	437102	393051	Çalışma Masaları
+1765	436103	393051	Yataklar
+1766	437101	393051	Karyolalar
+1767	860	339	Oturma Odası
+1768	2294	860	Sehpalar ve Zigon
+1769	2293	860	Kanepe, Koltuk, Berjer
+1770	2524	860	CD ve DVD Dolapları
+1771	1733	860	Kitaplıklar
+1772	2889	860	Gazetelikler
+1773	393050	860	Duvar Üniteleri
+1774	2775	860	TV Üniteleri ve Sehpaları
+1775	3379	860	Puflar ve Minderler
+1776	919	339	Bahçe
+1777	2001	919	Yataklar
+1778	1697	919	Tente ve Çadır
+1779	2614	919	Bahçe Masa ve Sandalye Setleri
+1780	383111	919	Bahçe Aksesuarları
+1781	2613	919	Koltuklar
+1782	1819	919	Sandalyeler
+1783	1874	919	Bahçe Takımları
+1784	2795	919	Hamaklar
+1785	2796	919	Salıncaklar
+1786	1924	919	Sehpalar
+1787	2249	919	Şezlonglar
+1788	2430	919	Banklar
+1789	3592	919	Tabureler
+1790	2367	919	Hamak Standları
+1791	2246	919	Bahçe Masaları
+1792	1763	919	Şemsiyeler
+1793	1512	339	Banyo
+1794	3286	1512	Banyo Dolapları
+1795	2551	1512	Banyo Takımları
+1796	1533	339	Yatak Odası
+1797	3373	1533	Yataklar
+1798	2642	1533	Şifonyerler-Dresuarlar
+1799	1907	1533	Elbise ve Konfeksiyon Askıları
+1800	2885	1533	Komodinler
+1801	3309	1533	Bez-Kumaş Gardroplar
+1802	3310	1533	Boy Aynaları
+1803	2888	1533	Yatak Ucu Bankları
+1804	2645	1533	Yatak Odası Takımları
+1805	383151	1533	Takı Dolapları
+1806	2407	1533	Karyolalar
+1807	2292	1533	Bazalar
+1808	2703	1533	Yatak Başlıkları
+1809	2461	1533	Yatak Setleri
+1810	1968	1533	Makyaj Masaları
+1811	405101	1533	Sandıklar
+1812	1966	1533	Dolap ve Gardrop
+1813	1023	339	Genç Odası
+1814	2584	1023	Çalışma Masaları
+1815	2641	1023	Gardroplar
+1816	2700	1023	Komodinler
+1817	3491	1023	Ranzalar
+1818	2159	1023	Şifonyerler ve Dresuarlar
+1819	1665	1023	Karyolalar
+1820	2829	1023	Bilgisayar Masaları
+1821	2772	1023	Sandalyeler
+1822	3078	1023	Kitaplıklar
+1823	2405	1023	Genç Odası Takımları
+1824	381101	339	Mobilya Aksesuarları
+1825	394053	381101	Mobilya Ayakları
+1826	394051	381101	Tezgah Altı Ürünleri
+1827	394052	381101	Gardırop Üniteleri
+1828	394050	381101	Raylı Çekmece Sepetleri
+1829	381102	381101	Mobilya Kulpları
+1830	381104	381101	Çekmece Rayları
+1831	381103	381101	Menteşeler
+1832	783	339	Mutfak
+1833	1851	783	Mutfak Masaları
+1834	2037	783	Servis Arabaları
+1835	2523	783	Masa ve Sandalye Setleri
+1836	2519	783	Dolaplar
+1837	1962	783	Mutfak Sandalyeleri
+1838	3139	783	Tabureler
+1839	3198	783	Mutfak Adaları
+1840	571	339	Yemek Odası
+1841	1671	571	Vitrinler
+1842	1969	571	Yemek Odası Takımları
+1843	1670	571	Sandalyeler
+1844	1669	571	Yemek Masaları
+1845	2522	571	Banklar
+1846	1797	571	Büfeler
+1847	3260	571	Konsollar
+1848	381100	339	Nakliye ve Montaj
+1849	1423	339	Antre
+1850	2250	1423	Portmantolar
+1851	405100	1423	Telefonluklar
+1852	3231	1423	Askılıklar ve Şemsiyelikler
+1853	2184	1423	Dilsiz Uşaklar
+1854	3229	1423	Ayakkabılıklar
+1855	3230	1423	Banklar ve Puflar
+1856	356	227	Dekorasyon
+1857	1172	356	Dekoratif Aksesuarlar
+1858	3287	1172	Biblo ve Heykeller
+1859	388067	1172	Vitrin Aksesuarları
+1860	2003	1172	Mumlar ve Şamdanlar
+1861	444110	1172	Yapışkan Folyolar
+1862	1877	1172	Yapay Çiçekler
+1863	2553	1172	Vazo ve Saksılar
+1864	3050	1172	Çıkartmalar
+1865	383070	1172	Dekoratif Bardak ve Tabaklar
+1866	2186	1172	Yılbaşı Süs ve Aksesuarları
+1867	2254	1172	Küllük
+1868	2185	1172	Keyif Tepsileri
+1869	2253	1172	Kumbara
+1870	2252	1172	Obje
+1871	3233	1172	Duvar Kağıdı ve Çıkartmalar (Sticker)
+1872	2530	1172	Kitap Tutucular
+1873	2251	1172	Ev Kokuları
+1874	3320	1172	Diğer
+1875	1930	1172	Seperatörler
+1876	3409	1172	Kutular
+1877	621	356	Aynalar
+1878	3524	621	Dekoratif Ayna
+1879	2617	621	Boy Aynası
+1880	1929	621	Diğer
+1881	380150	356	Kırlentler ve Yastıklar
+1882	1300	356	Tasarım ve TV Ürünleri
+1883	1437	356	Fotoğraf Çerçeveleri
+1884	3565	1437	Albümler
+1885	3083	1437	Çoklu Çerçeve
+1886	2468	1437	Tekli Çerçeve
+1887	383254	356	Disney Ürünleri
+1888	1226	356	Tablolar
+1889	3566	1226	Çağdaş Sanat Eserleri
+1890	3084	1226	Ahşap Tablo
+1891	1975	1226	Doğal Taş Tablo
+1892	1801	1226	Goblen Tablo
+1893	1855	1226	Forex Tablo
+1894	2531	1226	İllüstrasyonlar
+1895	2099	1226	Posterler
+1896	3384	1226	Retro Tablo
+1897	2592	1226	Yağlı Boya Tablo
+1898	3500	1226	Kanvas Tablo
+1899	1741	1226	Ledli Tablo
+1900	606	356	Saatler
+1901	2098	606	Dijital Saat
+1902	2337	606	Masa Saati
+1903	3026	606	Duvar Saatleri
+1904	1676	606	Kanvas Saatler
+1905	399051	356	Hediyelik Eşya
+1906	434102	399051	Yılbaşı Hediyeleri
+1907	402101	399051	Babalar Günü
+1908	402102	399051	Sevgililer Günü
+1909	402103	399051	Doğum Günü
+1910	402104	399051	İlginç Hediyeler
+1911	402100	399051	Anneler Günü
+1912	316	227	Aydınlatma
+1913	1514	316	Avizeler
+1914	1515	316	Masaüstü Aydınlatmaları
+1915	3166	1515	Çalışma Masası Aydınlatmaları
+1916	2431	1515	Masa Aydınlatmaları
+1917	2062	1515	Tuz Lambalar
+1918	620	316	Dış Mekan Aydınlatmalar
+1919	646	316	Dekoratif Aydınlatmalar
+1920	1000	316	Mood ve Ambiyans Aydınlatmaları
+1921	380164	316	Tavan Armatürleri
+1922	1050	316	Lambaderler ve Köşe Aydınlatmaları
+1923	1595	316	Spot Aydınlatmalar
+1924	1049	316	Sarkıtlar
+1925	1445	316	Başucu Aydınlatmaları
+1926	1048	316	Ampuller
+1927	1313	316	Led Aydınlatmalar
+1928	1390	316	Çocuk Odası Aydınlatmaları
+1929	1424	316	Abajurlar
+1930	1314	316	Aplikler
+1931	1389	316	Duvar Aydınlatmaları
+1932	235	0	Outdoor, Avcılık, Dalış
+1933	273	235	Avcılık
+1934	599	273	Avcı Bot ve Çizmeleri
+1935	1432	273	Balık Tutma, Olta
+1936	3375	1432	Makine, Kamış Setler
+1937	381105	1432	Balıkçı Kıyafetleri
+1938	1668	1432	Misinalar
+1939	381106	1432	Diğer Balıkçılık Aksesuarları
+1940	3257	1432	Fırdöndü, Kurşun ve İğne
+1941	3438	1432	Çapari, Hazır Takımlar
+1942	3199	1432	Balık Bulucular
+1943	2218	1432	Yapay Balık, Yemler
+1944	377178	1432	Kepçe, Livar ve Pinter
+1945	2833	1432	Olta, Kamışlar
+1946	377179	1432	Ağ ve Halatlar
+1947	2219	1432	Kamış Kılıfı, Makine Çantaları
+1948	377175	1432	Şamandıra
+1949	2520	1432	Zıpkınlar
+1950	1967	1432	Makineler
+1951	1796	1432	Çanta, Kutular
+1952	1163	273	Av Kıyafetleri
+1953	3495	1163	Avcı Gömlekleri
+1954	1904	1163	Avcı Yelekleri
+1955	2705	1163	Avcı Pantalonları
+1956	377137	273	Av Silahları
+1957	377143	377137	Aksesuarlar
+1958	377141	377137	Airsoft Silahlar
+1959	377142	377137	BB ve Saçmalar
+1960	377139	377137	Havalı Tabancalar
+1961	377140	377137	PCP Silahlar
+1962	377138	377137	Havalı Tüfekler
+1963	406100	235	Dalış
+1964	406103	406100	Dalış Bilgisayarı
+1965	406104	406100	Dalış Çantası
+1966	406101	406100	Dalış Ekipmanı
+1967	406102	406100	BCD Denge Yeleği
+1968	406111	406100	Zıpkın
+1969	406112	406100	Eldiven, Patik, Çorap
+1970	406109	406100	Palet
+1971	406110	406100	Regülator
+1972	406107	406100	Geyç
+1973	406108	406100	Şnorkel ve Maske
+1974	406105	406100	Dalış Kıyafeti
+1975	406106	406100	Dalış Tüpü
+1976	392050	235	Askeri Malzemeler
+1977	392053	392050	Hücum Yelekleri
+1978	392054	392050	Atış Kulaklıkları
+1979	392055	392050	Diğer Askeri Aksesuarlar
+1980	392056	392050	Askeri Sırt Çantaları
+1981	392051	392050	Askeri Botlar 
+1982	392052	392050	Askeri Giysiler 
+1983	392057	392050	Kemer Palaska-Tactic Belt
+1984	404	235	Outdoor, Kamp
+1985	377165	404	Medikal Ürünler
+1986	377166	377165	Medikal Çantalar
+1987	377168	377165	Medikal İlk Yardım
+1988	377167	377165	Medikal Antiböcek
+1989	377169	377165	Medikal Temizlik
+1990	377170	377165	Medikal Koruyucular
+1991	377171	377165	Çöp Kovaları
+1992	377172	377165	Hot ve Cold Pack Serisi
+1993	1496	404	Outdoor Ekipman
+1994	1731	1496	Outdoor Çantalar
+1995	377126	1496	Su Altı Fenerleri
+1996	377125	1496	Kafa Lambaları
+1997	377124	1496	Anahtarlık Fenerler
+1998	377123	1496	Projektör ve Işıldaklar
+1999	377121	1496	Güvenlik Malzemeleri
+2000	2704	1496	Uyku Tulumları ve Matlar
+2001	377115	1496	Diğer Outdoor Ekipmanları
+2002	377177	1496	Kamp Yatakları
+2003	377119	1496	Köpek Kovucular
+2004	377120	1496	Kamp Mobilyaları
+2005	2329	1496	Çakılar, Bıçaklar
+2006	3141	1496	Pusula
+2007	3142	1496	Fenerler
+2008	2091	1496	Çadırlar
+2009	2092	1496	Outdoor Saatler
+2010	533	404	Kamp Mutfağı
+2011	2643	533	Buzluk, Soğutucu
+2012	1850	533	Yemek Sepetleri
+2013	377164	533	Ocak ve Yemek Kapları
+2014	2093	533	Mataralar
+2015	2951	533	Aksesuarlar
+2016	2408	533	Tabure, Sandalye, Masa
+2017	377122	533	Termos ve Bardaklar
+2018	1460	404	Tırmanış Malzemeleri
+2019	377151	1460	İpler ve Halatlar
+2020	377152	1460	Teknik Malzemeler
+2021	3374	1460	Baton, Hedik
+2022	377150	1460	Emniyet Kemerleri
+2023	2886	1460	Karabina, Desandör
+2024	2832	1460	Kask, Kazma, Krampon
+2025	3555	1460	Diğer Tırmanış Malzemeleri
+2026	383052	404	Solar Enerji Sistemleri
+2027	377145	404	GPS Navigasyon ve Pusulalar
+2028	377149	377145	Pusulalar
+2029	377147	377145	El GPS leri
+2030	377148	377145	Telsizler
+2031	377163	404	Kameralar
+2032	377127	404	Dürbün ve Teleskoplar
+2033	377132	377127	Aksesuarlar
+2034	377131	377127	Fotokapan
+2035	377130	377127	Tüfek Dürbünleri
+2036	377129	377127	Teleskoplar
+2037	377128	377127	El Dürbünleri
+2038	1249	404	Ayakkabı ve Botlar
+2039	377114	1249	Çizmeler
+2040	3493	1249	Sandaletler
+2041	1667	1249	Kaya Tırmanış Ayakkabısı
+2042	2950	1249	Trekking Botları
+2043	1848	1249	Dağcılık Botları
+2044	429103	404	Fırsat Köşesi
+2045	710	404	Outdoor Giyim
+2046	2036	710	Mont, Ceket
+2047	3492	710	Çorap, Tozluklar
+2048	2038	710	Buff ve Bandana
+2049	3372	710	Şapka, Bere
+2050	3197	710	Gömlek, T-Shirt
+2051	2406	710	Outdoor Gözlükler
+2052	2585	710	Termal İç Giyim
+2053	377116	710	Polar Giysiler
+2054	377117	710	Yelekler
+2055	377118	710	Aksesuarlar
+2056	2328	710	Eldiven
+2057	377173	710	Sandalet, Terlik ve Tabanlık
+2058	377174	710	Rüzgarlık ve Yağmurluk
+2059	2090	710	Pantolon, Şort
+2060	240	0	Elektrikli Ev Aletleri
+2061	380162	240	Dikiş Makineleri ve Aksesuarları
+2062	411	240	Ütüler
+2063	441	411	Seyahat Ütüleri
+2064	1541	411	Buhar Tanklı Ütü
+2065	471	411	Normal Ütüler
+2066	368	240	Elektrikli Mutfak Aletleri
+2067	1375	368	Mutfak Robotu
+2068	990	368	Fritöz
+2069	1128	368	Doğrayıcı ve Rondo
+2070	717	368	Elektrikli Barbekü ve Izgara
+2071	1127	368	Tost Makinesi
+2072	1502	368	Elektrikli Pişirici
+2073	1031	368	Katı Meyve ve Narenciye Sıkacağı
+2074	1301	368	Özellikli Ürünler
+2075	2412	1301	Buz Yapma ve Kırma Makinesi
+2076	2778	1301	Kahve Değirmeni ve Öğütücü
+2077	1856	1301	Mısır Patlatma Makinesi
+2078	1677	1301	Su Arıtma Cihazları
+2079	2164	1301	Buharlı Pişiriciler
+2080	3501	1301	Süt Köpürtücü
+2081	3569	1301	Dondurma Makinesi
+2082	3567	1301	Kıyma Makineleri
+2083	3568	1301	Vakum Makinesi
+2084	3321	1301	Waffle Makinesi
+2085	1802	1301	Elektrikli Bıçaklar
+2086	3206	1301	Yoğurt Makinesi
+2087	3145	1301	Dilimleyici
+2088	3385	1301	Krep Makinesi
+2089	3144	1301	Yumurta Pişirme Makinesi
+2090	1084	368	Kahve ve Espresso Makineleri
+2091	1173	368	Su Isıtıcılar
+2092	573	368	Ekmek Kızartma ve Yapma Makinesi
+2093	745	368	Mikser ve Blender Setleri
+2094	746	368	Semaver ve Çay Makinesi
+2095	307	240	Süpürgeler ve Yıkama Makineleri
+2096	1260	307	Süpürge Aksesuarları
+2097	391108	1260	Süpürge Pilleri
+2098	391107	1260	Universal Süpürge Aksesuarlı
+2099	391106	1260	Süpürge Kokuları
+2100	391105	1260	Süpürge Motorları
+2101	391112	1260	Diğer Süpürge Parçaları
+2102	391111	1260	Buharlı Süpürge Aksesuarları
+2103	391110	1260	Toz Torbası Kızakları
+2104	391109	1260	Süpürge Tutma Sapları
+2105	391100	1260	Toz Torbaları
+2106	391101	1260	Süpürge Filtreleri
+2107	391102	1260	Süpürge Hortumları
+2108	391103	1260	Süpürge Boruları
+2109	391104	1260	Süpürge Emici Başlıkları
+2110	1376	307	Elektrikli Süpürgeler
+2111	1129	307	Buharlı Temizlik Makineleri
+2112	1132	307	Halı Yıkama Makinesi
+2113	832	307	Şarjlı Süpürgeler
+2114	434100	240	Dikiş Makinesi ve Aksesuarları
+2115	434101	434100	Dikiş Makineleri
+2116	230	0	Hobi ve Oyuncak
+2117	294	230	Yetişkinler Hobi ve Oyun
+2118	670	294	Oyun Takımları
+2119	3018	670	Oyun Kağıdı
+2120	3075	670	Tavla
+2121	3552	670	Okey
+2122	3303	670	Satranç
+2123	394054	294	Yeni Nesil Akıllı Oyuncaklar
+2124	634	294	Kutu Oyunları
+2125	2289	634	Çocuk Oyunları
+2126	3196	634	Aile Oyunları
+2127	3437	634	Kağıt Oyunları
+2128	2638	634	Eğitici Oyunlar
+2129	531	294	Puzzle 
+2130	2881	531	1000 Parça Puzzle
+2131	2034	531	Puzzle aksesuarları
+2132	2583	531	Üç Boyutlu Puzzle
+2133	1790	531	1500 Parça Puzzle
+2134	1960	531	75-300 Parça Puzzle
+2135	2771	531	500 Parça Puzzle
+2136	2639	531	2000 Parça Puzzle
+2137	2826	531	Mekanik Puzzle
+2138	2948	531	3000+ Parça Puzzle
+2139	892	294	Maketler
+2140	2290	892	Gemi Maketleri
+2141	396050	892	Taş Maketler
+2142	1789	892	Uzay Gemisi Maketleri
+2143	2404	892	Helikopter Maketleri
+2144	2518	892	Maket Aksesuarları
+2145	3551	892	Ahşap Maketler
+2146	2770	892	Askeri Araç Maketleri
+2147	1847	892	Uçak Maketleri
+2148	3138	892	Araba Maketleri
+2149	1161	294	Uzaktan Kumandalı Araclar
+2150	3019	1161	Kara Taşıtları
+2151	2035	1161	Hava Taşıtları
+2152	779	294	Model Taşıtlar
+2153	397050	779	Model Taşıt Aksesuarları
+2154	2698	779	Otomobil
+2155	397100	779	Deniz Taşıtları
+2156	1664	779	Ucak
+2157	446100	294	Action Figures
+2158	447100	230	Akıllı Ürünler
+2159	447101	447100	Tasarım Ürünler
+2160	445101	230	İlginç Ürünler
+2161	272	230	Bebek ve Çocuk Oyuncakları
+2162	1121	272	Sallanan Oyuncaklar
+2163	1459	272	Bebek Oyun Parkları
+2164	855	272	Aktivite Merkezleri
+2165	859	272	Bahçe Oyuncakları
+2166	3308	859	Top, Frizbi, Bumerang
+2167	1849	859	Oyun Çadırları
+2168	1666	859	Salıncaklar
+2169	1964	859	Şişme Oyuncaklar
+2170	1963	859	Su Ve Balon Oyuncakları
+2171	1795	859	Uçurtmalar
+2172	1017	272	Ahşap Oyuncaklar
+2173	387254	272	Çocuk Aksesuarı
+2174	532	272	Arabalar
+2175	3307	532	Kumandasız Arabalar
+2176	3020	532	Akülü ve Elektrikli Araçlar
+2177	2773	532	Pedallı ve Sürmeli Araçlar
+2178	2774	532	Uzaktan Kumandalı Arabalar
+2179	603	272	Yapı Oyuncakları
+2180	1215	272	Bebek, Peluş ve Karakter Oyuncak
+2181	3079	1215	Karakter Oyuncaklar
+2182	3140	1215	Bebek ve Peluşlar
+2183	601	272	Yapboz ve Puzzle
+2184	1622	272	Oyuncak Seti
+2185	387201	272	Banyo Oyuncakları
+2186	387152	272	Parti Malzemeleri
+2187	387157	387152	Parti Kostümleri
+2188	387158	387152	Parti Setleri
+2189	387153	387152	Balonlar
+2190	387154	387152	Parti Aksesuarları
+2191	387155	387152	Parti Sofraları
+2192	387156	387152	Pinyatalar
+2193	1495	272	Çıngıraklar
+2194	1221	272	Oyun Halıları
+2195	1220	272	Helikopter ve Uçaklar
+2196	1371	272	Yatak Oyuncakları
+2197	2953	1371	Işıklı ve Sesli Yatak Oyuncakları
+2198	1799	1371	Aksesuar Oyuncaklar
+2199	2333	1371	Dönenceler
+2200	674	272	Dişlikler
+2201	1168	272	Kutu Oyunları
+2202	462	272	Eğitici Oyuncaklar
+2203	1732	462	Coğrafya ve Tarih
+2204	3376	462	Sayılar
+2205	2702	462	Alfabe ve Dil
+2206	3557	462	Okuma ve Yazma
+2207	2330	462	Müzik ve Sanat
+2208	3556	462	Matematik
+2209	3377	462	Doğa ve Bilim
+2210	1289	272	Bisiklet ve Scooterlar
+2211	2701	1289	Bisiklet
+2212	1965	1289	Scooter
+2213	498	272	Evcilik Oyuncakları
+2214	568	272	Plaj Oyuncakları
+2215	499	272	Oyun Hamurları
+2216	569	272	Spor Oyuncakları
+2217	221	0	Oto Ses ve Görüntü Sistemleri
+2218	374	221	Ses, Müzik, Görüntü
+2219	1640	374	Hoparlör
+2220	654	374	Subwoofer
+2221	1427	374	Oto Teyp
+2222	1057	374	Amplifikatör
+2223	399050	374	Multimedya Sistemleri
+2224	1605	374	CD Organizer, Çantaları
+2225	881	374	Bluetooth Araç Kiti
+2226	386050	374	Tv Monitör
+2227	880	374	Arka Görüş Kamerası
+2228	769	374	Usb-Sd Çevirici Modül
+2229	1354	374	Montaj Kitleri
+2230	1561	374	Navigasyon Sistemleri
+2231	1319	374	Araç Antenleri
+2232	1560	374	Komponent
+2233	1559	374	FM Transmitter
+2234	248	0	Saat, Gözlük, Aksesuar
+2235	367	248	Aksesuar
+2236	382106	367	Para Maşası
+2237	1530	367	Kartvizitlik
+2238	735	367	Nargile ve Aksesuarı
+2239	1490	367	Sigara Seti ve Aksesuarı
+2240	1491	367	Pipo ve Aksesuarı
+2241	460	367	Anahtarlık
+2242	529	367	Matara
+2243	1285	367	Puro Seti ve Aksesuarı
+2244	489	367	Çakmak ve Aksesuarı
+2245	393055	367	Tasarım Kalemler
+2246	416	248	Gözlük
+2247	972	416	Unisex Gözlük
+2248	1067	416	Gözlük Aksesuarı
+2249	666	416	Erkek Gözlüğü
+2250	935	416	Kadın Gözlüğü
+2251	1364	416	Çocuk Gözlüğü
+2252	365	248	Saat
+2253	700	365	Kol Saati
+2254	3428	700	Erkek Kol Saati
+2255	1892	700	Unisex Kol Saati
+2256	2682	700	Çocuk Kol Saati
+2257	2813	700	Kadın Kol Saati
+2258	440100	365	Fırsat Köşesi
+2259	384050	365	Köstekli Saat
+2260	249	0	Tekne,Yat ve Deniz Malzemeleri
+2261	312	249	Havalandırma
+2262	1293	312	Havalandırma Kapakları
+2263	1219	312	Blower Salyangoz Tip
+2264	1218	312	Blower Düz Tip
+2265	982	312	Vantilatör 12,24 Volt 
+2266	983	312	Hava Firarları
+2267	311	249	Dümen ve Kumanda
+2268	1327	311	Baş Pervaneleri
+2269	1579	311	Dümen Palası İğnecikleri
+2270	463	311	Dümen Simidi
+2271	1616	311	Hidrolik Sistem Hortumları
+2272	1217	311	Flap Sistemleri
+2273	439	311	Kumanda Kolları, Telleri
+2274	784	311	Dümen Kontrol Sistemi
+2275	898	311	Hidrolik Dümen Sistemi
+2276	1076	311	Göstergeler
+2277	1406	311	Kaptan Koltuğu Ayağı
+2278	560	311	Havuz Körüğü
+2279	386101	249	Yelken
+2280	386103	386101	Makara
+2281	386104	386101	Flok Arabaları 
+2282	386102	386101	Dümen Donanımları 
+2283	386109	386101	Bağlantı ve Montaj 
+2284	386110	386101	Liftin ve Kılıfı 
+2285	386107	386101	Cem Kilit
+2286	386108	386101	Yelken Aksesuarları 
+2287	386105	386101	Stoper ve Kilit
+2288	386106	386101	Optimist Aksesuarları 
+2289	383	249	Güverte
+2290	1164	383	Güverte Yıkama Pompa ve Kitleri
+2291	1435	383	Kulp, Tutamak ve Stoper
+2292	1025	383	Firar, Tahliye Borusu ve Miçoz
+2293	825	383	Livar Pompa ve Aksesuarları
+2294	465	383	Vardevela Ağı
+2295	981	383	Lift ve Amortisör
+2296	1537	383	Tente ve Tente Malzemeleri
+2297	741	383	Aksesuar
+2298	1292	383	Plastik Yuva, Kapak ve Dolap
+2299	566	383	Plastik Menteşe
+2300	565	383	Dolum Ağzı
+2301	1115	383	Matafora ve Pasarella 
+2302	1114	383	Bayrak ve Bayrak Direği
+2303	636	383	Masa ve Sandalye
+2304	1620	383	Direk ve Yelken Donanımı
+2305	1252	383	Kamış Yuvası ve Gönder
+2306	1080	383	Usturmaça ve Ekipmanları
+2307	306	249	Makine Dairesi
+2308	1224	306	Tutyalar
+2309	1464	306	Motor Yedek Parçaları
+2310	1296	306	Yakıt Sistemi
+2311	305	249	Güvenlik
+2312	562	305	Can Simitleri
+2313	1536	305	Kulvar ve Güvenlik Şamandıraları
+2314	564	305	Diğer Güvenlik Ekipmanları
+2315	464	305	Yangın Söndürme Ekipmanları
+2316	563	305	İlk Yardım Çantaları
+2317	824	305	Can Yelekleri
+2318	785	305	İşaret Fişekleri
+2319	1619	305	Can Simidi ve Yeleği Aksesuarları
+2320	1434	305	Radar Reflektörleri
+2321	1368	305	Can Salları
+2322	372	249	Sintine
+2323	1119	372	Sintine Otomatiği ve Alarmları
+2324	1118	372	Sintine Pompaları
+2325	1497	372	Sintine Hortumları
+2326	1331	372	Sintine Çıkışları
+2327	313	249	Navigasyon Ekipmanları
+2328	535	313	Rüzgar Gülü
+2329	1116	313	Navigasyon
+2330	1294	313	Harita Navigasyon Ekipmanları
+2331	495	313	Dürbün
+2332	712	313	Pusula
+2333	1253	313	Klinometre
+2334	1330	313	Barometre, Higrometre, Termometre, Saat
+2335	295	249	Deniz ve Eğlence Ürünleri
+2336	1463	295	Parasail
+2337	637	295	Şişme Yataklar ve Havuzlar
+2338	1412	295	Wakeboard
+2339	678	295	Sualtı Deniz Jeti
+2340	1167	295	Su Kayağı ve Aksesuarları
+2341	1254	295	Diz Sörfü Tahtası
+2342	361	249	Tatlı Su
+2343	1120	361	Tatlı Su Tankları ve Aksesuarları
+2344	742	361	Musluk ve Duş Başlıkları
+2345	497	361	Şamandıralar
+2346	1295	361	Tatlı Su Pompaları
+2347	827	361	Plastimo Şişme Su Tankı
+2348	900	361	Hidroforlar
+2349	1538	361	Boiler - Su Isıtıcı
+2350	468	361	Tesisat ve Su Hortumları
+2351	301	249	Dalış ve Scuba Malzemeleri
+2352	638	301	Zıpkınlı Dalış Ekipmanları
+2353	1027	301	Acil Dalış Setleri
+2354	1623	301	Serbest ve Scuba Dalış Ekipmanları
+2355	300	249	Giyim, Ayakkabı ve Hediyelik
+2356	1410	300	Ayakkabı
+2357	1580	300	Yağmurluk 
+2358	1535	300	Anahtarlıklar
+2359	740	300	Eldiven ve Bere
+2360	980	300	Mont
+2361	675	300	Çizme
+2362	863	300	Hediyelik ve Hobi
+2363	382102	300	Yelken Kıyafetleri 
+2364	417	249	Tersane Ekipmanları
+2365	1581	417	Frengi Tapaları
+2366	381107	417	Yedek Parça
+2367	828	417	Yük Kaldırma Ekipmanları
+2368	469	417	Hortum
+2369	1498	417	Rıhtım, İskele ve Gemi Usturmaçaları
+2370	274	249	Elektrik
+2371	1461	274	Marin Kablolar
+2372	823	274	Aydınlatma
+2373	979	274	Su Altı Işığı ve Underwater Light
+2374	1407	274	Güneş Pili Sistemleri
+2375	1408	274	İnvertör, Konvertör ve Redresör
+2376	561	274	Seyir Fenerleri
+2377	1328	274	Kornalar
+2378	600	274	Fişler, Prizler
+2379	1078	274	Akü Ve Aksesuarları
+2380	1251	274	Kontak Anahtarları
+2381	1077	274	Switch Panel ve Düğmeler 
+2382	1618	274	Projektör
+2383	1079	274	El Feneri
+2384	1617	274	Silecekler
+2385	275	249	Paslanmaz Malzeme
+2386	986	275	Menteşe, Kulp ve Kilit
+2387	1223	275	Dişli Boru Bağlantı Elemanları
+2388	1222	275	Tesisat Boruları
+2389	786	275	Kopilya, Halka, D-Halka ve Üçgen
+2390	787	275	Paslanmaz Tutamak
+2391	1332	275	Küpeşte Boruları Ve Aksesuarları
+2392	680	275	Liftin, Çektrime ve Mapa
+2393	1257	275	Kelepçe
+2394	944	275	Sac Levha
+2395	570	275	Krom Halat ve Ekipmanları
+2396	901	275	Civata  Somun
+2397	602	275	Profil
+2398	1624	275	Tente Borusu
+2399	537	275	Karabina, Rodansa ve Kanca
+2400	280	249	Bot ve Tekneler
+2401	1123	280	Polietilen Tekneler
+2402	1370	280	Tooper Yelkenli Tekneler
+2403	567	280	Botlar ve Kanolar
+2404	1539	280	Aksesuar ve Bakım
+2405	864	280	Plastimo Bot
+2406	340	249	Römork Ekipmanları ve Araç Vinçleri
+2407	713	340	Römork Ekipmanları
+2408	1081	340	Araç Vinçleri
+2409	346	249	Kitap, Harita ve Yayın
+2410	1369	346	Haritalar
+2411	1166	346	Yayınlar
+2412	405	249	Demirleme ve Rıhtım
+2413	1534	405	Koç Boynuzu, Kurt Ağzı ve Loca
+2414	896	405	Tonoz Şamandırası
+2415	1615	405	Hazır Çapa İpleri
+2416	822	405	Zincir ve Ekipmanları
+2417	942	405	İskele Halatı Esnetici
+2418	941	405	Baş Makarası
+2419	978	405	Irgat ve Ekipmanları
+2420	438	405	Çıpa
+2421	711	405	Halat
+2422	897	405	V&H Baba
+2423	288	249	Pis Su
+2424	536	288	Pis Su Tankları ve Aksesuarları
+2425	1462	288	Duş Tahliye Sistemleri
+2426	1117	288	WC ve WC Ekipmanları
+2427	826	288	Yer Süzgeçleri
+2428	1436	288	Pis Su Hortumları
+2429	496	288	Pis Su Tank Şamandıraları
+2430	1621	288	Maceratör Pompa
+2431	984	288	Plastik Vanalar
+2432	287	249	Boya ve Bakım Ürünleri
+2433	895	287	3M Ürünleri
+2434	1290	287	Astarlar
+2435	1291	287	Kaplama ve Son Katlar
+2436	534	287	Macunlar
+2437	1614	287	Boya Uygulama Malzemeleri
+2438	1366	287	Starbrite Ürünleri
+2439	437	287	Teak Bakım Ürünleri
+2440	1250	287	Kaymaz Boya
+2441	1216	287	Sintine Boyası
+2442	435	287	Epoksi Yapıştırıcılar
+2443	436	287	Vernikler
+2444	1075	287	Zehirli Boyalar
+2445	347	249	Sarı Malzeme
+2446	985	347	Depo Kapağı ve Havalandırma & Lumbuz
+2447	1169	347	Sarı Tutamak ve Halka Köprü & Aksesuar
+2448	1124	347	Bayrak Makaraları ve Fırdöndüleri
+2449	943	347	Boru Bağlantı Parçaları Sarı
+2450	679	347	Sarı Süzgeçler ve Miçoz Tapalar
+2451	257	249	Kabin
+2452	676	257	Mutfak
+2453	1026	257	Klima
+2454	677	257	Buzdolabı ve Buz Makinesi
+2455	466	257	Hatch ve Lumboz
+2456	1165	257	Evye ve Lavabo
+2457	899	257	Ocak ve Fırın
+2458	258	249	Su Yapıcı
+2459	1082	258	İdromar Su Yapıcı
+2460	1255	258	Membran
+2461	390	249	Deniz Motorları ve Jetski
+2462	1411	390	Jetski
+2463	467	390	Outboards ve Dıştan Takma
+2464	389	249	Elektronik
+2465	1409	389	Telsiz Antenleri
+2466	739	389	Göstergeler
+2467	635	389	Deniz Telsizleri
+2468	1433	389	Marin Ses Sistemleri
+2469	1367	389	Garmin
+2470	862	389	Elektroliz Anodu
+2471	1329	389	Uydu,TV,AM ve FM Antenleri
+2472	244	0	Auto Sport
+2473	341	244	Tuning
+2474	1198	341	Vites Topuzu
+2475	1603	341	Vites Körüğü
+2476	1604	341	Gösterge
+2477	433102	341	Krom Aksesuar
+2478	590	341	Şalter
+2479	731	341	Hava Filtreleri
+2480	1447	341	Tuning Setler
+2481	729	341	Spor Koltuk
+2482	730	341	Tuning Tekstil
+2483	1318	341	Blow off ve Turbo
+2484	1557	341	Kemer Aksesuarları
+2485	966	341	Xenon Kit
+2486	1556	341	Havalandırma
+2487	965	341	Kaput Mandalı
+2488	1555	341	Ayak Dayama
+2489	401100	341	Body Kit
+2490	1638	341	Pedal Seti
+2491	1639	341	El Fren Kaplaması
+2492	768	341	Egzoz
+2493	405151	341	Spor Yay
+2494	405152	341	Spor Izgara
+2495	382060	341	Çıta
+2496	382062	341	Diğer
+2497	382061	341	Oto Basamak
+2498	429104	341	Fırsat Köşesi
+2499	233	0	Fotoğraf  Makinesi ve Kamera
+2500	377	233	Dürbün, Teleskop ve Mikroskop
+2501	616	377	Mikroskop
+2502	511	377	Spotting Scobe
+2503	1091	377	Dürbün 
+2504	1092	377	Teleskop
+2505	259	233	Dürbün ve Teleskop Aksesuarları
+2506	579	259	Diogonal 
+2507	1039	259	Fokuser
+2508	754	259	Filtre
+2509	753	259	Koma Düzeltici
+2510	723	259	Çanta 
+2511	543	259	Diğer 
+2512	1419	259	Finder
+2513	1182	259	Barlow 
+2514	290	233	Fotoğraf  Makinesi Aksesuarı
+2515	760	290	Fotoğraf Kağıtları
+2516	478	290	Flaşlar
+2517	1550	290	Albüm
+2518	755	290	Filtre Ürünleri
+2519	1097	290	Işık Ölçüm Cihazları
+2520	514	290	Kılıf
+2521	1509	290	Objektif
+2522	1508	290	Dijital Fotoğraf Çerçevesi
+2523	803	290	Tripod / Monopod
+2524	387253	290	Diğer Aksesuar
+2525	1384	290	Çanta 
+2526	387252	290	Ekran Koruyucular
+2527	1443	290	Kart Okuyucu
+2528	1383	290	Lens Temizlik Ürünleri
+2529	387251	290	Pil
+2530	387250	290	Bataryalar
+2531	806	290	Uzaktan Kumanda
+2532	841	290	Işık Çadırı
+2533	842	290	Fotoğraf Yazıcıları
+2534	387200	290	Şarj Aletleri
+2535	1184	290	Stüdyo Işıkları
+2536	449	290	Hafıza Kartı
+2537	281	233	Fotoğraf  Makineleri
+2538	1143	281	Dijital Fotoğraf Makineleri
+2539	872	281	Dijital SLR Fotoğraf Makineleri
+2540	1094	281	Kullanat Fotoğraf Makineleri
+2541	269	233	Video Kamera Aksesuarı
+2542	1593	269	Boş Kaset, DVD
+2543	517	269	Işık
+2544	1479	269	Sarj Cihazı, Piller
+2545	959	269	Tripod ve Monopod
+2546	1388	269	Çanta
+2547	1232	269	Diğer 
+2548	1044	269	Mikrofon
+2549	725	269	Batarya
+2550	348	233	Video Kameralar
+2551	1551	348	Video Kameralar
+2552	241	0	Parfüm, Kozmetik, Bakım
+2553	418104	241	Dental Cihaz, Ekipman ve Aksesuarlar
+2554	418110	418104	Dental Dekorasyon ve Aksesuarlar
+2555	418105	418104	Dental Cihaz ve Ekipmanlar
+2556	418109	418105	Dijital Görüntüleme Sistemleri
+2557	418108	418105	Santrifujler
+2558	418107	418105	Ultrasonik Cerrahi Cihazlar
+2559	418106	418105	Lazerler
+2560	344	241	Vücut Bakımı
+2561	1568	344	Aromatik Masaj Yağları
+2562	1239	344	Vücut Spreyi ve Body Mist
+2563	850	344	Nemlendiriciler
+2564	3429	850	Yağ
+2565	2869	850	Krem ve Losyon
+2566	1207	344	Göğüs Bakım
+2567	1208	344	Vücut Peelingi
+2568	702	344	Sıkılaştırıcı ve Şekillendiriciler
+2569	426	344	Vücüt Simi ve Renklendirici
+2570	425	344	Ağda, Epilasyon ve Tüy Alma Ürünleri
+2571	2390	425	Epilatörler
+2572	2391	425	Ağda Ürünleri
+2573	1840	425	Tüy Dökücü, Sarartıcı
+2574	2684	425	Ağda Makineleri
+2575	2814	425	Saç, Burun Makasları
+2576	1282	344	Selülit Önleyici ve Gidericiler
+2577	888	344	Deodorant
+2578	1401	344	Roll-On ve Deo Stick
+2579	1012	344	Çatlak Giderici, Önleyiciler
+2580	350	241	Sağlık ve Medikal Ürünler
+2581	387151	350	Diğer
+2582	890	350	Ortopedik Ürünler
+2583	3185	890	Bel Desteği
+2584	2686	890	Patella Bandajı
+2585	2687	890	Bileklik
+2586	2144	890	Atel
+2587	2143	890	Boyunluk
+2588	2142	890	Tekerlekli Sandalye
+2589	2141	890	Varis Çorabı
+2590	3122	890	Uyku Bandı
+2591	3123	890	Dirseklik
+2592	3003	890	Ortopedik Yastık
+2593	1713	890	Kol Askısı
+2594	3004	890	Ayak Sağlığı
+2595	1894	890	Ortopedik Yatak
+2596	2871	890	Dizlik
+2597	438100	890	Hasta Yatağı
+2598	3539	890	Banyo Yardımcısı
+2599	3005	890	Baston
+2600	2937	890	Tabanlık
+2601	2938	890	Koltuk Değneği
+2602	2815	890	Meme Protezi
+2603	2936	890	Korse
+2604	2757	890	Yürüme Aparatı
+2605	1403	350	Lens ve Solisyonlar
+2606	3478	1403	Solisyonlar
+2607	2450	1403	Lensler
+2608	1569	350	Ağrı Giderici
+2609	1363	350	Şeker Ölçüm Cihazı
+2610	776	350	Tansiyon Aleti
+2611	598	350	Ateş Ölçer
+2612	777	350	İlk Yardım Ürünleri
+2613	2939	777	İlk Yardım Çantası
+2614	2205	777	Sargı Bezi
+2615	2449	777	Kompres
+2616	383059	777	Diğer
+2617	1947	777	Bandaj
+2618	1014	350	Cinsel Sağlık Ürünleri
+2619	3186	1014	Ovülasyon Testi
+2620	3187	1014	Erotik Masaj Yağları
+2621	2448	1014	Prezervatifler
+2622	2451	1014	Gebelik Testi
+2623	2452	1014	Cinsel Takviyeler
+2624	3063	1014	Cinsel Destek Ürünleri
+2625	1209	350	Alerji ve Enfeksiyon Ürünleri
+2626	3479	1209	Haşere Kovucu
+2627	3246	1209	Tedavi Cihazı
+2628	2759	1209	Sinek Kovar
+2629	1013	350	Medikal Ürünler
+2630	2204	1013	Steteskop
+2631	2688	1013	Kolestrol Kontrol Cihazları
+2632	2506	1013	Hava Nemlendiriciler
+2633	3538	1013	Hava Temizleme Cihazı
+2634	2756	1013	Nabız Ölçer Cihazlar
+2635	1841	1013	İdrar Torbası
+2636	1948	1013	Nebulizatör
+2637	934	350	Horlama Önleyici
+2638	968	350	Sigara Bırakma Ürünleri
+2639	283	241	Saç Bakımı
+2640	383076	283	Maske, Serum
+2641	383075	283	Dökülme Karşıtı
+2642	1489	283	Saç Losyonu
+2643	1065	283	Saç Bakım Kremi
+2644	428	283	Saç Bakım Setleri
+2645	1430	283	Saç Boyası
+2646	597	283	Saç Şekillendirme
+2647	2627	597	Saç Fırça, Tarak
+2648	2389	597	Saç Kurutma, Fön Makineleri
+2649	2392	597	Saç Maşaları
+2650	3002	597	Briyantin, Wax
+2651	2870	597	Saç Düzleştiriciler
+2652	2447	597	Bigudiler
+2653	3245	597	Saç Şekillendirme Seti
+2654	1779	597	Jöle, Köpük ve Sprey
+2655	1064	283	Şampuanlar
+2656	375	241	Ağız, Diş ve Dudak Bakımı
+2657	383073	375	Dudak Bakımı 
+2658	1160	375	Diş Protez Ürünleri
+2659	1454	375	Nefes Temizleyici
+2660	387159	375	Diğer
+2661	1607	375	Ağız Temizleme, Gargara
+2662	1241	375	Diş Fırçası
+2663	1242	375	Diş Macunu
+2664	391058	375	Diş Beyazlatıcı
+2665	255	241	El, Ayak ve Tırnak Ürünleri
+2666	1066	255	Ayak Bakımı
+2667	2276	1066	Nasır Mantar Ürünleri
+2668	1655	1066	Ayak Peelingi
+2669	1656	1066	Ayak Kremi
+2670	2935	1066	Ayak Bakım Setleri
+2671	3062	1066	Topuk Kremi
+2672	2140	1066	Ayak Bakım Aksesuarları
+2673	1780	1066	Ayak Kokusu Giderici, Önleyici
+2674	2078	1066	Ponzalar, Pedler
+2675	427	255	Tırnak Ürünleri
+2676	2685	427	Tırnak Bakımı
+2677	1893	427	Oje
+2678	3537	427	Oje Çıkarıcılar
+2679	2755	427	Takma Tırnak
+2680	1946	427	Manikür / Pedikür Ürünleri
+2681	3184	427	Tırnak Aksesuarları
+2682	889	255	El Bakımı
+2683	285	241	Güneş ve Bronzluk Ürünleri
+2684	430	285	Güneş Kremleri
+2685	971	285	Güneş Sonrası
+2686	665	285	Güneş Losyonlar
+2687	1284	285	Bronzlaştırıcılar
+2688	254	241	Yüz Bakımı
+2689	486	254	Serumlar
+2690	1237	254	Peeling
+2691	775	254	Tonikler
+2692	487	254	Yüz Bakım Setleri
+2693	1238	254	Yüz Bakım Cihazları
+2694	1429	254	Anti Aging Kırışıklık Karşıtı
+2695	701	254	Cilt Temizleyici
+2696	1400	254	Maskeler
+2697	661	254	Yüz Nemlendiriciler
+2698	1453	254	Akne Sivilce Gözenek
+2699	662	254	Leke Giderici
+2700	628	254	Göz Kremleri
+2701	363	241	Banyo Ürünleri
+2702	1240	363	Banyo, Hamam Setleri
+2703	527	363	Tuz, Köpük
+2704	1283	363	Pamuklar
+2705	1402	363	Duş Jelleri
+2706	558	363	Banyo Aksesuarları
+2707	366	241	Hijyen Ürünleri
+2708	429	366	Hijyenik Pedler
+2709	1431	366	Genital Bölge Temizleme
+2710	703	366	Sabun, Dezenfektan
+2711	2872	703	Katı Sabunlar
+2712	3540	703	Dezenfektan
+2713	445100	703	Bitkisel Sabunlar
+2714	2079	703	Sıvı Sabunlar
+2715	2758	703	Anti-Bakteriyel Sabunlar
+2716	1455	366	Kolonya
+2717	333	241	Kuaför Ürünleri
+2718	970	333	Boya ve Saç Açıcılar
+2719	1714	970	Saç Açıcı
+2720	2575	970	Tüp Boya
+2721	1949	970	Saç Boyama Aksesuarı
+2722	2393	970	Boya Silici
+2723	488	333	Tek Kullanımlık Ürünler
+2724	2628	488	Havlu
+2725	3482	488	Önlük ve Bornoz
+2726	1950	488	Manikür Pedikür Ürünleri
+2727	1657	488	Saç Bandı
+2728	3124	488	Yatak Örtüsü
+2729	974	333	El ve Ayak Bakımı
+2730	3068	974	Spa Ürünleri
+2731	3067	974	Makas ve Pensler
+2732	3007	974	Manikür ve Pedikür Aletleri
+2733	2208	974	Parafin Bakım
+2734	528	333	Kuaför Ekipmanları
+2735	3188	528	Solaryum Cihazı
+2736	3189	528	Sterilize Makinesi
+2737	2025	528	Aksesuarlar
+2738	2873	528	Buhar Makinesi
+2739	816	333	Saç Peruk ve Kaynakları
+2740	438102	816	Diğer
+2741	2507	816	Halkalı Kaynak
+2742	3126	816	Peruk
+2743	3125	816	Çıt Çıt
+2744	2760	816	Postiş
+2745	778	333	Kuaför Mobilyaları
+2746	438101	778	Diğer
+2747	1715	778	Etejer
+2748	3480	778	Cilt Bakım Koltukları
+2749	2206	778	Makyaj Standı
+2750	3481	778	Boya ve Servis Arabaları
+2751	2145	778	Ağda Yatakları
+2752	2394	778	Kasa ve Banko
+2753	1658	778	Ayaklık
+2754	388	241	Makyaj
+2755	1567	388	Makyaj Setleri
+2756	1280	388	Yüz
+2757	3060	1280	Pudra
+2758	2574	1280	Kapatıcı
+2759	2812	1280	Fondöten
+2760	1945	1280	Allık
+2761	1063	388	Makyaj Aksesuar
+2762	1654	1063	Makyaj Çantası
+2763	3476	1063	Allık Fırçası
+2764	3477	1063	Ruj Fırçası
+2765	2446	1063	Cımbız
+2766	2683	1063	Pudra Ponponu
+2767	2388	1063	Makyaj Fırçaları
+2768	2754	1063	Fondoten Süngeri, Lateks
+2769	2753	1063	Far Fırçası
+2770	3061	1063	Kalemtraş
+2771	1712	1063	Makyaj Aynası
+2772	1011	388	Dudak
+2773	1839	1011	Ruj
+2774	2934	1011	Parlatıcı, Dolgunlaştırıcı
+2775	3121	1011	Dudak Kalemi
+2776	627	388	Göz
+2777	3001	627	Maskara, Rimel
+2778	3120	627	Kaş Ürünleri
+2779	1944	627	Göz Kalemi
+2780	2386	627	Eyeliner, Sürmeler
+2781	2387	627	Takma Kirpik Ürünleri
+2782	2933	627	Göz Farı
+2783	933	388	Makyaj Baz ve Sabitleyiciler
+2784	271	241	Parfüm
+2785	1279	271	Çocuk Parfüm
+2786	1488	271	Erkek Parfüm
+2787	526	271	Kadın Parfüm
+2788	392	241	Erkek Bakım Ürünleri
+2789	969	392	Tıraş Makinesi
+2790	1324	392	Saç, Sakal Düzeltme Makineleri
+2791	1570	392	Cilt Bakımı
+2792	664	392	Tıraş Köpüğü, Jel ve Krem
+2793	1528	392	Tıraş Bıçak ve Yedekleri
+2794	1109	392	Tıraş Sonrası Ürünler
+2795	1608	392	Tıraş Seti
+2796	1210	392	Tıraş Fırçası
+2797	429102	241	Toptan Satış
+2798	431101	429102	Özel Satış
+2799	431100	429102	Toplu Satış
+2800	222	0	Video Oyunları ve Konsol
+2801	324	222	Oyun Konsolları
+2802	1577	324	Sega 
+2803	894	324	Diğer Sistemler, Konsollar 
+2804	426151	324	Sony Playstation 4
+2805	1457	324	Sony Playstation 2 
+2806	821	324	Sony Playstation 
+2807	493	324	Atari 
+2808	857	324	Commodore 
+2809	559	324	Nintendo GameCube 
+2810	1575	324	Nintendo 64 
+2811	1576	324	Nintendo Wii 
+2812	434	324	Nintendo DS,Lite,3DS 
+2813	709	324	Microsoft Xbox 
+2814	672	324	Sony PSP 
+2815	738	324	Microsoft Xbox 360 
+2816	1214	324	Nintendo GameBoy 
+2817	1246	324	Sony Playstation 3 
+2818	429154	324	Microsoft Xbox One
+2819	279	222	Konsol Oyunları
+2820	893	279	Nintendo DS, Lite, 3DS 
+2821	1613	279	Microsoft Xbox 360 
+2822	708	279	PC 
+2823	1405	279	Online Oyunlar 
+2824	433	279	Nintendo 64 
+2825	940	279	Nintendo GameCube 
+2826	426101	279	Sony Playstation 4
+2827	1020	279	Nintendo Wii 
+2828	1022	279	Sony PSP 
+2829	1021	279	Sony Playstation 
+2830	1532	279	Atari 
+2831	737	279	Sony Playstation 3 
+2832	975	279	Sony Playstation 2 
+2833	1112	279	Sega 
+2834	1111	279	Nintendo GameBoy 
+2835	1074	279	Diğer Oyunlar 
+2836	429155	279	Microsoft Xbox One
+2837	780	279	Microsoft Xbox 
+2838	286	222	Konsol Aksesuarları
+2839	1018	286	Sony Playstation 
+2840	671	286	Diğer Aksesuarlar 
+2841	1019	286	Sony Playstation 3 
+2842	1213	286	Sega 
+2843	427100	286	Sony Playstation 4
+2844	1245	286	Sony Playstation 2 
+2845	1073	286	Sony PSP 
+2846	224	0	Yapı Market, Bahçe, Çiçek ve Bitki
+2847	394	224	Yapı Market
+2848	801	394	Elektrikli Aletler ve Aksesuarlar
+2849	2305	801	Döşeme, Çivi ve Zımba Çakma
+2850	382110	801	Torna Makineleri
+2851	381108	801	Karot Makineleri
+2852	3399	801	Raspalar
+2853	3333	801	Havalı Aletler
+2854	2106	801	Tilki Kuyruğu
+2855	3334	801	Kanal Açma Makineleri
+2856	3512	801	Ahşap ve Metal Kesme
+2857	380161	801	Aksesuarlar
+2858	1688	801	Sıcak Hava Tabancaları
+2859	1806	801	Planyalar
+2860	1994	801	Endüstriyel Temizleme
+2861	2905	801	Karıştırıcılar
+2862	2966	801	Pafta
+2863	3042	801	Üfleme Makinesi
+2864	1689	801	Somun Sıkma Makineleri
+2865	2539	801	Saç ve Sünger Kesme
+2866	954	394	El Aletleri
+2867	382107	954	Cam Elması
+2868	382108	954	Mengeneler
+2869	2104	954	Kargaburun
+2870	2784	954	Kerpeten
+2871	2785	954	Metre
+2872	2351	954	Testere
+2873	3398	954	Gönye
+2874	1917	954	Pense
+2875	3155	954	Anahtarlar
+2876	1685	954	Yan Keski ve Yassı Keski
+2877	1684	954	Tornavida
+2878	1991	954	İskarpelalar
+2879	3041	954	Perçin
+2880	2601	954	Silikon Tabancası
+2881	1753	954	Balta ve Çekiç
+2882	2537	954	Maket Bıçağı
+2883	3274	954	Eye Seti
+2884	1142	394	Kaldırma Ekipmanları
+2885	2478	1142	Hubzug
+2886	2355	1142	Ceraskal
+2887	3221	1142	Forklift
+2888	3043	1142	İstif Makineleri
+2889	2967	1142	Saç Kapma
+2890	3515	1142	Transpaletler
+2891	3156	1142	Manyetik Kaldırma
+2892	2658	1142	Vinçler
+2893	3275	1142	Krikolar
+2894	2540	1142	Platformlar
+2895	2422	1142	Paket Taşıma Arabaları
+2896	1381	394	El Aletleri ve Aksesuar
+2897	3217	1381	Su Terazileri
+2898	382109	1381	Diğer
+2899	3397	1381	Kablo Makaraları
+2900	2656	1381	Murç
+2901	2655	1381	Seramik Kesme ve Demir Kesme Makineleri
+2902	3154	1381	Çizim İpi
+2903	3396	1381	Çok Fonksiyonlu Ürünler
+2904	3093	1381	Lokma Takımları
+2905	2053	1381	El Zımparaları
+2906	3040	1381	Kesici Makaslar
+2907	3452	1381	Lehim ve Havya
+2908	2420	1381	Mandren
+2909	2177	1381	İşkence
+2910	3216	1381	Rendeler
+2911	2728	1381	Yedek Akü ve Şarj Cihazları
+2912	3273	1381	Çok Amaçlı Setler
+2913	612	394	Elektrikli Aletler
+2914	3220	612	Taş Motorları
+2915	3218	612	Boya Tabancaları
+2916	2786	612	Kaynak Makineleri
+2917	1919	612	Taşlamalar
+2918	2352	612	Dekupaj Testere
+2919	2105	612	Hobi Ürünleri
+2920	3511	612	Daire Testere
+2921	1686	612	Frezeler
+2922	1992	612	Akülü Vidalama ve Şarjlı Tornavida
+2923	2354	612	Matkaplar
+2924	1993	612	Kırıcı Deliciler ve Kırıcılar
+2925	1754	612	Polisaj Makinesi
+2926	2604	612	Zımparalar
+2927	2304	612	Jeneratör
+2928	3453	612	Hava Kompresörleri
+2929	381110	224	Elektrik ve Aydınlatma
+2930	381111	381110	Anahtar, Priz
+2931	386118	381111	Schneider Sedna
+2932	386117	381111	Elbi Zena
+2933	386120	381111	Estera
+2934	386119	381111	Legrand Valena
+2935	381125	381111	Sıva Üstü
+2936	381124	381111	Mutlusan Candela
+2937	381123	381111	Schneider Alia
+2938	381122	381111	Viko Carmen
+2939	381121	381111	Viko Karre
+2940	412104	381111	Schneider Asfora
+2941	381141	381110	Yılbaşı Süsleri
+2942	381142	381110	Projektörler
+2943	381143	381142	Halojen Projektörler
+2944	381144	381142	Led Projektörler
+2945	381145	381142	Metal Halide Projektörler
+2946	381140	381110	Ziller, Butonlar, Otomatikler
+2947	381137	381110	Elektronik Ürünler
+2948	386135	381137	Güvenlik Sistemleri
+2949	386136	381137	Aydınlatma Kumandaları
+2950	381139	381137	Zaman Saatleri
+2951	381138	381137	Sensörler, Dedektörler
+2952	386137	381137	Uzaktan Kumandalı Prizler
+2953	412103	381110	Elektrik Ampülleri
+2954	412100	381110	Elektrik ve Sinyal Kabloları
+2955	412102	412100	Sinyal Kabloları
+2956	412101	412100	Elektrik Kabloları
+2957	381113	381110	Elektrik Aksesuarları
+2958	386133	381113	Starterler
+2959	386134	381113	Trafolar
+2960	386129	381113	Bilgisayar Bağlantı Elemanları
+2961	386130	381113	Adaptörler
+2962	386131	381113	Balastlar
+2963	386132	381113	Regülatörler
+2964	381117	381113	Bantlar
+2965	381118	381113	Duylar
+2966	381119	381113	Fişler
+2967	381120	381113	Kroşeler
+2968	381116	381113	Arapuarlar
+2969	386126	381113	Papuçlar
+2970	386125	381113	Klemensler
+2971	386128	381113	Görüntü / Ses Bağlantı Elemanları
+2972	386127	381113	Telefon Bağlantı Elemanları
+2973	386124	381113	Soba Anahtarları
+2974	386123	381113	Dimmerler
+2975	381147	381110	Gece Lambaları
+2976	381114	381110	Işıldak, Fener
+2977	386138	381110	Diafon Sistemleri
+2978	386141	386138	Görüntüsüz Diafonlar
+2979	386142	386138	Görüntülü Diafonlar
+2980	381115	381110	Şalt Malzemeler
+2981	381136	381115	Kondansatör
+2982	381135	381115	Kontaktör
+2983	381134	381115	Röleler
+2984	381133	381115	Şalterler
+2985	381132	381115	Sayaçlar
+2986	381131	381115	Sigorta
+2987	386139	381110	Kablo Kanalları
+2988	386140	381110	Kutular / Panolar
+2989	386145	386140	Pano Malzemeleri
+2990	386143	386140	Kutular
+2991	386144	386140	Panolar
+2992	381146	381110	Bahçe Lambaları
+2993	381126	381110	Grup Prizler, Uzatma Kabloları
+2994	381128	381126	Grup Prizler
+2995	381127	381126	Fişli Prizler
+2996	381130	381126	Voltaj Korumalı Prizler
+2997	309	224	Bahçe
+2998	1547	309	Bahçe Bakımı
+2999	1340	309	Mangal ve Barbekü
+3000	2610	1340	Mangal Aksesuarları
+3001	2486	1340	Mangal
+3002	617	309	Bahçe Sulama
+3003	2358	617	Fıskiyeler
+3004	2110	617	Sulama Başlıkları
+3005	2109	617	Sulaklar
+3006	3517	617	Hortum Bağlantıları
+3007	2485	617	Musluklar
+3008	1810	617	Hortum ve Toplama Ürünleri
+3009	2660	617	Su Zamanlayıcı
+3010	393053	617	Su Pompası
+3011	957	309	Bahçe Küçük El Aletleri
+3012	3581	957	Sap
+3013	3339	957	Bahçe Seti
+3014	3340	957	Yedek Bıçaklar
+3015	2309	957	Budama Makası
+3016	2545	957	Bahçe Çatalı
+3017	3402	957	Çim ve Çit Makası
+3018	393052	957	Meyve Toplama
+3019	3226	957	Misinalar
+3020	393054	957	Diğer Bahçe Aletleri
+3021	1811	957	Tırmık
+3022	1867	957	Budama Testeresi
+3023	3277	957	Kürekler
+3024	3048	957	Çapa
+3025	544	309	Bahçe Makineleri
+3026	3457	544	Çim Biçme Makineleri
+3027	2609	544	İlaçlama Makineleri
+3028	3097	544	Yüksek Basınçlı Yıkamalar
+3029	3161	544	Çapa Makineleri ve Aksesuarları
+3030	416100	544	Benzinli, Dizel Motor
+3031	2108	544	Zincirli Ağaç Kesmeler
+3032	2425	544	Toprak Burgu Makineleri
+3033	451100	544	Süt Sağım Makinaları
+3034	2056	544	Bahçe Hidroforları
+3035	2971	544	Dal Budama Makineleri
+3036	1693	544	Tırpanlar
+3037	1759	544	Çit Kesme Makineleri
+3038	1997	544	Kenar Kesme Makineleri
+3039	2484	544	Su Motorları
+3040	3047	544	Çim Havalandırma Makineleri
+3041	1758	544	Yaprak Toplama ve Üfleme Makineleri
+3042	2659	544	Bahçe Pompaları
+3043	2911	544	Çapa Makineleri
+3044	843	309	Dekoratif Ürünler
+3045	3458	843	Dekoratif Ürünler
+3046	3403	843	Saksılar
+3047	260	224	Çiçek ve Bitki
+3048	1187	260	Canlı Çiçek
+3049	450	260	Tohum, Fidan ve Toprak
+3050	3582	450	Çiçekli Bodur Bitkiler
+3051	2791	450	Gübreler
+3052	2851	450	Çiçek Vitaminleri
+3053	3099	450	Aşılı Meyve Fidanları
+3054	2359	450	Hobi Bahçesi
+3055	2426	450	Dış Mekan Sarmaşık Bitkileri
+3056	1921	450	Aşılı Güller
+3057	3227	450	Tohumlar
+3058	1694	450	Topraklar
+3059	1812	450	Tıbbi Aromatik Bitkiler
+3060	413	224	Hırdavat
+3061	1631	413	Genel Bakım Ürünleri
+3062	383258	1631	Temizlik Ürünleri
+3063	3578	1631	Silikonlar
+3064	2054	1631	Bakım Spreyleri
+3065	3158	1631	Derz Ürünleri
+3066	2968	1631	Yapıştırıcılar
+3067	874	413	Tesisat
+3068	2849	874	Banyo Perde Boruları
+3069	2850	874	Su Tasarruf Ürünleri
+3070	2970	874	Vanalar
+3071	3160	874	Tapalar ve Süzgeçler
+3072	3225	874	Fittings
+3073	2910	874	Tahliye ve Temiz Su Hortum ve Boruları
+3074	1757	874	Contalar
+3075	2608	874	Musluk Uçları
+3076	2241	874	Diğer
+3077	690	413	Boya
+3078	3337	690	Dış Cephe
+3079	2306	690	Duvar Kağıtları
+3080	449100	690	Sprey Boyalar
+3081	2357	690	İç Cephe
+3082	449101	690	Yardımcı Ürünler
+3083	2907	690	Ahşap
+3084	691	413	Kapı ve Kapı Aksesuar
+3085	407101	691	Silindir
+3086	450100	691	Kapı
+3087	3579	691	Kapı Kolları
+3088	1996	691	Kapı Stoperleri
+3089	1809	691	Kapı ve Pencere Bantları
+3090	512	413	Hırdavat Ürünleri
+3091	2237	512	Merdivenler
+3092	3224	512	Mobilya Hırdavatı
+3093	3159	512	Posta Kutuları
+3094	383252	512	Civatalar
+3095	3096	512	Kilitler
+3096	433100	512	Cam Mozaik
+3097	3095	512	Sobalar
+3098	2731	512	Güvenlik Cihazları
+3099	2969	512	Takım Tezgah ve Panoları
+3100	2179	512	Pazar Arabaları
+3101	2848	512	Ölçüm Cihazları
+3102	2908	512	Menfezler
+3103	3455	512	Takım Çantaları
+3104	3045	512	Çelik Para Kasaları
+3105	3516	512	Bağlantı Ekipmanları
+3106	2606	512	İş Güvenlik Ürünleri
+3107	3046	512	Sinek Perdeleri
+3108	1589	413	Banyo
+3109	387051	1589	El Kurutma Cihazları
+3110	2789	1589	Duş Masaj Sistemleri
+3111	2790	1589	Küvet, Tekne, Jakuzi
+3112	2308	1589	Spiraller
+3113	2240	1589	Duş Takımları
+3114	383261	1589	Klozet Kapakları
+3115	2544	1589	Musluklar
+3116	3456	1589	Compact Sistem Duşakabinler
+3117	2909	1589	Duşakabinler
+3118	2607	1589	Vitrifiye Ürünler
+3119	383256	1589	Lavabo ve Evyeler
+3120	2107	1589	İç Takım ve Aksesuarları
+3121	435100	224	Havuz, Sauna, Jakuzi ve Buhar Odası
+3122	435101	435100	Havuz Malzemeleri
+3123	435102	435100	Sauna Malzemeleri
+3124	435103	435100	Jakuzi ve Malzemeleri
+3125	435104	435100	Buhar Odası ve Malzemeleri
+3126	441100	0	Kişisel Bakım, Sağlık
+3127	441116	441100	Ağız Bakım Ürünleri ve Diş Fırçaları
+3128	441117	441116	Ağız Bakım Ürünleri 
+3129	441118	441116	Diş Fırçaları
+3130	441101	441100	Epilasyon, Ağda Cihazları
+3131	441111	441101	Epilasyon
+3132	441112	441101	Ağda Cihazları
+3133	441119	441100	Sağlık ve Medikal Ürünler
+3134	441120	441119	Ateş Ölçer
+3135	441128	441119	Baskül
+3136	441127	441119	Ağrı Giderici ve Tens Cihazları
+3137	441126	441119	Nebulizatör
+3138	441125	441119	Hava Nemlendiriciler
+3139	441124	441119	Hava Temizleme Cihazları
+3140	441123	441119	Şeker ve Kolestrol Ölçüm Cihazları
+3141	441122	441119	Masaj Aletleri ve Şilteleri
+3142	441121	441119	Tansiyon Aletleri
+3143	441104	441100	Erkek Bakım Ürünleri
+3144	441113	441104	Tıraş Makinaları
+3145	441114	441104	Saç Sakal Kesme ve Tüy Alma Cihazları
+3146	441115	441104	Tıraş Bıçak ve Yedekleri
+3147	441105	441100	Saç Şekillendirme
+3148	441106	441105	Saç Kurutma, Fön Makinaları
+3149	441107	441105	Saç Düzleştiriciler
+3150	441108	441105	Saç Maşaları
+3151	441109	441105	Saç Şekillendirme Setleri
+3152	441110	441105	Bigudiler
+3153	245	0	Külçe ve Ziynet Altın, Takı, Mücevher 
+3154	364	245	Gümüş, Çelik, Bijuteri Takı
+3155	1276	364	Yüzük 
+3156	1886	1276	Taşsız Yüzük
+3157	2265	1276	Taşlı Yüzük
+3158	2194	1276	İncili Yüzük
+3159	1563	364	Kolye 
+3160	3179	1563	Taşsız Kolye
+3161	3529	1563	İncili Kolye
+3162	2500	1563	Taşlı Kolye
+3163	734	364	Takım 
+3164	2268	734	İncili Takım
+3165	3360	734	Taşlı Takım
+3166	3180	734	Taşsız Takım
+3167	459	364	Bileklik
+3168	1776	459	Taşsız Bileklik
+3169	2747	459	Taşlı Bileklik
+3170	3359	459	İncili Bileklik
+3171	1061	364	Küpe
+3172	2866	1061	Taşlı Küpe
+3173	3530	1061	İncili Küpe
+3174	3531	1061	Taşsız Küpe
+3175	1107	364	Bilezik
+3176	2867	1107	Taşlı Bilezik
+3177	3532	1107	Taşsız Bilezik
+3178	2137	1107	İncili Bilezik
+3179	967	364	Aksesuar
+3180	3424	967	Broş, Yaka İğnesi, Rozet
+3181	382105	967	Saç Aksesuarları
+3182	1888	967	Halhal
+3183	2502	967	Tesbih
+3184	2503	967	Gümüş Saat
+3185	3361	967	Kol Düğmeleri
+3186	2197	967	Piercing,Hızma
+3187	403	245	Mücevher
+3188	1158	403	Kolye 
+3189	3355	1158	İncili Kolye
+3190	2566	1158	Taşlı Kolye
+3191	2071	1158	Taşsız Kolye
+3192	1648	1158	Pırlanta Kolye
+3193	1007	403	Bilezik
+3194	2134	1007	Taşsız Bilezik
+3195	2072	1007	İncili Bilezik
+3196	3296	1007	Pırlanta Bilezik
+3197	2499	1007	Taşlı Bilezik
+3198	1525	403	Aksesuar
+3199	2442	1525	Halhal
+3200	3058	1525	Tesbih
+3201	3242	1525	Kol Düğmeleri
+3202	1832	1525	Broş, Yaka İğnesi, Rozet
+3203	1709	1525	Gümüş Saat
+3204	382104	1525	Saç Aksesuarları
+3205	2997	1525	Pırlanta Saat
+3206	2930	1525	Piercing,Hızma
+3207	423	403	Küpe
+3208	3421	423	Pırlanta Küpe
+3209	2018	423	İncili Küpe
+3210	1774	423	Taşsız Küpe
+3211	3057	423	Taşlı Küpe
+3212	555	403	Yüzük 
+3213	3356	555	Taşlı Yüzük
+3214	2677	555	Pırlanta Yüzük
+3215	3177	555	Taşsız Yüzük
+3216	2383	555	İncili Yüzük
+3217	1362	403	Takım 
+3218	3422	1362	Taşlı Takım
+3219	2808	1362	Taşsız Takım
+3220	2996	1362	İncili Takım
+3221	2073	1362	Pırlanta Takım
+3222	815	403	Bileklik
+3223	3357	815	İncili Bileklik
+3224	2995	815	Taşlı Bileklik
+3225	2994	815	Pırlanta Bileklik
+3226	1831	815	Taşsız Bileklik
+3227	299	245	Külçe, Ziynet Altın ve Gümüş
+3228	849	299	22 Ayar Bilezik
+3229	1428	299	Külçe Altın
+3230	1159	299	Koleksiyon Altın
+3231	1281	299	Ziynet Altın
+3232	1452	299	Cumhuriyet Altın
+3233	557	299	Külçe Gümüş
+3234	247	0	Market Ürünleri, Gıda, İçecek
+3235	395	247	İçecek
+3236	420106	395	Sıcak İçecekler
+3237	421104	420106	Çaylar
+3238	421106	420106	İçecek Tozları
+3239	421105	420106	Kahveler
+3240	420107	395	Soğuk İçecekler
+3241	421100	420107	Gazlı İçecekler
+3242	421103	420107	Şalgam Suları
+3243	421101	420107	Meyve Suları
+3244	421102	420107	Sular, Maden Suları
+3245	382	247	Gıda
+3246	545	382	Atıştırmalık
+3247	2549	545	Bisküvi, Kurabiye, Kek
+3248	1925	545	Sakız
+3249	3460	545	Kek
+3250	2368	545	Kuruyemiş
+3251	2060	545	Şekerleme
+3252	3589	545	Cips
+3253	1765	545	Kuru Meyve
+3254	1766	545	Çekirdek
+3255	3106	545	Çikolata
+3256	3107	545	Gofret
+3257	383255	545	Diğer Atıştırmalık Ürünler
+3258	546	382	Hediyelik Şeker ve Çikolata
+3259	518	382	Bakliyat ve Makarna
+3260	409104	518	Nohut
+3261	409103	518	Fasulye
+3262	3163	518	Makarna
+3263	1872	518	Bulgur
+3264	3228	518	Hamur İşleri
+3265	409105	518	Mercimek
+3266	409106	518	Mısır
+3267	2183	518	Pirinç
+3268	1999	518	Sebze ve Meyve
+3269	391151	382	Pasta & Cupcake & Kurabiye
+3270	415100	391151	Hazır Ürünler
+3271	415101	391151	Gıda Malzemeleri
+3272	1098	382	Hazır Yemek, Konserve ve Salça
+3273	2612	1098	Hazır Yemek
+3274	2611	1098	Konserve
+3275	2734	1098	Hazır Soslar
+3276	3344	1098	Meze
+3277	2735	1098	Turşu
+3278	2663	1098	Çorba
+3279	2364	1098	Mantar
+3280	2915	1098	Bulyon
+3281	3585	1098	Salça
+3282	1761	1098	Salata Sosları
+3283	920	382	Tuz, Şeker, Baharat
+3284	3406	920	Tuz
+3285	3283	920	Harç
+3286	1820	920	Şeker, Tatlandırıcı
+3287	1875	920	Baharat
+3288	761	382	Doğal ve Organik Ürünler
+3289	378061	761	Organik Turşu
+Kategori bulunamadı: 378061 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik TurşuMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Turşu (0)
+3290	378062	761	Organik Ayçiçekyağı
+Kategori bulunamadı: 378062 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik AyçiçekyağıMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Ayçiçekyağı (0)
+3291	378059	761	Organik Kuruyemiş
+Kategori bulunamadı: 378059 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik KuruyemişMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Kuruyemiş (0)
+3292	378060	761	Organik Baharat
+Kategori bulunamadı: 378060 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik BaharatMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Baharat (0)
+3293	378057	761	Organik Zeytinyağı
+Kategori bulunamadı: 378057 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik ZeytinyağıMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Zeytinyağı (0)
+3294	378058	761	Organik Bakliyat
+Kategori bulunamadı: 378058 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik BakliyatMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Bakliyat (0)
+3295	378055	761	Organik Soslar
+Kategori bulunamadı: 378055 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik SoslarMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Soslar (0)
+3296	2247	761	 
+Kategori bulunamadı: 2247 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler /  Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler /   (0)
+3297	378056	761	Organik Zeytin
+Kategori bulunamadı: 378056 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik ZeytinMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Zeytin (0)
+3298	378053	761	Organik Reçel
+Kategori bulunamadı: 378053 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik ReçelMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Reçel (0)
+3299	378054	761	Organik Salça
+Kategori bulunamadı: 378054 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik SalçaMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Salça (0)
+3300	378051	761	Organik Makarna
+Kategori bulunamadı: 378051 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik MakarnaMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Makarna (0)
+3301	378052	761	Organik Pekmez
+Kategori bulunamadı: 378052 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik PekmezMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Pekmez (0)
+3302	378050	761	Organik Bal
+Kategori bulunamadı: 378050 - Market Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik BalMarket Ürünleri, Gıda, İçecek / Gıda / Doğal ve Organik Ürünler / Organik Bal (0)
+3303	407102	382	Meyve, Sebze
+3304	1444	382	Et Şarküteri
+3305	3162	1444	Jambon
+3306	3282	1444	Kuru Et
+3307	2547	1444	Sosis 
+3308	3519	1444	Pastırma
+3309	3518	1444	Sucuk
+3310	2363	1444	Kavurma
+3311	2182	1444	Salam
+3312	402150	382	Yöresel Ürünler
+3313	1146	382	Sıvı Yağ
+3314	3521	1146	Zeytin Yağı
+3315	2489	1146	Fındık Yağı
+3316	2365	1146	Soya Yağı
+3317	3105	1146	Ayçiçek Yağı
+3318	2794	1146	Mısırözü Yağı
+3319	694	382	Kahvaltılıklar
+3320	2792	694	Tereyağ ve Margarin
+3321	1869	694	Yoğurt
+3322	2733	694	Yumurta
+3323	1870	694	Bal
+3324	1695	694	Süt
+3325	1816	694	Zeytin
+3326	2245	694	Helva, Tahin, Pekmez
+3327	1998	694	Peynir
+3328	2793	694	Krem Çikolata, Ezme
+3329	2362	694	Reçel
+3330	445102	382	Gurme Ürünler
+3331	387	247	Deterjan ve Temizlik Ürünleri
+3332	385050	387	Genel İhtiyaç Malzemeleri
+3333	398100	385050	Ambalaj Malzemeleri
+3334	385051	385050	Folyolar
+3335	385052	385050	Çöp Torbaları
+3336	385053	385050	Buzdolabı Poşetleri
+3337	1043	387	Bulaşık Yıkama
+3338	3459	1043	Ek Ürünler
+3339	2310	1043	Sıvı Deterjanlar
+3340	3343	1043	Tabletler
+3341	3280	1043	Süngerler
+3342	586	387	Ev Temizleyicileri
+3343	3104	586	Koku Gidericileri
+3344	3103	586	Halı Yıkama
+3345	3281	586	Halı Şampuanları
+3346	3102	586	Yüzey Temizleyicileri
+3347	1815	586	Fırça, Süpürgeler
+3348	2914	586	Oda Kokuları
+3349	2360	586	Temizlik Amaçlı Bezler
+3350	2427	586	Eldivenler
+3351	376100	586	Haşere Öldürücüler
+3352	1868	586	Temizlik Setleri
+3353	2972	586	Ahşap Temizleyiciler
+3354	2058	586	Tuvalet Temizleyiciler
+3355	2243	586	Tül Yıkama
+3356	2181	586	Cam, Parlak Yüzey
+3357	1422	387	Çamaşır Yıkama
+3358	3100	1422	Toz Deterjan
+3359	3583	1422	Çamaşır Suları
+3360	1922	1422	Sıvı Deterjanlar
+3361	3101	1422	Leke Çıkarıcılar
+3362	2488	1422	Yumuşatıcılar
+3363	1045	387	Kağıt Ürünleri
+3364	2973	1045	Kağıt Mendil, Peçeteler
+3365	2244	1045	Kağıt Havlular
+3366	2361	1045	Tuvalet Kağıtları
+3367	234	0	Düğün, Davet ve Organizasyon
+3368	393	234	Davet ve Organizasyon
+3369	819	393	Gelin Arabası Organizasyonu
+3370	937	393	Düğün, Nişan ve Kına Organizasyon Malzemeleri
+3371	378	234	Söz ve Nişan 
+3372	818	378	Çeyiz ve Nişan Sandıkları
+3373	400058	378	Çeyiz ve Nişan Malzemeleri
+3374	400057	378	Çeyiz ve Nişan Takımları
+3375	400056	378	Nişan Aksesuarları
+3376	400055	378	Nişan Elbiseleri
+3377	439100	234	Parti
+3378	439101	439100	Kokteyl
+3379	439102	439100	Mezuniyet
+3380	452100	439100	Kostüm
+3381	397	234	Kına Gecesi 
+3382	400062	397	Kına Gecesi Malzemeleri
+3383	400061	397	Kına Gecesi Aksesuarları
+3384	400060	397	Kına Gecesi Elbiseleri
+3385	334	234	Düğün
+3386	817	334	Davetiyeler
+3387	1068	334	Nikah Şekerleri
+3388	704	334	Gelinlik Aksesuarları
+3389	400054	334	Anı Defterleri
+3390	400053	334	Çocuk Abiye ve Aksesuarları
+3391	400052	334	Damatlıklar
+3392	400051	334	Damatlık Aksesuarları
+3393	400050	334	Gelinlikler
+3394	256	234	Sünnet
+3395	400059	256	Sünnet Aksesuarları
+3396	386116	256	Sünnet Malzemeleri
+3397	1211	256	Sünnet Kıyafetleri
+3398	231	0	Ev Tekstili
+3399	291	231	Yatak Odası Tekstili
+3400	583	291	Pikeler
+3401	1188	291	Yastıklar
+3402	387053	291	Çeyiz Seti
+3403	582	291	Çarşaflar
+3404	1095	291	Yastık Kılıfları
+3405	1096	291	Battaniye
+3406	411100	291	Kapitone Nevresim Takımları (Dört Mevsim)
+3407	643	291	Uyku Setleri
+3408	1442	291	Nevresim Takımları
+3409	1144	291	Pike Takımları
+3410	1041	291	Yatak Örtüleri
+3411	1385	291	Alez
+3412	693	291	Yorganlar
+3413	451	291	Yatak Etekleri
+3414	414	231	Mutfak Tekstili
+3415	418103	414	Ekmek Sepeti
+3416	418102	414	Kılıflar
+3417	418101	414	Sandalye Minderi
+3418	418100	414	Fırın Eldiveni / Tutacak /Şapka
+3419	516	414	Masa Örtüleri
+3420	958	414	Runnerlar
+3421	454	414	Mutfak Havluları
+3422	418111	414	Peçeteler
+3423	1387	414	Kurulama Bezleri
+3424	1421	414	Önlükler
+3425	1592	414	Amerikan Servisler
+3426	399	231	Perdeler
+3427	1190	399	Perde Aksesuarları
+3428	758	399	Güneşlik
+3429	481	399	Jaluzi
+3430	584	399	Tül Perde
+3431	875	399	Fon Perde
+3432	482	399	Bambu Perde
+3433	426150	399	Döşemelik Kumaş
+3434	433101	399	Stor Perde
+3435	844	399	Çocuk Perdesi
+3436	1591	399	Zebra Perde
+3437	369	231	Halılar
+3438	1189	369	Yolluk
+3439	1145	369	Kilim
+3440	1042	369	Kapı Paspası
+3441	644	369	Halı
+3442	413100	369	Seccade
+3443	352	231	Banyo Tekstili
+3444	442100	352	Peştemal
+3445	757	352	Banyo Halısı
+3446	1310	352	Banyo Perdesi
+3447	756	352	Bornozlar
+3448	1548	352	Havlular
+3449	2732	1548	El Havluları
+3450	2546	1548	Bebek ve Çocuk Havluları
+3451	3342	1548	Yüz Havluları
+3452	2662	1548	Havlu Setleri
+3453	2487	1548	Ayak Havluları
+3454	3279	1548	Banyo Havluları
+3455	2661	1548	Plaj Havluları
+3456	1386	352	Klozet Takımı
+3457	1590	352	Peştamal
+3458	1813	1590	Hamam
+3459	2912	1590	Plaj
+3460	268	231	Salon Tekstili
+3461	618	268	Yastık ve Kırlent
+3462	1311	268	Koltuk Şalları
+3463	413101	268	Runner
+3464	453	268	Masa Örtüleri
+3465	379051	231	Çeyiz Seti
+3466	243	0	Kırtasiye ve Ofis
+3467	308	243	Ofis Malzemeleri
+3468	1628	308	Hesap Makineleri
+3469	2535	1628	Bilimsel Makine
+3470	3214	1628	Masaüstü Makine
+3471	3213	1628	Cep Makinesi
+3472	1036	308	Ergonomik Ürünler
+3473	3507	1036	Bilgisayar Destekleri
+3474	3448	1036	Evrak Tutucu
+3475	2598	1036	Vücut Destekleri
+3476	835	308	Masaüstü Gereçleri
+3477	3035	835	Kalemlikler ve Kartvizitlik
+3478	2900	835	Kaşe ve Gereçleri
+3479	2839	835	Silgi, Cetvel, Kalemtraş
+3480	2342	835	Makaslar ve Maket
+3481	2173	835	Delgeçler ve Zımbalar
+3482	2174	835	Hesap Makineleri
+3483	1804	835	Evrak Rafları
+3484	3212	835	Evrak Tutucular
+3485	2654	835	Düzenleyiciler
+3486	384060	835	Masa Üstü Setleri
+3487	2301	835	Bant ve Yapıştırıcılar
+3488	383122	308	Aksesuar Ürünler
+3489	1584	308	Ayraçlar
+3490	2840	1584	İşaretleyiciler
+3491	2902	1584	Post-It (Yapışkanlı Notlar)
+3492	722	308	Paketleme Malzemeleri
+3493	1912	722	Paket Lastikleri
+3494	1987	722	Bantlar
+3495	2474	722	Koli Bandı
+3496	2417	722	Hediye Kutusu
+3497	3575	722	Karton ve Koli
+3498	2963	722	Bant Kesiciler
+3499	869	308	Sunum Ekipmanları
+3500	2343	869	Mıknatıslı Pano
+3501	2050	869	Halı Pano
+3502	2103	869	Ayaklı Pano
+3503	3447	869	Raptiye ve Harita Çivileri
+3504	3446	869	Mantar Pano
+3505	2229	869	Yazı Tahtaları
+3506	1505	308	Kalem ve Yazı Gereçleri
+3507	1747	1505	Tükenmez Kalemler
+3508	1748	1505	Roller Kalemler
+3509	2341	1505	Teknik Çizim Kalemleri
+3510	3328	1505	Kalem Uçları
+3511	2597	1505	Kalem Mürekkepleri
+3512	1749	1505	Prestij Kalem
+3513	383050	1505	Kalem Setleri
+3514	384062	1505	Kalem Yedekleri
+3515	3211	1505	Kurşun Kalemler
+3516	384057	1505	Çok Amaçlı ve Lüks Kalemler
+3517	2227	1505	Markör ve Yazı Tahtası Kalemleri
+3518	868	308	Yapıştırıcılar ve Siliciler
+3519	3392	868	Siliciler
+3520	2228	868	Yapıştırıcılar
+3521	1304	308	Genel Ofis Malzemeleri
+3522	3391	1304	Ofis Tipi Çöp Kovaları
+3523	1985	1304	Ortopedik Ürünler
+3524	2901	1304	Yaka Kartı ve Aksesuarları
+3525	795	308	Dosyalama ve Arşivleme
+3526	1986	795	Ayraçlar
+3527	1805	795	Klasörler
+3528	2416	795	Arşivleme
+3529	2175	795	Dosyalar
+3530	3574	795	Magazinlik
+3531	507	308	Zarflar
+3532	3444	507	Mektup Zarfı
+3533	2534	507	CD ve DVD Zarfı
+3534	2049	507	Torba Zarflar
+3535	384068	507	Kendinden Yapışkanlı Zarflar
+3536	3445	507	Hava Kabarcıklı Zarf
+3537	2722	507	Diplomat ve Para Zarfı
+3538	262	243	Defter, Bloknot ve Ajanda
+3539	383121	262	Takvim
+3540	1377	262	Defter
+3541	2719	1377	Tasarım Defter
+3542	2102	1377	Güzel Yazı Defterleri
+3543	3390	1377	Matbu Defter
+3544	2960	1377	Geri Dönüşümlü Defter
+3545	2959	1377	Eskiz Defteri
+3546	384070	1377	Günlük, Hatıra ve Anket
+3547	2472	1377	Okul Defteri
+3548	1678	1377	Vintage Defter
+3549	3029	1377	Lisanslı Defter
+3550	2048	1377	Notluk
+3551	2896	1377	Müzik Defteri
+3552	1982	1377	Çizim Defteri
+3553	1469	262	Ajanda
+3554	3324	1469	Organizer
+3555	383113	262	Tebrik Kartları
+3556	383119	262	Ticari Belge Ürünleri 
+3557	575	262	Bloknot
+3558	2652	575	Tasarım Bloknot
+3559	1679	575	Spiralli Bloknot
+3560	2298	575	Dikişli Bloknot
+3561	263	243	Ofis Makineleri
+3562	384065	263	Kart Baskı Makineleri
+3563	475	263	Evrak İmha Makinesi
+3564	688	263	Para Sayma Makinesi
+3565	1037	263	Giyotin
+3566	994	263	Tepegöz
+3567	1134	263	Kart Askı Ürünleri
+3568	609	263	Akıllı Tahtalar
+3569	836	263	Laminasyon Makinesi
+3570	1087	263	Kağıt Kesme Makineleri
+3571	407100	263	POS Yazar Kasa
+3572	1586	263	Spiral Makinesi
+3573	384064	263	Ciltleme Makinesi
+3574	384063	263	Etiketleme ve Bant Makineleri
+3575	320	243	Okul
+3576	1305	320	Fırçalar
+3577	445	320	Etiket ve Stickerler
+3578	953	320	Yapıştırıcı ve Tutkal
+3579	473	320	Hamurlar
+3580	474	320	Suluk, Matara ve Beslenme Çantaları
+3581	1471	320	Boyalar ve Fırçalar
+3582	2344	1471	Guaj Boya
+3583	1989	1471	Sulu Boya
+3584	2176	1471	Fırçalar
+3585	1750	1471	Kuru Boya
+3586	1682	1471	Pastel Boya
+3587	3092	1471	Akrilik Boya
+3588	2230	1471	Oyun Hamurları
+3589	2345	1471	Sanat Malzemeleri
+3590	1913	1471	Tualler
+3591	1470	320	Pergeller
+3592	951	320	Fon Kartonu ve Mukavva
+3593	952	320	Mikroskop
+3594	382101	320	Okul Çantaları
+3595	796	320	Kalemler
+3596	1988	796	Kurşun Kalemler
+3597	2536	796	Fosforlu Kalemler
+3598	2781	796	Keçe Uçlu Kalemler
+3599	2599	796	Versatil Kalemler
+3600	2903	796	Jel Mürekepli Kalemler
+3601	3329	796	Dolma Kalemler
+3602	3393	796	İğne Uçlu Kalemler
+3603	383120	796	Tebeşir Kalemler
+3604	2841	796	Tükenmez Kalemler
+3605	910	320	Makaslar ve Maket Bıçağı
+3606	1379	320	Silgiler
+3607	384056	320	Çizim Gereçleri
+3608	384055	320	Okul Gereçleri
+3609	1585	320	Kalemlik ve Kalem Kutusu
+3610	1417	320	Kalemtraşlar ve Kalem Uçları
+3611	384061	320	Harita ve Bayrak
+3612	1177	320	Kaplama Kağıtları
+3613	329	243	Kağıt Ürünleri
+3614	1035	329	Karbon Kağıdı
+3615	384067	329	Diğer Kağıtlar
+3616	444	329	Fotokopi Kağıdı
+3617	384066	329	Dosya Kağıtları
+3618	687	329	Yazar Kasa ve Hesap Makinesi Kağıdı
+3619	1336	329	Numaralı Kağıtlar
+3620	794	329	Prestij Kağıt
+3621	950	329	Gramajlı Kağıt
+3622	833	329	Faks Kağıdı
+3623	1627	329	Etiket (Barkod ve Yazıcı Etiketleri)
+3624	909	329	Fotoğraf Kağıdı
+3625	834	329	Elişi Kağıdı
+3626	1175	329	Pano Kağıdı
+3627	721	329	Flipchart ve Pano Kağıdı
+3628	506	329	Sürekli Form
+3629	540	329	Renkli Kağıt
+3630	505	329	Plotter Kağıdı
+3631	242	0	Evcil Hayvan Ürünleri
+3632	296	242	Kedi
+3633	720	296	Diğer
+3634	2837	720	Kedi Sevenler İçin Ürünler
+3635	2047	720	Su Çeşmeleri
+3636	685	296	Yem Kabı
+3637	992	296	Tasma-Künye
+3638	1504	296	Kedi Kumu ve Tuvaletleri
+3639	1228	296	Oyuncak
+3640	1468	296	Mobilya ve Tırmalama Ürünleri
+3641	1133	296	Davranış Eğitimi
+3642	1227	296	Mama ve Çiğneme Ürünleri
+3643	640	296	Kedi Bakım ve Sağlık Ürünleri
+3644	383066	296	Kedi Evleri ve Yatakları
+3645	383068	383066	Yataklar
+3646	383067	383066	Kedi Evleri
+3647	908	296	Pençe Kontrolü
+3648	907	296	Kedi Elbiseleri
+3649	1174	296	Kedi Kapıları ve Flap
+3650	867	296	Feromon Spreyi
+3651	866	296	Taşıyıcı
+3652	383078	242	Balık
+3653	383093	383078	Filtrasyon, Isıtma
+3654	383094	383093	Soğutucu
+3655	383095	383093	Filtre
+3656	383096	383093	Isıtıcı
+3657	383097	383093	Pompa
+3658	383098	383093	Süzgeç
+3659	383099	383093	UV Sterilizatörleri
+3660	383079	383078	Akvaryum ve Kaseler
+3661	383080	383079	Akvaryum
+3662	383081	383079	Kase
+3663	383082	383078	Bakım ve Temizlik Ürünleri
+3664	383084	383078	Dekorasyon
+3665	383089	383084	Plastik Bitki
+3666	383090	383084	Kaya ve Cam
+3667	383091	383084	Deniz Kabuğu
+3668	383092	383084	Diğer
+3669	383086	383084	Canlı Bitkiler
+3670	383085	383084	Ağaç Dalı
+3671	383088	383084	Süs
+3672	383087	383084	Canlı Kaya
+3673	383100	383078	Balık Yemi
+3674	383083	383078	Mercan
+3675	384058	383078	Yemleme Makineleri
+3676	383101	383078	Aydınlatma
+3677	383102	383078	Ölçek, Regulatörler
+3678	385	242	Kemirgen ve Sürüngen
+3679	383150	385	Talaş ve Tuvaletler
+3680	1335	385	Vitaminler
+3681	1542	385	Aksesuarlar
+3682	1229	385	Yemler
+3683	949	385	Oyuncaklar
+3684	1303	385	Kafesler
+3685	641	385	Teraryum
+3686	406	242	Köpek
+3687	790	406	Sağlık
+3688	2593	790	Diğer
+3689	2101	790	Köpek Bit-Pire İlaçları
+3690	3085	790	Koku-Leke Gidericiler
+3691	2100	790	Kulak
+3692	3265	790	Bağırsak Kurtları
+3693	2649	790	Vitamin-Ek Besin
+3694	3570	790	Oral
+3695	2165	790	Deri-Tüy
+3696	2895	790	Göz
+3697	501	406	Tasma ve Künye
+3698	2493	501	Çivili ve Zımbalı Tasma
+3699	2006	501	Künye ve Süsler
+3700	3235	501	Havlama Tasması
+3701	2738	501	Plastik Tasma
+3702	2591	501	Tasma Kayışı
+3703	2978	501	Suni Elmas Tasma
+3704	2664	501	Işıklı Uyarılı Güvenlik
+3705	2798	501	Deri Tasma
+3706	1800	501	Diğer
+3707	547	406	Köpek Elbiseleri
+3708	1698	547	Palto
+3709	2002	547	Kostüm
+3710	1700	547	Yağmurluk
+3711	3408	547	Bere, Bandana ve Atkı
+3712	1699	547	Pijama
+3713	2004	547	Güvenlik ve Koruma
+3714	2005	547	Gömlek ve Kazak
+3715	2854	547	Hırka, Süeter ve Yelek
+3716	1878	547	Elbise
+3717	3232	547	Bot ve Ayakkabı
+3718	1879	547	Diğer
+3719	2117	547	Pantolon-Şort
+3720	2118	547	Güneş Gözlüğü ve Maske
+3721	3109	547	Alt Bağlama Bezi
+3722	1931	547	Şapka ve Güneşlik
+3723	1372	406	Kapı ve Elektronik Çitler
+3724	3082	1372	Elektronik Çit
+3725	2715	1372	Kapı
+3726	718	406	Diğer
+3727	2957	718	Yavru Köpek Ürünleri
+3728	3149	718	Hatıra Defteri
+3729	3086	718	Su Çeşmeleri
+3730	2338	718	Köpek Galoşu
+3731	386111	718	Köpek Tabelası
+3732	1980	718	Çit ve Egzersiz Kalemi
+3733	2045	718	Köpek Sevenler İçin Ürünler
+3734	442	406	Eğitim ve İtaat
+3735	3441	442	Diğer
+3736	2596	442	Şok Tasması
+3737	3267	442	Ev Eğitimi
+3738	2956	442	Sonik Tasma
+3739	1803	442	Ağızlık
+3740	3503	442	Çeviklik
+3741	1859	442	Video ve Kitap
+3742	3028	442	Stronella ve Spray Collars
+3743	3209	442	Eğitim Tasması
+3744	1743	442	Düdükler
+3745	946	406	Mamalar ve Çiğneme Ürünleri
+3746	2410	946	Sert Stickler
+3747	2528	946	Kemik
+3748	2716	946	Mamalar
+3749	3205	946	Bisküvi ve Çiğneme Ürünleri
+3750	2835	946	Diğer
+3751	3502	946	Bitkisel
+3752	608	406	Oyuncak ve Aksesuarlar
+3753	3323	608	Puset
+3754	2594	608	Taşıyıcı
+3755	2595	608	Çadır
+3756	1909	608	Rampa ve Merdiven
+3757	1979	608	Oyuncak
+3758	3027	608	Battaniye
+3759	2470	608	Çanta
+3760	2044	608	Araba Koltuğu Örtüleri
+3761	1481	406	Yatak ve Kulübeler
+3762	3288	1481	Köpek Yatakları
+3763	3462	1481	Köpek Evleri
+3764	3234	1481	Kulübeler
+3765	607	406	Bakım
+3766	3147	607	Diğer
+3767	3207	607	Tımar Masası
+3768	1976	607	Kurutucular
+3769	3386	607	Fırça ve Tarak
+3770	3146	607	Şampuan ve Yıkama
+3771	2532	607	Makas, Tırnak Makası ve Tüy Kesiciler
+3772	538	406	Yem Kabı
+3773	1908	538	Otomatik Kaplar
+3774	2714	538	Seramik Kaplar
+3775	1974	538	Melamin Kaplar
+3776	2042	538	Çelik Kaplar
+3777	2893	538	Plastik Kaplar
+3778	2466	538	Saklama Kapları
+3779	383103	242	Kuş
+3780	383108	383103	Bakım ve Sağlık Ürünleri
+3781	383107	383103	Kuluçka
+3782	383106	383103	Kuş Yemleri, Çiğneme Ürünleri
+3783	383105	383103	Yemlikler
+3784	383109	383103	Oyuncak
+3785	383104	383103	Kafesler ve Yuvalar
+3786	228	0	Mutfak, Banyo, Ev Gereçleri
+3787	398	228	Banyo
+3788	1308	398	Ecza Dolapları
+3789	386100	398	Tuvalet Kağıtlıkları
+3790	1338	398	Tartılar
+3791	1545	398	Banyo Setleri
+3792	798	398	Sabunluklar
+3793	799	398	Pamukluklar
+3794	913	398	Çamaşır Sepetleri
+3795	1137	398	Diş Fırçalıklar
+3796	1138	398	Havluluklar
+3797	1139	398	Banyo Gereçleri
+3798	1630	398	Sıvı Sabunluklar
+3799	1629	398	Banyo Rafları
+3800	1418	398	Tuvalet Fırçaları
+3801	750	398	Çöp Kovaları
+3802	261	228	Mutfak
+3803	1086	261	Servis Gereçleri
+3804	3443	1086	Servis Takımları
+3805	3033	1086	Makarna Kaşıkları
+3806	1745	1086	Spatulalar
+3807	1910	1086	Bal Kaşıkları
+3808	2340	1086	Servis Kaşıkları
+3809	3325	1086	Kevgirler
+3810	2413	1086	Salata Servis Setleri
+3811	2473	1086	Kaşık Altlıkları
+3812	2300	1086	Servis Maşaları
+3813	2961	1086	Kepçeler
+3814	1861	1086	Servis Çatalları
+3815	2962	1086	Dondurma Kaşıkları
+3816	1378	261	Mutfak Tekstili
+3817	2171	1378	Peçeteler
+3818	2415	1378	Fırın Eldivenleri-Eldivenler
+3819	1681	1378	Mutfak Torbaları
+3820	2226	1378	Kurulama Bezleri
+3821	3572	1378	Tutacaklar
+3822	504	261	Yardımcı Aksesuarlar
+3823	1911	504	Poşet Klipsleri
+3824	2170	504	Pasta Mumları
+3825	2720	504	Beslenme Çantaları
+3826	2414	504	Bulaşık Sepetleri-Bulaşıklıklar
+3827	3089	504	Magnetler
+3828	1984	504	Notluklar
+3829	3034	504	Kaşıklıklar
+3830	1746	504	Kesme Tahtaları
+3831	2899	504	Pipetler
+3832	3326	504	Termoslar
+3833	3505	504	Kağıt Havluluklar
+3834	3506	504	Hasır Sepetler
+3835	1862	504	Çöp Kutuları
+3836	503	261	Bıçaklar, Kesiciler ve Doğrama
+3837	2718	503	Diğer
+3838	3208	503	Et Bıçağı
+3839	3148	503	Soyma Bıçağı
+3840	3266	503	Bıçak Setleri
+3841	2836	503	Satır
+3842	2955	503	Bileyiciler
+3843	1858	503	Makaslar
+3844	1978	503	Rendeler
+3845	3440	503	Sebze Bıçağı
+3846	2166	503	Ekmek Bıçağı
+3847	686	261	Pişirme
+3848	3270	686	Düdüklü Tencereler
+3849	2172	686	Sahanlar
+3850	3327	686	Sebze Haşlayıcılar
+3851	3573	686	Cezve ve Çaydanlık
+3852	3091	686	Tencereler
+3853	2721	686	Tavalar
+3854	3090	686	Kek Kalıpları
+3855	1914	686	Tencere ve Tava Setleri
+3856	906	261	Kaplar
+3857	3322	906	Ekmeklik
+3858	1857	906	Fırın Kapları
+3859	2651	906	Karıştırma ve Ölçü Kapları
+3860	2469	906	Baharatlıklar ve Kavanozlar
+3861	3571	906	Saklama Kapları
+3862	395050	261	TV Ürünleri
+3863	1176	261	Küçük El Aletleri
+3864	2169	1176	Çekirdek Çıkartıcıları
+3865	2779	1176	Sarımsak Eziciler
+3866	2780	1176	Et Dövecekleri
+3867	2339	1176	Salata Karıştıcılar
+3868	1680	1176	Elekler
+3869	1983	1176	Açacaklar ve Tribüşonlar
+3870	2653	1176	Patates Eziciler
+3871	2838	1176	Süzgeçler
+3872	2898	1176	Mutfak Zamanlayıcıları
+3873	2897	1176	Hamur Fırçaları
+3874	3442	1176	Limon Sıkacakları
+3875	3269	1176	Mutfak Tartıları
+3876	2299	1176	Havanlar
+3877	1860	1176	Çırpıcılar
+3878	3031	1176	Oklavalar
+3879	3032	1176	Meyve Presleri
+3880	871	261	Masaüstü ve Servis
+3881	2783	871	Kahvaltı Takımları
+3882	2476	871	Yağlık-Sirkelikler
+3883	2349	871	Dondurmalıklar
+3884	2232	871	Peçetelikler
+3885	2350	871	Peçete Halkaları
+3886	3394	871	Çay Setleri
+3887	2348	871	Kase ve Çerezlikler
+3888	3153	871	Tepsiler
+3889	3271	871	Pasta Servisleri
+3890	2052	871	Yumurtalıklar
+3891	3509	871	Şaraplıklar
+3892	2965	871	Çatal-Kaşık-Bıçak Setleri
+3893	2724	871	Tabaklar
+3894	2418	871	Yemek Takımları
+3895	2723	871	Sürahi ve Karaflar
+3896	2842	871	Bardak Altlıkları
+3897	2725	871	Tuzluk-Biberlikler
+3898	2302	871	Nihaleler
+3899	2843	871	Şekerlikler
+3900	995	261	Bardak, Fincan, Kadeh
+3901	3576	995	Travel Muglar
+3902	2231	995	Kahve Fincanları
+3903	3331	995	Meşrubat Bardakları
+3904	1915	995	Şarap Kadehleri
+3905	2347	995	Bira Bardakları
+3906	1916	995	Plastik Bardaklar
+3907	2346	995	Shot Bardakları
+3908	2051	995	Su Bardakları
+3909	3152	995	Kağıt Bardaklar
+3910	1751	995	Rakı Bardakları
+3911	3037	995	Şampanya Kadehleri
+3912	3508	995	Viski Kadehleri
+3913	3038	995	Çay Fincanları
+3914	3449	995	Kokteyl Kadehleri
+3915	2964	995	Kupalar
+3916	380159	261	Diğer
+3917	379050	261	Çeyiz Setleri
+3918	358	228	Ev Gereçleri
+3919	689	358	Elbise Saklama Çözümleri
+3920	2600	689	Dolap İçi Düzenleyiciler
+3921	3451	689	Ayakkabı Kutuları
+3922	2419	689	Raflar
+3923	2845	689	Elbise Askısı
+3924	3332	689	Saklama Kutuları ve Sepetler
+3925	3395	689	Hurçlar
+3926	2727	689	Özellikli Ürünler
+3927	800	358	Ütü Masaları
+3928	1439	358	Çamaşır Kurutma Askıları
+3929	430100	0	+18 Ürünler
+3930	430101	430100	Kadın Fantezi Giyim
+3931	430105	430101	Fantezi İç Giyim
+3932	430106	430101	Fantezi Gecelik
+3933	430107	430101	Kadın Aksesuarları
+3934	430103	430101	Fantezi Elbise ve Kostümler
+3935	430104	430101	Fantezi Babydoll  Jartiyer ve Çoraplar
+3936	430102	430100	Erkek Fantezi Giyim
+3937	430109	430102	Fantezi İç Giyim
+3938	430110	430102	Erkek Aksesuarları
+3939	430108	430102	Fantezi Kostümler
+3940	432100	430100	Cinsel Destek Ve Eğlence Ürünleri
+3941	432102	432100	Cinsel Eğlence Ürünleri
+3942	432101	432100	Cinsel Destek Ürünleri
+3943	449105	432101	Harici Cinsel Destek Ürünleri
+3944	449106	432101	Dahili Cinsel Destek Ürünleri

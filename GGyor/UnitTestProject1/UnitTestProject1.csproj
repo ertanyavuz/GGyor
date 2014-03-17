@@ -74,6 +74,10 @@
     <Compile Include="TestClassBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EntegrasyonServiceBase\EntegrasyonServiceBase.csproj">
+      <Project>{135097f8-7940-4acd-92de-77cdb5022ba0}</Project>
+      <Name>EntegrasyonServiceBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GGLib\GGLib.csproj">
       <Project>{c6c8c8df-279b-49d2-952c-8f9d8e8eba32}</Project>
       <Name>GGLib</Name>
