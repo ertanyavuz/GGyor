@@ -106,6 +106,40 @@ namespace N11Lib
             return subCatList;
         }
 
+        public object GetProduct(string sellerCode)
+        {
+            var url = "https://api.n11.com/rest/secure/product/get.json";
+            url += String.Format("?appkey={0}&appsecret={1}&sellerCode={2}", appKey, appSecret, StockCodeToSellerCode(sellerCode));
+
+            var req = WebRequest.Create(url);
+            req.ContentType = "text/plain";
+            //req.Headers.Add("Accept", "application/json");
+            var res = req.GetResponse();
+
+            var st = new System.IO.StreamReader(res.GetResponseStream());
+            var result = st.ReadToEnd();
+            st.Close();
+
+            var obj = JObject.Parse(result);
+
+            var data = obj["response"]["data"] as JObject;
+
+            if (data == null)
+                return null;
+
+            var prod = new ProductModel {
+                id = (int) data["id"],
+                title = (string) data["title"],
+                subtitle = (string) data["subtitle"],
+                stockCode = sellerCode,
+                //productSellerCode = (string)x["productSellerCode"],
+                //saleStatus = (string)x["saleStatus"],
+                displayPrice = (decimal) data["displayPrice"],
+                
+            };
+
+            return prod;
+        }
         public object GetProducts()
         {
             var service = new ProductService.ProductServicePortClient();
@@ -357,34 +391,73 @@ namespace N11Lib
             return null;
         }
 
-        public void CreateProduct(ProductModel product)
+        public bool CreateProduct(ProductModel product, long categoryId)
         {
             var service = new ProductServicePortClient();
-            service.SaveProduct(new SaveProductRequest
+            var response = service.SaveProduct(new SaveProductRequest
                                 {
                                     auth = this.ProductAuthentication,
                                     product = new ProductRequest
                                     {
-                                        title = product.title,
                                         productSellerCode = StockCodeToSellerCode(product.stockCode),
+                                        title = product.title,
+                                        subtitle = product.label,
+                                        description = product.details,
                                         price = product.displayPrice,
-                                        approvalStatus = "",
-                                        attributes = new ProductAttributeRequest[0],
-                                        category = new CategoryRequest(),
-                                        description = "",
-                                        discount = new ProductDiscountRequest(),
-                                        expirationDate = "",
-                                        images = new ProductImage[0],
-                                        preparingDay = "",
-                                        productCondition = "",
-                                        productionDate = "",
-                                        saleEndDate = "",
-                                        saleStartDate = "",
-                                        shipmentTemplate = "",
-                                        stockItems = new ProductSkuRequest[0],
-                                        subtitle = ""
+                                        //approvalStatus = "",
+                                        //attributes = new ProductAttributeRequest[0],
+                                        category = new CategoryRequest
+                                                   {
+                                                       id = categoryId
+                                                   },
+                                        //discount = new ProductDiscountRequest(),
+                                        //expirationDate = "",
+                                        images = new ProductImage[]
+                                                 {
+                                                     new ProductImage
+                                                     {
+                                                         order = "1",
+                                                         url = product.picture1Path
+                                                     }, 
+                                                 },
+                                        preparingDay = "3",                             //////////////////////////////////////
+                                        productCondition = "1", // Yeni
+                                        //productionDate = "",
+                                        //saleEndDate = "",
+                                        //saleStartDate = "",
+                                        shipmentTemplate = "Ürün Listeleme",
+                                        stockItems = new ProductSkuRequest[]
+                                                     {
+                                                         new ProductSkuRequest
+                                                         {
+                                                             quantity = product.stockAmount.ToString(),
+                                                             sellerStockCode = product.stockCode
+                                                         }
+                                                     },
+
                                     }
                                 });
+
+            return response.result.status == "success";
+
+            //var url = "https://api.n11.com/rest/secure/product/createOrUpdate.json";
+            //var paramStr = String.Format("");
+            //var paramObj = new JObject();
+            //paramObj["productSellerCode"] = StockCodeToSellerCode(product.stockCode);
+            //paramObj["title"] = product.title;
+            //paramObj["subtitle"] = product.label;
+            //paramObj["description"] = product.details;
+            //paramObj["category"] = JObject.Parse("{ 'id' : " + categoryId.ToString() + " }");
+            //paramObj["price"] = product.displayPrice;
+            //paramObj["preparingDay"] = 3;
+            //paramObj["productCondition"] = "1";   // Yeni ürün
+            //paramObj["images"] = JArray.Parse("[ { 'url': '" + product.picture1Path + "', 'order': 1 }  ]");
+            //paramObj["stockItem"] = JObject.Parse("{ 'quantity': " + product.stockAmount.ToString() + " }");
+            //paramObj["shipmentTemplate"] = "Ürün Listeleme";
+
+            //var obj = callPost(url, paramObj.ToString());
+
+            //return true;
         }
 
         public bool UpdateProduct(string sellerCode, decimal newPrice)
@@ -475,6 +548,15 @@ namespace N11Lib
             
         }
 
+        public object GetShipmentTemplates()
+        {
+            var service = new ShipmentCompanyService.ShipmentCompanyServicePortClient();
+
+            var prod = GetProduct("91.000015");
+
+            return null;
+        }
+
         protected JObject callServiceWithGet(string url, string[] keys, string[] values)
         {
             url = url += String.Format("?appkey={0}&appsecret={1}", appKey, appSecret);
@@ -552,6 +634,48 @@ namespace N11Lib
 
         }
 
+
+        public JObject callPost(string url, string jsonParamStr)
+        {
+            var request = WebRequest.Create(url);
+            request.Method = "POST";
+            var boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x", NumberFormatInfo.InvariantInfo);
+            request.ContentType = "multipart/form-data; boundary=" + boundary;
+            boundary = "--" + boundary;
+
+            Action<Stream, string, string, bool> addPostParam = (st, paramName, paramValue, asFile) =>
+            {
+                var buffer = Encoding.ASCII.GetBytes(boundary + Environment.NewLine);
+                st.Write(buffer, 0, buffer.Length);
+                var contentTypeStr = asFile
+                            ? string.Format("Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"{2}", paramName, paramName + ".json", Environment.NewLine)
+                                        + string.Format("Content-Type: {0}{1}{1}", "application/json", Environment.NewLine)
+                            : string.Format("Content-Disposition: form-data; name=\"{0}\"{1}{1}", paramName, Environment.NewLine);
+                buffer = Encoding.ASCII.GetBytes(contentTypeStr);
+                st.Write(buffer, 0, buffer.Length);
+                buffer = Encoding.UTF8.GetBytes(paramValue + Environment.NewLine);
+                st.Write(buffer, 0, buffer.Length);
+            };
+
+            using (var requestStream = request.GetRequestStream())
+            {
+                addPostParam(requestStream, "appkey", appKey, false);
+                addPostParam(requestStream, "appsecret", appSecret, false);
+                addPostParam(requestStream, "data", jsonParamStr, true);
+                
+                var boundaryBuffer = Encoding.ASCII.GetBytes(boundary + "--");
+                requestStream.Write(boundaryBuffer, 0, boundaryBuffer.Length);
+            }
+
+            using (var response = request.GetResponse())
+            using (var responseStream = response.GetResponseStream())
+            using (var stream = new StreamReader(responseStream))
+            {
+                var str = stream.ReadToEnd();
+                return JObject.Parse(str);
+            }
+
+        }
 
         public JObject CallPostForStockUpdate(string sellerCode, int stockAmount)
         {

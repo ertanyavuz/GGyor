@@ -75,7 +75,7 @@ namespace N11Entegrator
         }
         private TreeNode categoryToTreeNode(CategoryModel cat)
         {
-            var node = new TreeNode(cat.name);
+            var node = new TreeNode(String.Format("{0} - {1}", cat.id, cat.name));
             node.Tag = cat;
             foreach (var subCat in cat.subCategories)
             {
@@ -111,6 +111,11 @@ namespace N11Entegrator
                     grid1.DoDragDrop(rowList, DragDropEffects.Link);
                 }
             }
+        }
+        private void tree_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Link;
+
         }
         private void tree_DragDrop(object sender, DragEventArgs e)
         {
@@ -164,18 +169,18 @@ namespace N11Entegrator
 
             oldProductsTable = newProductsTable.Copy();
 
-            newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
-            newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
-            newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
-            newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
-            newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
-            newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
-            newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
-            newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
-            newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
-            grid1.DataSource = newProductsTable;
+            //newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
+            //newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
+            //newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
+            //newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
+            //newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
+            //newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
+            //newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
+            //newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
+            //newProductsTable.Rows.Add("asdf", "asdf", "asdf", "asdf", "", 123.45, 12, "asdf", "asdf");
+            //grid1.DataSource = newProductsTable;
 
-            return;
+            //return;
             
             var i = 0;
             var ayniCount = 0;
@@ -303,7 +308,8 @@ namespace N11Entegrator
                     picture1Path = (string) dr["picture1Path"],
                     details = (string) dr["details"]
                 };
-                service.CreateProduct(prod);
+                var catId = long.Parse(((string)dr["n11Category"]).Split('-')[0]);
+                service.CreateProduct(prod, catId);
                 i++;
                 bgw.ReportProgress(i, "Yeni ürünler");
                 if (bgw.CancellationPending)
@@ -320,12 +326,6 @@ namespace N11Entegrator
         {
             btnRunUpdate.Enabled = true;
             btnStop.Enabled = false;
-        }
-
-        private void tree_DragOver(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Link;
-
         }
 
     }

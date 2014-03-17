@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://www.n11.com/ws/schemas" xmlns:tns="http://www.n11.com/ws/schemas" targetNamespace="http://www.n11.com/ws/schemas" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:n11="http://www.n11.com/ws/schemas" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.n11.com/ws/schemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="GetShipmentCompaniesRequest">
+        <xs:complexType />
+      </xs:element>
+      <xs:element name="GetShipmentCompaniesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="result" type="n11:ResultInfo" />
+            <xs:element name="shipmentCompanies" type="n11:ShipmentCompanyList" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="ShipmentCompanyList">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="shipmentCompany" type="n11:ShipmentCompanyData" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ShipmentCompanyData">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long" />
+          <xs:element name="name" type="xs:string" />
+          <xs:element name="shortName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BaseResponse">
+        <xs:sequence>
+          <xs:element name="status" nillable="true" type="xs:string" />
+          <xs:element name="errorCode" nillable="true" type="xs:string" />
+          <xs:element name="errorMessage" nillable="true" type="xs:string" />
+          <xs:element name="errorCategory" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResultInfo">
+        <xs:sequence>
+          <xs:element name="status" nillable="true" type="xs:string" />
+          <xs:element name="errorCode" nillable="true" type="xs:string" />
+          <xs:element name="errorMessage" nillable="true" type="xs:string" />
+          <xs:element name="errorCategory" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetShipmentCompaniesRequest">
+    <wsdl:part name="GetShipmentCompaniesRequest" element="tns:GetShipmentCompaniesRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetShipmentCompaniesResponse">
+    <wsdl:part name="GetShipmentCompaniesResponse" element="tns:GetShipmentCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ShipmentCompanyServicePort">
+    <wsdl:operation name="GetShipmentCompanies">
+      <wsdl:input name="GetShipmentCompaniesRequest" message="tns:GetShipmentCompaniesRequest" />
+      <wsdl:output name="GetShipmentCompaniesResponse" message="tns:GetShipmentCompaniesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ShipmentCompanyServicePortSoap11" type="tns:ShipmentCompanyServicePort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetShipmentCompanies">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetShipmentCompaniesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetShipmentCompaniesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ShipmentCompanyServicePortService">
+    <wsdl:port name="ShipmentCompanyServicePortSoap11" binding="tns:ShipmentCompanyServicePortSoap11">
+      <soap:address location="https://api.n11.com/ws/shipmentCompanyService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

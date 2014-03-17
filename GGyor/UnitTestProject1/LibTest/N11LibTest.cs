@@ -1,4 +1,5 @@
 ﻿using System;
+using EntegrasyonServiceBase;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using N11Lib;
 
@@ -54,6 +55,30 @@ namespace UnitTestProject1.LibTest
             var target = new N11Service();
 
             target.UpdateProducts();
+
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
+        public void CreateProductTest()
+        {
+            var target = new N11Service();
+
+            //target.GetShipmentTemplates();
+
+
+            var prod = new ProductModel
+                       {
+                           stockCode = "91.000015",
+                           title = "TIMBERLAND 18617 KADIN AYAKKABI",
+                           label = "TIMBERLAND 18617 KADIN AYAKKABI",
+                           details = "TIMBERLAND 18617 KADIN AYAKKABI<br />",
+                           displayPrice = 209,
+                           picture1Path = "http://www.elektrostil.com/modules/catalog/products/pr_01_3448119_max.jpg?rev=1382934834",
+                           stockAmount = 23
+                       };
+
+            target.CreateProduct(prod, 1520);
 
             Assert.IsTrue(true);
         }
