@@ -22,6 +22,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{F9DE3C0F-E6D4-45C9-BFCC-B42934E6A57C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{B6F412FD-BA76-426F-B686-DC4877B7406C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\..\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Backup\StorMan.bak = ..\..\..\..\..\..\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Backup\StorMan.bak
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorMan.Data", "StorMan.Data\StorMan.Data.csproj", "{70DB102E-9A73-4473-949D-C6D68871B850}"
 EndProject

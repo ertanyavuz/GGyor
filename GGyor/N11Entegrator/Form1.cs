@@ -135,7 +135,6 @@ namespace N11Entegrator
                     {
                         var dataRow = (dataRowView.DataBoundItem as DataRowView).Row;
                         dataRow["n11Category"] = String.Format("{0}-{1}", cat.id, cat.ToString());
-                        
                     }
                 }
             }
