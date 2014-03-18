@@ -91,9 +91,22 @@ namespace N11Lib
             var list = response.category[0].subCategoryList;
             if (list == null)
             {
-                //Debug.Write("<-");
+                // En alt seviye
+                var attResponse = service.GetCategoryAttributes(new GetCategoryAttributesRequest
+                                                                {
+                                                                    categoryId = cat.id
+                                                                });
+                cat.attributes = attResponse.category.attributeList
+                                                .Select(x => new AttributeModel
+                                                {
+                                                    id = x.id,
+                                                    name = x.name,
+                                                    values = x.valueList.Select(y => new KeyValuePair<long, string>(y.id, y.name)).ToList()
+                                                })
+                                                .ToList();
                 return new List<CategoryModel>();
             }
+
             var subCatList = list.Select(y => new CategoryModel
             {
                 id = y.id,

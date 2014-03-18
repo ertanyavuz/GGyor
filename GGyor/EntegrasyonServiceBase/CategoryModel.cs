@@ -12,6 +12,8 @@ namespace EntegrasyonServiceBase
         public List<CategoryModel> subCategories { get; set; }
         public CategoryModel parent { get; set; }
 
+        public List<AttributeModel> attributes { get; set; }
+
         public override string ToString()
         {
             var str = name;
@@ -28,5 +30,16 @@ namespace EntegrasyonServiceBase
 
             return str;
         }
+
+        
+    }
+
+    public class AttributeModel
+    {
+        public long id { get; set; }
+        public string name { get; set; }
+        public bool mandatory { get; set; }
+        public bool multipleSelect { get; set; }
+        public List<KeyValuePair<long, string>> values { get; set; }
     }
 }
