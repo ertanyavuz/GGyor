@@ -51,7 +51,7 @@ namespace UnitTestProject1.LibTest
 
         [TestMethod]
         public void UpdateProductsTest()
-        {11
+        {
             var target = new N11Service();
 
             target.UpdateProducts();

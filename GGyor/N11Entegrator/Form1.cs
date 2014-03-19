@@ -33,8 +33,9 @@ namespace N11Entegrator
 
         private void btnGetCategories_Click(object sender, EventArgs e)
         {
-            categoryList = service.GetCategories();
+            //categoryList = service.GetCategories();
             //categoryList = getCategoryListFromTextFile();
+            categoryList = getCategoryListFromService();
 
             foreach (CategoryModel cat in categoryList)
             {
@@ -73,6 +74,12 @@ namespace N11Entegrator
 
             return catList;
         }
+
+        private List<CategoryModel> getCategoryListFromService()
+        {
+            
+        }
+
         private TreeNode categoryToTreeNode(CategoryModel cat)
         {
             var node = new TreeNode(String.Format("{0} - {1}", cat.id, cat.name));
