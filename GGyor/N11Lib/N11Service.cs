@@ -71,7 +71,6 @@ namespace N11Lib
             sw.Stop();
             Debug.WriteLine("Elapsed=" + sw.ElapsedMilliseconds.ToString());
             return catList;
-
         }
 
         private int categoryCount = 1;
@@ -96,14 +95,32 @@ namespace N11Lib
                                                                 {
                                                                     categoryId = cat.id
                                                                 });
-                cat.attributes = attResponse.category.attributeList
-                                                .Select(x => new AttributeModel
-                                                {
-                                                    id = x.id,
-                                                    name = x.name,
-                                                    values = x.valueList.Select(y => new KeyValuePair<long, string>(y.id, y.name)).ToList()
-                                                })
-                                                .ToList();
+                //cat.attributes = attResponse.category.attributeList
+                //                                .Select(x => new AttributeModel
+                //                                {
+                //                                    id = x.id,
+                //                                    name = x.name,
+                //                                    values = x.valueList.Select(y => new KeyValuePair<long, string>(y.id, y.name)).ToList()
+                //                                })
+                //                                .ToList();
+                
+                var obj = callGet("https://api.n11.com/rest/secure/category/getCategoryAttributes.json",
+                                    new[] {"id"},
+                                    new[] {cat.id.ToString()});
+                var attArr = obj["response"]["data"]["category"]["attributeList"] as JArray;
+                cat.attributes = attArr.Select(x => new AttributeModel
+                                        {
+                                            id = (long) x["id"],
+                                            name = (string) x["name"],
+                                            inputMethod = (string) x["inputMethod"],
+                                            mandatory = (bool)x["mandatory"],
+                                            multipleSelect = (bool)x["multipleSelect"],
+                                            code = (string)x["code"],
+                                            //values = x.valueList.Select(y => new KeyValuePair<long, string>(y.id, y.name)).ToList()
+                                            values = ((JArray)x["valueList"]).Select(y => new KeyValuePair<long, string>((long) y["id"], (string) y["name"])).ToList()
+                                        })
+                                        .ToList();
+                
                 return new List<CategoryModel>();
             }
 
@@ -351,7 +368,7 @@ namespace N11Lib
                 i++;
                 //if (i < 900)
                 //    continue;
-                var destProd = n11List.FirstOrDefault(x => x.productSellerCode == StockCodeToSellerCode(sourceProd.stockCode));
+                var destProd = n11List.FirstOrDefault(x => x.productSellerCode.Contains("_" + sourceProd.stockCode + "_")); // == StockCodeToSellerCode(sourceProd.stockCode));
                 if (destProd == null)
                 {
                     Debug.WriteLine(String.Format("{1}\t{0} hedefte bulunamadı.", sourceProd.stockCode, i));
@@ -688,6 +705,26 @@ namespace N11Lib
                 return JObject.Parse(str);
             }
 
+        }
+
+        public JObject callGet(string url, string[] keyArr, string[] valueArr)
+        {
+            url += String.Format("?appkey={0}&appsecret={1}", appKey, appSecret);
+            for (var i = 0; i < keyArr.Length; i++)
+                url += String.Format("&{0}={1}", keyArr[i], valueArr[i]);
+
+            var req = WebRequest.Create(url);
+            req.ContentType = "text/plain";
+            //req.Headers.Add("Accept", "application/json");
+            var res = req.GetResponse();
+
+            var st = new System.IO.StreamReader(res.GetResponseStream());
+            var result = st.ReadToEnd();
+            st.Close();
+
+            var obj = JObject.Parse(result);
+
+            return obj;
         }
 
         public JObject CallPostForStockUpdate(string sellerCode, int stockAmount)

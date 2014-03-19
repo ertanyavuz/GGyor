@@ -33,8 +33,8 @@ namespace N11Entegrator
 
         private void btnGetCategories_Click(object sender, EventArgs e)
         {
-            //categoryList = service.GetCategories();
-            categoryList = getCategoryListFromTextFile();
+            categoryList = service.GetCategories();
+            //categoryList = getCategoryListFromTextFile();
 
             foreach (CategoryModel cat in categoryList)
             {

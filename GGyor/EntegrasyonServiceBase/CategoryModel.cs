@@ -41,5 +41,9 @@ namespace EntegrasyonServiceBase
         public bool mandatory { get; set; }
         public bool multipleSelect { get; set; }
         public List<KeyValuePair<long, string>> values { get; set; }
+
+        public string inputMethod { get; set; }
+
+        public string code { get; set; }
     }
 }
