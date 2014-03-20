@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>N11Entegrator</RootNamespace>
     <AssemblyName>N11Entegrator</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -63,6 +66,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -87,6 +91,14 @@
     <ProjectReference Include="..\N11Lib\N11Lib.csproj">
       <Project>{2f3f72d6-43b0-452b-bb51-768a8da9104e}</Project>
       <Name>N11Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StorMan.Business\StorMan.Business.csproj">
+      <Project>{dcc5b325-eb8c-44e9-b989-c40751c82067}</Project>
+      <Name>StorMan.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StorMan.Model\StorMan.Model.csproj">
+      <Project>{23c64dfb-c284-47ae-b839-025b089a522d}</Project>
+      <Name>StorMan.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

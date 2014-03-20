@@ -15,26 +15,32 @@ namespace StorMan.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Operation
+    public partial class Attribute
     {
+    
+        public Attribute()
+        {
+    
+            this.AttributeValues = new HashSet<AttributeValue>();
+    
+            this.Categories = new HashSet<Category>();
+    
+        }
+    
     
         public int ID { get; set; }
     
-        public int TransformID { get; set; }
-    
         public string Name { get; set; }
     
-        public string FieldName { get; set; }
+        public bool IsMandatory { get; set; }
     
-        public Nullable<int> OperationType { get; set; }
-    
-        public string Value { get; set; }
-    
-        public Nullable<int> Order { get; set; }
+        public bool IsMultipleSelect { get; set; }
     
     
     
-        public virtual Transform Transform { get; set; }
+        public virtual ICollection<AttributeValue> AttributeValues { get; set; }
+    
+        public virtual ICollection<Category> Categories { get; set; }
     
     }
 

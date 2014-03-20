@@ -8,9 +8,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EntegrasyonServiceBase;
 using N11Lib;
 using N11Lib.ProductService;
+using StorMan.Business;
+using StorMan.Model;
+using ProductModel = EntegrasyonServiceBase.ProductModel;
 
 namespace N11Entegrator
 {
@@ -25,6 +27,8 @@ namespace N11Entegrator
         private List<CategoryModel> categoryList;
         private List<ProductModel> sourceList;
         private List<ProductBasic> n11List;
+
+        private const int N11_STORE_ID = 2;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -58,15 +62,15 @@ namespace N11Entegrator
                 var s = line.Split('\t');
                 var cat = new CategoryModel
                 {
-                    id = long.Parse(s[1]),
-                    name = s[3],
-                    parent = s[2] == "0" ? null : catTable[long.Parse(s[2])],
-                    subCategories = new List<CategoryModel>()
+                    ID = long.Parse(s[1]),
+                    Name = s[3],
+                    Parent = s[2] == "0" ? null : catTable[long.Parse(s[2])],
+                    Children = new List<CategoryModel>()
                 };
-                catTable.Add(cat.id, cat);
+                catTable.Add(cat.ID, cat);
 
-                if (cat.parent != null)
-                    cat.parent.subCategories.Add(cat);
+                if (cat.Parent != null)
+                    cat.Parent.Children.Add(cat);
                 else
                     catList.Add(cat);
             }
@@ -77,14 +81,35 @@ namespace N11Entegrator
 
         private List<CategoryModel> getCategoryListFromService()
         {
+            var list = service.GetCategories();
+
+            // Veritabanına kaydet.
+            var dataService = new StorMan.Business.N11DataService();
+            dataService.ClearCtategories(N11_STORE_ID);
+
+            foreach (var categoryModel in list)
+            {
+                //catService.InsertCategory(categoryModel, N11_STORE_ID);
+                insertCategory(dataService, categoryModel);
+            }
             
+            return list;
+        }
+
+        private void insertCategory(N11DataService dataService, CategoryModel category)
+        {
+            dataService.InsertCategory(category, N11_STORE_ID);
+            foreach (var subCategory in category.Children)
+            {
+                insertCategory(dataService, subCategory);
+            }
         }
 
         private TreeNode categoryToTreeNode(CategoryModel cat)
         {
-            var node = new TreeNode(String.Format("{0} - {1}", cat.id, cat.name));
+            var node = new TreeNode(String.Format("{0} - {1}", cat.ID, cat.Name));
             node.Tag = cat;
-            foreach (var subCat in cat.subCategories)
+            foreach (var subCat in cat.Children)
             {
                 var subNode = categoryToTreeNode(subCat);
                 node.Nodes.Add(subNode);
@@ -141,7 +166,7 @@ namespace N11Entegrator
                     foreach (var dataRowView in drList)
                     {
                         var dataRow = (dataRowView.DataBoundItem as DataRowView).Row;
-                        dataRow["n11Category"] = String.Format("{0}-{1}", cat.id, cat.ToString());
+                        dataRow["n11Category"] = String.Format("{0}-{1}", cat.ID, cat.ToString());
                     }
                 }
             }

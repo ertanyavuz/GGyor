@@ -8,12 +8,32 @@ namespace StorMan.Model
 {
     public class CategoryModel
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public CategoryModel Parent { get; set; }
         public List<CategoryModel> Children { get; set; }
         public LocalCategoryModel LocalCategoryModel { get; set; }
+
+        public List<AttributeModel> Attributes { get; set; }
+
+        public override string ToString()
+        {
+            var str = Name;
+            var p = Parent;
+            if (Children == null)
+                Children = new List<CategoryModel>();
+
+            while (p != null)
+            {
+                str = String.Format("{0} / {1}", p.Name, str);
+                p = p.Parent;
+            }
+            //str = str + String.Format("{0} ({1})", str, subCategories.Count);
+
+            return str;
+        }
+
     }
     public class LocalCategoryModel
     {
@@ -82,6 +102,20 @@ namespace StorMan.Model
             }
         }
 
+    }
+
+
+    public class AttributeModel
+    {
+        public long id { get; set; }
+        public string name { get; set; }
+        public bool mandatory { get; set; }
+        public bool multipleSelect { get; set; }
+        public List<KeyValuePair<long, string>> values { get; set; }
+
+        public string inputMethod { get; set; }
+
+        public string code { get; set; }
     }
 
 }

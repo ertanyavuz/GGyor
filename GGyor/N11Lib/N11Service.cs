@@ -8,13 +8,14 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Xml.Linq;
-using EntegrasyonServiceBase;
 using N11Lib.CategoryService;
 using N11Lib.ProductService;
 using N11Lib.ProductStockService;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using StorMan.Model;
 using Authentication = N11Lib.ProductService.Authentication;
+using ProductModel = EntegrasyonServiceBase.ProductModel;
 
 namespace N11Lib
 {
@@ -58,14 +59,16 @@ namespace N11Lib
             categoryCount = 1;
             var catList = result.categoryList.Select(x => new CategoryModel
             {
-                id = x.id,
-                name = x.name
+                ID = x.id,
+                Name = x.name
             }).ToList();
+
+            //catList = catList.Take(1).ToList();
 
             var i = 0;
             catList.ForEach(x =>
             {
-                x.subCategories = getSubCategories(service, x);
+                x.Children = getSubCategories(service, x);
                 //Debug.WriteLine("{0} - {1} ({2})", i, x.name, x.subCategories.Count);
             });
             sw.Stop();
@@ -76,13 +79,13 @@ namespace N11Lib
         private int categoryCount = 1;
         private List<CategoryModel> getSubCategories(CategoryServicePortClient service, CategoryModel cat)
         {
-            Debug.WriteLine("{0}\t{1}\t{2}\t{3}", categoryCount, cat.id, cat.parent == null ? 0 : cat.parent.id, cat.name);
+            Debug.WriteLine("{0}\t{1}\t{2}\t{3}", categoryCount, cat.ID, cat.Parent == null ? 0 : cat.Parent.ID, cat.Name);
             categoryCount++;
 
-            var response = service.GetSubCategories(new GetSubCategoriesRequest { categoryId = cat.id });
+            var response = service.GetSubCategories(new GetSubCategoriesRequest { categoryId = cat.ID });
             if (response.result.status != "success")
             {
-                Debug.WriteLine("Kategori bulunamadı: {0} - {1}", cat.id, cat.ToString());
+                Debug.WriteLine("Kategori bulunamadı: {0} - {1}", cat.ID, cat.ToString());
                 return new List<CategoryModel>();
             }
             if (response.category == null || response.category.Length == 0)
@@ -91,10 +94,10 @@ namespace N11Lib
             if (list == null)
             {
                 // En alt seviye
-                var attResponse = service.GetCategoryAttributes(new GetCategoryAttributesRequest
-                                                                {
-                                                                    categoryId = cat.id
-                                                                });
+                //var attResponse = service.GetCategoryAttributes(new GetCategoryAttributesRequest
+                //                                                {
+                //                                                    categoryId = cat.ID
+                //                                                });
                 //cat.attributes = attResponse.category.attributeList
                 //                                .Select(x => new AttributeModel
                 //                                {
@@ -106,18 +109,21 @@ namespace N11Lib
                 
                 var obj = callGet("https://api.n11.com/rest/secure/category/getCategoryAttributes.json",
                                     new[] {"id"},
-                                    new[] {cat.id.ToString()});
+                                    new[] {cat.ID.ToString()});
                 var attArr = obj["response"]["data"]["category"]["attributeList"] as JArray;
-                cat.attributes = attArr.Select(x => new AttributeModel
+                if (attArr == null)
+                    cat.Attributes = new List<AttributeModel>();
+                else
+                    cat.Attributes = attArr.Select(x => new AttributeModel
                                         {
-                                            id = (long) x["id"],
-                                            name = (string) x["name"],
-                                            inputMethod = (string) x["inputMethod"],
+                                            id = (long)x["id"],
+                                            name = (string)x["name"],
+                                            inputMethod = (string)x["inputMethod"],
                                             mandatory = (bool)x["mandatory"],
                                             multipleSelect = (bool)x["multipleSelect"],
                                             code = (string)x["code"],
                                             //values = x.valueList.Select(y => new KeyValuePair<long, string>(y.id, y.name)).ToList()
-                                            values = ((JArray)x["valueList"]).Select(y => new KeyValuePair<long, string>((long) y["id"], (string) y["name"])).ToList()
+                                            values = ((JArray)x["valueList"]).Select(y => new KeyValuePair<long, string>((long)y["id"], (string)y["name"])).ToList()
                                         })
                                         .ToList();
                 
@@ -126,12 +132,12 @@ namespace N11Lib
 
             var subCatList = list.Select(y => new CategoryModel
             {
-                id = y.id,
-                name = y.name,
-                parent = cat,
+                ID = y.id,
+                Name = y.name,
+                Parent = cat,
             }).ToList();
 
-            subCatList.ForEach(y => y.subCategories = getSubCategories(service, y));
+            subCatList.ForEach(y => y.Children = getSubCategories(service, y));
 
             return subCatList;
         }

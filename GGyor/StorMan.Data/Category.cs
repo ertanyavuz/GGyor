@@ -21,12 +21,20 @@ namespace StorMan.Data
         public Category()
         {
     
+            this.Category1 = new HashSet<Category>();
+    
+            this.Attributes = new HashSet<Attribute>();
+    
             this.LocalCategories = new HashSet<LocalCategory>();
     
         }
     
     
         public int ID { get; set; }
+    
+        public int StoreID { get; set; }
+    
+        public Nullable<int> ParentID { get; set; }
     
         public string Code { get; set; }
     
@@ -37,6 +45,12 @@ namespace StorMan.Data
         public Nullable<System.DateTime> UpdDate { get; set; }
     
     
+    
+        public virtual ICollection<Category> Category1 { get; set; }
+    
+        public virtual Category Category2 { get; set; }
+    
+        public virtual ICollection<Attribute> Attributes { get; set; }
     
         public virtual ICollection<LocalCategory> LocalCategories { get; set; }
     

@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute.cs">
+      <DependentUpon>StorManDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AttributeValue.cs">
+      <DependentUpon>StorManDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>StorManDb.tt</DependentUpon>
     </Compile>
@@ -77,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ConvertedDataSetRepository.cs" />
+    <Compile Include="Repositories\N11Repository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="StorManDb.Context.cs">
       <AutoGen>True</AutoGen>

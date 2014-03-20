@@ -32,6 +32,10 @@ namespace StorMan.Data
         }
     
     
+        public DbSet<Attribute> Attributes { get; set; }
+    
+        public DbSet<AttributeValue> AttributeValues { get; set; }
+    
         public DbSet<Category> Categories { get; set; }
     
         public DbSet<ConvertedDataSet> ConvertedDataSets { get; set; }

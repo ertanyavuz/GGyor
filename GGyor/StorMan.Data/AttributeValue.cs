@@ -15,26 +15,18 @@ namespace StorMan.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Operation
+    public partial class AttributeValue
     {
     
         public int ID { get; set; }
     
-        public int TransformID { get; set; }
+        public int AttributeID { get; set; }
     
         public string Name { get; set; }
     
-        public string FieldName { get; set; }
-    
-        public Nullable<int> OperationType { get; set; }
-    
-        public string Value { get; set; }
-    
-        public Nullable<int> Order { get; set; }
     
     
-    
-        public virtual Transform Transform { get; set; }
+        public virtual Attribute Attribute { get; set; }
     
     }
 
