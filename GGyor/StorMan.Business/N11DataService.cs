@@ -21,5 +21,10 @@ namespace StorMan.Business
             new N11Repository().InsertCategory(catModel, storeId);
         }
 
+        public void GetCategories(int storeId)
+        {
+            new N11Repository().GetCategories(storeId);
+        }
+
     }
 }

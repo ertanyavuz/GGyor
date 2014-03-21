@@ -60,10 +60,11 @@ namespace N11Lib
             var catList = result.categoryList.Select(x => new CategoryModel
             {
                 ID = x.id,
-                Name = x.name
+                Name = x.name,
+                Code = x.id.ToString()
             }).ToList();
 
-            //catList = catList.Take(1).ToList();
+            //catList = catList.Take(2).ToList();
 
             var i = 0;
             catList.ForEach(x =>
@@ -135,6 +136,7 @@ namespace N11Lib
                 ID = y.id,
                 Name = y.name,
                 Parent = cat,
+                Code = y.id.ToString()
             }).ToList();
 
             subCatList.ForEach(y => y.Children = getSubCategories(service, y));

@@ -96,10 +96,15 @@ namespace N11Entegrator
             return list;
         }
 
-        private List<CategoryModel> 
+        //private List<CategoryModel> getCategoryListFromDb()
+        //{
+        //    var dataService = new StorMan.Business.N11DataService();
+            
+        //}
 
         private void insertCategory(N11DataService dataService, CategoryModel category)
         {
+            Debug.WriteLine("Inserting " + category.ToString());
             dataService.InsertCategory(category, N11_STORE_ID);
             foreach (var subCategory in category.Children)
             {

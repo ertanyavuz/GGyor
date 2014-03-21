@@ -14,20 +14,10 @@ namespace StorMan.Data.Repositories
         {
             var context = new StorManEntities();
 
-            var catList = context.Categories.Where(x => x.StoreID == storeId).ToList();
-            foreach (var category in catList)
-            {
-                foreach (var attribute in category.Attributes)
-                {
-                    foreach (var attributeValue in attribute.AttributeValues)
-                    {
-                        context.AttributeValues.Remove(attributeValue);
-                    }
-                    context.Attributes.Remove(attribute);
-                }
-                context.Categories.Remove(category);
-            }
-            context.SaveChanges();
+            context.Database.ExecuteSqlCommand("DELETE FROM AttributeValue");
+            context.Database.ExecuteSqlCommand("DELETE FROM CategoryAttribute");
+            context.Database.ExecuteSqlCommand("DELETE FROM Attribute");
+            context.Database.ExecuteSqlCommand("DELETE FROM Category WHERE StoreID=" + storeId.ToString());
 
         }
 
@@ -47,10 +37,14 @@ namespace StorMan.Data.Repositories
 
             if (catModel.Parent != null)
             {
-                var parentCat = context.Categories.FirstOrDefault(x => x.Code == catModel.Parent.Code && x.Name == catModel.Parent.Name);
+                var parentCat = context.Categories.FirstOrDefault(x => x.StoreID == storeId && x.Code == catModel.Parent.Code);
                 if (parentCat != null)
                 {
                     cat.ParentID = parentCat.ID;
+                }
+                else
+                {
+                    cat.GetType();
                 }
             }
 
@@ -93,5 +87,13 @@ namespace StorMan.Data.Repositories
 
         }
 
+        public void GetCategories(int storeId)
+        {
+            var context = new StorManEntities();
+
+            var catList = context.Categories.Where(x => x.StoreID == storeId).ToList();
+
+
+        }
     }
 }
