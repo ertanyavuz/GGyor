@@ -96,6 +96,8 @@ namespace N11Entegrator
             return list;
         }
 
+        private List<CategoryModel> 
+
         private void insertCategory(N11DataService dataService, CategoryModel category)
         {
             dataService.InsertCategory(category, N11_STORE_ID);
