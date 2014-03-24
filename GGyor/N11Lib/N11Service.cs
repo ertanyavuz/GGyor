@@ -260,8 +260,8 @@ namespace N11Lib
                 System.Diagnostics.Debug.WriteLine("Page " + pageNum.ToString());
                 pageNum ++;
 
-                if (pageNum > 5)
-                    break;
+                //if (pageNum > 5)
+                //    break;
             }
 
             
@@ -395,6 +395,12 @@ namespace N11Lib
                         {
                             // update price
                             Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
+                            var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)*100) / destProd.displayPrice;
+                            if (diffPercent > (decimal) 0.05)
+                            {
+                                Debug.WriteLine("Fiyat çok değişmiş!");
+                            }
+
                             UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
                         }
                         if (sourceAmount != destAmount)
