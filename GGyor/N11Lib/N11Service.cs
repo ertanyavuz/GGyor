@@ -260,8 +260,8 @@ namespace N11Lib
                 System.Diagnostics.Debug.WriteLine("Page " + pageNum.ToString());
                 pageNum ++;
 
-                //if (pageNum > 15)
-                //    break;
+                if (pageNum > 5)
+                    break;
             }
 
             
@@ -469,7 +469,7 @@ namespace N11Lib
                                                          new ProductSkuRequest
                                                          {
                                                              quantity = product.stockAmount.ToString(),
-                                                             sellerStockCode = product.stockCode
+                                                             sellerStockCode = product.stockCode,
                                                          }
                                                      },
 

@@ -87,13 +87,89 @@ namespace StorMan.Data.Repositories
 
         }
 
-        public void GetCategories(int storeId)
+        public List<CategoryModel> GetCategories(int storeId)
         {
             var context = new StorManEntities();
 
-            var catList = context.Categories.Where(x => x.StoreID == storeId).ToList();
+            var catList = context.Categories.Where(x => x.StoreID == storeId)
+                                            .OrderBy(x => x.ParentID).ThenBy(x => x.ID)
+                                            .ToList();
+            var attList = context.Attributes.Select(x => new
+                                            {
+                                                x.ID,
+                                                x.IsMandatory,
+                                                x.IsMultipleSelect,
+                                                x.Name,
+                                                CategoryID = x.Categories.Select(y => y.ID).FirstOrDefault()
+                                            })
+                                            .OrderBy(x => x.CategoryID).ThenBy(x => x.ID)
+                                            //.ToDictionary(x => x.CategoryID, x => x);
+                                            .ToList();
 
+            var attValueList = context.AttributeValues.OrderBy(x => x.AttributeID).ThenBy(x => x.ID)
+                                            .ToList();
 
+            var catTable = catList.ToDictionary(x => x.ID, x => x);
+
+            var modelTable = new Dictionary<long, CategoryModel>();
+            foreach (var category in catList)
+            {
+                var model = new CategoryModel
+                {
+                    ID = category.ID,
+                    Name = category.Name,
+                    Code = category.Code,
+                    Attributes = new List<AttributeModel>(),
+                    Children = new List<CategoryModel>()
+                };
+                modelTable.Add(model.ID, model);
+
+                if (category.ParentID != null)
+                {
+                    var parent = modelTable[category.ParentID.Value];
+                    if (parent == null)
+                    {
+                        model.GetType(); // What the!!!
+                    }
+                    else
+                    {
+                        model.Parent = parent;
+                        parent.Children.Add(model);
+                    }
+                }
+            }
+            var leafNodes = modelTable.Values.Where(x => !x.Children.Any()).ToList();
+            foreach (var subCategory in leafNodes)
+            {
+                var thisAttList = attList.Where(x => x.CategoryID == subCategory.ID);
+                foreach (var att in thisAttList)
+                {
+                    var attModel = new AttributeModel
+                    {
+                        id = att.ID,
+                        name = att.Name,
+                        code = att.ID.ToString(),
+                        multipleSelect = att.IsMultipleSelect,
+                        mandatory = att.IsMandatory,
+                        values = new List<KeyValuePair<long, string>>()
+                    };
+
+                    attModel.values = attValueList.Where(x => x.AttributeID == attModel.id)
+                                    .Select(x => new KeyValuePair<long, string>(x.ID, x.Name))
+                                    .ToList();
+                    subCategory.Attributes.Add(attModel);
+                }
+            }
+
+            var retList = modelTable.Values.Where(x => x.Parent == null).ToList();
+
+            return retList;
+
+        }
+
+        private void setCategoryParent(Category cat, Dictionary<int, CategoryModel> table)
+        {
+            
         }
     }
 }

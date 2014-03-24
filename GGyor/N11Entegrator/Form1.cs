@@ -27,6 +27,7 @@ namespace N11Entegrator
         private List<CategoryModel> categoryList;
         private List<ProductModel> sourceList;
         private List<ProductBasic> n11List;
+        private Dictionary<long, CategoryModel> categoryTable;
 
         private const int N11_STORE_ID = 2;
 
@@ -35,11 +36,16 @@ namespace N11Entegrator
             service = new N11Service();
         }
 
+        #region " Category "
+        
         private void btnGetCategories_Click(object sender, EventArgs e)
         {
             //categoryList = service.GetCategories();
             //categoryList = getCategoryListFromTextFile();
-            categoryList = getCategoryListFromService();
+            //categoryList = getCategoryListFromService();
+            categoryList = getCategoryListFromDb();
+
+            categoryTable = new Dictionary<long, CategoryModel>();
 
             foreach (CategoryModel cat in categoryList)
             {
@@ -96,11 +102,12 @@ namespace N11Entegrator
             return list;
         }
 
-        //private List<CategoryModel> getCategoryListFromDb()
-        //{
-        //    var dataService = new StorMan.Business.N11DataService();
-            
-        //}
+        private List<CategoryModel> getCategoryListFromDb()
+        {
+            var dataService = new StorMan.Business.N11DataService();
+            var list = dataService.GetCategories(N11_STORE_ID);
+            return list;
+        }
 
         private void insertCategory(N11DataService dataService, CategoryModel category)
         {
@@ -116,6 +123,7 @@ namespace N11Entegrator
         {
             var node = new TreeNode(String.Format("{0} - {1}", cat.ID, cat.Name));
             node.Tag = cat;
+            categoryTable.Add(cat.ID, cat);
             foreach (var subCat in cat.Children)
             {
                 var subNode = categoryToTreeNode(subCat);
@@ -123,6 +131,8 @@ namespace N11Entegrator
             }
             return node;
         }
+
+        #endregion
 
         private void btnGetSource_Click(object sender, EventArgs e)
         {
@@ -178,6 +188,48 @@ namespace N11Entegrator
                 }
             }
         }
+
+        private DataGridViewRow selectedRow;
+        private void grid1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (grid1.SelectedRows.Count == 1)
+            {
+                if (grid1.SelectedRows[0] == selectedRow)
+                    return;
+
+                selectedRow = grid1.SelectedRows[0];
+                flowLayoutPanel1.Controls.Clear();
+
+                var catStr = selectedRow.Cells["n11Category"].Value.ToString();
+                if (String.IsNullOrWhiteSpace(catStr))
+                    return;
+
+                var s = catStr.Split('-');
+                if (s.Length <= 1)
+                    return;
+                int catId;
+                if (!int.TryParse(s[0], out catId))
+                    return;
+
+                var cat = categoryTable[catId];
+                if (cat == null)
+                    return;
+
+                var l = new Label {Text = cat.ToString(), AutoSize = true};
+                flowLayoutPanel1.Controls.Add(l);
+
+                foreach (var att in cat.Attributes)
+                {
+                    var c = AttributeControlBase.Create(att, null);
+                    flowLayoutPanel1.Controls.Add(c);
+                }
+            }
+            else
+            {
+                flowLayoutPanel1.Controls.Clear();
+            }
+        }
+
 
         private DataTable newProductsTable;
         private DataTable updateProductsTable;
@@ -365,6 +417,8 @@ namespace N11Entegrator
             btnRunUpdate.Enabled = true;
             btnStop.Enabled = false;
         }
+
+
 
     }
 }

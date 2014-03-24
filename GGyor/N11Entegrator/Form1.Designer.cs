@@ -45,6 +45,8 @@
             this.bgw = new System.ComponentModel.BackgroundWorker();
             this.btnGetCategories = new System.Windows.Forms.Button();
             this.tree = new System.Windows.Forms.TreeView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid3)).BeginInit();
@@ -52,6 +54,7 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGetSource
@@ -109,6 +112,7 @@
             this.grid1.Name = "grid1";
             this.grid1.Size = new System.Drawing.Size(689, 546);
             this.grid1.TabIndex = 5;
+            this.grid1.SelectionChanged += new System.EventHandler(this.grid1_SelectionChanged);
             this.grid1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grid1_MouseDown);
             // 
             // grid2
@@ -119,7 +123,7 @@
             this.grid2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid2.Location = new System.Drawing.Point(3, 3);
             this.grid2.Name = "grid2";
-            this.grid2.Size = new System.Drawing.Size(884, 640);
+            this.grid2.Size = new System.Drawing.Size(689, 546);
             this.grid2.TabIndex = 7;
             // 
             // grid3
@@ -130,7 +134,7 @@
             this.grid3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid3.Location = new System.Drawing.Point(0, 0);
             this.grid3.Name = "grid3";
-            this.grid3.Size = new System.Drawing.Size(656, 552);
+            this.grid3.Size = new System.Drawing.Size(695, 552);
             this.grid3.TabIndex = 9;
             // 
             // tabControl1
@@ -161,7 +165,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(890, 646);
+            this.tabPage2.Size = new System.Drawing.Size(695, 552);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Güncellemeler";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -171,7 +175,7 @@
             this.tabPage3.Controls.Add(this.grid3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(656, 552);
+            this.tabPage3.Size = new System.Drawing.Size(695, 552);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stoğu Sıfırlanacaklar";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -224,11 +228,31 @@
             this.tree.DragDrop += new System.Windows.Forms.DragEventHandler(this.tree_DragDrop);
             this.tree.DragOver += new System.Windows.Forms.DragEventHandler(this.tree_DragOver);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox1.Location = new System.Drawing.Point(964, 96);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(300, 564);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ürün Özellikleri";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(294, 545);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 672);
+            this.ClientSize = new System.Drawing.Size(1285, 672);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tree);
             this.Controls.Add(this.btnGetCategories);
             this.Controls.Add(this.btnStop);
@@ -249,6 +273,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,6 +298,8 @@
         private System.ComponentModel.BackgroundWorker bgw;
         private System.Windows.Forms.Button btnGetCategories;
         private System.Windows.Forms.TreeView tree;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 
