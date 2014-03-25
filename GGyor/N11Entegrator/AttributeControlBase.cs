@@ -11,18 +11,19 @@ namespace N11Entegrator
     public class AttributeControlBase : UserControl
     {
         public AttributeModel AttributeModel { get; set; }
+
         public virtual string AttributeValue { get; set; }
 
         public static AttributeControlBase Create(AttributeModel attModel, string value)
         {
             AttributeControlBase control;
-            if (attModel.multipleSelect)
+            if (!attModel.multipleSelect)
             {
                 control = new ComboAttributeControl();
             }
             else
             {
-                control = new ComboAttributeControl();
+                control = new MultiSelectAttributeControl();
             }
 
             control.AttributeModel = attModel;

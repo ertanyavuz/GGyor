@@ -17,6 +17,8 @@ namespace N11Entegrator
             InitializeComponent();
         }
 
+        protected string _attributeValue;
+
         public override string AttributeValue {
             get
             {
@@ -45,7 +47,7 @@ namespace N11Entegrator
                     cmbValue.Items.Add(keyValuePair.Value);
                 }
 
-                if (!String.IsNullOrWhiteSpace(this.AttributeValue)/* && this.AttributeModel.values.Any(x => x.Value == this.AttributeValue)*/)
+                if (!String.IsNullOrWhiteSpace(_attributeValue)/* && this.AttributeModel.values.Any(x => x.Value == this.AttributeValue)*/)
                     cmbValue.SelectedItem = this.AttributeValue;
             }
         }

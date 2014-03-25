@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.SqlServer.Server;
 using N11Lib;
 using N11Lib.ProductService;
 using StorMan.Business;
@@ -31,9 +32,12 @@ namespace N11Entegrator
 
         private const int N11_STORE_ID = 2;
 
+        private Dictionary<string, Dictionary<string, string>> rowAttributeTable;
+
         private void Form1_Load(object sender, EventArgs e)
         {
             service = new N11Service();
+            rowAttributeTable = new Dictionary<string, Dictionary<string, string>>();
         }
 
         #region " Category "
@@ -218,11 +222,19 @@ namespace N11Entegrator
                 var l = new Label {Text = cat.ToString(), AutoSize = true};
                 flowLayoutPanel1.Controls.Add(l);
 
+                var stockCode = selectedRow.Cells["stockCode"].Value.ToString();
+                var attValueTable = rowAttributeTable.ContainsKey(stockCode)
+                                    ? rowAttributeTable[stockCode]
+                                    : new Dictionary<string, string>();
+
                 foreach (var att in cat.Attributes)
                 {
                     var c = AttributeControlBase.Create(att, null);
                     flowLayoutPanel1.Controls.Add(c);
+                    if (attValueTable.ContainsKey(att.name))
+                        c.AttributeValue = attValueTable[att.name];
                 }
+                
             }
             else
             {
@@ -363,6 +375,27 @@ namespace N11Entegrator
 
         }
 
+        private void btnSaveAttribute_Click(object sender, EventArgs e)
+        {
+            if (selectedRow == null)
+                return;
+
+            var list = new Dictionary<string, string>();
+            foreach (var control in flowLayoutPanel1.Controls)
+            {
+                var attControl = control as AttributeControlBase;
+                if (attControl != null)
+                {
+                    if (!String.IsNullOrWhiteSpace(attControl.AttributeValue))
+                        list.Add(attControl.AttributeModel.name, attControl.AttributeValue);
+                }
+            }
+
+            var stockCode = (string) selectedRow.Cells["stockCode"].Value;
+
+            rowAttributeTable[stockCode] = list;
+
+        }
 
         private void btnRunUpdate_Click(object sender, EventArgs e)
         {
@@ -417,8 +450,6 @@ namespace N11Entegrator
             btnRunUpdate.Enabled = true;
             btnStop.Enabled = false;
         }
-
-
 
     }
 }
