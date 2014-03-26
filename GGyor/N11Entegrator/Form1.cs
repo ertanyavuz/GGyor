@@ -47,7 +47,7 @@ namespace N11Entegrator
             //categoryList = service.GetCategories();
             //categoryList = getCategoryListFromTextFile();
             //categoryList = getCategoryListFromService();
-            categoryList = getCategoryListFromDb();
+            categoryList = getAllCategoryListFromDb();
 
             categoryTable = new Dictionary<long, CategoryModel>();
 
@@ -106,10 +106,10 @@ namespace N11Entegrator
             return list;
         }
 
-        private List<CategoryModel> getCategoryListFromDb()
+        private List<CategoryModel> getAllCategoryListFromDb()
         {
             var dataService = new StorMan.Business.N11DataService();
-            var list = dataService.GetCategories(N11_STORE_ID);
+            var list = dataService.GetAllCategories(N11_STORE_ID);
             return list;
         }
 
@@ -229,10 +229,11 @@ namespace N11Entegrator
 
                 foreach (var att in cat.Attributes)
                 {
-                    var c = AttributeControlBase.Create(att, null);
+                    var value = attValueTable.ContainsKey(att.name) 
+                                    ? attValueTable[att.name]
+                                    : null;
+                    var c = AttributeControlBase.Create(att, value);
                     flowLayoutPanel1.Controls.Add(c);
-                    if (attValueTable.ContainsKey(att.name))
-                        c.AttributeValue = attValueTable[att.name];
                 }
                 
             }

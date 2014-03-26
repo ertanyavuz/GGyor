@@ -87,7 +87,7 @@ namespace StorMan.Data.Repositories
 
         }
 
-        public List<CategoryModel> GetCategories(int storeId)
+        public List<CategoryModel> GetAllCategories(int storeId)
         {
             var context = new StorManEntities();
 
@@ -166,10 +166,34 @@ namespace StorMan.Data.Repositories
             return retList;
 
         }
-
-        private void setCategoryParent(Category cat, Dictionary<int, CategoryModel> table)
+        
+        public List<CategoryModel> GetSubCategories(int storeId, int? parentId)
         {
-            
+            var context = new StorManEntities();
+
+            var list = context.Categories.Where(x => x.StoreID == storeId && x.ParentID == parentId)
+                                        .ToList();
+            var modelList = list.Select(x => new CategoryModel
+                                            {
+                                                ID = x.ID,
+                                                Name = x.Name,
+                                                Code = x.Code,
+                                                Children = new List<CategoryModel>(),
+                                                Attributes = x.Attributes.Select(y => new AttributeModel
+                                                                    {
+                                                                        id = y.ID,
+                                                                        name = y.Name,
+                                                                        code = y.ID.ToString(),
+                                                                        mandatory = y.IsMandatory,
+                                                                        multipleSelect = y.IsMultipleSelect,
+                                                                        values = y.AttributeValues.Select(z => new KeyValuePair<long, string>(z.ID, z.Name))
+                                                                                                    .ToList()
+                                                                    }).ToList()
+                                            })
+                                .ToList();
+
+            return modelList;
+
         }
     }
 }
