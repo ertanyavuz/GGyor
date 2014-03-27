@@ -395,7 +395,7 @@ namespace N11Lib
                         {
                             // update price
                             Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
-                            var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)*100) / destProd.displayPrice;
+                            var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)) / destProd.displayPrice;
                             if (diffPercent > (decimal) 0.05)
                             {
                                 Debug.WriteLine("Fiyat çok değişmiş!");
