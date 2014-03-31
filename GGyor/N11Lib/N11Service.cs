@@ -511,7 +511,9 @@ namespace N11Lib
             //paramObj["stockItem"] = JObject.Parse("{ 'quantity': " + product.stockAmount.ToString() + " }");
             var attStr = attributeList.Select(x => "{ 'name': '" + x.Key + "', 'value': '" + x.Value + "' }")
                                         .Aggregate((a, b) => a + ", " + b);
-            paramObj["stockItem"] = JObject.Parse("{ 'quantity': " + product.stockAmount.ToString() + ", 'attributes': [" + attStr + "] }");
+            paramObj["attributes"] = JArray.Parse("[" + attStr + "]");
+            paramObj["stockItem"] = JObject.Parse("{ 'quantity': " + product.stockAmount.ToString() + ", 'attributes': [" + "" + "] }");
+            
             paramObj["shipmentTemplate"] = "Ürün Listeleme";
 
             var obj = callPost(url, paramObj.ToString());

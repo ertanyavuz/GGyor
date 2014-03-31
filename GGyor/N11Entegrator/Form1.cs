@@ -164,7 +164,7 @@ namespace N11Entegrator
             }
             else
             {
-                if (cat.Attributes.Count == 0)
+                if (cat.Attributes == null || cat.Attributes.Count == 0)
                     node.Nodes.Add(new TreeNode("dummy"));
             }
             return node;
@@ -227,7 +227,7 @@ namespace N11Entegrator
                     foreach (var dataRowView in drList)
                     {
                         var dataRow = (dataRowView.DataBoundItem as DataRowView).Row;
-                        dataRow["n11Category"] = String.Format("{0}-{1}", cat.ID, cat.ToString());
+                        dataRow["n11Category"] = String.Format("{0}-{1}", cat.Code, cat.ToString());
                     }
                 }
             }
