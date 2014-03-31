@@ -32,12 +32,12 @@ namespace N11Entegrator
 
         private const int N11_STORE_ID = 2;
 
-        private Dictionary<string, Dictionary<string, string>> rowAttributeTable;
+        private Dictionary<string, List<KeyValuePair<string, string>>> rowAttributeTable;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             service = new N11Service();
-            rowAttributeTable = new Dictionary<string, Dictionary<string, string>>();
+            rowAttributeTable = new Dictionary<string, List<KeyValuePair<string, string>>>();
         }
 
         #region " Category "
@@ -262,20 +262,29 @@ namespace N11Entegrator
                 var l = new Label {Text = cat.ToString(), AutoSize = true};
                 flowLayoutPanel1.Controls.Add(l);
 
+                // Create attribute controls. Set attribute values, if any
                 var stockCode = selectedRow.Cells["stockCode"].Value.ToString();
                 var attValueTable = rowAttributeTable.ContainsKey(stockCode)
                                     ? rowAttributeTable[stockCode]
-                                    : new Dictionary<string, string>();
-
-                foreach (var att in cat.Attributes)
+                                    : new List<KeyValuePair<string, string>>();
+                if (cat.Attributes.Any())
                 {
-                    var value = attValueTable.ContainsKey(att.name) 
-                                    ? attValueTable[att.name]
-                                    : null;
-                    var c = AttributeControlBase.Create(att, value);
-                    flowLayoutPanel1.Controls.Add(c);
+                    foreach (var att in cat.Attributes)
+                    {
+                        // Set attribute values, if any
+                        var valuePairs = attValueTable.Where(x => x.Key == att.name).ToList();
+                        var valueStr = valuePairs.Count == 0
+                                            ? null
+                                            : att.multipleSelect
+                                                    ? valuePairs.Select(x => x.Value).Aggregate((a,b) => a + "|" + "b")
+                                                    : valuePairs[0].Value;
+
+                        // Create the control.
+                        var c = AttributeControlBase.Create(att, valueStr);
+                        flowLayoutPanel1.Controls.Add(c);
+                    }
                 }
-                
+
             }
             else
             {
@@ -421,14 +430,15 @@ namespace N11Entegrator
             if (selectedRow == null)
                 return;
 
-            var list = new Dictionary<string, string>();
+            var list = new List<KeyValuePair<string, string>>();
             foreach (var control in flowLayoutPanel1.Controls)
             {
                 var attControl = control as AttributeControlBase;
                 if (attControl != null)
                 {
                     if (!String.IsNullOrWhiteSpace(attControl.AttributeValue))
-                        list.Add(attControl.AttributeModel.name, attControl.AttributeValue);
+                        //list.Add(attControl.AttributeModel.name, attControl.AttributeValue);
+                        list.Add(new KeyValuePair<string, string>(attControl.AttributeModel.name, attControl.AttributeValue));
                 }
             }
 
@@ -470,6 +480,7 @@ namespace N11Entegrator
                     stockCode = (string) dr["stockCode"],
                     label = (string) dr["label"],
                     brand = (string) dr["brand"],
+                    title = (string)dr["label"],
                     //dr["category"] = String.Format("{0} / {1} / {2}", sourceProd.mainCategory, sourceProd.category, sourceProd.subCategory);
                     displayPrice = (decimal) dr["price"],
                     stockAmount = (int) dr["stockAmount"],
@@ -490,7 +501,9 @@ namespace N11Entegrator
         }
         private void bgw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
+            progressBar1.Value = e.ProgressPercentage;
+            if (e.UserState != null)
+                lblStatus.Text = e.UserState.ToString();
         }
         private void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

@@ -78,7 +78,7 @@ namespace UnitTestProject1.LibTest
                            stockAmount = 23
                        };
 
-            target.CreateProduct(prod, 1520);
+            target.CreateProduct(prod, 1520, null);
 
             Assert.IsTrue(true);
         }
