@@ -47,17 +47,35 @@ namespace N11Entegrator
             //categoryList = service.GetCategories();
             //categoryList = getCategoryListFromTextFile();
             //categoryList = getCategoryListFromService();
-            categoryList = getAllCategoryListFromDb();
+            //categoryList = getAllCategoryListFromDb();
+            categoryList = getCategoryListFromDb();
 
             categoryTable = new Dictionary<long, CategoryModel>();
 
             foreach (CategoryModel cat in categoryList)
             {
-                tree.Nodes.Add(categoryToTreeNode(cat));
+                tree.Nodes.Add(categoryToTreeNode(cat, false));
             }
 
             lblStatus.Text = String.Format("Kategoriler çekildi, {0} kategori bulundu.", categoryList.Count);
         }
+        private void tree_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        {
+            if (e.Node.Nodes.Count == 1 && e.Node.Nodes[0].Text == "dummy" && e.Node.Tag is CategoryModel)
+            {
+                e.Node.Nodes.Clear();
+
+                var cat = e.Node.Tag as CategoryModel;
+
+                var dataService = new N11DataService();
+                var list = dataService.GetSubCategories(N11_STORE_ID, (int?) cat.ID);
+                foreach (var categoryModel in list)
+                {
+                    e.Node.Nodes.Add(categoryToTreeNode(categoryModel, false));
+                }
+            }
+        }
+
         private List<CategoryModel> getCategoryListFromTextFile()
         {
             var catList = new List<CategoryModel>();
@@ -113,6 +131,14 @@ namespace N11Entegrator
             return list;
         }
 
+        private List<CategoryModel> getCategoryListFromDb()
+        {
+            var dataService = new StorMan.Business.N11DataService();
+            var list = dataService.GetSubCategories(N11_STORE_ID, null);
+            return list;
+        }
+
+
         private void insertCategory(N11DataService dataService, CategoryModel category)
         {
             Debug.WriteLine("Inserting " + category.ToString());
@@ -123,21 +149,33 @@ namespace N11Entegrator
             }
         }
 
-        private TreeNode categoryToTreeNode(CategoryModel cat)
+        private TreeNode categoryToTreeNode(CategoryModel cat, bool getSubCategories)
         {
             var node = new TreeNode(String.Format("{0} - {1}", cat.ID, cat.Name));
             node.Tag = cat;
             categoryTable.Add(cat.ID, cat);
-            foreach (var subCat in cat.Children)
+            if (getSubCategories)
             {
-                var subNode = categoryToTreeNode(subCat);
-                node.Nodes.Add(subNode);
+                foreach (var subCat in cat.Children)
+                {
+                    var subNode = categoryToTreeNode(subCat, true);
+                    node.Nodes.Add(subNode);
+                }
+            }
+            else
+            {
+                if (cat.Attributes.Count == 0)
+                    node.Nodes.Add(new TreeNode("dummy"));
             }
             return node;
         }
 
+
+
         #endregion
 
+        #region " Fetch Old and New Data "
+        
         private void btnGetSource_Click(object sender, EventArgs e)
         {
             sourceList = service.GetSourceProductsXml();
@@ -149,6 +187,8 @@ namespace N11Entegrator
             lblStatus.Text = String.Format("N11 ürünleri çekildi, {0} ürün bulundu.", sourceList.Count);
         }
         
+        #endregion
+
         private void grid1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -421,6 +461,10 @@ namespace N11Entegrator
             bgw.ReportProgress(0, "Yeni ürünler");
             foreach (DataRow dr in newProductsTable.Rows)
             {
+                if (!rowAttributeTable.ContainsKey((string) dr["stockCode"]))
+                {
+                    continue;
+                }
                 var prod = new ProductModel
                 {
                     stockCode = (string) dr["stockCode"],
@@ -433,7 +477,9 @@ namespace N11Entegrator
                     details = (string) dr["details"]
                 };
                 var catId = long.Parse(((string)dr["n11Category"]).Split('-')[0]);
-                service.CreateProduct(prod, catId);
+                var attList = rowAttributeTable[(string) dr["stockCode"]];
+
+                service.CreateProduct(prod, catId, attList);
                 i++;
                 bgw.ReportProgress(i, "Yeni ürünler");
                 if (bgw.CancellationPending)

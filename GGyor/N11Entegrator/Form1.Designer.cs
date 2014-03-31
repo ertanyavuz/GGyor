@@ -226,6 +226,7 @@
             this.tree.Name = "tree";
             this.tree.Size = new System.Drawing.Size(237, 459);
             this.tree.TabIndex = 15;
+            this.tree.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.tree_BeforeExpand);
             this.tree.DragDrop += new System.Windows.Forms.DragEventHandler(this.tree_DragDrop);
             this.tree.DragOver += new System.Windows.Forms.DragEventHandler(this.tree_DragOver);
             // 

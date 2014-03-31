@@ -171,8 +171,11 @@ namespace StorMan.Data.Repositories
         {
             var context = new StorManEntities();
 
-            var list = context.Categories.Where(x => x.StoreID == storeId && x.ParentID == parentId)
-                                        .ToList();
+            var query = context.Categories.Where(x => x.StoreID == storeId);
+            query = parentId == null ? query.Where(x => x.ParentID == null) 
+                                    : query.Where(x => x.ParentID == parentId.Value);
+            var list = query.ToList();
+
             var modelList = list.Select(x => new CategoryModel
                                             {
                                                 ID = x.ID,
@@ -195,5 +198,6 @@ namespace StorMan.Data.Repositories
             return modelList;
 
         }
+
     }
 }

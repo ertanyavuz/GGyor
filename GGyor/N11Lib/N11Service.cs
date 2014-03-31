@@ -435,7 +435,7 @@ namespace N11Lib
             return null;
         }
 
-        public bool CreateProduct(ProductModel product, long categoryId)
+        public bool CreateProduct(ProductModel product, long categoryId, List<KeyValuePair<string, string>> attributeList )
         {
             var service = new ProductServicePortClient();
             var response = service.SaveProduct(new SaveProductRequest
@@ -449,7 +449,19 @@ namespace N11Lib
                                         description = product.details,
                                         price = product.displayPrice,
                                         //approvalStatus = "",
-                                        //attributes = new ProductAttributeRequest[0],
+                                        attributes = attributeList.Select(x => new ProductAttributeRequest
+                                                                    {
+                                                                        name = x.Key,
+                                                                        value = x.Value
+                                                                    }).ToArray(),
+                                        //attributes = new ProductAttributeRequest[]
+                                        //            {
+                                        //                new ProductAttributeRequest
+                                        //                {
+                                        //                    name = "",
+                                        //                    value = ""
+                                        //                }
+                                        //            },
                                         category = new CategoryRequest
                                                    {
                                                        id = categoryId
