@@ -53,6 +53,8 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
+            this.lbLog = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid3)).BeginInit();
@@ -81,6 +83,10 @@
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
+            this.splitContainer6.Panel1.SuspendLayout();
+            this.splitContainer6.Panel2.SuspendLayout();
+            this.splitContainer6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGetSource
@@ -107,7 +113,7 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(7, 4);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(279, 23);
+            this.progressBar1.Size = new System.Drawing.Size(436, 23);
             this.progressBar1.TabIndex = 2;
             // 
             // lblStatus
@@ -136,7 +142,7 @@
             this.grid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid1.Location = new System.Drawing.Point(3, 3);
             this.grid1.Name = "grid1";
-            this.grid1.Size = new System.Drawing.Size(770, 544);
+            this.grid1.Size = new System.Drawing.Size(770, 367);
             this.grid1.TabIndex = 5;
             this.grid1.SelectionChanged += new System.EventHandler(this.grid1_SelectionChanged);
             this.grid1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grid1_MouseDown);
@@ -149,7 +155,7 @@
             this.grid2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid2.Location = new System.Drawing.Point(3, 3);
             this.grid2.Name = "grid2";
-            this.grid2.Size = new System.Drawing.Size(689, 546);
+            this.grid2.Size = new System.Drawing.Size(770, 544);
             this.grid2.TabIndex = 7;
             // 
             // grid3
@@ -160,7 +166,7 @@
             this.grid3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid3.Location = new System.Drawing.Point(0, 0);
             this.grid3.Name = "grid3";
-            this.grid3.Size = new System.Drawing.Size(695, 552);
+            this.grid3.Size = new System.Drawing.Size(776, 550);
             this.grid3.TabIndex = 9;
             // 
             // tabControl1
@@ -172,7 +178,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(784, 576);
+            this.tabControl1.Size = new System.Drawing.Size(784, 399);
             this.tabControl1.TabIndex = 11;
             // 
             // tabPage1
@@ -181,7 +187,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(776, 550);
+            this.tabPage1.Size = new System.Drawing.Size(776, 373);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Yeniler";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -192,7 +198,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(695, 552);
+            this.tabPage2.Size = new System.Drawing.Size(776, 550);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Güncellemeler";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -202,7 +208,7 @@
             this.tabPage3.Controls.Add(this.grid3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(695, 552);
+            this.tabPage3.Size = new System.Drawing.Size(776, 550);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stoğu Sıfırlanacaklar";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -339,7 +345,7 @@
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
+            this.splitContainer3.Panel1.Controls.Add(this.splitContainer6);
             // 
             // splitContainer3.Panel2
             // 
@@ -364,7 +370,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer4.Size = new System.Drawing.Size(784, 635);
+            this.splitContainer4.Size = new System.Drawing.Size(784, 458);
             this.splitContainer4.SplitterDistance = 55;
             this.splitContainer4.TabIndex = 21;
             // 
@@ -386,6 +392,34 @@
             this.splitContainer5.SplitterDistance = 226;
             this.splitContainer5.TabIndex = 21;
             // 
+            // splitContainer6
+            // 
+            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer6.Name = "splitContainer6";
+            this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer6.Panel1
+            // 
+            this.splitContainer6.Panel1.Controls.Add(this.splitContainer4);
+            // 
+            // splitContainer6.Panel2
+            // 
+            this.splitContainer6.Panel2.Controls.Add(this.lbLog);
+            this.splitContainer6.Size = new System.Drawing.Size(784, 635);
+            this.splitContainer6.SplitterDistance = 458;
+            this.splitContainer6.TabIndex = 22;
+            // 
+            // lbLog
+            // 
+            this.lbLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbLog.FormattingEnabled = true;
+            this.lbLog.Location = new System.Drawing.Point(0, 0);
+            this.lbLog.Name = "lbLog";
+            this.lbLog.Size = new System.Drawing.Size(784, 173);
+            this.lbLog.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,7 +427,7 @@
             this.ClientSize = new System.Drawing.Size(1253, 635);
             this.Controls.Add(this.splitContainer5);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "N11 Entegrator";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid2)).EndInit();
@@ -424,6 +458,10 @@
             this.splitContainer5.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
+            this.splitContainer6.Panel1.ResumeLayout(false);
+            this.splitContainer6.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
+            this.splitContainer6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -455,6 +493,8 @@
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.SplitContainer splitContainer6;
+        private System.Windows.Forms.ListBox lbLog;
     }
 }
 

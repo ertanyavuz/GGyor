@@ -353,7 +353,7 @@ namespace N11Entegrator
             foreach (var sourceProd in sourceList)
             {
                 i++;
-                var destProd = n11List.FirstOrDefault(x => x.productSellerCode == N11Service.StockCodeToSellerCode(sourceProd.stockCode));
+                var destProd = n11List.FirstOrDefault(x => x.productSellerCode.Contains("_" + sourceProd.stockCode + "_")); // == StockCodeToSellerCode(sourceProd.stockCode));
                 if (destProd == null)
                 {
                     Debug.WriteLine(String.Format("{1}\t{0} hedefte bulunamadı.", sourceProd.stockCode, i));
@@ -371,42 +371,42 @@ namespace N11Entegrator
                 }
                 else
                 {
-                    //var sourceAmount = sourceProd.stockAmount;
-                    //var destAmount = service.GetProductStockJson(destProd.id);
+                    var sourceAmount = sourceProd.stockAmount;
+                    var destAmount = service.GetProductStockJson(destProd.id);
 
-                    //if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
-                    //{
-                    //    Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
+                    if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
+                    {
+                        Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
 
-                    //    var dr = updateProductsTable.NewRow();
-                    //    dr["stockCode"] = destProd.productSellerCode;
-                    //    dr["label"] = destProd.title;
-                    //    dr["oldPrice"] = destProd.displayPrice;
-                    //    dr["newPrice"] = sourceProd.displayPrice;
-                    //    dr["oldStock"] = destAmount;
-                    //    dr["newStock"] = sourceAmount;
-                    //    dr["diff"] = Math.Round(Math.Abs(destProd.displayPrice - sourceProd.displayPrice)*100/destProd.displayPrice, 2);
-                    //    updateProductsTable.Rows.Add(dr);
-                        
-                    //    // Update
-                    //    if (destProd.displayPrice != sourceProd.displayPrice)
-                    //    {
-                    //        // update price
-                    //        Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
-                    //        //service.UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);                            
-                    //    }
-                    //    if (sourceAmount != destAmount)
-                    //    {
-                    //        // update stock
-                    //        Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
-                    //        //service.UpdateProductStock(destProd.productSellerCode, sourceAmount);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    ayniCount++;
-                    //    Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
-                    //}
+                        var dr = updateProductsTable.NewRow();
+                        dr["stockCode"] = destProd.productSellerCode;
+                        dr["label"] = destProd.title;
+                        dr["oldPrice"] = destProd.displayPrice;
+                        dr["newPrice"] = sourceProd.displayPrice;
+                        dr["oldStock"] = destAmount;
+                        dr["newStock"] = sourceAmount;
+                        dr["diff"] = Math.Round(Math.Abs(destProd.displayPrice - sourceProd.displayPrice) * 100 / destProd.displayPrice, 2);
+                        updateProductsTable.Rows.Add(dr);
+
+                        // Update
+                        if (destProd.displayPrice != sourceProd.displayPrice)
+                        {
+                            // update price
+                            Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
+                            //service.UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);                            
+                        }
+                        if (sourceAmount != destAmount)
+                        {
+                            // update stock
+                            Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
+                            //service.UpdateProductStock(destProd.productSellerCode, sourceAmount);
+                        }
+                    }
+                    else
+                    {
+                        ayniCount++;
+                        Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
+                    }
                 }
             }
 
@@ -428,7 +428,6 @@ namespace N11Entegrator
                     oldProductsTable.Rows.Add(dr);
                 }
             }
-
 
             grid1.DataSource = newProductsTable;
             grid2.DataSource = updateProductsTable;
@@ -482,11 +481,19 @@ namespace N11Entegrator
         private void bgw_DoWork(object sender, DoWorkEventArgs e)
         {
             var i = 0;
-            bgw.ReportProgress(0, "Yeni ürünler");
+            bgw.ReportProgress(0, "Yeni ürünler kaydediliyor.");
             foreach (DataRow dr in newProductsTable.Rows)
             {
+                i++;
+                var percent = (int)Math.Round((double)(i * 100 / newProductsTable.Rows.Count));
+                if (dr["n11Category"] == System.DBNull.Value || String.IsNullOrWhiteSpace(dr["n11Category"].ToString()))
+                {
+                    bgw.ReportProgress(percent, String.Format("{0} için kategori seçilmedi.", dr["stockCode"]));
+                    continue;
+                }
                 if (!rowAttributeTable.ContainsKey((string) dr["stockCode"]))
                 {
+                    bgw.ReportProgress(percent, String.Format("{0} için özellikler seçilmedi.", dr["stockCode"]));
                     continue;
                 }
                 var prod = new ProductModel
@@ -508,22 +515,34 @@ namespace N11Entegrator
                 var attList = rowAttributeTable[(string) dr["stockCode"]];
 
                 service.CreateProduct(prod, long.Parse(cat.Code), attList);
-                i++;
-                bgw.ReportProgress(i, "Yeni ürünler");
+
+                bgw.ReportProgress(percent, String.Format("{0} / {1} ({2})", i, newProductsTable.Rows.Count, percent));
                 if (bgw.CancellationPending)
                     return;
             }
 
-            
+            i = 0;
+            bgw.ReportProgress(0, "Ürün fiyat ve stok miktarları güncelleniyor.");
+            foreach (DataRow dr in updateProductsTable.Rows)
+            {
+                i++;
+                var percent = (int)Math.Round((double)(i * 100 / updateProductsTable.Rows.Count));
+
+            }
         }
         private void bgw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
             if (e.UserState != null)
-                lblStatus.Text = e.UserState.ToString();
+            {
+                var str = String.Format("{0}: {1}", DateTime.Now.ToShortTimeString(), e.UserState);
+                lblStatus.Text = str;
+                lbLog.Items.Insert(0, str);
+            }
         }
         private void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            bgw.ReportProgress(100, "Bitti");
             btnRunUpdate.Enabled = true;
             btnStop.Enabled = false;
         }
