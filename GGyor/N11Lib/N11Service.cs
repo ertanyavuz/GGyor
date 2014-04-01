@@ -437,86 +437,89 @@ namespace N11Lib
 
         public bool CreateProduct(ProductModel product, long categoryId, List<KeyValuePair<string, string>> attributeList )
         {
-            //var service = new ProductServicePortClient();
-            //var response = service.SaveProduct(new SaveProductRequest
-            //                    {
-            //                        auth = this.ProductAuthentication,
-            //                        product = new ProductRequest
-            //                        {
-            //                            productSellerCode = StockCodeToSellerCode(product.stockCode),
-            //                            title = product.title,
-            //                            subtitle = product.label,
-            //                            description = product.details,
-            //                            price = product.displayPrice,
-            //                            //approvalStatus = "",
-            //                            attributes = attributeList.Select(x => new ProductAttributeRequest
-            //                                                        {
-            //                                                            name = x.Key,
-            //                                                            value = x.Value
-            //                                                        }).ToArray(),
-            //                            //attributes = new ProductAttributeRequest[]
-            //                            //            {
-            //                            //                new ProductAttributeRequest
-            //                            //                {
-            //                            //                    name = "",
-            //                            //                    value = ""
-            //                            //                }
-            //                            //            },
-            //                            category = new CategoryRequest
-            //                                       {
-            //                                           id = categoryId
-            //                                       },
-            //                            //discount = new ProductDiscountRequest(),
-            //                            //expirationDate = "",
-            //                            images = new ProductImage[]
-            //                                     {
-            //                                         new ProductImage
-            //                                         {
-            //                                             order = "1",
-            //                                             url = product.picture1Path
-            //                                         }, 
-            //                                     },
-            //                            preparingDay = "3",                             //////////////////////////////////////
-            //                            productCondition = "1", // Yeni
-            //                            //productionDate = "",
-            //                            //saleEndDate = "",
-            //                            //saleStartDate = "",
-            //                            shipmentTemplate = "Ürün Listeleme",
-            //                            stockItems = new ProductSkuRequest[]
-            //                                         {
-            //                                             new ProductSkuRequest
-            //                                             {
-            //                                                 quantity = product.stockAmount.ToString(),
-            //                                                 sellerStockCode = product.stockCode,
-            //                                             }
-            //                                         },
+            var service = new ProductServicePortClient();
+            var response = service.SaveProduct(new SaveProductRequest
+                                {
+                                    auth = this.ProductAuthentication,
+                                    product = new ProductRequest
+                                    {
+                                        productSellerCode = StockCodeToSellerCode(product.stockCode),
+                                        title = product.title,
+                                        subtitle = product.label,
+                                        description = product.details,
+                                        price = product.displayPrice,
+                                        //approvalStatus = "",
+                                        attributes = attributeList.Where(x => !String.IsNullOrWhiteSpace(x.Value))
+                                                                    .Select(x => new ProductAttributeRequest
+                                                                    {
+                                                                        name = x.Key,
+                                                                        value = x.Value
+                                                                    }).ToArray(),
+                                        //attributes = new ProductAttributeRequest[]
+                                        //            {
+                                        //                new ProductAttributeRequest
+                                        //                {
+                                        //                    name = "",
+                                        //                    value = ""
+                                        //                }
+                                        //            },
+                                        category = new CategoryRequest
+                                                   {
+                                                       id = categoryId
+                                                   },
+                                        //discount = new ProductDiscountRequest(),
+                                        //expirationDate = "",
+                                        images = new ProductImage[]
+                                                 {
+                                                     new ProductImage
+                                                     {
+                                                         order = "1",
+                                                         url = product.picture1Path
+                                                     }, 
+                                                 },
+                                        preparingDay = "3",                             //////////////////////////////////////
+                                        productCondition = "1", // Yeni
+                                        //productionDate = "",
+                                        //saleEndDate = "",
+                                        //saleStartDate = "",
+                                        shipmentTemplate = "Ürün Listeleme",
+                                        stockItems = new ProductSkuRequest[]
+                                                     {
+                                                         new ProductSkuRequest
+                                                         {
+                                                             quantity = product.stockAmount.ToString(),
+                                                             sellerStockCode = product.stockCode,
+                                                         }
+                                                     },
 
-            //                        }
-            //                    });
+                                    }
+                                });
+            var result = response.result.status == "success";
+            if (!result)
+                response.GetType();
+            return result;
 
-            //return response.result.status == "success";
-
-            var url = "https://api.n11.com/rest/secure/product/createOrUpdate.json";
-            var paramStr = String.Format("");
-            var paramObj = new JObject();
-            paramObj["productSellerCode"] = StockCodeToSellerCode(product.stockCode);
-            paramObj["title"] = product.title;
-            paramObj["subtitle"] = product.label;
-            paramObj["description"] = product.details;
-            paramObj["category"] = JObject.Parse("{ 'id' : " + categoryId.ToString() + " }");
-            paramObj["price"] = product.displayPrice;
-            paramObj["preparingDay"] = 3;
-            paramObj["productCondition"] = "1";   // Yeni ürün
-            paramObj["images"] = JArray.Parse("[ { 'url': '" + product.picture1Path + "', 'order': 1 }  ]");
+            //var url = "https://api.n11.com/rest/secure/product/createOrUpdate.json";
+            //var paramStr = String.Format("");
+            //var paramObj = new JObject();
+            //paramObj["productSellerCode"] = StockCodeToSellerCode(product.stockCode);
+            //paramObj["title"] = product.title;
+            //paramObj["subtitle"] = product.label;
+            //paramObj["description"] = product.details;
+            //paramObj["category"] = JObject.Parse("{ 'id' : " + categoryId.ToString() + " }");
+            //paramObj["price"] = product.displayPrice;
+            //paramObj["preparingDay"] = 3;
+            //paramObj["productCondition"] = "1";   // Yeni ürün
+            //paramObj["images"] = JArray.Parse("[ { 'url': '" + product.picture1Path + "', 'order': 1 }  ]");
             //paramObj["stockItem"] = JObject.Parse("{ 'quantity': " + product.stockAmount.ToString() + " }");
-            var attStr = attributeList.Select(x => "{ 'name': '" + x.Key + "', 'value': '" + x.Value + "' }")
-                                        .Aggregate((a, b) => a + ", " + b);
-            paramObj["attributes"] = JArray.Parse("[" + attStr + "]");
-            paramObj["stockItem"] = JObject.Parse("{ 'quantity': " + product.stockAmount.ToString() + ", 'attributes': [" + "" + "] }");
+            //var attStr = attributeList.Select(x => "{ 'name': '" + x.Key + "', 'value': '" + x.Value + "' }")
+            //                            .Aggregate((a, b) => a + ", " + b);
+            //paramObj["attributes"] = JArray.Parse("[" + attStr + "]");
+            //paramObj["stockItem"] = JObject.Parse("{ 'quantity': " + product.stockAmount.ToString() + ", 'attributes': [" + "" + "] }");
             
-            paramObj["shipmentTemplate"] = "Ürün Listeleme";
+            //paramObj["shipmentTemplate"] = "Ürün Listeleme";
 
-            var obj = callPost(url, paramObj.ToString());
+            //var obj = callPost(url, paramObj.ToString());
 
             return true;
         }

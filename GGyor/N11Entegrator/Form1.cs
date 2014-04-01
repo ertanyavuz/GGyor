@@ -234,6 +234,19 @@ namespace N11Entegrator
         }
 
         private DataGridViewRow selectedRow;
+
+        private List<DataGridViewRow> SelectedRows
+        {
+            get
+            {
+                if (grid1.SelectedRows.Count > 0)
+                {
+                    
+                }
+
+                return null;
+            }
+        }
         private void grid1_SelectionChanged(object sender, EventArgs e)
         {
             if (grid1.SelectedRows.Count == 1)
@@ -251,11 +264,12 @@ namespace N11Entegrator
                 var s = catStr.Split('-');
                 if (s.Length <= 1)
                     return;
-                int catId;
-                if (!int.TryParse(s[0], out catId))
-                    return;
+                //int catId;
+                //if (!int.TryParse(s[0], out catId))
+                //    return;
+                var catCode = s[0];
 
-                var cat = categoryTable[catId];
+                var cat = categoryTable.Values.FirstOrDefault(x => x.Code == catCode);
                 if (cat == null)
                     return;
 
@@ -487,10 +501,13 @@ namespace N11Entegrator
                     picture1Path = (string) dr["picture1Path"],
                     details = (string) dr["details"]
                 };
-                var catId = long.Parse(((string)dr["n11Category"]).Split('-')[0]);
+                //var catId = long.Parse(((string)dr["n11Category"]).Split('-')[0]);
+                var catIdStr = ((string) dr["n11Category"]).Split('-')[0];
+                //var cat = categoryTable[catId];
+                var cat = categoryTable.Values.First(x => x.Code == catIdStr);
                 var attList = rowAttributeTable[(string) dr["stockCode"]];
 
-                service.CreateProduct(prod, catId, attList);
+                service.CreateProduct(prod, long.Parse(cat.Code), attList);
                 i++;
                 bgw.ReportProgress(i, "Yeni ürünler");
                 if (bgw.CancellationPending)

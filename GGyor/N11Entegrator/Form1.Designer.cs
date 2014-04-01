@@ -48,6 +48,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSaveAttribute = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid3)).BeginInit();
@@ -56,11 +61,31 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGetSource
             // 
-            this.btnGetSource.Location = new System.Drawing.Point(39, 53);
+            this.btnGetSource.Location = new System.Drawing.Point(17, 32);
             this.btnGetSource.Name = "btnGetSource";
             this.btnGetSource.Size = new System.Drawing.Size(118, 23);
             this.btnGetSource.TabIndex = 0;
@@ -70,7 +95,7 @@
             // 
             // btnGetDestination
             // 
-            this.btnGetDestination.Location = new System.Drawing.Point(39, 82);
+            this.btnGetDestination.Location = new System.Drawing.Point(17, 61);
             this.btnGetDestination.Name = "btnGetDestination";
             this.btnGetDestination.Size = new System.Drawing.Size(118, 23);
             this.btnGetDestination.TabIndex = 1;
@@ -80,7 +105,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(255, 23);
+            this.progressBar1.Location = new System.Drawing.Point(7, 4);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(279, 23);
             this.progressBar1.TabIndex = 2;
@@ -88,14 +113,14 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(252, 58);
+            this.lblStatus.Location = new System.Drawing.Point(10, 33);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 3;
             // 
             // btnCompareLists
             // 
-            this.btnCompareLists.Location = new System.Drawing.Point(39, 111);
+            this.btnCompareLists.Location = new System.Drawing.Point(17, 90);
             this.btnCompareLists.Name = "btnCompareLists";
             this.btnCompareLists.Size = new System.Drawing.Size(118, 23);
             this.btnCompareLists.TabIndex = 4;
@@ -111,7 +136,7 @@
             this.grid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid1.Location = new System.Drawing.Point(3, 3);
             this.grid1.Name = "grid1";
-            this.grid1.Size = new System.Drawing.Size(689, 546);
+            this.grid1.Size = new System.Drawing.Size(770, 544);
             this.grid1.TabIndex = 5;
             this.grid1.SelectionChanged += new System.EventHandler(this.grid1_SelectionChanged);
             this.grid1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grid1_MouseDown);
@@ -143,10 +168,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(255, 82);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(703, 578);
+            this.tabControl1.Size = new System.Drawing.Size(784, 576);
             this.tabControl1.TabIndex = 11;
             // 
             // tabPage1
@@ -155,7 +181,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(695, 552);
+            this.tabPage1.Size = new System.Drawing.Size(776, 550);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Yeniler";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -183,7 +209,7 @@
             // 
             // btnRunUpdate
             // 
-            this.btnRunUpdate.Location = new System.Drawing.Point(39, 140);
+            this.btnRunUpdate.Location = new System.Drawing.Point(17, 119);
             this.btnRunUpdate.Name = "btnRunUpdate";
             this.btnRunUpdate.Size = new System.Drawing.Size(118, 23);
             this.btnRunUpdate.TabIndex = 12;
@@ -193,7 +219,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(39, 169);
+            this.btnStop.Location = new System.Drawing.Point(17, 148);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(118, 23);
             this.btnStop.TabIndex = 13;
@@ -211,7 +237,7 @@
             // 
             // btnGetCategories
             // 
-            this.btnGetCategories.Location = new System.Drawing.Point(39, 24);
+            this.btnGetCategories.Location = new System.Drawing.Point(17, 3);
             this.btnGetCategories.Name = "btnGetCategories";
             this.btnGetCategories.Size = new System.Drawing.Size(118, 23);
             this.btnGetCategories.TabIndex = 14;
@@ -222,9 +248,10 @@
             // tree
             // 
             this.tree.AllowDrop = true;
-            this.tree.Location = new System.Drawing.Point(12, 198);
+            this.tree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tree.Location = new System.Drawing.Point(0, 0);
             this.tree.Name = "tree";
-            this.tree.Size = new System.Drawing.Size(237, 459);
+            this.tree.Size = new System.Drawing.Size(226, 447);
             this.tree.TabIndex = 15;
             this.tree.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.tree_BeforeExpand);
             this.tree.DragDrop += new System.Windows.Forms.DragEventHandler(this.tree_DragDrop);
@@ -233,9 +260,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox1.Location = new System.Drawing.Point(964, 96);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(300, 564);
+            this.groupBox1.Size = new System.Drawing.Size(235, 596);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ürün Özellikleri";
@@ -246,12 +274,12 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(294, 545);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(229, 577);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnSaveAttribute
             // 
-            this.btnSaveAttribute.Location = new System.Drawing.Point(964, 67);
+            this.btnSaveAttribute.Location = new System.Drawing.Point(13, 4);
             this.btnSaveAttribute.Name = "btnSaveAttribute";
             this.btnSaveAttribute.Size = new System.Drawing.Size(118, 23);
             this.btnSaveAttribute.TabIndex = 17;
@@ -259,23 +287,111 @@
             this.btnSaveAttribute.UseVisualStyleBackColor = true;
             this.btnSaveAttribute.Click += new System.EventHandler(this.btnSaveAttribute_Click);
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnGetCategories);
+            this.splitContainer1.Panel1.Controls.Add(this.btnGetSource);
+            this.splitContainer1.Panel1.Controls.Add(this.btnGetDestination);
+            this.splitContainer1.Panel1.Controls.Add(this.btnCompareLists);
+            this.splitContainer1.Panel1.Controls.Add(this.btnRunUpdate);
+            this.splitContainer1.Panel1.Controls.Add(this.btnStop);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tree);
+            this.splitContainer1.Size = new System.Drawing.Size(226, 635);
+            this.splitContainer1.SplitterDistance = 184;
+            this.splitContainer1.TabIndex = 18;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.btnSaveAttribute);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer2.Size = new System.Drawing.Size(235, 635);
+            this.splitContainer2.SplitterDistance = 35;
+            this.splitContainer2.TabIndex = 19;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer3.Size = new System.Drawing.Size(1023, 635);
+            this.splitContainer3.SplitterDistance = 784;
+            this.splitContainer3.TabIndex = 20;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.lblStatus);
+            this.splitContainer4.Panel1.Controls.Add(this.progressBar1);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer4.Size = new System.Drawing.Size(784, 635);
+            this.splitContainer4.SplitterDistance = 55;
+            this.splitContainer4.TabIndex = 21;
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.splitContainer1);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer5.Size = new System.Drawing.Size(1253, 635);
+            this.splitContainer5.SplitterDistance = 226;
+            this.splitContainer5.TabIndex = 21;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1285, 672);
-            this.Controls.Add(this.btnSaveAttribute);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.tree);
-            this.Controls.Add(this.btnGetCategories);
-            this.Controls.Add(this.btnStop);
-            this.Controls.Add(this.btnRunUpdate);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.btnCompareLists);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.btnGetDestination);
-            this.Controls.Add(this.btnGetSource);
+            this.ClientSize = new System.Drawing.Size(1253, 635);
+            this.Controls.Add(this.splitContainer5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -287,8 +403,28 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel1.PerformLayout();
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -314,6 +450,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnSaveAttribute;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.SplitContainer splitContainer5;
     }
 }
 
