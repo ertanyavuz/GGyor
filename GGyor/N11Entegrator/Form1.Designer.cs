@@ -42,7 +42,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnRunUpdate = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
-            this.bgw = new System.ComponentModel.BackgroundWorker();
+            this.bgw1 = new System.ComponentModel.BackgroundWorker();
             this.btnGetCategories = new System.Windows.Forms.Button();
             this.tree = new System.Windows.Forms.TreeView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -51,10 +51,11 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.lbLog = new System.Windows.Forms.ListBox();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.bgw2 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid3)).BeginInit();
@@ -75,6 +76,10 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
+            this.splitContainer6.Panel1.SuspendLayout();
+            this.splitContainer6.Panel2.SuspendLayout();
+            this.splitContainer6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
@@ -83,15 +88,11 @@
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
-            this.splitContainer6.Panel1.SuspendLayout();
-            this.splitContainer6.Panel2.SuspendLayout();
-            this.splitContainer6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGetSource
             // 
-            this.btnGetSource.Location = new System.Drawing.Point(17, 32);
+            this.btnGetSource.Location = new System.Drawing.Point(12, 41);
             this.btnGetSource.Name = "btnGetSource";
             this.btnGetSource.Size = new System.Drawing.Size(118, 23);
             this.btnGetSource.TabIndex = 0;
@@ -101,7 +102,7 @@
             // 
             // btnGetDestination
             // 
-            this.btnGetDestination.Location = new System.Drawing.Point(17, 61);
+            this.btnGetDestination.Location = new System.Drawing.Point(12, 70);
             this.btnGetDestination.Name = "btnGetDestination";
             this.btnGetDestination.Size = new System.Drawing.Size(118, 23);
             this.btnGetDestination.TabIndex = 1;
@@ -126,7 +127,7 @@
             // 
             // btnCompareLists
             // 
-            this.btnCompareLists.Location = new System.Drawing.Point(17, 90);
+            this.btnCompareLists.Location = new System.Drawing.Point(12, 99);
             this.btnCompareLists.Name = "btnCompareLists";
             this.btnCompareLists.Size = new System.Drawing.Size(118, 23);
             this.btnCompareLists.TabIndex = 4;
@@ -155,7 +156,7 @@
             this.grid2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid2.Location = new System.Drawing.Point(3, 3);
             this.grid2.Name = "grid2";
-            this.grid2.Size = new System.Drawing.Size(770, 544);
+            this.grid2.Size = new System.Drawing.Size(770, 367);
             this.grid2.TabIndex = 7;
             // 
             // grid3
@@ -166,7 +167,7 @@
             this.grid3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid3.Location = new System.Drawing.Point(0, 0);
             this.grid3.Name = "grid3";
-            this.grid3.Size = new System.Drawing.Size(776, 550);
+            this.grid3.Size = new System.Drawing.Size(776, 373);
             this.grid3.TabIndex = 9;
             // 
             // tabControl1
@@ -198,7 +199,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(776, 550);
+            this.tabPage2.Size = new System.Drawing.Size(776, 373);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Güncellemeler";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -208,14 +209,14 @@
             this.tabPage3.Controls.Add(this.grid3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(776, 550);
+            this.tabPage3.Size = new System.Drawing.Size(776, 373);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stoğu Sıfırlanacaklar";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // btnRunUpdate
             // 
-            this.btnRunUpdate.Location = new System.Drawing.Point(17, 119);
+            this.btnRunUpdate.Location = new System.Drawing.Point(12, 128);
             this.btnRunUpdate.Name = "btnRunUpdate";
             this.btnRunUpdate.Size = new System.Drawing.Size(118, 23);
             this.btnRunUpdate.TabIndex = 12;
@@ -225,7 +226,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(17, 148);
+            this.btnStop.Location = new System.Drawing.Point(12, 157);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(118, 23);
             this.btnStop.TabIndex = 13;
@@ -233,17 +234,17 @@
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // bgw
+            // bgw1
             // 
-            this.bgw.WorkerReportsProgress = true;
-            this.bgw.WorkerSupportsCancellation = true;
-            this.bgw.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_DoWork);
-            this.bgw.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw_ProgressChanged);
-            this.bgw.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_RunWorkerCompleted);
+            this.bgw1.WorkerReportsProgress = true;
+            this.bgw1.WorkerSupportsCancellation = true;
+            this.bgw1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_DoWork);
+            this.bgw1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw1_ProgressChanged);
+            this.bgw1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw1_RunWorkerCompleted);
             // 
             // btnGetCategories
             // 
-            this.btnGetCategories.Location = new System.Drawing.Point(17, 3);
+            this.btnGetCategories.Location = new System.Drawing.Point(12, 12);
             this.btnGetCategories.Name = "btnGetCategories";
             this.btnGetCategories.Size = new System.Drawing.Size(118, 23);
             this.btnGetCategories.TabIndex = 14;
@@ -257,7 +258,7 @@
             this.tree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tree.Location = new System.Drawing.Point(0, 0);
             this.tree.Name = "tree";
-            this.tree.Size = new System.Drawing.Size(226, 447);
+            this.tree.Size = new System.Drawing.Size(226, 414);
             this.tree.TabIndex = 15;
             this.tree.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.tree_BeforeExpand);
             this.tree.DragDrop += new System.Windows.Forms.DragEventHandler(this.tree_DragDrop);
@@ -314,7 +315,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tree);
             this.splitContainer1.Size = new System.Drawing.Size(226, 635);
-            this.splitContainer1.SplitterDistance = 184;
+            this.splitContainer1.SplitterDistance = 217;
             this.splitContainer1.TabIndex = 18;
             // 
             // splitContainer2
@@ -354,6 +355,25 @@
             this.splitContainer3.SplitterDistance = 784;
             this.splitContainer3.TabIndex = 20;
             // 
+            // splitContainer6
+            // 
+            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer6.Name = "splitContainer6";
+            this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer6.Panel1
+            // 
+            this.splitContainer6.Panel1.Controls.Add(this.splitContainer4);
+            // 
+            // splitContainer6.Panel2
+            // 
+            this.splitContainer6.Panel2.Controls.Add(this.lbLog);
+            this.splitContainer6.Size = new System.Drawing.Size(784, 635);
+            this.splitContainer6.SplitterDistance = 458;
+            this.splitContainer6.TabIndex = 22;
+            // 
             // splitContainer4
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -374,6 +394,15 @@
             this.splitContainer4.SplitterDistance = 55;
             this.splitContainer4.TabIndex = 21;
             // 
+            // lbLog
+            // 
+            this.lbLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbLog.FormattingEnabled = true;
+            this.lbLog.Location = new System.Drawing.Point(0, 0);
+            this.lbLog.Name = "lbLog";
+            this.lbLog.Size = new System.Drawing.Size(784, 173);
+            this.lbLog.TabIndex = 0;
+            // 
             // splitContainer5
             // 
             this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -392,33 +421,12 @@
             this.splitContainer5.SplitterDistance = 226;
             this.splitContainer5.TabIndex = 21;
             // 
-            // splitContainer6
+            // bgw2
             // 
-            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer6.Name = "splitContainer6";
-            this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer6.Panel1
-            // 
-            this.splitContainer6.Panel1.Controls.Add(this.splitContainer4);
-            // 
-            // splitContainer6.Panel2
-            // 
-            this.splitContainer6.Panel2.Controls.Add(this.lbLog);
-            this.splitContainer6.Size = new System.Drawing.Size(784, 635);
-            this.splitContainer6.SplitterDistance = 458;
-            this.splitContainer6.TabIndex = 22;
-            // 
-            // lbLog
-            // 
-            this.lbLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbLog.FormattingEnabled = true;
-            this.lbLog.Location = new System.Drawing.Point(0, 0);
-            this.lbLog.Name = "lbLog";
-            this.lbLog.Size = new System.Drawing.Size(784, 173);
-            this.lbLog.TabIndex = 0;
+            this.bgw2.WorkerReportsProgress = true;
+            this.bgw2.WorkerSupportsCancellation = true;
+            this.bgw2.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw2_ProgressChanged);
+            this.bgw2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw2_RunWorkerCompleted);
             // 
             // Form1
             // 
@@ -449,6 +457,10 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.splitContainer6.Panel1.ResumeLayout(false);
+            this.splitContainer6.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
+            this.splitContainer6.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel1.PerformLayout();
             this.splitContainer4.Panel2.ResumeLayout(false);
@@ -458,10 +470,6 @@
             this.splitContainer5.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
-            this.splitContainer6.Panel1.ResumeLayout(false);
-            this.splitContainer6.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
-            this.splitContainer6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -482,7 +490,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnRunUpdate;
         private System.Windows.Forms.Button btnStop;
-        private System.ComponentModel.BackgroundWorker bgw;
+        private System.ComponentModel.BackgroundWorker bgw1;
         private System.Windows.Forms.Button btnGetCategories;
         private System.Windows.Forms.TreeView tree;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -495,6 +503,7 @@
         private System.Windows.Forms.SplitContainer splitContainer5;
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.ListBox lbLog;
+        private System.ComponentModel.BackgroundWorker bgw2;
     }
 }
 

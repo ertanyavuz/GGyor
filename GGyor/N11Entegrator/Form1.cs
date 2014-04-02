@@ -463,37 +463,37 @@ namespace N11Entegrator
 
         private void btnRunUpdate_Click(object sender, EventArgs e)
         {
-            if (!bgw.IsBusy)
+            if (!bgw1.IsBusy)
             {
                 btnRunUpdate.Enabled = false;
                 btnStop.Enabled = true;
-                bgw.RunWorkerAsync();
+                bgw1.RunWorkerAsync();
             }
         }
         private void btnStop_Click(object sender, EventArgs e)
         {
-            if (bgw.IsBusy)
+            if (bgw1.IsBusy)
             {
-                bgw.CancelAsync();
+                bgw1.CancelAsync();
             }
         }
 
         private void bgw_DoWork(object sender, DoWorkEventArgs e)
         {
             var i = 0;
-            bgw.ReportProgress(0, "Yeni ürünler kaydediliyor.");
+            bgw1.ReportProgress(0, "Yeni ürünler kaydediliyor.");
             foreach (DataRow dr in newProductsTable.Rows)
             {
                 i++;
                 var percent = (int)Math.Round((double)(i * 100 / newProductsTable.Rows.Count));
                 if (dr["n11Category"] == System.DBNull.Value || String.IsNullOrWhiteSpace(dr["n11Category"].ToString()))
                 {
-                    bgw.ReportProgress(percent, String.Format("{0} için kategori seçilmedi.", dr["stockCode"]));
+                    bgw1.ReportProgress(percent, String.Format("{0} için kategori seçilmedi.", dr["stockCode"]));
                     continue;
                 }
                 if (!rowAttributeTable.ContainsKey((string) dr["stockCode"]))
                 {
-                    bgw.ReportProgress(percent, String.Format("{0} için özellikler seçilmedi.", dr["stockCode"]));
+                    bgw1.ReportProgress(percent, String.Format("{0} için özellikler seçilmedi.", dr["stockCode"]));
                     continue;
                 }
                 var prod = new ProductModel
@@ -514,23 +514,52 @@ namespace N11Entegrator
                 var cat = categoryTable.Values.First(x => x.Code == catIdStr);
                 var attList = rowAttributeTable[(string) dr["stockCode"]];
 
-                service.CreateProduct(prod, long.Parse(cat.Code), attList);
-
-                bgw.ReportProgress(percent, String.Format("{0} / {1} ({2})", i, newProductsTable.Rows.Count, percent));
-                if (bgw.CancellationPending)
+                var result = service.CreateProduct(prod, long.Parse(cat.Code), attList);
+                if (result == false)
+                {
+                    result.GetType();
+                }
+                bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, newProductsTable.Rows.Count, percent));
+                if (bgw1.CancellationPending)
                     return;
             }
 
             i = 0;
-            bgw.ReportProgress(0, "Ürün fiyat ve stok miktarları güncelleniyor.");
+            bgw1.ReportProgress(0, "Ürün fiyat ve stok miktarları güncelleniyor.");
             foreach (DataRow dr in updateProductsTable.Rows)
             {
                 i++;
                 var percent = (int)Math.Round((double)(i * 100 / updateProductsTable.Rows.Count));
 
+                var stockCode = (string)dr["stockCode"];
+                var oldPrice = (decimal) dr["oldPrice"];
+                var newPrice = (decimal)dr["newPrice"];
+                var oldStock = (int)dr["oldStock"];
+                var newStock = (int)dr["newStock"];
+                var diff = (decimal)dr["diff"];
+
+                if (oldPrice != newPrice)
+                {
+                    // update price
+                    if (diff > 10)
+                        diff.GetType();
+                    if (!service.UpdateProduct(stockCode, newPrice))
+                        oldPrice.GetType();
+                }
+
+                if (oldStock != newStock)
+                {
+                    // update stock
+                    service.UpdateProductStock(stockCode, newStock);
+                }
+
+
+                bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, updateProductsTable.Rows.Count, percent));
             }
+
+            bgw1.ReportProgress(100, "Bitti");
         }
-        private void bgw_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void bgw1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
             if (e.UserState != null)
@@ -540,11 +569,20 @@ namespace N11Entegrator
                 lbLog.Items.Insert(0, str);
             }
         }
-        private void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void bgw1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            bgw.ReportProgress(100, "Bitti");
             btnRunUpdate.Enabled = true;
             btnStop.Enabled = false;
+        }
+
+        private void bgw2_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void bgw2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
 
     }
