@@ -577,6 +577,43 @@ namespace N11Entegrator
                 bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, updateProductsTable.Rows.Count, percent));
             }
 
+
+            i = 0;
+            bgw1.ReportProgress(0, "N11deki eski ürünlerin stok bilgileri sıfırlanıyor.");
+            foreach (DataRow dr in oldProductsTable.Rows)
+            {
+                i++;
+                var percent = (int)Math.Round((double)(i * 100 / oldProductsTable.Rows.Count));
+
+                var productStockCode = (string)dr["stockCode"];
+                var productTitle = (string)dr["label"];
+
+                if (productTitle.Contains("Timberland"))
+                {
+                    bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %) {3} SIFIRLANMADI.", i, oldProductsTable.Rows.Count, percent, productTitle));
+                    if (bgw1.CancellationPending)
+                        return;
+                    continue;
+                }
+
+                var sourceProd = sourceList.FirstOrDefault(x => productStockCode.Contains("_" + x.stockCode + "_"));
+                if (sourceProd == null)
+                {
+                    // Remove
+                    service.RemoveProduct(productStockCode);
+                    bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, oldProductsTable.Rows.Count, percent));
+                    Debug.WriteLine("{0} sıfırlandı\t{1}\t{2}", i, productStockCode, productTitle);
+                }
+                else
+                {
+                    bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %) Ürün ES'de mevcut, sıfırlanmıyor.", i, oldProductsTable.Rows.Count, percent));
+                    sourceProd.GetType();
+                }
+
+                if (bgw1.CancellationPending)
+                    return;
+            }
+            
             bgw1.ReportProgress(100, "Bitti");
         }
         private void bgw1_ProgressChanged(object sender, ProgressChangedEventArgs e)

@@ -384,54 +384,63 @@ namespace N11Lib
                 }
                 else
                 {
-                    var sourceAmount = sourceProd.stockAmount;
-                    var destAmount = GetProductStockJson(destProd.id);
+                    //var sourceAmount = sourceProd.stockAmount;
+                    //var destAmount = GetProductStockJson(destProd.id);
 
-                    if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
-                    {
-                        Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
+                    //if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
+                    //{
+                    //    Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
 
-                        // Update
-                        if (destProd.displayPrice != sourceProd.displayPrice)
-                        {
-                            // update price
-                            Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
-                            var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)) / destProd.displayPrice;
-                            if (diffPercent > (decimal) 0.05)
-                            {
-                                Debug.WriteLine("Fiyat çok değişmiş!");
-                            }
+                    //    // Update
+                    //    if (destProd.displayPrice != sourceProd.displayPrice)
+                    //    {
+                    //        // update price
+                    //        Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
+                    //        var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)) / destProd.displayPrice;
+                    //        if (diffPercent > (decimal) 0.05)
+                    //        {
+                    //            Debug.WriteLine("Fiyat çok değişmiş!");
+                    //        }
 
-                            UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
-                        }
-                        if (sourceAmount != destAmount)
-                        {
-                            // update stock
-                            Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
-                            UpdateProductStock(destProd.productSellerCode, sourceAmount);
-                        }
-                    }
-                    else
-                    {
-                        Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
-                    }
+                    //        UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
+                    //    }
+                    //    if (sourceAmount != destAmount)
+                    //    {
+                    //        // update stock
+                    //        Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
+                    //        UpdateProductStock(destProd.productSellerCode, sourceAmount);
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
+                    //}
                 }
             }
 
-            //i = 0;
-            //var diffList = n11List.Where(x => !sourceList.Any(y => x.productSellerCode.Contains(y.productSellerCode))).ToList();
-            //foreach (var destProd in diffList)
-            //{
-            //    i++;
-            //    //Debug.WriteLine("{0}", i);
-            //    var sourceProd = sourceList.FirstOrDefault(x => destProd.productSellerCode.Contains(x.productSellerCode));
-            //    if (sourceProd == null)
-            //    {
-            //        // Remove
-            //        RemoveProduct(destProd.productSellerCode);
-            //        Debug.WriteLine("{0} sıfırlandı\t{1}\t{2}", i, destProd.productSellerCode, destProd.title);
-            //    }
-            //}
+            i = 0;
+            var diffList = n11List.Where(x => !sourceList.Any(y => x.productSellerCode.Contains("_" + y.stockCode + "_"))).ToList();
+            foreach (var destProd in diffList)
+            {
+                i++;
+                if (destProd.title.Contains("Timberland"))
+                {
+                    Debug.WriteLine("{0} skipped\t{1}\t{2}", i, destProd.productSellerCode, destProd.title);
+                    continue;
+                }
+                //Debug.WriteLine("{0}", i);
+                var sourceProd = sourceList.FirstOrDefault(x => destProd.productSellerCode.Contains("_" + x.stockCode + "_"));
+                if (sourceProd == null)
+                {
+                    // Remove
+                    RemoveProduct(destProd.productSellerCode);
+                    Debug.WriteLine("{0} sıfırlandı\t{1}\t{2}", i, destProd.productSellerCode, destProd.title);
+                }
+                else
+                {
+                    sourceProd.GetType();
+                }
+            }
 
             return null;
         }
