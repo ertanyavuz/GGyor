@@ -817,7 +817,7 @@ namespace N11Lib
 
         public static string StockCodeToSellerCode(string stockCode)
         {
-            return String.Format("gni_{0}_elektrostilxml", stockCode);
+            return "gni_" + stockCode + "_elektrostilxml";
         }
 
         public static string SellerCodeToStockCode(string sellerCode)

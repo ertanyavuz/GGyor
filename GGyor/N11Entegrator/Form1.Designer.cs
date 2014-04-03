@@ -56,6 +56,7 @@
             this.lbLog = new System.Windows.Forms.ListBox();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.bgw2 = new System.ComponentModel.BackgroundWorker();
+            this.chkDontCheckUpdates = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid3)).BeginInit();
@@ -258,7 +259,7 @@
             this.tree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tree.Location = new System.Drawing.Point(0, 0);
             this.tree.Name = "tree";
-            this.tree.Size = new System.Drawing.Size(226, 414);
+            this.tree.Size = new System.Drawing.Size(226, 384);
             this.tree.TabIndex = 15;
             this.tree.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.tree_BeforeExpand);
             this.tree.DragDrop += new System.Windows.Forms.DragEventHandler(this.tree_DragDrop);
@@ -304,6 +305,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.chkDontCheckUpdates);
             this.splitContainer1.Panel1.Controls.Add(this.btnGetCategories);
             this.splitContainer1.Panel1.Controls.Add(this.btnGetSource);
             this.splitContainer1.Panel1.Controls.Add(this.btnGetDestination);
@@ -315,7 +317,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tree);
             this.splitContainer1.Size = new System.Drawing.Size(226, 635);
-            this.splitContainer1.SplitterDistance = 217;
+            this.splitContainer1.SplitterDistance = 247;
             this.splitContainer1.TabIndex = 18;
             // 
             // splitContainer2
@@ -428,6 +430,16 @@
             this.bgw2.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw2_ProgressChanged);
             this.bgw2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw2_RunWorkerCompleted);
             // 
+            // chkDontCheckUpdates
+            // 
+            this.chkDontCheckUpdates.AutoSize = true;
+            this.chkDontCheckUpdates.Location = new System.Drawing.Point(12, 197);
+            this.chkDontCheckUpdates.Name = "chkDontCheckUpdates";
+            this.chkDontCheckUpdates.Size = new System.Drawing.Size(137, 17);
+            this.chkDontCheckUpdates.TabIndex = 15;
+            this.chkDontCheckUpdates.Text = "Güncellemelere bakma.";
+            this.chkDontCheckUpdates.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,6 +458,7 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -504,6 +517,7 @@
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.ListBox lbLog;
         private System.ComponentModel.BackgroundWorker bgw2;
+        private System.Windows.Forms.CheckBox chkDontCheckUpdates;
     }
 }
 

@@ -371,46 +371,66 @@ namespace N11Entegrator
                 }
                 else
                 {
-                    var sourceAmount = sourceProd.stockAmount;
-                    var destAmount = service.GetProductStockJson(destProd.id);
-
-                    if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
+                    if (!chkDontCheckUpdates.Checked)
                     {
-                        Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
+                        var sourceAmount = sourceProd.stockAmount;
+                        var destAmount = service.GetProductStockJson(destProd.id);
 
-                        var dr = updateProductsTable.NewRow();
-                        dr["stockCode"] = destProd.productSellerCode;
-                        dr["label"] = destProd.title;
-                        dr["oldPrice"] = destProd.displayPrice;
-                        dr["newPrice"] = sourceProd.displayPrice;
-                        dr["oldStock"] = destAmount;
-                        dr["newStock"] = sourceAmount;
-                        dr["diff"] = Math.Round(Math.Abs(destProd.displayPrice - sourceProd.displayPrice) * 100 / destProd.displayPrice, 2);
-                        updateProductsTable.Rows.Add(dr);
+                        if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
+                        {
+                            Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
 
-                        // Update
-                        if (destProd.displayPrice != sourceProd.displayPrice)
-                        {
-                            // update price
-                            Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
-                            //service.UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);                            
+                            var dr = updateProductsTable.NewRow();
+                            dr["stockCode"] = destProd.productSellerCode;
+                            dr["label"] = destProd.title;
+                            dr["oldPrice"] = destProd.displayPrice;
+                            dr["newPrice"] = sourceProd.displayPrice;
+                            dr["oldStock"] = destAmount;
+                            dr["newStock"] = sourceAmount;
+                            dr["diff"] = Math.Round(Math.Abs(destProd.displayPrice - sourceProd.displayPrice) * 100 / destProd.displayPrice, 2);
+                            updateProductsTable.Rows.Add(dr);
+
+                            // Update
+                            if (destProd.displayPrice != sourceProd.displayPrice)
+                            {
+                                // update price
+                                Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
+                                //service.UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);                            
+                            }
+                            if (sourceAmount != destAmount)
+                            {
+                                // update stock
+                                Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
+                                //service.UpdateProductStock(destProd.productSellerCode, sourceAmount);
+                            }
                         }
-                        if (sourceAmount != destAmount)
+                        else
                         {
-                            // update stock
-                            Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
-                            //service.UpdateProductStock(destProd.productSellerCode, sourceAmount);
+                            ayniCount++;
+                            Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
                         }
-                    }
-                    else
-                    {
-                        ayniCount++;
-                        Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
                     }
                 }
             }
 
-            var diffList = n11List.Where(x => !sourceList.Any(y => x.productSellerCode == N11Service.StockCodeToSellerCode(y.stockCode))).ToList();
+            //var diffList = n11List.Where(x => !sourceList.Any(y => x.productSellerCode == N11Service.StockCodeToSellerCode(y.stockCode))).ToList();
+            var diffList = n11List.Where(x => !sourceList.Any(y => x.productSellerCode.Contains("_" + y.stockCode + "_"))).ToList();
+
+            //var sc = "ME434TU-A";
+            ////sourceList.FirstOrDefault(x => x.stockCode.Contains(sc));
+            //foreach (var destProd in diffList2)
+            //{
+            //    foreach (var productModel in sourceList)
+            //    {
+            //        if (destProd.productSellerCode.Contains(productModel.stockCode))
+            //        {
+            //            break;
+            //        }
+            //    }
+            //}
+
+            //diffList.GetEnumerator();
+
             foreach (var destProd in diffList)
             {
                 i++;
