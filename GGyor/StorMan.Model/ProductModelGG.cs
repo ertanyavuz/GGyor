@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StorMan.Model
 {
-    public class ProductModel
+    public class ProductModelGG
     {
         public int productId { get; set; }
         public string description { get; set; }

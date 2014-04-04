@@ -12,7 +12,7 @@ namespace StorMan.Business
     {
         private GGProductService _ggProductService;
 
-        public List<ProductModel> GetProductsOnSale()
+        public List<ProductModelGG> GetProductsOnSale()
         {
             var list = _ggProductService.GetProductsOnSale();
             return list;

@@ -10,13 +10,20 @@ namespace UnitTestProject1
 {
     public class TestClassBase
     {
-        public static void checkDoTest()
+        /// <summary>
+        /// Returning true means do not proceed with the current test.
+        /// </summary>
+        /// <returns></returns>
+        public static bool checkDoTest()
         {
             var value = System.Configuration.ConfigurationManager.AppSettings["DoTests"];
             if (!String.IsNullOrWhiteSpace(value))
             {
                 Assert.IsTrue(value == "0");
+                return value == "0";
             }
+
+            return false;
         }
     }
 }

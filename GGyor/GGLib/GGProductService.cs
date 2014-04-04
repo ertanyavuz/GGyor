@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
+using EntegrasyonServiceBase;
 using GittiGidiyor;
 using GittiGidiyor.Product;
 using GittiGidiyor.Search;
@@ -10,7 +11,7 @@ using StorMan.Model;
 namespace GGLib
 {
 
-    public class GGProductService
+    public class GGProductService : EntegrasyonServiceBase.EntegrasyonServiceBase
     {
         public GGProductService()
         {
@@ -26,34 +27,64 @@ namespace GGLib
             ConfigurationManager.setAuthParameters(config);
         }
 
-        public void GetProducts()
+        private string productDetailToString(productDetailType pr, int i = 0)
+        {
+            var prodStr = "";
+            if (i > 0)
+                prodStr += i.ToString() + "\t";
+            prodStr += pr.itemId + "\t";
+            prodStr += pr.product.title + "\t";
+            prodStr += pr.product.affiliateOption.ToString() + "\t";
+            prodStr += pr.product.boldOption.ToString() + "\t";
+            prodStr += pr.product.catalogOption.ToString() + "\t";
+            prodStr += pr.product.vitrineOption.ToString() + "\t";
+            prodStr += pr.product.buyNowPrice.ToString() + "\t";
+            prodStr += pr.product.startPrice.ToString() + "\t";
+            prodStr += pr.product.cargoDetail.cargoCompanies[0] + "\t";
+
+            return prodStr;
+        }
+
+        public List<ProductModel> GetAllProducts()
         {
             var prodService = ServiceProvider.getProductService();
+            var i = 1;
             var response = prodService.getProducts(0, 100, "A", true, "tr");
-            var products = response.products.Select(x => x.product.title).ToList();
-
-            products.GetType();
-
-            var product = response.products[0];
-
-            var str = "";
             foreach (var pr in response.products)
             {
-                str += pr.itemId + "\t";
-                str += pr.product.title + "\t";
-                str += pr.product.affiliateOption.ToString() + "\t";
-                str += pr.product.boldOption.ToString() + "\t";
-                str += pr.product.catalogOption.ToString() + "\t";
-                str += pr.product.vitrineOption.ToString() + "\t";
-                str += pr.product.buyNowPrice.ToString() + "\t";
-                str += pr.product.startPrice.ToString() + "\t";
-                str += pr.product.cargoDetail.cargoCompanies[0] + "\t";
-
-                str += "\n";
+                var prodStr = productDetailToString(pr, i++);
+                System.Diagnostics.Debug.WriteLine(prodStr);
             }
 
-                                 
-            Console.WriteLine();
+            if (response.ackCode == "success")
+            {
+                var prodList = response.products.ToList();
+                var totalCount = response.productCount;
+                while (prodList.Count < totalCount)
+                {
+                    response = prodService.getProducts(prodList.Count, 100, "A", true, "tr");
+                    if (response.ackCode == "success")
+                        prodList.AddRange(response.products);
+                    foreach (var pr in response.products)
+                    {
+                        var prodStr = productDetailToString(pr, i++);
+                        System.Diagnostics.Debug.WriteLine(prodStr);
+                    }
+                }
+
+                var list = prodList.Select(x => new ProductModel
+                                                {
+                                                    id = x.productId,
+                                                    title = x.product.title,
+                                                    subtitle = x.product.subtitle,
+                                                    stockCode = x.itemId,
+                                                    displayPrice = (decimal) x.product.buyNowPrice
+                                                })
+                                    .ToList();
+                return list;
+            }
+
+            return null;
         }
 
         public productType CreateProduct()
@@ -203,11 +234,88 @@ namespace GGLib
 
         }
 
-        public List<ProductModel> GetProductsOnSale()
+        public List<ProductModelGG> GetProductsOnSale()
         {
             var prodService = ServiceProvider.getProductService();
             
-            return new List<ProductModel>();
+            return new List<ProductModelGG>();
+        }
+
+        public bool UpdateProducts()
+        {
+            var sourceList = GetSourceProductsXml();
+            var ggList = GetAllProducts();
+
+            var i = 0;
+            foreach (var sourceProd in sourceList)
+            {
+                i++;
+                //var destProd = ggList.FirstOrDefault(x => x.productSellerCode.Contains("_" + sourceProd.stockCode + "_")); // == StockCodeToSellerCode(sourceProd.stockCode));
+                //if (destProd == null)
+                //{
+                //    Debug.WriteLine(String.Format("{1}\t{0} hedefte bulunamadı.", sourceProd.stockCode, i));
+                //}
+                //else
+                //{
+                //    var sourceAmount = sourceProd.stockAmount;
+                //    var destAmount = GetProductStockJson(destProd.id);
+
+                //    if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
+                //    {
+                //        Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
+
+                //        // Update
+                //        if (destProd.displayPrice != sourceProd.displayPrice)
+                //        {
+                //            // update price
+                //            Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
+                //            var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)) / destProd.displayPrice;
+                //            if (diffPercent > (decimal)0.05)
+                //            {
+                //                Debug.WriteLine("Fiyat çok değişmiş!");
+                //            }
+
+                //            UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
+                //        }
+                //        if (sourceAmount != destAmount)
+                //        {
+                //            // update stock
+                //            Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
+                //            UpdateProductStock(destProd.productSellerCode, sourceAmount);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
+                //    }
+                //}
+            }
+
+            //i = 0;
+            //var diffList = n11List.Where(x => !sourceList.Any(y => x.productSellerCode.Contains("_" + y.stockCode + "_"))).ToList();
+            //foreach (var destProd in diffList)
+            //{
+            //    i++;
+            //    if (destProd.title.Contains("Timberland"))
+            //    {
+            //        Debug.WriteLine("{0} skipped\t{1}\t{2}", i, destProd.productSellerCode, destProd.title);
+            //        continue;
+            //    }
+            //    //Debug.WriteLine("{0}", i);
+            //    var sourceProd = sourceList.FirstOrDefault(x => destProd.productSellerCode.Contains("_" + x.stockCode + "_"));
+            //    if (sourceProd == null)
+            //    {
+            //        // Remove
+            //        RemoveProduct(destProd.productSellerCode);
+            //        Debug.WriteLine("{0} sıfırlandı\t{1}\t{2}", i, destProd.productSellerCode, destProd.title);
+            //    }
+            //    else
+            //    {
+            //        sourceProd.GetType();
+            //    }
+            //}
+
+            return null;
         }
     }
 }

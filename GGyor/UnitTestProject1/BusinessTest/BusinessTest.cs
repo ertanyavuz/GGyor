@@ -174,11 +174,12 @@ namespace UnitTestProject1.BusinessTest
         //[TestMethod]
         public void GetProducts()
         {
-            TestClassBase.checkDoTest();
+            if (TestClassBase.checkDoTest())
+                return;
 
             var service = new GGLib.GGProductService();
 
-            service.GetProducts();
+            service.GetAllProducts();
 
             Assert.IsTrue(true);
         }

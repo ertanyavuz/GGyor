@@ -53,6 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EntegrasyonServiceBase\EntegrasyonServiceBase.csproj">
+      <Project>{135097F8-7940-4ACD-92DE-77CDB5022BA0}</Project>
+      <Name>EntegrasyonServiceBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StorMan.Model\StorMan.Model.csproj">
       <Project>{23c64dfb-c284-47ae-b839-025b089a522d}</Project>
       <Name>StorMan.Model</Name>

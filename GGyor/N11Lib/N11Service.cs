@@ -269,99 +269,6 @@ namespace N11Lib
             return productList;
         }
 
-        public List<ProductModel> GetSourceProductsXml()
-        {
-            
-            //var xmlPath = @"C:\Users\Ertan\Downloads\N11-XML.xml";
-            var xmlPath = @"http://www.elektrostil.com/index.php?do=catalog/output&pCode=9211982202";
-            var dt = new DataTable("ProductsXml");
-            
-            var xdoc = XDocument.Load(xmlPath);
-            var q = from d in xdoc.Root.Descendants("item")
-                    select d;
-            var list = q.ToList();
-
-            foreach (var xElement in list)
-            {
-                var valueList = new List<object>();
-                foreach (var attr in xElement.Elements())
-                {
-                    if (dt.Columns[attr.Name.LocalName] == null)
-                        dt.Columns.Add(attr.Name.LocalName);
-                }
-                var dr = dt.NewRow();
-                foreach (var attr in xElement.Elements())
-                {
-                    dr[attr.Name.LocalName] = attr.Value;
-                }
-
-                dt.Rows.Add(dr);
-            }
-
-            var kurTable = GetDovizKurlari();
-            var usdKur = kurTable["USD"];
-            var eurKur = kurTable["EUR"];
-            var karAmount = 10;
-
-            if (usdKur < 1 || eurKur < 1)
-            {
-                throw new Exception("Kurlarda bir hata var.");
-            }
-
-            var productList = new List<ProductModel>();
-            Func<string, string, string, decimal> calculatePrice = (x, curr, kdv) =>
-                                                        {
-                                                            var price = decimal.Parse(x.Replace(".", ","));
-                                                            if (curr == "USD")
-                                                                price = price * usdKur;
-                                                            else if (curr == "EUR")
-                                                                price = price * eurKur;
-                                                            else if (curr != "TL")
-                                                                throw new NotImplementedException();
-
-                                                            price = price*(int.Parse(kdv) + 100)/100;
-                                                            price = Math.Round(price*100) / 100;
-                                                            price += karAmount;
-                                                            return price;
-                                                        };
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                var prod = new ProductModel
-                {
-                    //id = dr["id"],
-                    title = (string) dr["label"],
-                    stockCode = (string) dr["stockCode"],
-                    displayPrice = calculatePrice((string) dr["price4"], (string) dr["currencyAbbr"], (string) dr["tax"]),
-                    stockAmount = int.Parse(dr["stockAmount"].ToString()),
-
-                    label = (string) dr["label"],
-                    brand = (string) dr["brand"],
-                    mainCategory = (string) dr["mainCategory"],
-                    category = (string) dr["category"],
-                    subCategory = (string) dr["subCategory"],
-
-                    picture1Path = (string)dr["picture1Path"],
-                    picture2Path = (string)dr["picture2Path"],
-                    picture3Path = (string)dr["picture3Path"],
-                    picture4Path = (string)dr["picture4Path"],
-
-                    details = (string)dr["details"],
-                    //rebatedPriceWithoutTax = (string)dr["rebatedPriceWithoutTax"],
-                };
-                productList.Add(prod);
-
-
-                //<root>
-                //  <item>
-                //    <rebatedPriceWithoutTax>10.67</rebatedPriceWithoutTax>
-                //  </item>
-            }
-
-            return productList;
-        }
-
-        
 
         public object UpdateProducts()
         {
@@ -384,37 +291,37 @@ namespace N11Lib
                 }
                 else
                 {
-                    //var sourceAmount = sourceProd.stockAmount;
-                    //var destAmount = GetProductStockJson(destProd.id);
+                    var sourceAmount = sourceProd.stockAmount;
+                    var destAmount = GetProductStockJson(destProd.id);
 
-                    //if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
-                    //{
-                    //    Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
+                    if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
+                    {
+                        Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
 
-                    //    // Update
-                    //    if (destProd.displayPrice != sourceProd.displayPrice)
-                    //    {
-                    //        // update price
-                    //        Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
-                    //        var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)) / destProd.displayPrice;
-                    //        if (diffPercent > (decimal) 0.05)
-                    //        {
-                    //            Debug.WriteLine("Fiyat çok değişmiş!");
-                    //        }
+                        // Update
+                        if (destProd.displayPrice != sourceProd.displayPrice)
+                        {
+                            // update price
+                            Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
+                            var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)) / destProd.displayPrice;
+                            if (diffPercent > (decimal)0.05)
+                            {
+                                Debug.WriteLine("Fiyat çok değişmiş!");
+                            }
 
-                    //        UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
-                    //    }
-                    //    if (sourceAmount != destAmount)
-                    //    {
-                    //        // update stock
-                    //        Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
-                    //        UpdateProductStock(destProd.productSellerCode, sourceAmount);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
-                    //}
+                            UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
+                        }
+                        if (sourceAmount != destAmount)
+                        {
+                            // update stock
+                            Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
+                            UpdateProductStock(destProd.productSellerCode, sourceAmount);
+                        }
+                    }
+                    else
+                    {
+                        Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
+                    }
                 }
             }
 

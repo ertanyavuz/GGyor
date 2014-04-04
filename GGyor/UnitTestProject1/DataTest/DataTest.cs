@@ -10,10 +10,11 @@ namespace UnitTestProject1.DataTest
         //[TestMethod]
         public void ProductServiceTest()
         {
-            TestClassBase.checkDoTest();
+            if (TestClassBase.checkDoTest())
+                return;
 
             var ps = new GGProductService();
-            ps.GetProducts();
+            ps.GetAllProducts();
             Assert.IsTrue(true);
         }
         //[TestMethod]

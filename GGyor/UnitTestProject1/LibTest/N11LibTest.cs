@@ -8,7 +8,7 @@ namespace UnitTestProject1.LibTest
     [TestClass]
     public class N11LibTest
     {
-        [TestMethod]
+        //[TestMethod]
         public void GetCategoriesTest()
         {
             var target = new N11Service();
@@ -18,7 +18,7 @@ namespace UnitTestProject1.LibTest
             Assert.IsTrue(true);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void GetProductsTest()
         {
             var target = new N11Service();
@@ -29,7 +29,7 @@ namespace UnitTestProject1.LibTest
         }
 
 
-        [TestMethod]
+        //[TestMethod]
         public void GetProductsJsonTest()
         {
             var target = new N11Service();
@@ -39,7 +39,7 @@ namespace UnitTestProject1.LibTest
             Assert.IsTrue(true);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void GetSourceProductsXmlTest()
         {
             var target = new N11Service();
@@ -59,7 +59,7 @@ namespace UnitTestProject1.LibTest
             Assert.IsTrue(true);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void CreateProductTest()
         {
             var target = new N11Service();
@@ -83,7 +83,7 @@ namespace UnitTestProject1.LibTest
             Assert.IsTrue(true);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void CallPostTest()
         {
             var target = new N11Service();
