@@ -48,6 +48,10 @@
     <Compile Include="XmlDataTableService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EntegrasyonServiceBase\EntegrasyonServiceBase.csproj">
+      <Project>{135097F8-7940-4ACD-92DE-77CDB5022BA0}</Project>
+      <Name>EntegrasyonServiceBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GGLib\GGLib.csproj">
       <Project>{c6c8c8df-279b-49d2-952c-8f9d8e8eba32}</Project>
       <Name>GGLib</Name>

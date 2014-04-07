@@ -49,15 +49,16 @@ namespace GGLib
         {
             var prodService = ServiceProvider.getProductService();
             var i = 1;
+            
             var response = prodService.getProducts(0, 100, "A", true, "tr");
-            foreach (var pr in response.products)
-            {
-                var prodStr = productDetailToString(pr, i++);
-                System.Diagnostics.Debug.WriteLine(prodStr);
-            }
+            var prodList = new List<ProductModel>();
+            //var prodList = response.products.ToList();
+            
+            while (response.ackCode == "success" && response)
 
             if (response.ackCode == "success")
             {
+
                 var prodList = response.products.ToList();
                 var totalCount = response.productCount;
                 while (prodList.Count < totalCount)
@@ -78,7 +79,11 @@ namespace GGLib
                                                     title = x.product.title,
                                                     subtitle = x.product.subtitle,
                                                     stockCode = x.itemId,
-                                                    displayPrice = (decimal) x.product.buyNowPrice
+                                                    displayPrice = (decimal) x.product.buyNowPrice,
+                                                    stockAmount = x.product.productCount,
+                                                    brand = "",
+                                                    details = "",
+                                                    label = ""
                                                 })
                                     .ToList();
                 return list;
@@ -250,45 +255,58 @@ namespace GGLib
             foreach (var sourceProd in sourceList)
             {
                 i++;
-                //var destProd = ggList.FirstOrDefault(x => x.productSellerCode.Contains("_" + sourceProd.stockCode + "_")); // == StockCodeToSellerCode(sourceProd.stockCode));
-                //if (destProd == null)
+                //ProductModel destProd = null;
+                var destProd = ggList.FirstOrDefault(x => x.stockCode.Contains("_" + sourceProd.stockCode + "_")); // == StockCodeToSellerCode(sourceProd.stockCode));
+                //foreach (var productModel in ggList)
                 //{
-                //    Debug.WriteLine(String.Format("{1}\t{0} hedefte bulunamadı.", sourceProd.stockCode, i));
-                //}
-                //else
-                //{
-                //    var sourceAmount = sourceProd.stockAmount;
-                //    var destAmount = GetProductStockJson(destProd.id);
-
-                //    if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
+                //    if (productModel.stockCode.Contains("_" + sourceProd.stockCode + "_"))
                 //    {
-                //        Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
-
-                //        // Update
-                //        if (destProd.displayPrice != sourceProd.displayPrice)
-                //        {
-                //            // update price
-                //            Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
-                //            var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)) / destProd.displayPrice;
-                //            if (diffPercent > (decimal)0.05)
-                //            {
-                //                Debug.WriteLine("Fiyat çok değişmiş!");
-                //            }
-
-                //            UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
-                //        }
-                //        if (sourceAmount != destAmount)
-                //        {
-                //            // update stock
-                //            Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
-                //            UpdateProductStock(destProd.productSellerCode, sourceAmount);
-                //        }
-                //    }
-                //    else
-                //    {
-                //        Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
+                //        destProd = productModel;
+                //        break;
                 //    }
                 //}
+
+                if (destProd == null)
+                {
+                    Debug.WriteLine(String.Format("{1}\t{0} hedefte bulunamadı.", sourceProd.stockCode, i));
+                }
+                else
+                {
+                    var sourceAmount = sourceProd.stockAmount;
+                    //var destAmount = GetProductStock(destProd.stockCode);
+                    var destAmount = destProd.stockAmount;
+
+
+
+                    //if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
+                    //{
+                    //    Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
+
+                    //    // Update
+                    //    if (destProd.displayPrice != sourceProd.displayPrice)
+                    //    {
+                    //        // update price
+                    //        Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
+                    //        var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)) / destProd.displayPrice;
+                    //        if (diffPercent > (decimal)0.05)
+                    //        {
+                    //            Debug.WriteLine("Fiyat çok değişmiş!");
+                    //        }
+
+                    //        UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
+                    //    }
+                    //    if (sourceAmount != destAmount)
+                    //    {
+                    //        // update stock
+                    //        Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
+                    //        UpdateProductStock(destProd.productSellerCode, sourceAmount);
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
+                    //}
+                }
             }
 
             //i = 0;
@@ -315,7 +333,7 @@ namespace GGLib
             //    }
             //}
 
-            return null;
+            return false;
         }
     }
 }
