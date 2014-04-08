@@ -27,11 +27,11 @@ namespace EntegrasyonServiceBase
 
         }
 
-        public List<ProductModel> GetSourceProductsXml()
+        public List<ProductModel> GetSourceProductsXml(string xmlPath, string priceColumn)
         {
 
             //var xmlPath = @"C:\Users\Ertan\Downloads\N11-XML.xml";
-            var xmlPath = @"http://www.elektrostil.com/index.php?do=catalog/output&pCode=9211982202";
+            //var xmlPath = @"http://www.elektrostil.com/index.php?do=catalog/output&pCode=9211982202";
             var dt = new DataTable("ProductsXml");
 
             var xdoc = XDocument.Load(xmlPath);
@@ -90,7 +90,7 @@ namespace EntegrasyonServiceBase
                     //id = dr["id"],
                     title = (string)dr["label"],
                     stockCode = (string)dr["stockCode"],
-                    displayPrice = calculatePrice((string)dr["price4"], (string)dr["currencyAbbr"], (string)dr["tax"]),
+                    displayPrice = calculatePrice((string)dr[priceColumn], (string)dr["currencyAbbr"], (string)dr["tax"]),
                     stockAmount = int.Parse(dr["stockAmount"].ToString()),
 
                     label = (string)dr["label"],
@@ -100,9 +100,9 @@ namespace EntegrasyonServiceBase
                     subCategory = (string)dr["subCategory"],
 
                     picture1Path = (string)dr["picture1Path"],
-                    picture2Path = (string)dr["picture2Path"],
-                    picture3Path = (string)dr["picture3Path"],
-                    picture4Path = (string)dr["picture4Path"],
+                    //picture2Path = (string)dr["picture2Path"],
+                    //picture3Path = (string)dr["picture3Path"],
+                    //picture4Path = (string)dr["picture4Path"],
 
                     details = (string)dr["details"],
                     //rebatedPriceWithoutTax = (string)dr["rebatedPriceWithoutTax"],

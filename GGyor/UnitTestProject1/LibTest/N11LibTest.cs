@@ -39,16 +39,6 @@ namespace UnitTestProject1.LibTest
             Assert.IsTrue(true);
         }
 
-        //[TestMethod]
-        public void GetSourceProductsXmlTest()
-        {
-            var target = new N11Service();
-
-            target.GetSourceProductsXml();
-
-            Assert.IsTrue(true);
-        }
-
         [TestMethod]
         public void UpdateProductsTest()
         {

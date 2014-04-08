@@ -24,6 +24,8 @@ namespace N11Lib
         private string serviceUrlBase = "";
         private string appKey = "67a73f10-3704-426e-ac9e-038a9a8cfcd0";
         private string appSecret = "T8diuwBn8MxX3FsH";
+        public const string N11_XML_PATH = "http://www.elektrostil.com/index.php?do=catalog/output&pCode=9211982202";
+        public const string PRICE_COLUMN = "price4";
 
         protected ProductService.Authentication ProductAuthentication
         {
@@ -272,7 +274,7 @@ namespace N11Lib
 
         public object UpdateProducts()
         {
-            var sourceList = GetSourceProductsXml();
+            var sourceList = GetSourceProductsXml(N11_XML_PATH, PRICE_COLUMN);
             var n11List = GetProductsJson();
 
             //sourceList = sourceList.Where(x => x.productSellerCode.Contains("NX.MFVEY.004")).ToList();

@@ -1,4 +1,6 @@
-﻿namespace EntegrasyonServiceBase
+﻿using System.Collections.Generic;
+
+namespace EntegrasyonServiceBase
 {
     public class ProductModel
     {
@@ -19,5 +21,7 @@
         public string picture4Path { get; set; }
         public string details { get; set; }
         public string rebatedPriceWithoutTax { get; set; }
+
+        public List<KeyValuePair<string, string>> attributes { get; set; }
     }
 }

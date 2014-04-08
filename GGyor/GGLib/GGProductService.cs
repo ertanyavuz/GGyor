@@ -13,6 +13,9 @@ namespace GGLib
 
     public class GGProductService : EntegrasyonServiceBase.EntegrasyonServiceBase
     {
+        public const string GG_XML_PATH = "http://www.elektrostil.com/index.php?do=catalog/output&pCode=968613169";
+        public const string PRICE_COLUMN = "price5";
+
         public GGProductService()
         {
             setConfig();
@@ -49,47 +52,56 @@ namespace GGLib
         {
             var prodService = ServiceProvider.getProductService();
             var i = 1;
-            
-            var response = prodService.getProducts(0, 100, "A", true, "tr");
-            var prodList = new List<ProductModel>();
-            //var prodList = response.products.ToList();
-            
-            while (response.ackCode == "success" && response)
 
-            if (response.ackCode == "success")
+            var prodList = new List<productDetailType>();
+
+            Action<productServiceListResponse> addToProductList = x =>
             {
-
-                var prodList = response.products.ToList();
-                var totalCount = response.productCount;
-                while (prodList.Count < totalCount)
+                if (x.ackCode == "success")
                 {
-                    response = prodService.getProducts(prodList.Count, 100, "A", true, "tr");
-                    if (response.ackCode == "success")
-                        prodList.AddRange(response.products);
-                    foreach (var pr in response.products)
+                    prodList.AddRange(x.products);
+                    foreach (var pr in x.products)
                     {
                         var prodStr = productDetailToString(pr, i++);
                         System.Diagnostics.Debug.WriteLine(prodStr);
                     }
                 }
+                else
+                {
+                    throw new Exception("Servis hata mesajı döndürdü: " + x.error.message);
+                }
+            };
 
-                var list = prodList.Select(x => new ProductModel
-                                                {
-                                                    id = x.productId,
-                                                    title = x.product.title,
-                                                    subtitle = x.product.subtitle,
-                                                    stockCode = x.itemId,
-                                                    displayPrice = (decimal) x.product.buyNowPrice,
-                                                    stockAmount = x.product.productCount,
-                                                    brand = "",
-                                                    details = "",
-                                                    label = ""
-                                                })
-                                    .ToList();
-                return list;
+            var response = prodService.getProducts(0, 100, "A", true, "tr");
+            addToProductList(response);
+            var totalCount = response.productCount;
+
+            while (prodList.Count < totalCount)
+            {
+                response = prodService.getProducts(prodList.Count, 100, "A", true, "tr");
+                addToProductList(response);
             }
 
-            return null;
+            var list = prodList.Select(x => new ProductModel
+                                            {
+                                                id = x.productId,
+                                                title = x.product.title,
+                                                subtitle = x.product.subtitle,
+                                                stockCode = x.itemId,
+                                                displayPrice = (decimal) x.product.buyNowPrice,
+                                                stockAmount = x.product.productCount,
+                                                brand = "",
+                                                details = x.product.description,
+                                                label = x.product.title,
+                                                picture1Path = x.product.photos.Any()
+                                                                ? x.product.photos[0].url
+                                                                : "",
+                                                attributes = x.product.specs.Select(y => new KeyValuePair<string, string>(y.name, y.value))
+                                                                            .ToList()
+                                            })
+                                .ToList();
+            return list;
+            
         }
 
         public productType CreateProduct()
@@ -154,7 +166,24 @@ namespace GGLib
 
         public void UpdateProduct()
         {
+            var service = ServiceProvider.getProductService();
+            //service.updateProduct();
+        }
 
+        public void UpdateProductPrice(string stockCode, double price)
+        {
+            var service = ServiceProvider.getProductService();
+            var response = service.updatePrice("", stockCode, price, false, "tr");
+            if (response.ackCode != "success")
+                throw new Exception("Fiyat güncellenemedi: " + response.error.message);
+        }
+
+        public void UpdateProductStock(string stockCode, int stockAmount)
+        {
+            var service = ServiceProvider.getProductService();
+            var response = service.updateStock("", stockCode, stockAmount, false, "tr");
+            if (response.ackCode != "success")
+                throw new Exception("Fiyat güncellenemedi: " + response.error.message);
         }
 
         private void ex_button1_Click(object sender, EventArgs e)
@@ -248,7 +277,7 @@ namespace GGLib
 
         public bool UpdateProducts()
         {
-            var sourceList = GetSourceProductsXml();
+            var sourceList = GetSourceProductsXml(GG_XML_PATH, PRICE_COLUMN);
             var ggList = GetAllProducts();
 
             var i = 0;
@@ -276,36 +305,34 @@ namespace GGLib
                     //var destAmount = GetProductStock(destProd.stockCode);
                     var destAmount = destProd.stockAmount;
 
+                    if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
+                    {
+                        Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
 
+                        // Update
+                        if (destProd.displayPrice != sourceProd.displayPrice)
+                        {
+                            // update price
+                            Console.WriteLine("price\t{0}\t{1}", destProd.stockCode, sourceProd.displayPrice);
+                            var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)) / destProd.displayPrice;
+                            if (diffPercent > (decimal)0.05)
+                            {
+                                Debug.WriteLine("Fiyat çok değişmiş!");
+                            }
 
-                    //if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
-                    //{
-                    //    Debug.WriteLine("{6}\t{0}\t{3}\t\t{1}\t{2}\t\t{4}\t{5}", sourceProd.stockCode, sourceProd.displayPrice, destProd.displayPrice, sourceProd.title, sourceAmount, destAmount, i);
-
-                    //    // Update
-                    //    if (destProd.displayPrice != sourceProd.displayPrice)
-                    //    {
-                    //        // update price
-                    //        Console.WriteLine("price\t{0}\t{1}", destProd.productSellerCode, sourceProd.displayPrice);
-                    //        var diffPercent = (Math.Abs(destProd.displayPrice - sourceProd.displayPrice)) / destProd.displayPrice;
-                    //        if (diffPercent > (decimal)0.05)
-                    //        {
-                    //            Debug.WriteLine("Fiyat çok değişmiş!");
-                    //        }
-
-                    //        UpdateProduct(destProd.productSellerCode, sourceProd.displayPrice);
-                    //    }
-                    //    if (sourceAmount != destAmount)
-                    //    {
-                    //        // update stock
-                    //        Console.WriteLine("stock\t{0}\t{1}", destProd.productSellerCode, sourceAmount);
-                    //        UpdateProductStock(destProd.productSellerCode, sourceAmount);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
-                    //}
+                            //UpdateProductPrice(destProd.stockCode, (double) sourceProd.displayPrice);
+                        }
+                        if (sourceAmount != destAmount)
+                        {
+                            // update stock
+                            Console.WriteLine("stock\t{0}\t{1}", destProd.stockCode, sourceAmount);
+                            //UpdateProductStock(destProd.stockCode, sourceAmount);
+                        }
+                    }
+                    else
+                    {
+                        Debug.WriteLine(String.Format("{1}\t{0} aynı.", sourceProd.stockCode, i));
+                    }
                 }
             }
 

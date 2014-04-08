@@ -178,7 +178,7 @@ namespace N11Entegrator
         
         private void btnGetSource_Click(object sender, EventArgs e)
         {
-            sourceList = service.GetSourceProductsXml();
+            sourceList = service.GetSourceProductsXml(N11Service.N11_XML_PATH, N11Service.PRICE_COLUMN);
             lblStatus.Text = String.Format("Kaynak XML çekildi, {0} ürün bulundu.", sourceList.Count);
         }
         private void btnGetDestination_Click(object sender, EventArgs e)
