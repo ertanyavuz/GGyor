@@ -173,9 +173,17 @@ namespace GGLib
         public void UpdateProductPrice(string stockCode, double price)
         {
             var service = ServiceProvider.getProductService();
+            price = Math.Round(price, 1);
             var response = service.updatePrice("", stockCode, price, false, "tr");
             if (response.ackCode != "success")
-                throw new Exception("Fiyat güncellenemedi: " + response.error.message);
+            {
+                response.GetType(); // throw new Exception("Fiyat güncellenemedi: " + response.error.message);
+
+                if (response.error.message != "Ürünün bitmesine 12 saatten az süre kaldığı için güncelleme yapamazsınız.")
+                    response.GetType();
+            }
+            else
+                System.Diagnostics.Debug.Write(" X ");
         }
 
         public void UpdateProductStock(string stockCode, int stockAmount)
@@ -320,13 +328,13 @@ namespace GGLib
                                 Debug.WriteLine("Fiyat çok değişmiş!");
                             }
 
-                            //UpdateProductPrice(destProd.stockCode, (double) sourceProd.displayPrice);
+                            UpdateProductPrice(destProd.stockCode, (double) sourceProd.displayPrice);
                         }
                         if (sourceAmount != destAmount)
                         {
                             // update stock
                             Console.WriteLine("stock\t{0}\t{1}", destProd.stockCode, sourceAmount);
-                            //UpdateProductStock(destProd.stockCode, sourceAmount);
+                            UpdateProductStock(destProd.stockCode, sourceAmount);
                         }
                     }
                     else
