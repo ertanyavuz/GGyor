@@ -104,6 +104,36 @@ namespace GGLib
             
         }
 
+        public ProductModel GetProduct(string stockCode)
+        {
+            var prodService = ServiceProvider.getProductService();
+            var response = prodService.getProduct("", stockCode, "tr");
+            if (response.ackCode == "success")
+            {
+                return new ProductModel
+                       {
+                           id = response.productDetail.productId,
+                           title = response.productDetail.product.title,
+                           subtitle = response.productDetail.product.subtitle,
+                           stockCode = response.productDetail.itemId,
+                           displayPrice = (decimal)response.productDetail.product.buyNowPrice,
+                           stockAmount = response.productDetail.product.productCount,
+                           brand = "",
+                           details = response.productDetail.product.description,
+                           label = response.productDetail.product.title,
+                           picture1Path = response.productDetail.product.photos.Any()
+                                   ? response.productDetail.product.photos[0].url
+                                   : "",
+                           attributes = response.productDetail.product.specs.Select(y => new KeyValuePair<string, string>(y.name, y.value))
+                               .ToList()
+                       };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public productType CreateProduct()
         {
             var prodService = ServiceProvider.getProductService();
@@ -174,6 +204,8 @@ namespace GGLib
         {
             var service = ServiceProvider.getProductService();
             price = Math.Round(price, 1);
+            if (price > 1000)
+                price.GetType();
             var response = service.updatePrice("", stockCode, price, false, "tr");
             if (response.ackCode != "success")
             {
@@ -312,6 +344,8 @@ namespace GGLib
                     var sourceAmount = sourceProd.stockAmount;
                     //var destAmount = GetProductStock(destProd.stockCode);
                     var destAmount = destProd.stockAmount;
+
+                    sourceProd.displayPrice = Math.Ceiling((sourceProd.displayPrice*10))/10;
 
                     if (destProd.displayPrice != sourceProd.displayPrice || sourceAmount != destAmount)
                     {

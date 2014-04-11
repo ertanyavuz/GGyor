@@ -31,5 +31,19 @@ namespace UnitTestProject1.LibTest
 
             Assert.IsTrue(true);
         }
+
+        [TestMethod]
+        public void TestTest()
+        {
+            if (TestClassBase.checkDoTest())
+                return;
+
+            var service = new GGLib.GGProductService();
+
+            var product = service.GetProduct("aralgm_8692750070192");
+
+            Assert.IsTrue(true);
+
+        }
     }
 }
