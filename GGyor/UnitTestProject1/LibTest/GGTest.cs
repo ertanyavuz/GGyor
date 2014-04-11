@@ -30,6 +30,7 @@ namespace UnitTestProject1.LibTest
             service.UpdateProducts();
 
             Assert.IsTrue(true);
+
         }
 
         [TestMethod]
