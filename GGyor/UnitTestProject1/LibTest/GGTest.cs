@@ -6,9 +6,12 @@ namespace UnitTestProject1.LibTest
     [TestClass]
     public class GGTest
     {
-        [TestMethod]
+        //[TestMethod]
         public void GetProductsTest()
         {
+            Assert.Fail();
+            return;
+
             if (TestClassBase.checkDoTest())
                 return;
 
@@ -19,9 +22,12 @@ namespace UnitTestProject1.LibTest
             Assert.IsTrue(true);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void UpdateProductsTest()
         {
+            Assert.Fail();
+            return; ;
+
             if (TestClassBase.checkDoTest())
                 return;
 
@@ -33,9 +39,11 @@ namespace UnitTestProject1.LibTest
 
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestTest()
         {
+            Assert.Fail();
+            return;
             if (TestClassBase.checkDoTest())
                 return;
 
