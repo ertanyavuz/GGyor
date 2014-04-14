@@ -39,7 +39,7 @@ namespace UnitTestProject1.LibTest
             Assert.IsTrue(true);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void UpdateProductsTest()
         {
             var target = new N11Service();

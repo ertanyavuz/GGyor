@@ -8,7 +8,7 @@ namespace UnitTestProject1.LibTest
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
+        //[TestMethod]
         public void TestMethod1()
         {
             var str = "(x*2)+5";

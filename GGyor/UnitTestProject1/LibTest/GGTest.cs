@@ -17,7 +17,7 @@ namespace UnitTestProject1.LibTest
 
             var service = new GGLib.GGProductService();
 
-            service.GetAllProducts();
+            service.GetActiveProducts();
 
             Assert.IsTrue(true);
         }
@@ -25,13 +25,18 @@ namespace UnitTestProject1.LibTest
         //[TestMethod]
         public void UpdateProductsTest()
         {
-            Assert.Fail();
-            return; ;
+            if (String.IsNullOrWhiteSpace("   "))
+            {
+                Assert.Fail();
+                return;
+            }
 
             if (TestClassBase.checkDoTest())
                 return;
 
             var service = new GGLib.GGProductService();
+
+            service.RelistProducts();
 
             service.UpdateProducts();
 
@@ -54,5 +59,22 @@ namespace UnitTestProject1.LibTest
             Assert.IsTrue(true);
 
         }
+
+        //[TestMethod]
+        //public void CreateProduct()
+        //{
+        //    Assert.Fail();
+        //    return;
+
+        //    if (TestClassBase.checkDoTest())
+        //        return;
+
+        //    var service = new GGLib.GGProductService();
+
+        //    var product = service.CreateProduct();
+
+
+        //    Assert.IsTrue(true);
+        //}
     }
 }

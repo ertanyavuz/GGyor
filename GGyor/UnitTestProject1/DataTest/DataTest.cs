@@ -14,7 +14,7 @@ namespace UnitTestProject1.DataTest
                 return;
 
             var ps = new GGProductService();
-            ps.GetAllProducts();
+            ps.GetActiveProducts();
             Assert.IsTrue(true);
         }
         //[TestMethod]

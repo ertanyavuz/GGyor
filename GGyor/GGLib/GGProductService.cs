@@ -48,8 +48,13 @@ namespace GGLib
             return prodStr;
         }
 
-        public List<ProductModel> GetAllProducts()
+        public List<ProductModel> GetProducts(string productType)
         {
+            //A - Aktif Şatışlar
+            //L - Yeni Listelenenler
+            //S - Satılan Ürünler
+            //U - Satılmayan Ürünler
+            //R - Yeniden Listelenenler
             var prodService = ServiceProvider.getProductService();
             var i = 1;
 
@@ -72,36 +77,44 @@ namespace GGLib
                 }
             };
 
-            var response = prodService.getProducts(0, 100, "A", true, "tr");
+            var response = prodService.getProducts(0, 100, productType, true, "tr");
             addToProductList(response);
             var totalCount = response.productCount;
 
             while (prodList.Count < totalCount)
             {
-                response = prodService.getProducts(prodList.Count, 100, "A", true, "tr");
+                response = prodService.getProducts(prodList.Count, 100, productType, true, "tr");
                 addToProductList(response);
             }
 
             var list = prodList.Select(x => new ProductModel
-                                            {
-                                                id = x.productId,
-                                                title = x.product.title,
-                                                subtitle = x.product.subtitle,
-                                                stockCode = x.itemId,
-                                                displayPrice = (decimal) x.product.buyNowPrice,
-                                                stockAmount = x.product.productCount,
-                                                brand = "",
-                                                details = x.product.description,
-                                                label = x.product.title,
-                                                picture1Path = x.product.photos.Any()
-                                                                ? x.product.photos[0].url
-                                                                : "",
-                                                attributes = x.product.specs.Select(y => new KeyValuePair<string, string>(y.name, y.value))
-                                                                            .ToList()
-                                            })
+            {
+                id = x.productId,
+                title = x.product.title,
+                subtitle = x.product.subtitle,
+                stockCode = x.itemId,
+                displayPrice = (decimal)x.product.buyNowPrice,
+                stockAmount = x.product.productCount,
+                brand = "",
+                details = x.product.description,
+                label = x.product.title,
+                picture1Path = x.product.photos.Any()
+                                ? x.product.photos[0].url
+                                : "",
+                attributes = x.product.specs.Select(y => new KeyValuePair<string, string>(y.name, y.value))
+                                            .ToList()
+            })
                                 .ToList();
             return list;
-            
+        }
+
+        public List<ProductModel> GetActiveProducts()
+        {
+            return GetProducts("A");
+        }
+        public List<ProductModel> GetFinishedProducts()
+        {
+            return GetProducts("U");
         }
 
         public ProductModel GetProduct(string stockCode)
@@ -134,7 +147,7 @@ namespace GGLib
             }
         }
 
-        public productType CreateProduct()
+        public object CreateProduct()
         {
             var prodService = ServiceProvider.getProductService();
 
@@ -226,50 +239,49 @@ namespace GGLib
                 throw new Exception("Fiyat güncellenemedi: " + response.error.message);
         }
 
-        private void ex_button1_Click(object sender, EventArgs e)
-        {
-            setConfig();
-            var cityService = ServiceProvider.getCityService();
-            var serviceNameResult = cityService.getServiceName();
-            var devService = ServiceProvider.getDeveloperService();
-            serviceNameResult = devService.getServiceName();
+        //private void ex_button1_Click(object sender, EventArgs e)
+        //{
+        //    setConfig();
+        //    var cityService = ServiceProvider.getCityService();
+        //    var serviceNameResult = cityService.getServiceName();
+        //    var devService = ServiceProvider.getDeveloperService();
+        //    serviceNameResult = devService.getServiceName();
 
-            var appService = ServiceProvider.getApplicationService();
-            serviceNameResult = appService.getServiceName();
-            //var result = devService.isDeveloper("elektrostil", "Virago97", "tr");
-            //var response = devService.createDeveloper("ertanyavuz", "passpass", "tr");
-            var response = appService.getApplicationList("QQPyTB2yVSRGRFJMQDcD", "tr");
-            var app = response.applications[0];
+        //    var appService = ServiceProvider.getApplicationService();
+        //    serviceNameResult = appService.getServiceName();
+        //    //var result = devService.isDeveloper("elektrostil", "Virago97", "tr");
+        //    //var response = devService.createDeveloper("ertanyavuz", "passpass", "tr");
+        //    var response = appService.getApplicationList("QQPyTB2yVSRGRFJMQDcD", "tr");
+        //    var app = response.applications[0];
 
-            var catService = ServiceProvider.getCategoryService();
-            serviceNameResult = catService.getServiceName();
-            var response2 = catService.getCategories(1, 100, true, true, true, "tr");
+        //    var catService = ServiceProvider.getCategoryService();
+        //    serviceNameResult = catService.getServiceName();
+        //    var response2 = catService.getCategories(1, 100, true, true, true, "tr");
 
-            var prodService = ServiceProvider.getProductService();
-            serviceNameResult = prodService.getServiceName();
-            var response3 = prodService.getProducts(0, 1, "A", true, "tr");
-            var prodList = new List<productDetailType>();
-            var i = 0;
-            while (i < response3.productCount)
-            {
-                var response4 = prodService.getProducts(i, 100, "A", true, "tr");
-                prodList.AddRange(response4.products);
-                i += response4.products.Length;
-                if (response4.products.Length == 0)
-                    break;
-            }
+        //    var prodService = ServiceProvider.getProductService();
+        //    serviceNameResult = prodService.getServiceName();
+        //    var response3 = prodService.getProducts(0, 1, "A", true, "tr");
+        //    var prodList = new List<productDetailType>();
+        //    var i = 0;
+        //    while (i < response3.productCount)
+        //    {
+        //        var response4 = prodService.getProducts(i, 100, "A", true, "tr");
+        //        prodList.AddRange(response4.products);
+        //        i += response4.products.Length;
+        //        if (response4.products.Length == 0)
+        //            break;
+        //    }
 
-            var str = ex_aggregateProducts(prodList);
-            this.GetType();
-        }
+        //    var str = ex_aggregateProducts(prodList);
+        //    this.GetType();
+        //}
 
-        private string ex_aggregateProducts(IEnumerable<productDetailType> productList)
-        {
-            var str = productList.Select(x => x.product.title).Aggregate((x, y) => x + "\r\n" + y);
-            return str;
-        }
-
-
+        //private string ex_aggregateProducts(IEnumerable<productDetailType> productList)
+        //{
+        //    var str = productList.Select(x => x.product.title).Aggregate((x, y) => x + "\r\n" + y);
+        //    return str;
+        //}
+        
         public void SiemensUpdate()
         {
             var prodService = ServiceProvider.getProductService();
@@ -315,28 +327,61 @@ namespace GGLib
             return new List<ProductModelGG>();
         }
 
+        protected bool relistProducts(List<string> productIdList)
+        {
+            var service = ServiceProvider.getProductService();
+            var response = service.relistProducts(new List<int>(), productIdList, "tr");
+            if (response.ackCode == "success")
+            {
+                // (4) adet ürünü yeniden listeleyebilmeniz için (0.2) TL odemeniz gerekmektedir. (#FT-RAkEPz3Gs33Y) ödeme çeki ile ödemenizi gerçekleştirebilirsiniz.
+                var m = System.Text.RegularExpressions.Regex.Match(response.result, "\\(#([\\d\\w\\-]+?)\\)");
+                if (m.Success)
+                {
+                    var paymentResponse = service.payPrice("#" + m.Groups[1].Value, "ERKAN", "YAVUZ", "5472440123026771", "829", "07", "17", "tr");
+                    if (paymentResponse.ackCode == "success")
+                        return true;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public bool RelistProducts()
+        {
+            // Kaynak XML
+            var sourceList = GetSourceProductsXml(GG_XML_PATH, PRICE_COLUMN);
+
+            // GG - Satışı sona ermiş ürünler
+            var ggOldList = GetFinishedProducts();
+
+            var nullList = ggOldList.Where(x => x.stockCode == null).ToList();
+
+            // Yeniden listelenecek ürünler : Satışı sona erip kaynak XML'de yer alan ürünler.
+            var relistList = ggOldList.Where(x => sourceList.Any(y => (x.stockCode ?? "").Contains("_" + y.stockCode + "_"))).Select(x => x.stockCode).ToList();
+
+            // Yeniden listele
+            relistProducts(relistList);
+
+            return true;
+        }
+
         public bool UpdateProducts()
         {
+            // Kaynak XML
             var sourceList = GetSourceProductsXml(GG_XML_PATH, PRICE_COLUMN);
-            var ggList = GetAllProducts();
+            
+            // GG - Satıştaki ürünler : 
+            var ggActiveList = GetActiveProducts();
 
             var i = 0;
             foreach (var sourceProd in sourceList)
             {
                 i++;
-                //ProductModel destProd = null;
-                var destProd = ggList.FirstOrDefault(x => x.stockCode.Contains("_" + sourceProd.stockCode + "_")); // == StockCodeToSellerCode(sourceProd.stockCode));
-                //foreach (var productModel in ggList)
-                //{
-                //    if (productModel.stockCode.Contains("_" + sourceProd.stockCode + "_"))
-                //    {
-                //        destProd = productModel;
-                //        break;
-                //    }
-                //}
+                var destProd = ggActiveList.FirstOrDefault(x => x.stockCode.Contains("_" + sourceProd.stockCode + "_")); // == StockCodeToSellerCode(sourceProd.stockCode));
 
                 if (destProd == null)
                 {
+                    // Yeni ürün.
                     Debug.WriteLine(String.Format("{1}\t{0} hedefte bulunamadı.", sourceProd.stockCode, i));
                 }
                 else

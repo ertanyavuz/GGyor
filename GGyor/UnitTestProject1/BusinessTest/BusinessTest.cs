@@ -179,7 +179,7 @@ namespace UnitTestProject1.BusinessTest
 
             var service = new GGLib.GGProductService();
 
-            service.GetAllProducts();
+            service.GetActiveProducts();
 
             Assert.IsTrue(true);
         }
