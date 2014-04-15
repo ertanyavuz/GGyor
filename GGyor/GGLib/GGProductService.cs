@@ -217,7 +217,7 @@ namespace GGLib
         {
             var service = ServiceProvider.getProductService();
             price = Math.Round(price, 1);
-            if (price > 1000)
+            if (price > 2000)
                 price.GetType();
             var response = service.updatePrice("", stockCode, price, false, "tr");
             if (response.ackCode != "success")
@@ -330,20 +330,44 @@ namespace GGLib
         protected bool relistProducts(List<string> productIdList)
         {
             var service = ServiceProvider.getProductService();
-            var response = service.relistProducts(new List<int>(), productIdList, "tr");
-            if (response.ackCode == "success")
+
+            var tempList = productIdList.ToList();
+            while (tempList.Any())
             {
+                var postList = tempList.GetRange(0, Math.Min(tempList.Count, 400));
+                tempList = tempList.Skip(postList.Count).ToList();
+                var response = service.relistProducts(new List<int>(), postList, "tr");
+                if (response.ackCode != "success")
+                    //return false;
+                    throw new Exception("Relist failed: " + response.error.message);
+                
                 // (4) adet ürünü yeniden listeleyebilmeniz için (0.2) TL odemeniz gerekmektedir. (#FT-RAkEPz3Gs33Y) ödeme çeki ile ödemenizi gerçekleştirebilirsiniz.
-                var m = System.Text.RegularExpressions.Regex.Match(response.result, "\\(#([\\d\\w\\-]+?)\\)");
-                if (m.Success)
-                {
-                    var paymentResponse = service.payPrice("#" + m.Groups[1].Value, "ERKAN", "YAVUZ", "5472440123026771", "829", "07", "17", "tr");
-                    if (paymentResponse.ackCode == "success")
-                        return true;
-                }
-                return true;
+                var m = System.Text.RegularExpressions.Regex.Match(response.result, "\\((#[\\d\\w\\-]+?)\\)");
+                if (!m.Success)
+                    throw new Exception("Relist failed: " + "Payment voucher not received.");
+
+                var paymentResponse = service.payPrice(m.Groups[1].Value, "ERKAN", "YAVUZ", "5472440123026771", "829", "07", "17", "tr");
+                if (paymentResponse.ackCode != "success")
+                    throw new Exception("Payment for Relist failed: " + response.error.message);
+                
+                //return true;
+                
             }
-            return false;
+
+            //var response = service.relistProducts(new List<int>(), productIdList, "tr");
+            //if (response.ackCode == "success")
+            //{
+            //    // (4) adet ürünü yeniden listeleyebilmeniz için (0.2) TL odemeniz gerekmektedir. (#FT-RAkEPz3Gs33Y) ödeme çeki ile ödemenizi gerçekleştirebilirsiniz.
+            //    var m = System.Text.RegularExpressions.Regex.Match(response.result, "\\(#([\\d\\w\\-]+?)\\)");
+            //    if (m.Success)
+            //    {
+            //        var paymentResponse = service.payPrice("#" + m.Groups[1].Value, "ERKAN", "YAVUZ", "5472440123026771", "829", "07", "17", "tr");
+            //        if (paymentResponse.ackCode == "success")
+            //            return true;
+            //    }
+            //    return true;
+            //}
+            return true;
         }
 
         public bool RelistProducts()
@@ -372,6 +396,7 @@ namespace GGLib
             
             // GG - Satıştaki ürünler : 
             var ggActiveList = GetActiveProducts();
+            ggActiveList = ggActiveList.Where(x => x.stockCode != null).ToList();
 
             var i = 0;
             foreach (var sourceProd in sourceList)

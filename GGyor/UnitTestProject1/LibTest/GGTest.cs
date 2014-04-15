@@ -36,7 +36,7 @@ namespace UnitTestProject1.LibTest
 
             var service = new GGLib.GGProductService();
 
-            service.RelistProducts();
+            //service.RelistProducts();
 
             service.UpdateProducts();
 
