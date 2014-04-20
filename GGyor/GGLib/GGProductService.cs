@@ -64,6 +64,8 @@ namespace GGLib
             {
                 if (x.ackCode == "success")
                 {
+                    if (x.products == null)
+                        return;
                     prodList.AddRange(x.products);
                     foreach (var pr in x.products)
                     {
@@ -219,12 +221,35 @@ namespace GGLib
             price = Math.Round(price, 1);
             if (price > 2000)
                 price.GetType();
-            var response = service.updatePrice("", stockCode, price, false, "tr");
+
+            productServiceResponse response = null;
+            var numTries = 0;
+            while (response == null)
+            {
+                try
+                {
+                    response = service.updatePrice("", stockCode, price, false, "tr");
+                }
+                catch (Exception ex)
+                {
+                    numTries++;
+                    if (numTries >= 3)
+                    {
+                        throw new Exception("Web servis çağrısı başarısız! ", ex);
+                    }
+                    System.Threading.Thread.Sleep(3000);
+                }
+            }
+            //if (response == null)
+            //    throw new Exception("Web servis çağrısı başarısız! ");
+
             if (response.ackCode != "success")
             {
-                response.GetType(); // throw new Exception("Fiyat güncellenemedi: " + response.error.message);
-
-                if (response.error.message != "Ürünün bitmesine 12 saatten az süre kaldığı için güncelleme yapamazsınız.")
+                if (response.error.message == "Satılan bir ürün için güncelleme yapamazsınız.")
+                    System.Diagnostics.Debug.Write(" Ürün satıldığı için güncelleme yapılamadı!");
+                else if (response.error.message != "Ürünün bitmesine 12 saatten az süre kaldığı için güncelleme yapamazsınız.")
+                    response.GetType();
+                else
                     response.GetType();
             }
             else
