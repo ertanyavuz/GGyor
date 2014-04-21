@@ -264,6 +264,14 @@ namespace GGLib
                 throw new Exception("Fiyat güncellenemedi: " + response.error.message);
         }
 
+        public void RemoveProducts(List<string> stockCodeList)
+        {
+            var service = ServiceProvider.getProductService();
+            var response = service.finishEarly(new List<int>(), stockCodeList, "tr");
+            if (response.ackCode != "success")
+                throw new Exception("Ürünlerin satışı bitirilemedi: " + response.error.message);
+        }
+
         //private void ex_button1_Click(object sender, EventArgs e)
         //{
         //    setConfig();
@@ -473,29 +481,34 @@ namespace GGLib
                 }
             }
 
-            //i = 0;
-            //var diffList = n11List.Where(x => !sourceList.Any(y => x.productSellerCode.Contains("_" + y.stockCode + "_"))).ToList();
-            //foreach (var destProd in diffList)
-            //{
-            //    i++;
-            //    if (destProd.title.Contains("Timberland"))
-            //    {
-            //        Debug.WriteLine("{0} skipped\t{1}\t{2}", i, destProd.productSellerCode, destProd.title);
-            //        continue;
-            //    }
-            //    //Debug.WriteLine("{0}", i);
-            //    var sourceProd = sourceList.FirstOrDefault(x => destProd.productSellerCode.Contains("_" + x.stockCode + "_"));
-            //    if (sourceProd == null)
-            //    {
-            //        // Remove
-            //        RemoveProduct(destProd.productSellerCode);
-            //        Debug.WriteLine("{0} sıfırlandı\t{1}\t{2}", i, destProd.productSellerCode, destProd.title);
-            //    }
-            //    else
-            //    {
-            //        sourceProd.GetType();
-            //    }
-            //}
+            i = 0;
+            var diffList = ggActiveList.Where(x => x.stockCode != null && !sourceList.Any(y => x.stockCode.Contains("_" + y.stockCode + "_"))).ToList();
+            var removeList = new List<string>();
+            foreach (var destProd in diffList)
+            {
+                i++;
+                if (destProd.title.Contains("Timberland"))
+                {
+                    Debug.WriteLine("{0} skipped\t{1}\t{2}", i, destProd.stockCode, destProd.title);
+                    continue;
+                }
+                //Debug.WriteLine("{0}", i);
+                var sourceProd = sourceList.FirstOrDefault(x => destProd.stockCode.Contains("_" + x.stockCode + "_"));
+                if (sourceProd == null)
+                {
+                    // Remove
+                    //RemoveProduct(destProd.stockCode);
+                    removeList.Add(destProd.stockCode);
+                    Debug.WriteLine("{0} sıfırlandı\t{1}\t{2}", i, destProd.stockCode, destProd.title);
+                }
+                else
+                {
+                    sourceProd.GetType();
+                }
+            }
+
+            if (removeList.Any())
+                RemoveProducts(removeList);
 
             return false;
         }
