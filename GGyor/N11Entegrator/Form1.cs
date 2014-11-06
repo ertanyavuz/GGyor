@@ -184,7 +184,7 @@ namespace N11Entegrator
         private void btnGetDestination_Click(object sender, EventArgs e)
         {
             n11List = service.GetProductsJson();
-            lblStatus.Text = String.Format("N11 ürünleri çekildi, {0} ürün bulundu.", sourceList.Count);
+            lblStatus.Text = String.Format("N11 ürünleri çekildi, {0} ürün bulundu.", n11List.Count);
         }
         
         #endregion
