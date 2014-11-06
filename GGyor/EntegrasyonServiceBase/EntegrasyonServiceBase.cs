@@ -109,11 +109,10 @@ namespace EntegrasyonServiceBase
                 };
                 productList.Add(prod);
 
+                // Stok değeri 1 olan ürünleri kaldır.
+                var subList = productList.Where(x => x.stockAmount == 1).ToList();
+                productList.RemoveAll(x => subList.Any(y => y == x));
 
-                //<root>
-                //  <item>
-                //    <rebatedPriceWithoutTax>10.67</rebatedPriceWithoutTax>
-                //  </item>
             }
 
             return productList;

@@ -39,9 +39,14 @@ namespace UnitTestProject1.LibTest
             Assert.IsTrue(true);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void UpdateProductsTest()
         {
+            if (String.IsNullOrWhiteSpace(" "))
+            {
+                return;
+            }
+
             var target = new N11Service();
 
             target.UpdateProducts();

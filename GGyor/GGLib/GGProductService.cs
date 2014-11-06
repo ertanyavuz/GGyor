@@ -103,10 +103,9 @@ namespace GGLib
                 picture1Path = x.product.photos.Any()
                                 ? x.product.photos[0].url
                                 : "",
-                attributes = x.product.specs.Select(y => new KeyValuePair<string, string>(y.name, y.value))
-                                            .ToList()
-            })
-                                .ToList();
+                attributes = x.product.specs != null ? x.product.specs.Select(y => new KeyValuePair<string, string>(y.name, y.value)).ToList()
+                                                    : new List<KeyValuePair<string, string>>()
+            }).ToList();
             return list;
         }
 
@@ -430,6 +429,15 @@ namespace GGLib
             // GG - Satıştaki ürünler : 
             var ggActiveList = GetActiveProducts();
             ggActiveList = ggActiveList.Where(x => x.stockCode != null).ToList();
+
+            // Stok değeri 1 olan ürünleri 0 yap.
+            var subList = sourceList.Where(x => x.stockAmount == 1).ToList();
+            //subList.ForEach(x =>
+            //{
+            //    if (x.stockAmount == 1)
+            //        x.stockAmount = 0;
+            //});
+            sourceList.RemoveAll(x => subList.Any(y => y == x));
 
             var i = 0;
             foreach (var sourceProd in sourceList)
