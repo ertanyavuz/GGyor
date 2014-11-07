@@ -49,6 +49,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSaveAttribute = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.chkDontCheckUpdates = new System.Windows.Forms.CheckBox();
+            this.btnReloadCategories = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
@@ -56,7 +58,7 @@
             this.lbLog = new System.Windows.Forms.ListBox();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.bgw2 = new System.ComponentModel.BackgroundWorker();
-            this.chkDontCheckUpdates = new System.Windows.Forms.CheckBox();
+            this.bgwReloadCategories = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid3)).BeginInit();
@@ -93,9 +95,9 @@
             // 
             // btnGetSource
             // 
-            this.btnGetSource.Location = new System.Drawing.Point(12, 41);
+            this.btnGetSource.Location = new System.Drawing.Point(3, 41);
             this.btnGetSource.Name = "btnGetSource";
-            this.btnGetSource.Size = new System.Drawing.Size(118, 23);
+            this.btnGetSource.Size = new System.Drawing.Size(104, 23);
             this.btnGetSource.TabIndex = 0;
             this.btnGetSource.Text = "Kaynak XML\'i Çek";
             this.btnGetSource.UseVisualStyleBackColor = true;
@@ -103,9 +105,9 @@
             // 
             // btnGetDestination
             // 
-            this.btnGetDestination.Location = new System.Drawing.Point(12, 70);
+            this.btnGetDestination.Location = new System.Drawing.Point(3, 70);
             this.btnGetDestination.Name = "btnGetDestination";
-            this.btnGetDestination.Size = new System.Drawing.Size(118, 23);
+            this.btnGetDestination.Size = new System.Drawing.Size(104, 23);
             this.btnGetDestination.TabIndex = 1;
             this.btnGetDestination.Text = "N11 Ürünlerini Çek";
             this.btnGetDestination.UseVisualStyleBackColor = true;
@@ -128,9 +130,9 @@
             // 
             // btnCompareLists
             // 
-            this.btnCompareLists.Location = new System.Drawing.Point(12, 99);
+            this.btnCompareLists.Location = new System.Drawing.Point(3, 99);
             this.btnCompareLists.Name = "btnCompareLists";
-            this.btnCompareLists.Size = new System.Drawing.Size(118, 23);
+            this.btnCompareLists.Size = new System.Drawing.Size(104, 23);
             this.btnCompareLists.TabIndex = 4;
             this.btnCompareLists.Text = "Karşılaştır";
             this.btnCompareLists.UseVisualStyleBackColor = true;
@@ -217,9 +219,9 @@
             // 
             // btnRunUpdate
             // 
-            this.btnRunUpdate.Location = new System.Drawing.Point(12, 128);
+            this.btnRunUpdate.Location = new System.Drawing.Point(3, 128);
             this.btnRunUpdate.Name = "btnRunUpdate";
-            this.btnRunUpdate.Size = new System.Drawing.Size(118, 23);
+            this.btnRunUpdate.Size = new System.Drawing.Size(104, 23);
             this.btnRunUpdate.TabIndex = 12;
             this.btnRunUpdate.Text = "Başlat";
             this.btnRunUpdate.UseVisualStyleBackColor = true;
@@ -227,9 +229,9 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(12, 157);
+            this.btnStop.Location = new System.Drawing.Point(3, 157);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(118, 23);
+            this.btnStop.Size = new System.Drawing.Size(104, 23);
             this.btnStop.TabIndex = 13;
             this.btnStop.Text = "Durdur";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -245,9 +247,9 @@
             // 
             // btnGetCategories
             // 
-            this.btnGetCategories.Location = new System.Drawing.Point(12, 12);
+            this.btnGetCategories.Location = new System.Drawing.Point(3, 12);
             this.btnGetCategories.Name = "btnGetCategories";
-            this.btnGetCategories.Size = new System.Drawing.Size(118, 23);
+            this.btnGetCategories.Size = new System.Drawing.Size(104, 23);
             this.btnGetCategories.TabIndex = 14;
             this.btnGetCategories.Text = "Kategorileri Çek";
             this.btnGetCategories.UseVisualStyleBackColor = true;
@@ -306,6 +308,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.chkDontCheckUpdates);
+            this.splitContainer1.Panel1.Controls.Add(this.btnReloadCategories);
             this.splitContainer1.Panel1.Controls.Add(this.btnGetCategories);
             this.splitContainer1.Panel1.Controls.Add(this.btnGetSource);
             this.splitContainer1.Panel1.Controls.Add(this.btnGetDestination);
@@ -319,6 +322,26 @@
             this.splitContainer1.Size = new System.Drawing.Size(226, 635);
             this.splitContainer1.SplitterDistance = 247;
             this.splitContainer1.TabIndex = 18;
+            // 
+            // chkDontCheckUpdates
+            // 
+            this.chkDontCheckUpdates.AutoSize = true;
+            this.chkDontCheckUpdates.Location = new System.Drawing.Point(3, 197);
+            this.chkDontCheckUpdates.Name = "chkDontCheckUpdates";
+            this.chkDontCheckUpdates.Size = new System.Drawing.Size(137, 17);
+            this.chkDontCheckUpdates.TabIndex = 15;
+            this.chkDontCheckUpdates.Text = "Güncellemelere bakma.";
+            this.chkDontCheckUpdates.UseVisualStyleBackColor = true;
+            // 
+            // btnReloadCategories
+            // 
+            this.btnReloadCategories.Location = new System.Drawing.Point(113, 12);
+            this.btnReloadCategories.Name = "btnReloadCategories";
+            this.btnReloadCategories.Size = new System.Drawing.Size(112, 23);
+            this.btnReloadCategories.TabIndex = 14;
+            this.btnReloadCategories.Text = "Kategorileri Güncelle";
+            this.btnReloadCategories.UseVisualStyleBackColor = true;
+            this.btnReloadCategories.Click += new System.EventHandler(this.btnReloadCategories_Click);
             // 
             // splitContainer2
             // 
@@ -430,15 +453,12 @@
             this.bgw2.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw2_ProgressChanged);
             this.bgw2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw2_RunWorkerCompleted);
             // 
-            // chkDontCheckUpdates
+            // bgwReloadCategories
             // 
-            this.chkDontCheckUpdates.AutoSize = true;
-            this.chkDontCheckUpdates.Location = new System.Drawing.Point(12, 197);
-            this.chkDontCheckUpdates.Name = "chkDontCheckUpdates";
-            this.chkDontCheckUpdates.Size = new System.Drawing.Size(137, 17);
-            this.chkDontCheckUpdates.TabIndex = 15;
-            this.chkDontCheckUpdates.Text = "Güncellemelere bakma.";
-            this.chkDontCheckUpdates.UseVisualStyleBackColor = true;
+            this.bgwReloadCategories.WorkerReportsProgress = true;
+            this.bgwReloadCategories.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwReloadCategories_DoWork);
+            this.bgwReloadCategories.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwReloadCategories_ProgressChanged);
+            this.bgwReloadCategories.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwReloadCategories_RunWorkerCompleted);
             // 
             // Form1
             // 
@@ -518,6 +538,8 @@
         private System.Windows.Forms.ListBox lbLog;
         private System.ComponentModel.BackgroundWorker bgw2;
         private System.Windows.Forms.CheckBox chkDontCheckUpdates;
+        private System.Windows.Forms.Button btnReloadCategories;
+        private System.ComponentModel.BackgroundWorker bgwReloadCategories;
     }
 }
 

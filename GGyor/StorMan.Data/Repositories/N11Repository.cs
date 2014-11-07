@@ -68,6 +68,9 @@ namespace StorMan.Data.Repositories
                         context.Attributes.Add(att);
                         context.SaveChanges();
 
+
+                        var i = 0;
+
                         foreach (var keyValuePair in attModel.values)
                         {
                             var attValue = new AttributeValue
@@ -76,6 +79,13 @@ namespace StorMan.Data.Repositories
                                 Name = keyValuePair.Value
                             };
                             context.AttributeValues.Add(attValue);
+
+                            i++;
+                            if (i%50 == 0)
+                            {
+                                var rowCount = context.SaveChanges();
+                                System.Diagnostics.Debug.WriteLine("Saved {0} rows, i={1}", rowCount, i);
+                            }
                         }
                         context.SaveChanges();
                     }

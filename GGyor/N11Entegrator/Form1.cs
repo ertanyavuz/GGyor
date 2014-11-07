@@ -51,7 +51,7 @@ namespace N11Entegrator
             categoryList = getCategoryListFromDb();
 
             categoryTable = new Dictionary<long, CategoryModel>();
-
+            tree.Nodes.Clear();
             foreach (CategoryModel cat in categoryList)
             {
                 tree.Nodes.Add(categoryToTreeNode(cat, false));
@@ -59,6 +59,11 @@ namespace N11Entegrator
 
             lblStatus.Text = String.Format("Kategoriler çekildi, {0} kategori bulundu.", categoryList.Count);
         }
+        private void btnReloadCategories_Click(object sender, EventArgs e)
+        {
+            bgwReloadCategories.RunWorkerAsync();
+        }
+
         private void tree_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
             if (e.Node.Nodes.Count == 1 && e.Node.Nodes[0].Text == "dummy" && e.Node.Tag is CategoryModel)
@@ -120,8 +125,46 @@ namespace N11Entegrator
                 //catService.InsertCategory(categoryModel, N11_STORE_ID);
                 insertCategory(dataService, categoryModel);
             }
+
+            lblStatus.Text = String.Format("Kategoriler güncellendi, {0} kategori bulundu.", categoryList.Count);
             
             return list;
+        }
+
+        private void bgwReloadCategories_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            if (bgwReloadCategories.IsBusy)
+                bgwReloadCategories.ReportProgress(0);
+
+            var list = service.GetCategories();
+
+            // Veritabanına kaydet.
+            var dataService = new StorMan.Business.N11DataService();
+            dataService.ClearCtategories(N11_STORE_ID);
+
+            foreach (var categoryModel in list)
+            {
+                //catService.InsertCategory(categoryModel, N11_STORE_ID);
+                insertCategory(dataService, categoryModel);
+            }
+
+        }
+
+        private void bgwReloadCategories_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            if (btnReloadCategories.Enabled)
+                btnReloadCategories.Enabled = false;
+
+            lblStatus.Text = e.ProgressPercentage == 0 
+                                ? String.Format("Güncel kategori ve özellik bilgisi alınıyor. Bu işlem bir kaç dakika sürecektir.") 
+                                : String.Format("Kategoriler güncelleniyor, {0} kategori bulundu.", e.ProgressPercentage);
+        }
+
+        private void bgwReloadCategories_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            lblStatus.Text = String.Format("Kategoriler güncellendi.");
+            btnReloadCategories.Enabled = true;
         }
 
         private List<CategoryModel> getAllCategoryListFromDb()
@@ -139,14 +182,18 @@ namespace N11Entegrator
         }
 
 
-        private void insertCategory(N11DataService dataService, CategoryModel category)
+        private int insertCategory(N11DataService dataService, CategoryModel category)
         {
             Debug.WriteLine("Inserting " + category.ToString());
             dataService.InsertCategory(category, N11_STORE_ID);
+            var count = 1;
             foreach (var subCategory in category.Children)
             {
-                insertCategory(dataService, subCategory);
+                count += insertCategory(dataService, subCategory);
+                if (bgwReloadCategories.IsBusy)
+                    bgwReloadCategories.ReportProgress(count);
             }
+            return count;
         }
 
         private TreeNode categoryToTreeNode(CategoryModel cat, bool getSubCategories)
