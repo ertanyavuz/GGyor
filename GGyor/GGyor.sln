@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExtDependencies", "ExtDepen
 		ExtDependencies\ApiV2Client.dll = ExtDependencies\ApiV2Client.dll
 		ExtDependencies\ApiV2Client.XmlSerializers.dll = ExtDependencies\ApiV2Client.XmlSerializers.dll
 		ExtDependencies\auth-config.xml = ExtDependencies\auth-config.xml
+		ExtDependencies\favicon.ico = ExtDependencies\favicon.ico
 		ExtDependencies\RouteDebug.dll = ExtDependencies\RouteDebug.dll
 	EndProjectSection
 EndProject
@@ -128,6 +129,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log4netWrapper", "Log4netWr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N11Entegrator", "N11Entegrator\N11Entegrator.csproj", "{6F5608E9-DEAF-43A1-AE39-4B8F80045E19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorMan.UI.Lib", "StorMan.UI.Lib\StorMan.UI.Lib.csproj", "{99603B29-638E-438B-B155-3491389A15FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -190,6 +193,10 @@ Global
 		{6F5608E9-DEAF-43A1-AE39-4B8F80045E19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F5608E9-DEAF-43A1-AE39-4B8F80045E19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F5608E9-DEAF-43A1-AE39-4B8F80045E19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99603B29-638E-438B-B155-3491389A15FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99603B29-638E-438B-B155-3491389A15FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99603B29-638E-438B-B155-3491389A15FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99603B29-638E-438B-B155-3491389A15FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -207,6 +214,7 @@ Global
 		{D1FE1D7E-03B5-4BB6-BD0C-37F9C8A99B3A} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}
 		{639B5934-42A3-44C5-A2AC-CB7170C2F5DC} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}
 		{6F5608E9-DEAF-43A1-AE39-4B8F80045E19} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}
+		{99603B29-638E-438B-B155-3491389A15FC} = {BC0B8D6B-B76B-499F-9D47-49F22A55B276}
 		{70DB102E-9A73-4473-949D-C6D68871B850} = {B6F412FD-BA76-426F-B686-DC4877B7406C}
 		{DCC5B325-EB8C-44E9-B989-C40751C82067} = {11BAF651-610B-4BA4-B31E-C14224975C01}
 		{23C64DFB-C284-47AE-B839-025B089A522D} = {5D7065C5-5E14-4489-94DC-25454F1ED414}
