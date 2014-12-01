@@ -1,4 +1,4 @@
-﻿namespace ElektrostilXmlEditor
+﻿namespace StomMan.UI.Lib
 {
     partial class frmViewXml
     {

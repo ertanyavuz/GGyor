@@ -111,6 +111,7 @@
     <EmbeddedResource Include="MultiSelectAttributeControl.resx">
       <DependentUpon>MultiSelectAttributeControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -145,10 +146,6 @@
       <Project>{2f3f72d6-43b0-452b-bb51-768a8da9104e}</Project>
       <Name>N11Lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StorMan.UI.Lib\StorMan.UI.Lib.csproj">
-      <Project>{99603b29-638e-438b-b155-3491389a15fc}</Project>
-      <Name>StorMan.UI.Lib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\StorMan.Business\StorMan.Business.csproj">
       <Project>{dcc5b325-eb8c-44e9-b989-c40751c82067}</Project>
       <Name>StorMan.Business</Name>
@@ -156,6 +153,10 @@
     <ProjectReference Include="..\StorMan.Model\StorMan.Model.csproj">
       <Project>{23c64dfb-c284-47ae-b839-025b089a522d}</Project>
       <Name>StorMan.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StorMan.UI\StorMan.UI.csproj">
+      <Project>{639b5934-42a3-44c5-a2ac-cb7170c2f5dc}</Project>
+      <Name>StorMan.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

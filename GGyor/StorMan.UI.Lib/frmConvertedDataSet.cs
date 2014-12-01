@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace N11Entegrator
+namespace StomMan.UI.Lib
 {
-    public partial class frmMain : Form
+    public partial class frmConvertedDataSet : Form
     {
-        public frmMain()
+        public frmConvertedDataSet()
         {
             InitializeComponent();
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

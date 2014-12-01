@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using StorMan.Business;
 using StorMan.Model;
 
-namespace ElektrostilXmlEditor
+namespace StomMan.UI.Lib
 {
     public partial class frmTransform : Form
     {

@@ -93,6 +93,7 @@ namespace StorMan.UI
             this.cdsList = service.getConvertedDataSets(true);
 
             tree.Nodes.Clear();
+            bodyPanel.Controls.Clear();
 
             foreach (var cds in cdsList)
             {
@@ -133,17 +134,21 @@ namespace StorMan.UI
                         break;
                     if (node != null && node.Nodes.Count <= index)
                         break;
-                    node = (node == null ? tree.Nodes : node.Nodes)[index];
+                    var nodeColl = (node == null ? tree.Nodes : node.Nodes);
+                    node = nodeColl.Count > index ? nodeColl[index] : (nodeColl.Count > 0 ? nodeColl[nodeColl.Count - 1] : null);
                 }
 
                 if (node != null)
                     tree.SelectedNode = node;
             }
+
+            if (tree.Nodes.Count > 0)
+                tree_NodeMouseClick(tree, new TreeNodeMouseClickEventArgs(tree.Nodes[0], MouseButtons.Left, 1, 0, 0));
         }
 
         private void tree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Node == tree.SelectedNode)
+            if (e.Node == tree.SelectedNode && this.bodyPanel.Controls.Count > 0)
                 return;
             if (e.Node != null && e.Node.Tag != null)
             {

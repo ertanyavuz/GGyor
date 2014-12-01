@@ -64,6 +64,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConvertedDataSetView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConvertedDataSetView.Designer.cs">
+      <DependentUpon>ConvertedDataSetView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConvertedDataSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConvertedDataSet.Designer.cs">
+      <DependentUpon>frmConvertedDataSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConvertedDataSets.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +104,12 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ConvertedDataSetView.resx">
+      <DependentUpon>ConvertedDataSetView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConvertedDataSet.resx">
+      <DependentUpon>frmConvertedDataSet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConvertedDataSets.resx">
       <DependentUpon>frmConvertedDataSets.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +122,7 @@
     <EmbeddedResource Include="frmViewXml.resx">
       <DependentUpon>frmViewXml.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StorMan.Business\StorMan.Business.csproj">
