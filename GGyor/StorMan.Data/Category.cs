@@ -27,6 +27,8 @@ namespace StorMan.Data
     
             this.LocalCategories = new HashSet<LocalCategory>();
     
+            this.CategoryMaps = new HashSet<CategoryMap>();
+    
         }
     
     
@@ -53,6 +55,8 @@ namespace StorMan.Data
         public virtual ICollection<Attribute> Attributes { get; set; }
     
         public virtual ICollection<LocalCategory> LocalCategories { get; set; }
+    
+        public virtual ICollection<CategoryMap> CategoryMaps { get; set; }
     
     }
 

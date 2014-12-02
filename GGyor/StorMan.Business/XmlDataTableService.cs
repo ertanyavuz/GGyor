@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 using System.Xml.Linq;
 using StorMan.Model;
 
@@ -16,7 +16,24 @@ namespace StorMan.Business
         {
             var dt = new DataTable("ProductsXml");
 
-            var xdoc = XDocument.Load(xmlPath);
+            //var xdoc = XDocument.Load(xmlPath);
+            XDocument xdoc = null;
+            if (xmlPath.StartsWith("http"))
+            {
+                var tempFile = Path.GetTempFileName();
+                //var wr = (HttpWebRequest) WebRequest.Create(xmlPath);
+                var wc = new WebClient();
+                var data = wc.DownloadData(xmlPath);
+                System.IO.File.WriteAllBytes(tempFile, data);
+
+                xdoc = XDocument.Load(tempFile);
+
+                System.IO.File.Delete(tempFile);
+            }
+            else
+            {
+                xdoc = XDocument.Load(xmlPath);
+            }
 
             var q = from d in xdoc.Root.Descendants("item")
                     select d;

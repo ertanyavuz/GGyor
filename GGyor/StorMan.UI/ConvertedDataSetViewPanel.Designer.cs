@@ -75,7 +75,7 @@
             this.Controls.Add(this.btnSaveXml);
             this.Controls.Add(this.convertedDataSetControl1);
             this.Name = "ConvertedDataSetViewPanel";
-            this.Size = new System.Drawing.Size(486, 276);
+            this.Size = new System.Drawing.Size(314, 112);
             this.Load += new System.EventHandler(this.ConvertedDataSetViewPanel_Load);
             this.ResumeLayout(false);
 

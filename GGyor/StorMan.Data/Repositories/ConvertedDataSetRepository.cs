@@ -39,12 +39,12 @@ namespace StorMan.Data.Repositories
                                             .Select(x => new TransformModel
                                                 {
                                                     ID = x.ID,
-                                                    Name = x.Name,
+                                                    Name = x.Name ?? "",
                                                     Filters = filterList.Where(y => y.TransformID == x.ID)
                                                                         .Select(y => new FilterModel
                                                                         {
                                                                             ID = y.ID,
-                                                                            FieldName = y.FieldName,
+                                                                            FieldName = y.FieldName ?? "",
                                                                             FilterType = (FilterTypeEnum)(y.FilterType ?? 1),
                                                                             Value = y.Value
                                                                         }).ToList(),
@@ -52,8 +52,8 @@ namespace StorMan.Data.Repositories
                                                                         .Select(y => new OperationModel
                                                                             {
                                                                                 ID = y.ID,
-                                                                                Name = y.Name,
-                                                                                FieldName = y.FieldName,
+                                                                                Name = y.Name ?? "",
+                                                                                FieldName = y.FieldName ?? "",
                                                                                 OperationType = (OperationTypeEnum)(y.OperationType ?? 0),
                                                                                 Value = y.Value,
                                                                                 Order = y.Order

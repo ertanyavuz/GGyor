@@ -24,6 +24,8 @@
         <AssociationConnector Association="StorManModel.FK_Operation_Transform" />
         <AssociationConnector Association="StorManModel.CategoryAttribute" />
         <AssociationConnector Association="StorManModel.CategoryMapping" />
+        <EntityTypeShape EntityType="StorManModel.CategoryMap" Width="1.5" PointX="5.25" PointY="7.875" />
+        <AssociationConnector Association="StorManModel.FK__CategoryM__Categ__5629CD9C" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

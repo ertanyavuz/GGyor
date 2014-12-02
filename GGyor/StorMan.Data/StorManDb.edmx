@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="StorManModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="StorManModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Attribute">
           <Key>
             <PropertyRef Name="ID" />
@@ -29,7 +29,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StoreID" Type="int" Nullable="false" />
           <Property Name="ParentID" Type="int" />
-          <Property Name="Code" Type="varchar" MaxLength="20" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="CrDate" Type="datetime" Nullable="false" />
           <Property Name="UpdDate" Type="datetime" />
@@ -41,6 +41,20 @@
           </Key>
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="AttributeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="Level1" Type="varchar" MaxLength="100" />
+          <Property Name="Level2" Type="varchar" MaxLength="100" />
+          <Property Name="Level3" Type="varchar" MaxLength="100" />
+          <Property Name="Level4" Type="varchar" MaxLength="100" />
+          <Property Name="Level5" Type="varchar" MaxLength="100" />
+          <Property Name="CrDate" Type="datetime" />
+          <Property Name="UpdDate" Type="datetime" />
         </EntityType>
         <EntityType Name="CategoryMapping">
           <Key>
@@ -55,8 +69,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SourceXmlPath" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SourceXmlPath" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="ConvertedDataSetHistory">
           <Key>
@@ -64,7 +78,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ConvertedDataSetID" Type="int" Nullable="false" />
-          <Property Name="SourceXmlPath" Type="varchar" MaxLength="500" />
+          <Property Name="SourceXmlPath" Type="nvarchar" MaxLength="500" />
           <Property Name="XmlString" Type="ntext" />
         </EntityType>
         <EntityType Name="ExchangeRate">
@@ -82,9 +96,9 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TransformID" Type="int" Nullable="false" />
-          <Property Name="FieldName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FilterType" Type="int" />
-          <Property Name="Value" Type="varchar" MaxLength="100" />
+          <Property Name="Value" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="LocalCategory">
           <Key>
@@ -104,11 +118,11 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TransformID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="FieldName" Type="varchar" MaxLength="50" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="50" />
           <Property Name="OperationType" Type="int" />
-          <Property Name="Value" Type="varchar" MaxLength="500" />
+          <Property Name="Value" Type="nvarchar" MaxLength="500" />
           <Property Name="Order" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Transform">
           <Key>
@@ -116,8 +130,20 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ConvertedDataSetID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK__CategoryM__Categ__5629CD9C">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="CategoryMap" Type="Self.CategoryMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CategoryMap">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_AttributeValue_Attribute">
           <End Role="Attribute" Type="Self.Attribute" Multiplicity="1" />
           <End Role="AttributeValue" Type="Self.AttributeValue" Multiplicity="*" />
@@ -255,6 +281,7 @@
           <EntitySet Name="AttributeValue" EntityType="Self.AttributeValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoryAttribute" EntityType="Self.CategoryAttribute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryMap" EntityType="Self.CategoryMap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoryMapping" EntityType="Self.CategoryMapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConvertedDataSet" EntityType="Self.ConvertedDataSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConvertedDataSetHistory" EntityType="Self.ConvertedDataSetHistory" Schema="dbo" store:Type="Tables" />
@@ -263,6 +290,10 @@
           <EntitySet Name="LocalCategory" EntityType="Self.LocalCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Operation" EntityType="Self.Operation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transform" EntityType="Self.Transform" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CategoryM__Categ__5629CD9C" Association="Self.FK__CategoryM__Categ__5629CD9C">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryMap" EntitySet="CategoryMap" />
+          </AssociationSet>
           <AssociationSet Name="FK_AttributeValue_Attribute" Association="Self.FK_AttributeValue_Attribute">
             <End Role="Attribute" EntitySet="Attribute" />
             <End Role="AttributeValue" EntitySet="AttributeValue" />
@@ -359,6 +390,11 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="LocalCategory" EntitySet="LocalCategories" />
           </AssociationSet>
+          <EntitySet Name="CategoryMaps" EntityType="StorManModel.CategoryMap" />
+          <AssociationSet Name="FK__CategoryM__Categ__5629CD9C" Association="StorManModel.FK__CategoryM__Categ__5629CD9C">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="CategoryMap" EntitySet="CategoryMaps" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Attribute">
           <Key>
@@ -387,7 +423,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StoreID" Type="Int32" Nullable="false" />
           <Property Name="ParentID" Type="Int32" />
-          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CrDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdDate" Type="DateTime" Precision="3" />
@@ -395,14 +431,15 @@
           <NavigationProperty Name="Category2" Relationship="StorManModel.FK_Category_Category" FromRole="Category1" ToRole="Category" />
           <NavigationProperty Name="Attributes" Relationship="StorManModel.CategoryAttribute" FromRole="Category" ToRole="Attribute" />
           <NavigationProperty Name="LocalCategories" Relationship="StorManModel.CategoryMapping" FromRole="Category" ToRole="LocalCategory" />
+          <NavigationProperty Name="CategoryMaps" Relationship="StorManModel.FK__CategoryM__Categ__5629CD9C" FromRole="Category" ToRole="CategoryMap" />
         </EntityType>
         <EntityType Name="ConvertedDataSet">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SourceXmlPath" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SourceXmlPath" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ConvertedDataSetHistories" Relationship="StorManModel.FK_ConvertedDataSetHistory_ConvertedDataSet" FromRole="ConvertedDataSet" ToRole="ConvertedDataSetHistory" />
           <NavigationProperty Name="Transforms" Relationship="StorManModel.FK_Transform_ConvertedDataSet" FromRole="ConvertedDataSet" ToRole="Transform" />
         </EntityType>
@@ -412,7 +449,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConvertedDataSetID" Type="Int32" Nullable="false" />
-          <Property Name="SourceXmlPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SourceXmlPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="XmlString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ConvertedDataSet" Relationship="StorManModel.FK_ConvertedDataSetHistory_ConvertedDataSet" FromRole="ConvertedDataSetHistory" ToRole="ConvertedDataSet" />
         </EntityType>
@@ -431,9 +468,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TransformID" Type="Int32" Nullable="false" />
-          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FilterType" Type="Int32" />
-          <Property Name="Value" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Transform" Relationship="StorManModel.FK_Filter_Transform" FromRole="Filter" ToRole="Transform" />
         </EntityType>
         <EntityType Name="LocalCategory">
@@ -458,9 +495,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TransformID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FieldName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FieldName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OperationType" Type="Int32" />
-          <Property Name="Value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Order" Type="Int32" />
           <NavigationProperty Name="Transform" Relationship="StorManModel.FK_Operation_Transform" FromRole="Operation" ToRole="Transform" />
         </EntityType>
@@ -470,7 +507,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConvertedDataSetID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ConvertedDataSet" Relationship="StorManModel.FK_Transform_ConvertedDataSet" FromRole="Transform" ToRole="ConvertedDataSet" />
           <NavigationProperty Name="Filters" Relationship="StorManModel.FK_Filter_Transform" FromRole="Transform" ToRole="Filter" />
           <NavigationProperty Name="Operations" Relationship="StorManModel.FK_Operation_Transform" FromRole="Transform" ToRole="Operation" />
@@ -566,6 +603,33 @@
         <Association Name="CategoryMapping">
           <End Type="StorManModel.Category" Role="Category" Multiplicity="*" />
           <End Type="StorManModel.LocalCategory" Role="LocalCategory" Multiplicity="*" />
+        </Association>
+        <EntityType Name="CategoryMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Level1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Level2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Level3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Level4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Level5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CrDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Category" Relationship="StorManModel.FK__CategoryM__Categ__5629CD9C" FromRole="CategoryMap" ToRole="Category" />
+        </EntityType>
+        <Association Name="FK__CategoryM__Categ__5629CD9C">
+          <End Type="StorManModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="StorManModel.CategoryMap" Role="CategoryMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CategoryMap">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -696,6 +760,21 @@
               <ScalarProperty Name="ID" ColumnName="CategoryID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="CategoryMaps">
+            <EntityTypeMapping TypeName="StorManModel.CategoryMap">
+              <MappingFragment StoreEntitySet="CategoryMap">
+                <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
+                <ScalarProperty Name="CrDate" ColumnName="CrDate" />
+                <ScalarProperty Name="Level5" ColumnName="Level5" />
+                <ScalarProperty Name="Level4" ColumnName="Level4" />
+                <ScalarProperty Name="Level3" ColumnName="Level3" />
+                <ScalarProperty Name="Level2" ColumnName="Level2" />
+                <ScalarProperty Name="Level1" ColumnName="Level1" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

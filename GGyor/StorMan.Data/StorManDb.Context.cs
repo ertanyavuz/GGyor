@@ -52,6 +52,8 @@ namespace StorMan.Data
     
         public DbSet<Transform> Transforms { get; set; }
     
+        public DbSet<CategoryMap> CategoryMaps { get; set; }
+    
     }
 
 }
