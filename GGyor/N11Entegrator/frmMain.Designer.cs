@@ -38,6 +38,8 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.treeStoreCategories = new System.Windows.Forms.TreeView();
+            this.treeN11Categories = new System.Windows.Forms.TreeView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -59,6 +61,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(855, 538);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -116,6 +119,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.treeN11Categories);
+            this.tabPage2.Controls.Add(this.treeStoreCategories);
             this.tabPage2.Controls.Add(this.toolStrip2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -152,6 +157,20 @@
             this.toolStrip3.TabIndex = 0;
             this.toolStrip3.Text = "toolStrip3";
             // 
+            // treeStoreCategories
+            // 
+            this.treeStoreCategories.Location = new System.Drawing.Point(28, 61);
+            this.treeStoreCategories.Name = "treeStoreCategories";
+            this.treeStoreCategories.Size = new System.Drawing.Size(351, 392);
+            this.treeStoreCategories.TabIndex = 1;
+            // 
+            // treeN11Categories
+            // 
+            this.treeN11Categories.Location = new System.Drawing.Point(409, 61);
+            this.treeN11Categories.Name = "treeN11Categories";
+            this.treeN11Categories.Size = new System.Drawing.Size(351, 392);
+            this.treeN11Categories.TabIndex = 1;
+            // 
             // frmMain
             // 
             this.ClientSize = new System.Drawing.Size(855, 538);
@@ -186,6 +205,8 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeCds;
         private System.Windows.Forms.Panel bodyPanel;
+        private System.Windows.Forms.TreeView treeN11Categories;
+        private System.Windows.Forms.TreeView treeStoreCategories;
 
     }
 }
