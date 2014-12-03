@@ -48,28 +48,6 @@ namespace N11Entegrator
         }
 
 
-        private void loadDataTable()
-        {
-            if (treeCds.Nodes.Count > 0)
-            {
-                var cds = treeCds.Nodes[0].Tag as ConvertedDataSetModel;
-                if (cds == null)
-                    return;
-
-                //var products = new ProductsXmlCollection(cds.SourceXmlPath);
-                var service = new XmlDataTableService();
-                var loadedDataTable = service.XmlToDataTable(cds.SourceXmlPath);
-
-                if (loadedTables.ContainsKey(cds.ID))
-                    loadedTables[cds.ID] = loadedDataTable;
-                else
-                    loadedTables.Add(cds.ID, loadedDataTable);
-
-                MessageBox.Show("XML Yüklendi.");
-            }
-        }
-
-
     #region " Transforms "
 
         private void treeCds_AfterSelect(object sender, TreeViewEventArgs e)
@@ -139,6 +117,7 @@ namespace N11Entegrator
                 bodyPanel.Controls.Clear();
 
                 var list = cdsService.getConvertedDataSets(true);
+                list = list.Where(x => x.Name.StartsWith("N11")).ToList();
                 cdsList = list;
 
                 foreach (var cdsModel in list)
@@ -160,6 +139,9 @@ namespace N11Entegrator
                 }
 
                 treeCds.ExpandAll();
+
+                if (treeCds.SelectedNode == null && treeCds.Nodes.Count > 0)
+                    treeCds.SelectedNode = treeCds.Nodes[0];
             }
             catch (Exception ex)
             {
@@ -171,10 +153,9 @@ namespace N11Entegrator
 
         private bool loadXml(int cdsID)
         {
-            DataTable loadedDataTable = null;
             if (!loadedTables.ContainsKey(cdsID))
             {
-                loadDataTable();
+                loadDataTable(cdsID);
                 if (!loadedTables.ContainsKey(cdsID))
                 {
                     MessageBox.Show("XML Tabloya yüklenemedi.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -182,6 +163,25 @@ namespace N11Entegrator
                 }
             }
             return true;
+        }
+        private void loadDataTable(int cdsID)
+        {
+            if (cdsList == null)
+                return;
+
+            var cds = cdsList.FirstOrDefault(x => x.ID == cdsID);
+            if (cds == null)
+                return;
+
+            var service = new XmlDataTableService();
+            var loadedDataTable = service.XmlToDataTable(cds.SourceXmlPath);
+
+            if (loadedTables.ContainsKey(cds.ID))
+                loadedTables[cds.ID] = loadedDataTable;
+            else
+                loadedTables.Add(cds.ID, loadedDataTable);
+
+            MessageBox.Show("XML Yüklendi.");
         }
 
 
@@ -226,13 +226,74 @@ namespace N11Entegrator
 
         private void LoadCategoryTree()
         {
-            var list = dataService.GetSubCategories(N11_STORE_ID, null);
-            categoryTable = new Dictionary<long, CategoryModel>();
-            treeN11Categories.Nodes.Clear();
-            foreach (CategoryModel cat in list)
+            try
             {
-                treeN11Categories.Nodes.Add(categoryToTreeNode(cat, false));
+                var list = dataService.GetSubCategories(N11_STORE_ID, null);
+                categoryTable = new Dictionary<long, CategoryModel>();
+                treeN11Categories.Nodes.Clear();
+                foreach (CategoryModel cat in list)
+                {
+                    treeN11Categories.Nodes.Add(categoryToTreeNode(cat, false));
+                }
+
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            try
+            {
+                //loadXml(this.CurrentConvertedDataSet.ID);
+
+                //var xmlColl = new ProductsXmlCollection(this.CurrentConvertedDataSet.SourceXmlPath);
+
+                //xmlColl.GetSubTable("mainCategory", "category", "subCategory");
+
+                var service = new XmlDataTableService();
+                //var dt = service.XmlToDataTable(this.CurrentConvertedDataSet.SourceXmlPath);
+                loadXml(this.CurrentConvertedDataSet.ID);
+                var dt = loadedTables[this.CurrentConvertedDataSet.ID];
+                dt = XmlDataTableService.GetSubTable(dt, "mainCategory", "category", "subCategory");
+
+                Func<object, string> cellValueToStr = x => x is System.DBNull ? "" : (string) x;
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    var mainCategory = cellValueToStr(dr["mainCategory"]);
+                    var category = cellValueToStr(dr["category"]);
+                    var subCategory = cellValueToStr(dr["subCategory"]);
+
+                    if (!String.IsNullOrEmpty(mainCategory))
+                    {
+                        var level1 = treeStoreCategories.Nodes[mainCategory];
+                        if (level1 == null)
+                            level1 = treeStoreCategories.Nodes.Add(mainCategory);
+
+                        if (!String.IsNullOrEmpty(category))
+                        {
+                            var level2 = level1.Nodes[category];
+                            if (level2 == null)
+                                level2 = level1.Nodes.Add(mainCategory);
+
+                            if (!String.IsNullOrEmpty(subCategory))
+                            {
+                                var level3 = level2.Nodes[subCategory];
+                                if (level3 == null)
+                                    level3 = level2.Nodes.Add(subCategory);
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                ex.GetType();
+            }
+
+
         }
         private TreeNode categoryToTreeNode(CategoryModel cat, bool getSubCategories)
         {

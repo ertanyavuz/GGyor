@@ -35,11 +35,11 @@
             this.bodyPanel = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.treeN11Categories = new System.Windows.Forms.TreeView();
+            this.treeStoreCategories = new System.Windows.Forms.TreeView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.treeStoreCategories = new System.Windows.Forms.TreeView();
-            this.treeN11Categories = new System.Windows.Forms.TreeView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -95,6 +95,8 @@
             // treeCds
             // 
             this.treeCds.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeCds.FullRowSelect = true;
+            this.treeCds.HideSelection = false;
             this.treeCds.Location = new System.Drawing.Point(0, 0);
             this.treeCds.Name = "treeCds";
             this.treeCds.Size = new System.Drawing.Size(148, 481);
@@ -130,6 +132,20 @@
             this.tabPage2.Text = "Kategori Eşleştirme";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // treeN11Categories
+            // 
+            this.treeN11Categories.Location = new System.Drawing.Point(409, 61);
+            this.treeN11Categories.Name = "treeN11Categories";
+            this.treeN11Categories.Size = new System.Drawing.Size(351, 392);
+            this.treeN11Categories.TabIndex = 1;
+            // 
+            // treeStoreCategories
+            // 
+            this.treeStoreCategories.Location = new System.Drawing.Point(28, 61);
+            this.treeStoreCategories.Name = "treeStoreCategories";
+            this.treeStoreCategories.Size = new System.Drawing.Size(351, 392);
+            this.treeStoreCategories.TabIndex = 1;
+            // 
             // toolStrip2
             // 
             this.toolStrip2.Location = new System.Drawing.Point(3, 3);
@@ -156,20 +172,6 @@
             this.toolStrip3.Size = new System.Drawing.Size(841, 25);
             this.toolStrip3.TabIndex = 0;
             this.toolStrip3.Text = "toolStrip3";
-            // 
-            // treeStoreCategories
-            // 
-            this.treeStoreCategories.Location = new System.Drawing.Point(28, 61);
-            this.treeStoreCategories.Name = "treeStoreCategories";
-            this.treeStoreCategories.Size = new System.Drawing.Size(351, 392);
-            this.treeStoreCategories.TabIndex = 1;
-            // 
-            // treeN11Categories
-            // 
-            this.treeN11Categories.Location = new System.Drawing.Point(409, 61);
-            this.treeN11Categories.Name = "treeN11Categories";
-            this.treeN11Categories.Size = new System.Drawing.Size(351, 392);
-            this.treeN11Categories.TabIndex = 1;
             // 
             // frmMain
             // 

@@ -204,5 +204,28 @@ namespace StorMan.Business
             }
             return resultTable;
         }
+
+        public static DataTable GetSubTable(DataTable dt, params string[] columns)
+        {
+            if (dt == null)
+                return null;
+
+            var subTable = dt.Copy();
+            var columnsToRemove = new List<string>();
+            foreach (DataColumn column in subTable.Columns)
+            {
+                if (!columns.Contains(column.ColumnName))
+                    columnsToRemove.Add(column.ColumnName);
+            }
+
+            foreach (var colName in columnsToRemove)
+            {
+                subTable.Columns.Remove(colName);
+            }
+
+            return subTable;
+
+        }
+
     }
 }
