@@ -22,6 +22,7 @@ namespace N11Entegrator
 
         private N11DataService dataService = new N11DataService();
         private ConvertedDataSetService cdsService = new ConvertedDataSetService();
+        private CategoryService catService = new CategoryService();
 
         // Tab1
         private List<ConvertedDataSetModel> cdsList = null;
@@ -41,7 +42,7 @@ namespace N11Entegrator
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPage2 && treeStoreCategories.Nodes.Count == 0)
+            if (tabControl1.SelectedTab == tabPage2)
             {
                 LoadCategoryTree();
             }
@@ -224,6 +225,11 @@ namespace N11Entegrator
 
     #region " Categories "
 
+        private void btnReloadCategories_Click(object sender, EventArgs e)
+        {
+            LoadCategoryTree();
+        }
+
         private void LoadCategoryTree()
         {
             try
@@ -234,8 +240,8 @@ namespace N11Entegrator
                 foreach (CategoryModel cat in list)
                 {
                     treeN11Categories.Nodes.Add(categoryToTreeNode(cat, false));
+                    treeProductCategories.Nodes.Add(categoryToTreeNode(cat, false));
                 }
-
             }
             catch (Exception ex)
             {
@@ -256,35 +262,78 @@ namespace N11Entegrator
                 var dt = loadedTables[this.CurrentConvertedDataSet.ID];
                 dt = XmlDataTableService.GetSubTable(dt, "mainCategory", "category", "subCategory");
 
+                // Get mappings
+                
+
+                //var treeTable = new Dictionary<string, Dictionary<string, List<string>>>();
+                var treeTable = new List<Tuple<string, string, string, string, long?>>();
+                var mappingTable = catService.GetCategoryMappings(N11_STORE_ID);
+
                 Func<object, string> cellValueToStr = x => x is System.DBNull ? "" : (string) x;
 
+                // DataTable to treeTable
                 foreach (DataRow dr in dt.Rows)
                 {
                     var mainCategory = cellValueToStr(dr["mainCategory"]);
                     var category = cellValueToStr(dr["category"]);
                     var subCategory = cellValueToStr(dr["subCategory"]);
 
-                    if (!String.IsNullOrEmpty(mainCategory))
-                    {
-                        var level1 = treeStoreCategories.Nodes[mainCategory];
-                        if (level1 == null)
-                            level1 = treeStoreCategories.Nodes.Add(mainCategory);
+                    var mappedCategory =
+                        mappingTable.FirstOrDefault(x =>
+                                                mainCategory == (x.Level1 ?? "") 
+                                                    && category == (x.Level2 ?? "") 
+                                                    && subCategory == (x.Level3 ?? ""));
+                    var mappedCatName = mappedCategory != null ? mappedCategory.CategoryName : "";
+                    var mappedCatId = mappedCategory != null ? mappedCategory.CategoryID : (long?) null;
 
-                        if (!String.IsNullOrEmpty(category))
-                        {
-                            var level2 = level1.Nodes[category];
-                            if (level2 == null)
-                                level2 = level1.Nodes.Add(mainCategory);
+                    treeTable.Add(new Tuple<string, string, string, string, long?>(mainCategory, category, subCategory, mappedCatName, mappedCatId));
 
-                            if (!String.IsNullOrEmpty(subCategory))
-                            {
-                                var level3 = level2.Nodes[subCategory];
-                                if (level3 == null)
-                                    level3 = level2.Nodes.Add(subCategory);
-                            }
-                        }
-                    }
+                    //if (!String.IsNullOrEmpty(mainCategory))
+                    //{
+                    //    var level1 = treeTable.ContainsKey(mainCategory) ? treeTable[mainCategory] : null;
+                    //    if (level1 == null)
+                    //    {
+                    //        level1 = new Dictionary<string, List<string>>();
+                    //        treeTable.Add(mainCategory, level1);
+                    //    }
+
+                    //    if (!String.IsNullOrEmpty(category))
+                    //    {
+                    //        var level2 = level1.ContainsKey(category) ? level1[category] : null;
+                    //        if (level2 == null)
+                    //        {
+                    //            level2 = new List<string>();
+                    //            level1.Add(category, level2);
+                    //        }
+
+                    //        if (!String.IsNullOrEmpty(subCategory))
+                    //        {
+                    //            if (!level2.Contains(subCategory))
+                    //                level2.Add(subCategory);
+                    //        }
+                    //    }
+                    //}
                 }
+
+                treeTable = treeTable.Distinct().ToList();
+
+                // Add tree nodes
+                categoryTreeView1.SetDataSource(treeTable);
+
+                //foreach (var mainCategory in treeTable.Keys)
+                //{
+                //    var catTable = treeTable[mainCategory];
+                //    var mainNode = treeStoreCategories.Nodes.Add(mainCategory);
+                //    foreach (var category in catTable.Keys)
+                //    {
+                //        var subList = catTable[category];
+                //        var node = mainNode.Nodes.Add(category);
+                //        foreach (var subCategory in subList)
+                //        {
+                //            node.Nodes.Add(subCategory);
+                //        }
+                //    }
+                //}
 
             }
             catch (Exception ex)
@@ -295,6 +344,23 @@ namespace N11Entegrator
 
 
         }
+        private void treeN11Categories_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        {
+            if (e.Node.Nodes.Count == 1 && e.Node.Nodes[0].Text == "dummy" && e.Node.Tag is CategoryModel)
+            {
+                e.Node.Nodes.Clear();
+
+                var cat = e.Node.Tag as CategoryModel;
+
+                var dataService = new N11DataService();
+                var list = dataService.GetSubCategories(N11_STORE_ID, (int?)cat.ID);
+                foreach (var categoryModel in list)
+                {
+                    e.Node.Nodes.Add(categoryToTreeNode(categoryModel, false));
+                }
+            }
+        }
+
         private TreeNode categoryToTreeNode(CategoryModel cat, bool getSubCategories)
         {
             var node = new TreeNode(String.Format("{0} - {1}", cat.ID, cat.Name));
@@ -317,6 +383,10 @@ namespace N11Entegrator
         }
 
     #endregion
+
+
+
+        
 
 
     }

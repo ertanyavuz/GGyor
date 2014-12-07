@@ -118,4 +118,15 @@ namespace StorMan.Model
         public string code { get; set; }
     }
 
+    public class CategoryMapModel
+    {
+        public int ID { get; set; }
+        public long CategoryID { get; set; }
+        public string CategoryName { get; set; }
+        public string Level1 { get; set; }
+        public string Level2 { get; set; }
+        public string Level3 { get; set; }
+        public string Level4 { get; set; }
+        public string Level5 { get; set; }
+    }
 }

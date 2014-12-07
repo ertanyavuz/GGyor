@@ -163,5 +163,29 @@ namespace StorMan.Data.Repositories
             return true;
 
         }
+
+        public List<CategoryMapModel> GetCategoryMappings(int storeId)
+        {
+            var list = _context.CategoryMaps
+                                .Where(x => x.Category.StoreID == storeId && String.IsNullOrEmpty(x.Level1))
+                                .Select(x => new CategoryMapModel
+                                {
+                                    ID = x.ID,
+                                    CategoryID = x.CategoryID,
+                                    CategoryName = x.Category.Name,
+                                    Level1 = x.Level1,
+                                    Level2 = x.Level2,
+                                    Level3 = x.Level3,
+                                    Level4 = x.Level4,
+                                    Level5 = x.Level5
+                                    //x.CategoryID,
+                                    //CategoryName = x.Category.Name,
+                                    //x.Level1,
+                                    //x.Level2,
+                                    //x.Level3
+                                }).ToList();
+            return list;
+        }
+
     }
 }

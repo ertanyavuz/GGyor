@@ -30,5 +30,10 @@ namespace StorMan.Business
 
             return table;
         }
+
+        public List<CategoryMapModel> GetCategoryMappings(int storeId)
+        {
+            return _repository.GetCategoryMappings(storeId);
+        }
     }
 }

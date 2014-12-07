@@ -38,6 +38,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Remoting" />
@@ -51,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CategoryTreeView.Designer.cs">
+      <DependentUpon>CategoryTreeView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComparerDataGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +114,9 @@
     <Compile Include="ViewPanelBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="CategoryTreeView.resx">
+      <DependentUpon>CategoryTreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ComparerDataGrid.resx">
       <DependentUpon>ComparerDataGrid.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +129,7 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
