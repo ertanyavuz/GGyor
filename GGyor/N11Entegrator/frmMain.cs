@@ -401,7 +401,7 @@ namespace N11Entegrator
         private BackgroundWorker bgw1;
         private ProgressBar progressBar1;
         private Label lblStatus;
-        private ListBox lbLog;
+        //private ListBox lbLog;
         private Button btnRunUpdate, btnStop;
         private CheckBox chkDontCheckUpdates;
 
@@ -681,6 +681,46 @@ namespace N11Entegrator
         }
 
     #endregion
+
+        private void btnDownloadProducts_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCompareProducts_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSaveAttributes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStartUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStopUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bgw_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bgw_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
 
 
 
