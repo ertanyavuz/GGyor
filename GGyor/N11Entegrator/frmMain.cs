@@ -398,26 +398,34 @@ namespace N11Entegrator
 
     #region " Products "
 
-        private BackgroundWorker bgw1;
-        private ProgressBar progressBar1;
-        private Label lblStatus;
+        //private BackgroundWorker bgw1;
+        private ProgressBar progressBar1 = new ProgressBar();
+        private Label lblStatus = new Label();
         //private ListBox lbLog;
-        private Button btnRunUpdate, btnStop;
-        private CheckBox chkDontCheckUpdates;
+        //private Button btnRunUpdate, btnStop;
+        private CheckBox chkDontCheckUpdates = new CheckBox();
 
 
-        private void btnGetSource_Click(object sender, EventArgs e)
+        private void getSourceProducts()
         {
             sourceList = n11Service.GetSourceProductsXml(N11Service.N11_XML_PATH, N11Service.PRICE_COLUMN);
             lblStatus.Text = String.Format("Kaynak XML çekildi, {0} ürün bulundu.", sourceList.Count);
         }
-        private void btnGetDestination_Click(object sender, EventArgs e)
+        private void getDestinationProducts()
         {
             n11List = n11Service.GetProductsJson();
             lblStatus.Text = String.Format("N11 ürünleri çekildi, {0} ürün bulundu.", n11List.Count);
         }
 
-        private void btnCompareLists_Click(object sender, EventArgs e)
+
+
+        private void btnDownloadProducts_Click(object sender, EventArgs e)
+        {
+            getSourceProducts();
+            getDestinationProducts();
+        }
+
+        private void btnCompareProducts_Click(object sender, EventArgs e)
         {
             newProductsTable = new DataTable();
             newProductsTable.Columns.Add("stockCode");
@@ -534,34 +542,44 @@ namespace N11Entegrator
 
             lblStatus.Text = String.Format("Karşılaştırma tamamlandı. {0} yeni ürün, {1} güncelleme ve {2} stok sıfırlama işlemi var. {3} üründe değişiklik yok.",
                                         newProductsTable.Rows.Count, updateProductsTable.Rows.Count, oldProductsTable.Rows.Count, ayniCount);
+        }
+
+        private void btnSaveAttributes_Click(object sender, EventArgs e)
+        {
 
         }
 
-        private void btnRunUpdate_Click(object sender, EventArgs e)
+        private void btnStartUpdate_Click(object sender, EventArgs e)
         {
-            if (!bgw1.IsBusy)
+            if (!bgw.IsBusy)
             {
-                btnRunUpdate.Enabled = false;
-                btnStop.Enabled = true;
-                bgw1.RunWorkerAsync();
+                btnStartUpdate.Enabled = false;
+                btnStopUpdate.Enabled = true;
+                bgw.RunWorkerAsync();
             }
         }
-        private void bgw1_DoWork(object sender, DoWorkEventArgs e)
+
+        private void btnStopUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bgw_DoWork(object sender, DoWorkEventArgs e)
         {
             var i = 0;
-            bgw1.ReportProgress(0, "Yeni ürünler kaydediliyor.");
+            bgw.ReportProgress(0, "Yeni ürünler kaydediliyor.");
             foreach (DataRow dr in newProductsTable.Rows)
             {
                 i++;
                 var percent = (int)Math.Round((double)(i * 100 / newProductsTable.Rows.Count));
                 if (dr["n11Category"] == System.DBNull.Value || String.IsNullOrWhiteSpace(dr["n11Category"].ToString()))
                 {
-                    bgw1.ReportProgress(percent, String.Format("{0} için kategori seçilmedi.", dr["stockCode"]));
+                    bgw.ReportProgress(percent, String.Format("{0} için kategori seçilmedi.", dr["stockCode"]));
                     continue;
                 }
                 if (!rowAttributeTable.ContainsKey((string)dr["stockCode"]))
                 {
-                    bgw1.ReportProgress(percent, String.Format("{0} için özellikler seçilmedi.", dr["stockCode"]));
+                    bgw.ReportProgress(percent, String.Format("{0} için özellikler seçilmedi.", dr["stockCode"]));
                     continue;
                 }
                 var prod = new ProductModel
@@ -587,13 +605,13 @@ namespace N11Entegrator
                 {
                     result.GetType();
                 }
-                bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, newProductsTable.Rows.Count, percent));
-                if (bgw1.CancellationPending)
+                bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, newProductsTable.Rows.Count, percent));
+                if (bgw.CancellationPending)
                     return;
             }
 
             i = 0;
-            bgw1.ReportProgress(0, "Ürün fiyat ve stok miktarları güncelleniyor.");
+            bgw.ReportProgress(0, "Ürün fiyat ve stok miktarları güncelleniyor.");
             foreach (DataRow dr in updateProductsTable.Rows)
             {
                 i++;
@@ -622,12 +640,12 @@ namespace N11Entegrator
                 }
 
 
-                bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, updateProductsTable.Rows.Count, percent));
+                bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, updateProductsTable.Rows.Count, percent));
             }
 
 
             i = 0;
-            bgw1.ReportProgress(0, "N11deki eski ürünlerin stok bilgileri sıfırlanıyor.");
+            bgw.ReportProgress(0, "N11deki eski ürünlerin stok bilgileri sıfırlanıyor.");
             foreach (DataRow dr in oldProductsTable.Rows)
             {
                 i++;
@@ -638,8 +656,8 @@ namespace N11Entegrator
 
                 if (productTitle.Contains("Timberland"))
                 {
-                    bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %) {3} SIFIRLANMADI.", i, oldProductsTable.Rows.Count, percent, productTitle));
-                    if (bgw1.CancellationPending)
+                    bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %) {3} SIFIRLANMADI.", i, oldProductsTable.Rows.Count, percent, productTitle));
+                    if (bgw.CancellationPending)
                         return;
                     continue;
                 }
@@ -649,22 +667,23 @@ namespace N11Entegrator
                 {
                     // Remove
                     n11Service.RemoveProduct(productStockCode);
-                    bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, oldProductsTable.Rows.Count, percent));
+                    bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, oldProductsTable.Rows.Count, percent));
                     Debug.WriteLine("{0} sıfırlandı\t{1}\t{2}", i, productStockCode, productTitle);
                 }
                 else
                 {
-                    bgw1.ReportProgress(percent, String.Format("{0} / {1} ({2} %) Ürün ES'de mevcut, sıfırlanmıyor.", i, oldProductsTable.Rows.Count, percent));
+                    bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %) Ürün ES'de mevcut, sıfırlanmıyor.", i, oldProductsTable.Rows.Count, percent));
                     sourceProd.GetType();
                 }
 
-                if (bgw1.CancellationPending)
+                if (bgw.CancellationPending)
                     return;
             }
 
-            bgw1.ReportProgress(100, "Bitti");
+            bgw.ReportProgress(100, "Bitti");
         }
-        private void bgw1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+
+        private void bgw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
             if (e.UserState != null)
@@ -674,55 +693,16 @@ namespace N11Entegrator
                 lbLog.Items.Insert(0, str);
             }
         }
-        private void bgw1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+
+        private void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            btnRunUpdate.Enabled = true;
-            btnStop.Enabled = false;
+            btnStartUpdate.Enabled = true;
+            btnStopUpdate.Enabled = false;
         }
 
     #endregion
 
-        private void btnDownloadProducts_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCompareProducts_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSaveAttributes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnStartUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnStopUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bgw_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-        private void bgw_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
-        }
-
-        private void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-        }
-
-
+        
 
     }
 }
