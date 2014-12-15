@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Internal;
 using EntegrasyonServiceBase;
 using N11Lib;
 using N11Lib.ProductService;
@@ -33,6 +34,7 @@ namespace N11Entegrator
         private List<ConvertedDataSetModel> cdsList = null;
         private Dictionary<int, DataTable> loadedTables = new Dictionary<int, DataTable>();
         private bool running = false;
+        private bool categoriesLoaded = false;
 
         // Tab2
         private Dictionary<long, CategoryModel> categoryTable;
@@ -45,7 +47,7 @@ namespace N11Entegrator
         private DataTable oldProductsTable;
         private List<ProductModel> sourceList;
         private List<ProductBasic> n11List;
-        private Dictionary<string, List<KeyValuePair<string, string>>> rowAttributeTable;
+        private Dictionary<string, List<KeyValuePair<string, string>>> rowAttributeTable = new Dictionary<string, List<KeyValuePair<string, string>>>();
 
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -53,12 +55,18 @@ namespace N11Entegrator
             LoadCdsTree();
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPage2)
+            if (tabControl1.SelectedTab == tabPage2 && !categoriesLoaded)
             {
                 LoadCategoryTree();
             }
+        }
+
+        private void Log(String str)
+        {
+            var msg = String.Format("{0} - {1}", DateTime.Now.ToShortTimeString(), str);
+            lbLog.Items.Insert(0, msg);
         }
 
 
@@ -198,7 +206,6 @@ namespace N11Entegrator
             MessageBox.Show("XML Yüklendi.");
         }
 
-
         private ConvertedDataSetModel CurrentConvertedDataSet
         {
             get
@@ -233,6 +240,64 @@ namespace N11Entegrator
 
             }
         }
+
+
+        private void btnTransformKaydet_Click(object sender, EventArgs e)
+        {
+            if (bodyPanel.Controls[0] is FilterViewPanel)
+            {
+                try
+                {
+                    var panel = bodyPanel.Controls[0] as FilterViewPanel;
+                    var transform = this.CurrentTransform;
+                    if (transform == null)
+                        return;
+
+                    transform.Filters = panel.FilterList;
+                    cdsService.updateTransform(transform);
+
+                    LoadCdsTree();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hata: " + ex.ToString());
+                }
+            }
+            else if (bodyPanel.Controls[0] is TransformViewPanel)
+            {
+                try
+                {
+                    var panel = bodyPanel.Controls[0] as TransformViewPanel;
+                    var transform = panel.Transform;
+                    if (transform == null)
+                        return;
+
+                    cdsService.updateTransform(transform);
+
+                    LoadCdsTree();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hata: " + ex.ToString());
+                }
+            }
+            else if (bodyPanel.Controls[0] is ConvertedDataSetViewPanel)
+            {
+                try
+                {
+                    var panel = bodyPanel.Controls[0] as ConvertedDataSetViewPanel;
+
+                    cdsService.updateConvertedDataSet(panel.ConvertedDataSet.ID, panel.ConvertedDataSet.Name, panel.ConvertedDataSet.SourceXmlPath);
+
+                    LoadCdsTree();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
 
     #endregion
 
@@ -348,13 +413,14 @@ namespace N11Entegrator
                 //    }
                 //}
 
+                categoriesLoaded = true;
+
             }
             catch (Exception ex)
             {
                 //throw ex;
                 ex.GetType();
             }
-
 
         }
         private void treeN11Categories_BeforeExpand(object sender, TreeViewCancelEventArgs e)
@@ -378,7 +444,7 @@ namespace N11Entegrator
         {
             var node = new TreeNode(String.Format("{0} - {1}", cat.ID, cat.Name));
             node.Tag = cat;
-            if (categoryTable.ContainsKey(cat.ID))
+            if (!categoryTable.ContainsKey(cat.ID))
                 categoryTable.Add(cat.ID, cat);
             if (getSubCategories)
             {
@@ -402,12 +468,12 @@ namespace N11Entegrator
 
         //private BackgroundWorker bgw1;
         private ProgressBar progressBar1 = new ProgressBar();
-        private Label lblStatus = new Label();
+        //private Label lblStatus = new Label();
         //private ListBox lbLog;
         //private Button btnRunUpdate, btnStop;
         private CheckBox chkDontCheckUpdates = new CheckBox();
 
-        private DataRow SelectedRow
+        private List<DataRow> SelectedRows
         {
             get
             {
@@ -415,25 +481,48 @@ namespace N11Entegrator
                 if (grid == null)
                     return null;
 
-                if (grid.SelectedRows.Count != 1)
+                var rowList = new List<DataRow>();
+                foreach (DataGridViewRow selectedRow in grid.SelectedRows)
+                {
+                    rowList.Add(((DataRowView)selectedRow.DataBoundItem).Row);
+                }
+
+                return rowList;
+            }
+        }
+        private DataRow SelectedRow
+        {
+            get
+            {
+                var rowList = this.SelectedRows;
+
+                if (rowList == null || rowList.Count != 1)
                     return null;
 
-                return ((DataRowView) grid.SelectedRows[0].DataBoundItem).Row;
+                return rowList[0];
             }
         }
 
         private void getSourceProducts()
         {
-            sourceList = n11Service.GetSourceProductsXml(N11Service.N11_XML_PATH, N11Service.PRICE_COLUMN);
-            lblStatus.Text = String.Format("Kaynak XML çekildi, {0} ürün bulundu.", sourceList.Count);
+            n11Service.ConvertedDataSet = this.CurrentConvertedDataSet;
+
+            sourceList = n11Service.GetSourceProductsXml(CurrentConvertedDataSet.SourceXmlPath, N11Service.PRICE_COLUMN);
+            //lblStatus.Text = String.Format("Kaynak XML çekildi, {0} ürün bulundu.", sourceList.Count);
+            Log(String.Format("Kaynak XML çekildi, {0} ürün bulundu.", sourceList.Count));
         }
         private void getDestinationProducts()
         {
             n11List = n11Service.GetProductsJson();
-            lblStatus.Text = String.Format("N11 ürünleri çekildi, {0} ürün bulundu.", n11List.Count);
+            //lblStatus.Text = String.Format("N11 ürünleri çekildi, {0} ürün bulundu.", n11List.Count);
+            Log(String.Format("N11 ürünleri çekildi, {0} ürün bulundu.", n11List.Count));
         }
         private void compareProducts()
         {
+            tpYeniler.Text = "Yeniler";
+            tpGuncellemeler.Text = "Güncellemeler";
+            tpSifirlanacaklar.Text = "Stoğu Sıfırlanacaklar";
+
             newProductsTable = new DataTable();
             newProductsTable.Columns.Add("stockCode");
             newProductsTable.Columns.Add("label");
@@ -547,8 +636,14 @@ namespace N11Entegrator
             grid2.DataSource = updateProductsTable;
             grid3.DataSource = oldProductsTable;
 
-            lblStatus.Text = String.Format("Karşılaştırma tamamlandı. {0} yeni ürün, {1} güncelleme ve {2} stok sıfırlama işlemi var. {3} üründe değişiklik yok.",
-                                        newProductsTable.Rows.Count, updateProductsTable.Rows.Count, oldProductsTable.Rows.Count, ayniCount);
+            tpYeniler.Text += String.Format(" ({0})", newProductsTable.Rows.Count);
+            tpGuncellemeler.Text += String.Format( "({0})", updateProductsTable.Rows.Count);
+            tpSifirlanacaklar.Text += String.Format(" ({0})", oldProductsTable.Rows.Count);
+
+            //lblStatus.Text = String.Format("Karşılaştırma tamamlandı. {0} yeni ürün, {1} güncelleme ve {2} stok sıfırlama işlemi var. {3} üründe değişiklik yok.",
+            //                            newProductsTable.Rows.Count, updateProductsTable.Rows.Count, oldProductsTable.Rows.Count, ayniCount);
+            Log(String.Format("Karşılaştırma tamamlandı. {0} yeni ürün, {1} güncelleme ve {2} stok sıfırlama işlemi var. {3} üründe değişiklik yok.",
+                                        newProductsTable.Rows.Count, updateProductsTable.Rows.Count, oldProductsTable.Rows.Count, ayniCount));
         }
 
         private void showAttributes()
@@ -610,16 +705,59 @@ namespace N11Entegrator
             }
         }
 
-        private void btnDownloadProducts_Click(object sender, EventArgs e)3333333333333333333333333333333333,0
+        private void setProductCategory()
+        {
+            if (treeProductCategories.SelectedNode == null)
+                return;
+            var rowList = this.SelectedRows;
+            if (rowList == null)
+                return;
+
+            var cat = treeProductCategories.SelectedNode.Tag as CategoryModel;
+            if (cat == null)
+                return;
+
+            foreach (var row in rowList)
+            {
+                row["n11Category"] = String.Format("{0}-{1}", cat.Code, cat.ToString());
+            }
+
+            showAttributes();
+        }
+
+        private void btnDownloadProducts_Click(object sender, EventArgs e)
         {
             getSourceProducts();
             getDestinationProducts();
             compareProducts();
         }
 
+        private void btnSetCategory_Click(object sender, EventArgs e)
+        {
+            setProductCategory();
+        }
+
         private void btnSaveAttributes_Click(object sender, EventArgs e)
         {
+            var selectedRow = this.SelectedRow;
+            if (selectedRow == null)
+                return;
 
+            var list = new List<KeyValuePair<string, string>>();
+            foreach (var control in flowLayoutPanel1.Controls)
+            {
+                var attControl = control as AttributeControlBase;
+                if (attControl != null)
+                {
+                    if (!String.IsNullOrWhiteSpace(attControl.AttributeValue))
+                        //list.Add(attControl.AttributeModel.name, attControl.AttributeValue);
+                        list.Add(new KeyValuePair<string, string>(attControl.AttributeModel.name, attControl.AttributeValue));
+                }
+            }
+
+            var stockCode = (string) selectedRow["stockCode"];
+
+            rowAttributeTable[stockCode] = list;
         }
 
         private void btnStartUpdate_Click(object sender, EventArgs e)
@@ -640,119 +778,126 @@ namespace N11Entegrator
         private void bgw_DoWork(object sender, DoWorkEventArgs e)
         {
             var i = 0;
-            bgw.ReportProgress(0, "Yeni ürünler kaydediliyor.");
-            foreach (DataRow dr in newProductsTable.Rows)
+            if (btnProcessNew.Checked)
             {
-                i++;
-                var percent = (int)Math.Round((double)(i * 100 / newProductsTable.Rows.Count));
-                if (dr["n11Category"] == System.DBNull.Value || String.IsNullOrWhiteSpace(dr["n11Category"].ToString()))
+                bgw.ReportProgress(0, "Yeni ürünler kaydediliyor.");
+                foreach (DataRow dr in newProductsTable.Rows)
                 {
-                    bgw.ReportProgress(percent, String.Format("{0} için kategori seçilmedi.", dr["stockCode"]));
-                    continue;
-                }
-                if (!rowAttributeTable.ContainsKey((string)dr["stockCode"]))
-                {
-                    bgw.ReportProgress(percent, String.Format("{0} için özellikler seçilmedi.", dr["stockCode"]));
-                    continue;
-                }
-                var prod = new ProductModel
-                {
-                    stockCode = (string)dr["stockCode"],
-                    label = (string)dr["label"],
-                    brand = (string)dr["brand"],
-                    title = (string)dr["label"],
-                    //dr["category"] = String.Format("{0} / {1} / {2}", sourceProd.mainCategory, sourceProd.category, sourceProd.subCategory);
-                    displayPrice = (decimal)dr["price"],
-                    stockAmount = (int)dr["stockAmount"],
-                    picture1Path = (string)dr["picture1Path"],
-                    details = (string)dr["details"]
-                };
-                //var catId = long.Parse(((string)dr["n11Category"]).Split('-')[0]);
-                var catIdStr = ((string)dr["n11Category"]).Split('-')[0];
-                //var cat = categoryTable[catId];
-                var cat = categoryTable.Values.First(x => x.Code == catIdStr);
-                var attList = rowAttributeTable[(string)dr["stockCode"]];
+                    i++;
+                    var percent = (int) Math.Round((double) (i*100/newProductsTable.Rows.Count));
+                    if (dr["n11Category"] == System.DBNull.Value || String.IsNullOrWhiteSpace(dr["n11Category"].ToString()))
+                    {
+                        bgw.ReportProgress(percent, String.Format("{0} için kategori seçilmedi.", dr["stockCode"]));
+                        continue;
+                    }
+                    if (!rowAttributeTable.ContainsKey((string) dr["stockCode"]))
+                    {
+                        bgw.ReportProgress(percent, String.Format("{0} için özellikler seçilmedi.", dr["stockCode"]));
+                        continue;
+                    }
+                    var prod = new ProductModel
+                    {
+                        stockCode = (string) dr["stockCode"],
+                        label = (string) dr["label"],
+                        brand = (string) dr["brand"],
+                        title = (string) dr["label"],
+                        //dr["category"] = String.Format("{0} / {1} / {2}", sourceProd.mainCategory, sourceProd.category, sourceProd.subCategory);
+                        displayPrice = (decimal) dr["price"],
+                        stockAmount = (int) dr["stockAmount"],
+                        picture1Path = (string) dr["picture1Path"],
+                        details = (string) dr["details"]
+                    };
+                    //var catId = long.Parse(((string)dr["n11Category"]).Split('-')[0]);
+                    var catIdStr = ((string) dr["n11Category"]).Split('-')[0];
+                    //var cat = categoryTable[catId];
+                    var cat = categoryTable.Values.First(x => x.Code == catIdStr);
+                    var attList = rowAttributeTable[(string) dr["stockCode"]];
 
-                var result = n11Service.CreateProduct(prod, long.Parse(cat.Code), attList);
-                if (result == false)
-                {
-                    result.GetType();
-                }
-                bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, newProductsTable.Rows.Count, percent));
-                if (bgw.CancellationPending)
-                    return;
-            }
-
-            i = 0;
-            bgw.ReportProgress(0, "Ürün fiyat ve stok miktarları güncelleniyor.");
-            foreach (DataRow dr in updateProductsTable.Rows)
-            {
-                i++;
-                var percent = (int)Math.Round((double)(i * 100 / updateProductsTable.Rows.Count));
-
-                var stockCode = (string)dr["stockCode"];
-                var oldPrice = (decimal)dr["oldPrice"];
-                var newPrice = (decimal)dr["newPrice"];
-                var oldStock = (int)dr["oldStock"];
-                var newStock = (int)dr["newStock"];
-                var diff = (decimal)dr["diff"];
-
-                if (oldPrice != newPrice)
-                {
-                    // update price
-                    if (diff > 10)
-                        diff.GetType();
-                    if (!n11Service.UpdateProduct(stockCode, newPrice))
-                        oldPrice.GetType();
-                }
-
-                if (oldStock != newStock)
-                {
-                    // update stock
-                    n11Service.UpdateProductStock(stockCode, newStock);
-                }
-
-
-                bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, updateProductsTable.Rows.Count, percent));
-            }
-
-
-            i = 0;
-            bgw.ReportProgress(0, "N11deki eski ürünlerin stok bilgileri sıfırlanıyor.");
-            foreach (DataRow dr in oldProductsTable.Rows)
-            {
-                i++;
-                var percent = (int)Math.Round((double)(i * 100 / oldProductsTable.Rows.Count));
-
-                var productStockCode = (string)dr["stockCode"];
-                var productTitle = (string)dr["label"];
-
-                if (productTitle.Contains("Timberland"))
-                {
-                    bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %) {3} SIFIRLANMADI.", i, oldProductsTable.Rows.Count, percent, productTitle));
+                    var result = n11Service.CreateProduct(prod, long.Parse(cat.Code), attList);
+                    if (result == false)
+                    {
+                        result.GetType();
+                    }
+                    bgw.ReportProgress(percent,
+                        String.Format("{0} / {1} ({2} %)", i, newProductsTable.Rows.Count, percent));
                     if (bgw.CancellationPending)
                         return;
-                    continue;
                 }
-
-                var sourceProd = sourceList.FirstOrDefault(x => productStockCode.Contains("_" + x.stockCode + "_"));
-                if (sourceProd == null)
-                {
-                    // Remove
-                    n11Service.RemoveProduct(productStockCode);
-                    bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, oldProductsTable.Rows.Count, percent));
-                    Debug.WriteLine("{0} sıfırlandı\t{1}\t{2}", i, productStockCode, productTitle);
-                }
-                else
-                {
-                    bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %) Ürün ES'de mevcut, sıfırlanmıyor.", i, oldProductsTable.Rows.Count, percent));
-                    sourceProd.GetType();
-                }
-
-                if (bgw.CancellationPending)
-                    return;
             }
 
+            if (btnProcessUpdates.Checked)
+            {
+                i = 0;
+                bgw.ReportProgress(0, "Ürün fiyat ve stok miktarları güncelleniyor.");
+                foreach (DataRow dr in updateProductsTable.Rows)
+                {
+                    i++;
+                    var percent = (int) Math.Round((double) (i*100/updateProductsTable.Rows.Count));
+
+                    var stockCode = (string) dr["stockCode"];
+                    var oldPrice = (decimal) dr["oldPrice"];
+                    var newPrice = (decimal) dr["newPrice"];
+                    var oldStock = (int) dr["oldStock"];
+                    var newStock = (int) dr["newStock"];
+                    var diff = (decimal) dr["diff"];
+
+                    if (btnFiyatGuncelle.Checked && oldPrice != newPrice)
+                    {
+                        // update price
+                        if (diff > 10)
+                            diff.GetType();
+                        if (!n11Service.UpdateProduct(stockCode, newPrice))
+                            oldPrice.GetType();
+                    }
+
+                    if (btnStokGuncelle.Checked && oldStock != newStock)
+                    {
+                        // update stock
+                        n11Service.UpdateProductStock(stockCode, newStock);
+                    }
+
+                    bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, updateProductsTable.Rows.Count, percent));
+                }
+            }
+
+            if (btnProcessDelete.Checked)
+            {
+                i = 0;
+                bgw.ReportProgress(0, "N11deki eski ürünlerin stok bilgileri sıfırlanıyor.");
+                foreach (DataRow dr in oldProductsTable.Rows)
+                {
+                    i++;
+                    var percent = (int) Math.Round((double) (i*100/oldProductsTable.Rows.Count));
+
+                    var productStockCode = (string) dr["stockCode"];
+                    var productTitle = (string) dr["label"];
+
+                    if (productTitle.Contains("Timberland"))
+                    {
+                        bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %) {3} SIFIRLANMADI.", i, oldProductsTable.Rows.Count, percent, productTitle));
+                        if (bgw.CancellationPending)
+                            return;
+                        continue;
+                    }
+
+                    var sourceProd = sourceList.FirstOrDefault(x => productStockCode.Contains("_" + x.stockCode + "_"));
+                    if (sourceProd == null)
+                    {
+                        // Remove
+                        n11Service.RemoveProduct(productStockCode);
+                        bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %)", i, oldProductsTable.Rows.Count, percent));
+                        Debug.WriteLine("{0} sıfırlandı\t{1}\t{2}", i, productStockCode, productTitle);
+                    }
+                    else
+                    {
+                        bgw.ReportProgress(percent, String.Format("{0} / {1} ({2} %) Ürün ES'de mevcut, sıfırlanmıyor.", i, oldProductsTable.Rows.Count, percent));
+                        sourceProd.GetType();
+                    }
+
+                    if (bgw.CancellationPending)
+                        return;
+                }
+            }
             bgw.ReportProgress(100, "Bitti");
         }
 
@@ -761,9 +906,9 @@ namespace N11Entegrator
             progressBar1.Value = e.ProgressPercentage;
             if (e.UserState != null)
             {
-                var str = String.Format("{0}: {1}", DateTime.Now.ToShortTimeString(), e.UserState);
-                lblStatus.Text = str;
-                lbLog.Items.Insert(0, str);
+                //var str = String.Format("{0}: {1}", DateTime.Now.ToShortTimeString(), e.UserState);
+                //lblStatus.Text = str;
+                Log(e.UserState.ToString());
             }
         }
 
@@ -781,8 +926,6 @@ namespace N11Entegrator
 
     #endregion
 
-
         
-
     }
 }

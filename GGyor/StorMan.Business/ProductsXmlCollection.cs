@@ -17,40 +17,76 @@ namespace StorMan.Business
             get { return _dataTable; }
         }
 
-        public List<FilterModel> FilterList { get; set; }
-        public List<OperationModel> OperationList { get; set; }
+        public ConvertedDataSetModel ConvertedDataSet { get; set; }
+        //public List<FilterModel> FilterList { get; set; }
+        //public List<OperationModel> OperationList { get; set; }
 
-        public ProductsXmlCollection(string xmlPath)
+        //public ProductsXmlCollection(string xmlPath)
+        //{
+        //    OperationList = new List<OperationModel>();
+        //    FilterList = new List<FilterModel>();
+
+        //    _dataTable = new DataTable("ProductsXml");
+
+        //    var xdoc = XDocument.Load(xmlPath);
+
+        //    var q = from d in xdoc.Root.Descendants("item")
+        //            select d;
+        //    var list = q.ToList();
+
+        //    foreach (var xElement in list)
+        //    {
+        //        var valueList = new List<object>();
+        //        foreach (var attr in xElement.Elements())
+        //        {
+        //            if (this.DataTable.Columns[attr.Name.LocalName] == null)
+        //                this.DataTable.Columns.Add(attr.Name.LocalName);
+        //        }
+        //        var dr = this.DataTable.NewRow();
+        //        foreach (var attr in xElement.Elements())
+        //        {
+        //            dr[attr.Name.LocalName] = attr.Value;
+        //        }
+
+        //        this.DataTable.Rows.Add(dr);
+        //    }
+        //}
+
+        public ProductsXmlCollection(string xmlPath, ConvertedDataSetModel cds)// : this(xmlPath)
         {
-            OperationList = new List<OperationModel>();
-            FilterList = new List<FilterModel>();
+            this.ConvertedDataSet = cds;
 
-            _dataTable = new DataTable("ProductsXml");
-
-            var xdoc = XDocument.Load(xmlPath);
-
-            var q = from d in xdoc.Root.Descendants("item")
-                    select d;
-            var list = q.ToList();
-
-            foreach (var xElement in list)
+            if (cds.DataTable != null)
             {
-                var valueList = new List<object>();
-                foreach (var attr in xElement.Elements())
-                {
-                    if (this.DataTable.Columns[attr.Name.LocalName] == null)
-                        this.DataTable.Columns.Add(attr.Name.LocalName);
-                }
-                var dr = this.DataTable.NewRow();
-                foreach (var attr in xElement.Elements())
-                {
-                    dr[attr.Name.LocalName] = attr.Value;
-                }
-
-                this.DataTable.Rows.Add(dr);
+                _dataTable = cds.DataTable.Copy();
             }
+            else
+            {
+                _dataTable = new DataTable("ProductsXml");
 
+                var xdoc = XDocument.Load(xmlPath);
 
+                var q = from d in xdoc.Root.Descendants("item")
+                        select d;
+                var list = q.ToList();
+
+                foreach (var xElement in list)
+                {
+                    var valueList = new List<object>();
+                    foreach (var attr in xElement.Elements())
+                    {
+                        if (this.DataTable.Columns[attr.Name.LocalName] == null)
+                            this.DataTable.Columns.Add(attr.Name.LocalName);
+                    }
+                    var dr = this.DataTable.NewRow();
+                    foreach (var attr in xElement.Elements())
+                    {
+                        dr[attr.Name.LocalName] = attr.Value;
+                    }
+
+                    this.DataTable.Rows.Add(dr);
+                }
+            }
         }
 
         public void SaveAsXml(string path)
@@ -77,33 +113,57 @@ namespace StorMan.Business
             xdoc.Save(path);
         }
 
-        public void ApplyFilters()
+        public List<DataRow> ApplyFilters(List<FilterModel> filterList)
         {
-            foreach (var filter in FilterList)
+            var rowList = new List<DataRow>();
+            foreach (var filter in filterList)
             {
-                var rowsToDelete = new List<DataRow>();
+                //var rowsToDelete = new List<DataRow>();
+                //foreach (DataRow row in DataTable.Rows)
+                //{
+                //    if (!filter.Check(row))
+                //        rowsToDelete.Add(row); 
+                //}
+                //foreach (var dataRow in rowsToDelete)
+                //{
+                //    dt.Rows.Remove(dataRow);
+                //}
                 foreach (DataRow row in DataTable.Rows)
                 {
-                    if (!filter.Check(row))
-                        rowsToDelete.Add(row); 
+                    if (filter.Check(row))
+                        rowList.Add(row);
                 }
-                foreach (var dataRow in rowsToDelete)
-                {
-                    DataTable.Rows.Remove(dataRow);
-                }
+
+
             }
+            return rowList;
         }
-        public void ApplyTransforms()
+        public List<DataRow> ApplyOperations(List<DataRow> rowList, List<OperationModel> operationList)
         {
-            foreach (var transform in OperationList)
+            foreach (var operation in operationList)
             {
-                foreach (DataRow row in DataTable.Rows)
+                foreach (DataRow row in rowList)
                 {
-                    transform.ApplyToDataRow(row);
+                    operation.ApplyToDataRow(row);
                 }
             }
+            return rowList;
         }
 
+        public List<DataRow> ApplyTransform(TransformModel transform)
+        {
+            var dt = ApplyFilters(transform.Filters);
+            dt = ApplyOperations(dt, transform.Operations);
+            return dt;
+        }
+
+        public void ApplyTransforms()
+        {
+            foreach (var transform in this.ConvertedDataSet.Transforms)
+            {
+                ApplyTransform(transform);
+            }
+        }
 
     }
 

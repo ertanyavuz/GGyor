@@ -41,17 +41,19 @@
             this.treeN11Categories = new System.Windows.Forms.TreeView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnReloadCategories = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSaveCategoryMaps = new System.Windows.Forms.ToolStripButton();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.treeProductCategories = new System.Windows.Forms.TreeView();
             this.tabProductComparison = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tpYeniler = new System.Windows.Forms.TabPage();
             this.grid1 = new System.Windows.Forms.DataGridView();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tpGuncellemeler = new System.Windows.Forms.TabPage();
             this.grid2 = new System.Windows.Forms.DataGridView();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tpSifirlanacaklar = new System.Windows.Forms.TabPage();
             this.grid3 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -60,16 +62,26 @@
             this.btnDownloadProducts = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSaveAttributes = new System.Windows.Forms.ToolStripButton();
+            this.btnSetCategory = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnStartUpdate = new System.Windows.Forms.ToolStripButton();
             this.btnStopUpdate = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnProcessNew = new System.Windows.Forms.ToolStripButton();
+            this.btnProcessUpdates = new System.Windows.Forms.ToolStripButton();
+            this.btnProcessDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnStokGuncelle = new System.Windows.Forms.ToolStripButton();
+            this.btnFiyatGuncelle = new System.Windows.Forms.ToolStripButton();
             this.bgw = new System.ComponentModel.BackgroundWorker();
+            this.btnTransformKaydet = new System.Windows.Forms.ToolStripButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -90,11 +102,11 @@
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.tabProductComparison.SuspendLayout();
-            this.tabPage4.SuspendLayout();
+            this.tpYeniler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
-            this.tabPage5.SuspendLayout();
+            this.tpGuncellemeler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid2)).BeginInit();
-            this.tabPage6.SuspendLayout();
+            this.tpSifirlanacaklar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid3)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.toolStrip3.SuspendLayout();
@@ -111,7 +123,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1145, 712);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage1
             // 
@@ -128,7 +140,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 28);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 42);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -138,7 +150,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.bodyPanel);
-            this.splitContainer1.Size = new System.Drawing.Size(1131, 655);
+            this.splitContainer1.Size = new System.Drawing.Size(1131, 641);
             this.splitContainer1.SplitterDistance = 199;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -149,7 +161,7 @@
             this.treeCds.HideSelection = false;
             this.treeCds.Location = new System.Drawing.Point(0, 0);
             this.treeCds.Name = "treeCds";
-            this.treeCds.Size = new System.Drawing.Size(199, 655);
+            this.treeCds.Size = new System.Drawing.Size(199, 641);
             this.treeCds.TabIndex = 0;
             this.treeCds.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCds_AfterSelect);
             // 
@@ -158,14 +170,17 @@
             this.bodyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bodyPanel.Location = new System.Drawing.Point(0, 0);
             this.bodyPanel.Name = "bodyPanel";
-            this.bodyPanel.Size = new System.Drawing.Size(928, 655);
+            this.bodyPanel.Size = new System.Drawing.Size(928, 641);
             this.bodyPanel.TabIndex = 0;
             // 
             // toolStrip1
             // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnTransformKaydet});
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1131, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1131, 39);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -185,7 +200,7 @@
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.Location = new System.Drawing.Point(3, 28);
+            this.splitContainer2.Location = new System.Drawing.Point(3, 42);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -195,7 +210,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.treeN11Categories);
-            this.splitContainer2.Size = new System.Drawing.Size(1131, 655);
+            this.splitContainer2.Size = new System.Drawing.Size(1131, 641);
             this.splitContainer2.SplitterDistance = 370;
             this.splitContainer2.TabIndex = 3;
             // 
@@ -204,7 +219,7 @@
             this.categoryTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.categoryTreeView1.Location = new System.Drawing.Point(0, 0);
             this.categoryTreeView1.Name = "categoryTreeView1";
-            this.categoryTreeView1.Size = new System.Drawing.Size(370, 655);
+            this.categoryTreeView1.Size = new System.Drawing.Size(370, 641);
             this.categoryTreeView1.TabIndex = 2;
             // 
             // treeN11Categories
@@ -212,17 +227,20 @@
             this.treeN11Categories.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeN11Categories.Location = new System.Drawing.Point(0, 0);
             this.treeN11Categories.Name = "treeN11Categories";
-            this.treeN11Categories.Size = new System.Drawing.Size(401, 655);
+            this.treeN11Categories.Size = new System.Drawing.Size(401, 641);
             this.treeN11Categories.TabIndex = 1;
             this.treeN11Categories.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeN11Categories_BeforeExpand);
             // 
             // toolStrip2
             // 
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReloadCategories});
+            this.btnReloadCategories,
+            this.toolStripSeparator5,
+            this.btnSaveCategoryMaps});
             this.toolStrip2.Location = new System.Drawing.Point(3, 3);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1131, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1131, 39);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -232,9 +250,23 @@
             this.btnReloadCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnReloadCategories.Image")));
             this.btnReloadCategories.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReloadCategories.Name = "btnReloadCategories";
-            this.btnReloadCategories.Size = new System.Drawing.Size(23, 22);
+            this.btnReloadCategories.Size = new System.Drawing.Size(36, 36);
             this.btnReloadCategories.Text = "Yenile";
             this.btnReloadCategories.Click += new System.EventHandler(this.btnReloadCategories_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 39);
+            // 
+            // btnSaveCategoryMaps
+            // 
+            this.btnSaveCategoryMaps.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSaveCategoryMaps.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveCategoryMaps.Image")));
+            this.btnSaveCategoryMaps.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSaveCategoryMaps.Name = "btnSaveCategoryMaps";
+            this.btnSaveCategoryMaps.Size = new System.Drawing.Size(36, 36);
+            this.btnSaveCategoryMaps.Text = "Eşleşmeleri Kaydet";
             // 
             // tabPage3
             // 
@@ -306,6 +338,7 @@
             // treeProductCategories
             // 
             this.treeProductCategories.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeProductCategories.HideSelection = false;
             this.treeProductCategories.Location = new System.Drawing.Point(0, 0);
             this.treeProductCategories.Name = "treeProductCategories";
             this.treeProductCategories.Size = new System.Drawing.Size(194, 453);
@@ -314,9 +347,9 @@
             // 
             // tabProductComparison
             // 
-            this.tabProductComparison.Controls.Add(this.tabPage4);
-            this.tabProductComparison.Controls.Add(this.tabPage5);
-            this.tabProductComparison.Controls.Add(this.tabPage6);
+            this.tabProductComparison.Controls.Add(this.tpYeniler);
+            this.tabProductComparison.Controls.Add(this.tpGuncellemeler);
+            this.tabProductComparison.Controls.Add(this.tpSifirlanacaklar);
             this.tabProductComparison.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabProductComparison.Location = new System.Drawing.Point(0, 0);
             this.tabProductComparison.Name = "tabProductComparison";
@@ -324,16 +357,16 @@
             this.tabProductComparison.Size = new System.Drawing.Size(692, 453);
             this.tabProductComparison.TabIndex = 12;
             // 
-            // tabPage4
+            // tpYeniler
             // 
-            this.tabPage4.Controls.Add(this.grid1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(684, 427);
-            this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "Yeniler";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tpYeniler.Controls.Add(this.grid1);
+            this.tpYeniler.Location = new System.Drawing.Point(4, 22);
+            this.tpYeniler.Name = "tpYeniler";
+            this.tpYeniler.Padding = new System.Windows.Forms.Padding(3);
+            this.tpYeniler.Size = new System.Drawing.Size(684, 427);
+            this.tpYeniler.TabIndex = 0;
+            this.tpYeniler.Text = "Yeniler";
+            this.tpYeniler.UseVisualStyleBackColor = true;
             // 
             // grid1
             // 
@@ -348,16 +381,16 @@
             this.grid1.TabIndex = 5;
             this.grid1.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
             // 
-            // tabPage5
+            // tpGuncellemeler
             // 
-            this.tabPage5.Controls.Add(this.grid2);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(684, 427);
-            this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "Güncellemeler";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.tpGuncellemeler.Controls.Add(this.grid2);
+            this.tpGuncellemeler.Location = new System.Drawing.Point(4, 22);
+            this.tpGuncellemeler.Name = "tpGuncellemeler";
+            this.tpGuncellemeler.Padding = new System.Windows.Forms.Padding(3);
+            this.tpGuncellemeler.Size = new System.Drawing.Size(684, 427);
+            this.tpGuncellemeler.TabIndex = 1;
+            this.tpGuncellemeler.Text = "Güncellemeler";
+            this.tpGuncellemeler.UseVisualStyleBackColor = true;
             // 
             // grid2
             // 
@@ -371,15 +404,15 @@
             this.grid2.TabIndex = 7;
             this.grid2.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
             // 
-            // tabPage6
+            // tpSifirlanacaklar
             // 
-            this.tabPage6.Controls.Add(this.grid3);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(684, 427);
-            this.tabPage6.TabIndex = 2;
-            this.tabPage6.Text = "Stoğu Sıfırlanacaklar";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.tpSifirlanacaklar.Controls.Add(this.grid3);
+            this.tpSifirlanacaklar.Location = new System.Drawing.Point(4, 22);
+            this.tpSifirlanacaklar.Name = "tpSifirlanacaklar";
+            this.tpSifirlanacaklar.Size = new System.Drawing.Size(684, 427);
+            this.tpSifirlanacaklar.TabIndex = 2;
+            this.tpSifirlanacaklar.Text = "Stoğu Sıfırlanacaklar";
+            this.tpSifirlanacaklar.UseVisualStyleBackColor = true;
             // 
             // grid3
             // 
@@ -428,9 +461,17 @@
             this.btnDownloadProducts,
             this.toolStripSeparator1,
             this.btnSaveAttributes,
+            this.btnSetCategory,
             this.toolStripSeparator2,
             this.btnStartUpdate,
-            this.btnStopUpdate});
+            this.btnStopUpdate,
+            this.toolStripSeparator3,
+            this.btnProcessNew,
+            this.btnProcessUpdates,
+            this.btnProcessDelete,
+            this.toolStripSeparator4,
+            this.btnStokGuncelle,
+            this.btnFiyatGuncelle});
             this.toolStrip3.Location = new System.Drawing.Point(3, 3);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.Size = new System.Drawing.Size(1131, 54);
@@ -454,7 +495,6 @@
             // 
             // btnSaveAttributes
             // 
-            this.btnSaveAttributes.Enabled = false;
             this.btnSaveAttributes.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAttributes.Image")));
             this.btnSaveAttributes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSaveAttributes.Name = "btnSaveAttributes";
@@ -462,6 +502,16 @@
             this.btnSaveAttributes.Text = "Özellikleri Kaydet";
             this.btnSaveAttributes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSaveAttributes.Click += new System.EventHandler(this.btnSaveAttributes_Click);
+            // 
+            // btnSetCategory
+            // 
+            this.btnSetCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnSetCategory.Image")));
+            this.btnSetCategory.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSetCategory.Name = "btnSetCategory";
+            this.btnSetCategory.Size = new System.Drawing.Size(90, 51);
+            this.btnSetCategory.Text = "Kategori Belirle";
+            this.btnSetCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSetCategory.Click += new System.EventHandler(this.btnSetCategory_Click);
             // 
             // toolStripSeparator2
             // 
@@ -490,6 +540,76 @@
             this.btnStopUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnStopUpdate.Click += new System.EventHandler(this.btnStopUpdate_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 54);
+            // 
+            // btnProcessNew
+            // 
+            this.btnProcessNew.Checked = true;
+            this.btnProcessNew.CheckOnClick = true;
+            this.btnProcessNew.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnProcessNew.Image = ((System.Drawing.Image)(resources.GetObject("btnProcessNew.Image")));
+            this.btnProcessNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnProcessNew.Name = "btnProcessNew";
+            this.btnProcessNew.Size = new System.Drawing.Size(76, 51);
+            this.btnProcessNew.Text = "Yeni Ürünler";
+            this.btnProcessNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // btnProcessUpdates
+            // 
+            this.btnProcessUpdates.Checked = true;
+            this.btnProcessUpdates.CheckOnClick = true;
+            this.btnProcessUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnProcessUpdates.Image = ((System.Drawing.Image)(resources.GetObject("btnProcessUpdates.Image")));
+            this.btnProcessUpdates.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnProcessUpdates.Name = "btnProcessUpdates";
+            this.btnProcessUpdates.Size = new System.Drawing.Size(87, 51);
+            this.btnProcessUpdates.Text = "Güncellemeler";
+            this.btnProcessUpdates.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // btnProcessDelete
+            // 
+            this.btnProcessDelete.Checked = true;
+            this.btnProcessDelete.CheckOnClick = true;
+            this.btnProcessDelete.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnProcessDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnProcessDelete.Image")));
+            this.btnProcessDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnProcessDelete.Name = "btnProcessDelete";
+            this.btnProcessDelete.Size = new System.Drawing.Size(83, 51);
+            this.btnProcessDelete.Text = "Stok Sıfırlama";
+            this.btnProcessDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 54);
+            // 
+            // btnStokGuncelle
+            // 
+            this.btnStokGuncelle.Checked = true;
+            this.btnStokGuncelle.CheckOnClick = true;
+            this.btnStokGuncelle.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnStokGuncelle.Image = ((System.Drawing.Image)(resources.GetObject("btnStokGuncelle.Image")));
+            this.btnStokGuncelle.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStokGuncelle.Name = "btnStokGuncelle";
+            this.btnStokGuncelle.Size = new System.Drawing.Size(83, 51);
+            this.btnStokGuncelle.Text = "Stok Güncelle";
+            this.btnStokGuncelle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // btnFiyatGuncelle
+            // 
+            this.btnFiyatGuncelle.Checked = true;
+            this.btnFiyatGuncelle.CheckOnClick = true;
+            this.btnFiyatGuncelle.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnFiyatGuncelle.Image = ((System.Drawing.Image)(resources.GetObject("btnFiyatGuncelle.Image")));
+            this.btnFiyatGuncelle.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFiyatGuncelle.Name = "btnFiyatGuncelle";
+            this.btnFiyatGuncelle.Size = new System.Drawing.Size(85, 51);
+            this.btnFiyatGuncelle.Text = "Fiyat Güncelle";
+            this.btnFiyatGuncelle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // bgw
             // 
             this.bgw.WorkerReportsProgress = true;
@@ -497,6 +617,16 @@
             this.bgw.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_DoWork);
             this.bgw.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw_ProgressChanged);
             this.bgw.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_RunWorkerCompleted);
+            // 
+            // btnTransformKaydet
+            // 
+            this.btnTransformKaydet.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnTransformKaydet.Image = ((System.Drawing.Image)(resources.GetObject("btnTransformKaydet.Image")));
+            this.btnTransformKaydet.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTransformKaydet.Name = "btnTransformKaydet";
+            this.btnTransformKaydet.Size = new System.Drawing.Size(36, 36);
+            this.btnTransformKaydet.Text = "Değişiklikleri Kaydet";
+            this.btnTransformKaydet.Click += new System.EventHandler(this.btnTransformKaydet_Click);
             // 
             // frmMain
             // 
@@ -512,6 +642,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -535,11 +667,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.tabProductComparison.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
+            this.tpYeniler.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).EndInit();
-            this.tabPage5.ResumeLayout(false);
+            this.tpGuncellemeler.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid2)).EndInit();
-            this.tabPage6.ResumeLayout(false);
+            this.tpSifirlanacaklar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid3)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.toolStrip3.ResumeLayout(false);
@@ -568,11 +700,11 @@
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.TreeView treeProductCategories;
         private System.Windows.Forms.TabControl tabProductComparison;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tpYeniler;
         private System.Windows.Forms.DataGridView grid1;
-        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tpGuncellemeler;
         private System.Windows.Forms.DataGridView grid2;
-        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage tpSifirlanacaklar;
         private System.Windows.Forms.DataGridView grid3;
         private System.Windows.Forms.ToolStripButton btnDownloadProducts;
         private System.Windows.Forms.ToolStripButton btnStartUpdate;
@@ -585,6 +717,17 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.ComponentModel.BackgroundWorker bgw;
         private System.Windows.Forms.ListBox lbLog;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton btnProcessNew;
+        private System.Windows.Forms.ToolStripButton btnProcessUpdates;
+        private System.Windows.Forms.ToolStripButton btnProcessDelete;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton btnStokGuncelle;
+        private System.Windows.Forms.ToolStripButton btnFiyatGuncelle;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton btnSaveCategoryMaps;
+        private System.Windows.Forms.ToolStripButton btnSetCategory;
+        private System.Windows.Forms.ToolStripButton btnTransformKaydet;
 
     }
 }
