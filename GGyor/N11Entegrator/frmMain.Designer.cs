@@ -46,7 +46,7 @@
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.treeProductCategories = new System.Windows.Forms.TreeView();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabProductComparison = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.grid1 = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -58,7 +58,6 @@
             this.lbLog = new System.Windows.Forms.ListBox();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnDownloadProducts = new System.Windows.Forms.ToolStripButton();
-            this.btnCompareProducts = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSaveAttributes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -90,7 +89,7 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            this.tabControl2.SuspendLayout();
+            this.tabProductComparison.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
             this.tabPage5.SuspendLayout();
@@ -299,7 +298,7 @@
             // 
             // splitContainer3.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.tabControl2);
+            this.splitContainer3.Panel2.Controls.Add(this.tabProductComparison);
             this.splitContainer3.Size = new System.Drawing.Size(890, 453);
             this.splitContainer3.SplitterDistance = 194;
             this.splitContainer3.TabIndex = 2;
@@ -313,17 +312,17 @@
             this.treeProductCategories.TabIndex = 1;
             this.treeProductCategories.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeN11Categories_BeforeExpand);
             // 
-            // tabControl2
+            // tabProductComparison
             // 
-            this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Controls.Add(this.tabPage6);
-            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl2.Location = new System.Drawing.Point(0, 0);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(692, 453);
-            this.tabControl2.TabIndex = 12;
+            this.tabProductComparison.Controls.Add(this.tabPage4);
+            this.tabProductComparison.Controls.Add(this.tabPage5);
+            this.tabProductComparison.Controls.Add(this.tabPage6);
+            this.tabProductComparison.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabProductComparison.Location = new System.Drawing.Point(0, 0);
+            this.tabProductComparison.Name = "tabProductComparison";
+            this.tabProductComparison.SelectedIndex = 0;
+            this.tabProductComparison.Size = new System.Drawing.Size(692, 453);
+            this.tabProductComparison.TabIndex = 12;
             // 
             // tabPage4
             // 
@@ -344,8 +343,10 @@
             this.grid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid1.Location = new System.Drawing.Point(3, 3);
             this.grid1.Name = "grid1";
+            this.grid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid1.Size = new System.Drawing.Size(678, 421);
             this.grid1.TabIndex = 5;
+            this.grid1.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
             // 
             // tabPage5
             // 
@@ -368,6 +369,7 @@
             this.grid2.Name = "grid2";
             this.grid2.Size = new System.Drawing.Size(678, 421);
             this.grid2.TabIndex = 7;
+            this.grid2.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
             // 
             // tabPage6
             // 
@@ -424,7 +426,6 @@
             this.toolStrip3.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnDownloadProducts,
-            this.btnCompareProducts,
             this.toolStripSeparator1,
             this.btnSaveAttributes,
             this.toolStripSeparator2,
@@ -445,17 +446,6 @@
             this.btnDownloadProducts.Text = "Ürünleri Çek";
             this.btnDownloadProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDownloadProducts.Click += new System.EventHandler(this.btnDownloadProducts_Click);
-            // 
-            // btnCompareProducts
-            // 
-            this.btnCompareProducts.Enabled = false;
-            this.btnCompareProducts.Image = ((System.Drawing.Image)(resources.GetObject("btnCompareProducts.Image")));
-            this.btnCompareProducts.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCompareProducts.Name = "btnCompareProducts";
-            this.btnCompareProducts.Size = new System.Drawing.Size(61, 51);
-            this.btnCompareProducts.Text = "Karşılaştır";
-            this.btnCompareProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCompareProducts.Click += new System.EventHandler(this.btnCompareProducts_Click);
             // 
             // toolStripSeparator1
             // 
@@ -544,7 +534,7 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
+            this.tabProductComparison.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).EndInit();
             this.tabPage5.ResumeLayout(false);
@@ -577,7 +567,7 @@
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.TreeView treeProductCategories;
-        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabControl tabProductComparison;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView grid1;
         private System.Windows.Forms.TabPage tabPage5;
@@ -585,7 +575,6 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.DataGridView grid3;
         private System.Windows.Forms.ToolStripButton btnDownloadProducts;
-        private System.Windows.Forms.ToolStripButton btnCompareProducts;
         private System.Windows.Forms.ToolStripButton btnStartUpdate;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnStopUpdate;

@@ -22,6 +22,7 @@ namespace N11Entegrator
         public frmMain()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
 
         private N11DataService dataService = new N11DataService();
@@ -38,7 +39,7 @@ namespace N11Entegrator
         private const int N11_STORE_ID = 2;
 
         // Tab 3
-        private N11Service n11Service;
+        private N11Service n11Service = new N11Service();
         private DataTable newProductsTable;
         private DataTable updateProductsTable;
         private DataTable oldProductsTable;
@@ -377,7 +378,8 @@ namespace N11Entegrator
         {
             var node = new TreeNode(String.Format("{0} - {1}", cat.ID, cat.Name));
             node.Tag = cat;
-            categoryTable.Add(cat.ID, cat);
+            if (categoryTable.ContainsKey(cat.ID))
+                categoryTable.Add(cat.ID, cat);
             if (getSubCategories)
             {
                 foreach (var subCat in cat.Children)
@@ -405,6 +407,20 @@ namespace N11Entegrator
         //private Button btnRunUpdate, btnStop;
         private CheckBox chkDontCheckUpdates = new CheckBox();
 
+        private DataRow SelectedRow
+        {
+            get
+            {
+                var grid = tabProductComparison.SelectedIndex == 0 ? grid1 : (tabProductComparison.SelectedIndex == 1 ? grid2 : null);
+                if (grid == null)
+                    return null;
+
+                if (grid.SelectedRows.Count != 1)
+                    return null;
+
+                return ((DataRowView) grid.SelectedRows[0].DataBoundItem).Row;
+            }
+        }
 
         private void getSourceProducts()
         {
@@ -416,16 +432,7 @@ namespace N11Entegrator
             n11List = n11Service.GetProductsJson();
             lblStatus.Text = String.Format("N11 ürünleri çekildi, {0} ürün bulundu.", n11List.Count);
         }
-
-
-
-        private void btnDownloadProducts_Click(object sender, EventArgs e)
-        {
-            getSourceProducts();
-            getDestinationProducts();
-        }
-
-        private void btnCompareProducts_Click(object sender, EventArgs e)
+        private void compareProducts()
         {
             newProductsTable = new DataTable();
             newProductsTable.Columns.Add("stockCode");
@@ -542,6 +549,72 @@ namespace N11Entegrator
 
             lblStatus.Text = String.Format("Karşılaştırma tamamlandı. {0} yeni ürün, {1} güncelleme ve {2} stok sıfırlama işlemi var. {3} üründe değişiklik yok.",
                                         newProductsTable.Rows.Count, updateProductsTable.Rows.Count, oldProductsTable.Rows.Count, ayniCount);
+        }
+
+        private void showAttributes()
+        {
+            flowLayoutPanel1.Controls.Clear();
+
+            var selectedRow = this.SelectedRow;
+            if (selectedRow == null)
+            {
+                return;
+            }
+
+            Func<object, string, string> getDataCellValue = (object x, string y) => (x == null || x is System.DBNull) ? y : x.ToString();
+
+            var stockCode = getDataCellValue(selectedRow["stockCode"], "");
+            if ((flowLayoutPanel1.Tag as string) == stockCode)
+                return;
+            flowLayoutPanel1.Tag = stockCode;
+
+            var catStr = getDataCellValue(selectedRow["n11Category"], "");
+            if (String.IsNullOrWhiteSpace(catStr))
+                return;
+
+            var s = catStr.Split('-');
+            if (s.Length <= 1)
+                return;
+            //int catId;
+            //if (!int.TryParse(s[0], out catId))
+            //    return;
+            var catCode = s[0];
+
+            var cat = categoryTable.Values.FirstOrDefault(x => x.Code == catCode);
+            if (cat == null)
+                return;
+
+            var l = new Label { Text = cat.ToString(), AutoSize = true };
+            flowLayoutPanel1.Controls.Add(l);
+
+            // Create attribute controls. Set attribute values, if any
+            var attValueTable = rowAttributeTable.ContainsKey(stockCode)
+                                ? rowAttributeTable[stockCode]
+                                : new List<KeyValuePair<string, string>>();
+            if (cat.Attributes.Any())
+            {
+                foreach (var att in cat.Attributes)
+                {
+                    // Set attribute values, if any
+                    var valuePairs = attValueTable.Where(x => x.Key == att.name).ToList();
+                    var valueStr = valuePairs.Count == 0
+                                        ? null
+                                        : att.multipleSelect
+                                                ? valuePairs.Select(x => x.Value).Aggregate((a, b) => a + "|" + b)
+                                                : valuePairs[0].Value;
+
+                    // Create the control.
+                    var c = AttributeControlBase.Create(att, valueStr);
+                    flowLayoutPanel1.Controls.Add(c);
+                }
+            }
+        }
+
+        private void btnDownloadProducts_Click(object sender, EventArgs e)3333333333333333333333333333333333,0
+        {
+            getSourceProducts();
+            getDestinationProducts();
+            compareProducts();
         }
 
         private void btnSaveAttributes_Click(object sender, EventArgs e)
@@ -700,7 +773,14 @@ namespace N11Entegrator
             btnStopUpdate.Enabled = false;
         }
 
+        private void grid_SelectionChanged(object sender, EventArgs e)
+        {
+            showAttributes();
+        }
+
+
     #endregion
+
 
         
 
