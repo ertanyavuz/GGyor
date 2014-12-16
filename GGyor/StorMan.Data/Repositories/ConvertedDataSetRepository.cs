@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Metadata.Edm;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using StorMan.Model;
 
 namespace StorMan.Data.Repositories
@@ -296,10 +298,36 @@ namespace StorMan.Data.Repositories
 
         public List<Tuple<string, string, float>> getExchangeRates()
         {
-            var list = _context.ExchangeRates.ToList()
-                                    .Select(x => new Tuple<string, string, float>(x.FromCurrency, x.ToCurrency, (float) x.Rate))
-                                    .ToList();
-            return list;
+            try
+            {
+                var xmlPath = "http://www.tcmb.gov.tr/kurlar/today.xml";
+                var xmlDoc = new XmlDocument();
+                xmlDoc.Load(xmlPath);
+
+                var USD = float.Parse(xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteSelling").InnerXml.Replace(".", ","));
+                var EUR = float.Parse(xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='EUR']/BanknoteSelling").InnerXml.Replace(".", ","));
+
+                var list = new List<Tuple<string, string, float>>();
+                list.Add(new Tuple<string, string, float>("TL", "USD", USD));
+                list.Add(new Tuple<string, string, float>("USD", "TL", 1/USD));
+
+                list.Add(new Tuple<string, string, float>("TL", "EUR", EUR));
+                list.Add(new Tuple<string, string, float>("EUR", "TL", 1/EUR));
+                list.Add(new Tuple<string, string, float>("TL", "EURO", EUR));
+                list.Add(new Tuple<string, string, float>("EURO", "TL", 1/EUR));
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                //var list = _context.ExchangeRates.ToList()
+                //                        .Select(x => new Tuple<string, string, float>(x.FromCurrency, x.ToCurrency, (float)x.Rate))
+                //                        .ToList();
+                //return list;
+
+                throw ex;
+            }
+            
         }
 
     }
